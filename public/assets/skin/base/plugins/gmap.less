@@ -1,0 +1,78 @@
+// ====================== Gmap =======================
+
+// Default map height/width
+.map {
+  width: 100%;
+  height: 400px;
+}
+
+// Inline Map Pagination Styles
+.map .pagination {
+  text-shadow: 0 1px #ffffff;
+  border-color: #ddd rgba(0, 0, 0, 0.19) rgba(0, 0, 0, 0.18);
+  background-color: #fdfdfd;
+  width: 92%;
+  margin: 11px;
+  -webkit-box-shadow: 0 2px 4px #AAA;
+  box-shadow: 0 2px 4px #AAA;
+}
+
+.map .pagination .display {
+  display: inline-block;
+  width: 84%;
+  height: 40px;
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+  text-align: center;
+  line-height: 40px;
+  text-shadow: 0 1px #FFF;
+}
+
+.map .pagination .btn {
+  width: 8%;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 0;
+  vertical-align: top;
+  border: 0;
+}
+
+.map .pagination .back-btn {
+  float: left;
+  border-right: 1px solid #ddd;
+  background: url("@{img-path}/plugins/arrow_left_12x12.png") no-repeat 50% 50%;
+}
+
+.map .pagination .fwd-btn {
+  float: right;
+  border-left: 1px solid #ddd;
+  background: url("@{img-path}/plugins/arrow_right_12x12.png") no-repeat 50% 50%;
+}
+
+.map .checker {
+  margin-right: 8px;
+}
+
+// Map Styling Helper Classes 
+.map-shadow {
+  -webkit-box-shadow: 0 2px 3px #999;
+  box-shadow: 0 2px 3px #999;
+}
+
+.map-gradient {
+  text-shadow: 0 1px #ffffff;
+  border-color: #cccccc rgba(0, 0, 0, 0.19) rgba(0, 0, 0, 0.18);
+  background-color: #f0f0f0;
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.1) 100%);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.1) 100%);
+}
+
+.map-rounded {
+  border-radius: 4px;
+}
+
+@media (max-width: 359px) {
+  .map .pagination .display {
+    width: 68%;
+  }
+}

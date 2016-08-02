@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+/*===============================================
+  ThemeREX Custom Icon Library
+================================================*/
+
+/* Load font library */
+@font-face {
+  font-family: "ThemeREX";
+  src:url("themerex.eot");
+  src:url("themerex.eot?#iefix") format("embedded-opentype"),
+      url("themerex.woff") format("woff"),
+      url("themerex.ttf") format("truetype"),
+      url("themerex.svg#themerex") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+/* Font base class */
+.ad {
+  position: relative;
+  display: inline-block;
+  font: normal normal normal 16px/1 ThemeREX;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+/* Icon classes */
+.ad-wand {
+  top: 1px;
+}
+.ad-wand:before {
+  content: "\e010";
+}
+.ad-lines:before {
+  content: "\e600";
+}
+.ad-radio-tower:before {
+  content: "\f030";
+}
+.ad-ruby:before {
+  content: "\f047";
+}
+.ad-screen-full:before {
+  content: "\f066";
+}

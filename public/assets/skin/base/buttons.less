@@ -1,0 +1,237 @@
+// ====================== Buttons =======================
+
+// Base styles
+.btn {
+    display: inline-block;
+    margin-bottom: 0; // For input.btn
+    font-weight: @btn-font-weight;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-image: none;
+    border: 0;
+    border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.18);
+    white-space: nowrap;
+    .button-size(@padding-base-vertical;
+    @padding-base-horizontal;
+    @font-size-smaller;
+    @line-height-larger;
+    @border-radius-base);
+    .user-select(none);
+    &, &:active, &.active {
+        &:focus {
+            .tab-focus();
+        }
+    }
+    &:hover,
+    &:focus {
+        color: @btn-default-color;
+        text-decoration: none;
+    }
+    &:active,
+    &.active {
+        outline: 0;
+        background-image: none;
+        .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
+    }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        cursor: not-allowed;
+        pointer-events: none;
+        .opacity(.65);
+        .box-shadow(none);
+    }
+    &.btn-gradient {
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+        border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.18);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        background-repeat: repeat-x;
+        background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.15) 100%);
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.15) 100%);
+    }
+    &.btn-rounded {
+        border-radius: 20px;
+    }
+
+    &.btn-bordered {
+        border-bottom: 3px solid transparent;
+        border-bottom: 3px solid rgba(0,0,0,0.1);
+    }
+
+}
+
+// Link buttons
+.btn-link {
+    color: @link-color;
+    font-weight: normal;
+    cursor: pointer;
+    border-radius: 0;
+    &, &:active, &[disabled], fieldset[disabled] & {
+        background-color: transparent;
+        .box-shadow(none);
+    }
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: transparent;
+    }
+    &:hover,
+    &:focus {
+        color: @link-hover-color;
+        text-decoration: underline;
+        background-color: transparent;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+        &:hover, &:focus {
+            color: @btn-link-disabled-color;
+            text-decoration: none;
+        }
+    }
+}
+// Button Sizes
+.btn-lg {
+    .button-size(@padding-large-vertical;
+    @padding-large-horizontal;
+    @font-size-base;
+    @line-height-large;
+    @border-radius-large);
+}
+.btn-sm {
+    .button-size(@padding-small-vertical;
+    @padding-small-horizontal;
+    @font-size-smallest;
+    @line-height-small;
+    @border-radius-small);
+}
+.btn-xs {
+    .button-size(@padding-xs-vertical;
+    @padding-xs-horizontal;
+    @font-size-smallest;
+    @line-height-small;
+    @border-radius-small);
+}
+
+
+// Block button
+.btn-block {
+    display: block;
+    width: 100%;
+}
+// Vertically align multiple block buttons
+.btn-block + .btn-block {
+    margin-top: 5px;
+}
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.btn-block {
+        width: 100%;
+    }
+}
+
+
+// Alternate Buttons
+.btn.btn-alt {
+    position: relative;
+    padding: 7px 11px;
+    margin: 5px 3px;
+    color: @brand-dark;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #fbfbfb;
+    border-radius: 1px;
+    border: 1px solid #EEE;
+    border-left: 4px solid #EEE;
+    -webkit-transition: opacity 0.1s ease;
+    transition: opacity 0.1s ease;
+}
+.btn.btn-alt.item-active,
+.btn.btn-alt:hover,
+.btn.btn-alt:focus {
+    color: #666 !important;
+    background-color: #fefefe !important;
+}
+.btn.btn-alt.btn-gradient {
+    background-color: #f0f0f0;
+    text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.3) 100%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.3) 100%);
+    border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.08) rgba(0, 0, 0, 0.14);
+    border-left: 4px solid #DDD;
+}
+.btn.btn-alt.btn-gradient:hover,
+.btn.btn-alt.btn-gradient:focus {
+    background-color: #eee;
+}
+
+.btn.btn-alt.item-checked {
+    opacity: 1;
+    color: #666;
+    border-left-color: @brand-success !important;
+    transition: all 0.2s ease;
+}
+
+
+// Holder Style
+.holder-style {
+    display: block;
+    padding: 9px 16px;
+    color: #d9d9d9;
+    background-color: transparent;
+    outline: 2px dashed #d9d9d9;
+    border: 0;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+// holder state
+.holder-style:hover,
+.holder-style:focus {
+    cursor: pointer;
+    color: #aaa;
+    background-color: transparent;
+    outline: 2px dashed #aaa;
+    border: 0;
+    text-decoration: none;
+}
+// active holder item
+.holder-style.holder-active {
+    background-color: #FFF;
+    outline-color: @brand-primary;
+    color: @brand-primary;
+}
+// holder icon
+.holder-style .holder-icon {
+    color: #d9d9d9;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+// holder icon state && active
+.holder-style:hover .holder-icon,
+.holder-style:focus .holder-icon {color: #aaa;}
+.holder-style.holder-active .holder-icon {
+    color: @brand-primary;
+}
+
+
+// Button Hover Effects 
+.btn-dimmer.btn,
+.btn-dimmer .btn {
+    opacity: 0.5;
+}
+.btn-dimmer.btn:hover,
+.btn-dimmer .btn:hover,
+.btn-dimmer.btn.item-active,
+.btn-dimmer .btn.item-active {
+    opacity: 1;
+}

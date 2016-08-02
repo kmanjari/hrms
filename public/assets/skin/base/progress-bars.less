@@ -1,0 +1,180 @@
+// ====================== Progress Bars =======================
+
+// Bar animations
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+// Progress container
+
+.progress {
+  overflow: hidden;
+  height: @line-height-computed;
+  margin-bottom: @line-height-computed;
+  background-color: @progress-bg;
+  border-radius: @border-radius-base;
+  box-shadow: none;
+}
+
+// Progress bar
+.progress-bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: @font-size-small;
+  font-weight: 600;
+  line-height: @line-height-computed;
+  color: @progress-bar-color;
+  text-align: center;
+  background-color: @progress-bar-bg;
+  .box-shadow(inset 0 -1px 0 rgba(0, 0, 0, .15));
+  .transition(width .6s ease);
+}
+
+// Progress bar stripped
+.progress-striped .progress-bar,
+.progress-bar-striped {
+  #gradient > .striped();
+  background-size: 40px 40px;
+}
+
+// Progress bar active
+.progress.active .progress-bar,
+.progress-bar.active {
+  .animation(progress-bar-stripes 2s linear infinite);
+}
+
+.progress-bar {
+  &[aria-valuenow="1"],
+  &[aria-valuenow="2"] {
+    min-width: 30px;
+  }
+
+  &[aria-valuenow="0"] {
+    color: @gray-light;
+    min-width: 30px;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+// Progress bar sizes
+
+// Default
+.progress {
+  height: 24px;
+  border-radius: 2px;
+}
+
+// Tiny
+.progress.progress-bar-xxs {
+  height: 11px;
+  border-radius: 2px;
+}
+
+.progress.progress-bar-xxs .progress-bar {
+  line-height: 11px
+}
+
+// Extra Small
+.progress.progress-bar-xs {
+  height: 14px;
+  border-radius: 2px;
+}
+
+.progress.progress-bar-xs .progress-bar {
+  line-height: 14px
+}
+
+// Small
+.progress.progress-bar-sm {
+  height: 18px;
+  border-radius: 2px;
+}
+
+.progress.progress-bar-sm .progress-bar {
+  line-height: 18px
+}
+
+// Large
+.progress.progress-bar-lg {
+  height: 28px
+}
+
+.progress.progress-bar-lg .progress-bar {
+  line-height: 28px
+}
+
+// Extra Large
+.progress.progress-bar-xl {
+  height: 32px
+}
+
+.progress.progress-bar-xl .progress-bar {
+  line-height: 32px
+}
+
+// Progress bar alignments
+
+// Right
+.progress.right .progress-bar {
+  float: right;
+}
+
+// Progress Bar Variation
+.progress.vertical {
+  height: 100%;
+  min-height: 200px;
+  width: 22px;
+  position: relative;
+}
+
+.progress.vertical .progress-bar {
+  width: 100%;
+  position: absolute;
+  font-size: 11px;
+  line-height: 20px;
+}
+
+// Align - bottom
+.progress.vertical.bottom .progress-bar {
+  bottom: 0;
+}
+
+// Vertical Progress Bar Sizes
+.progress {
+  height: 24px;
+  border-radius: 2px;
+}
+
+// Small
+.progress.vertical.progress-bar-sm {
+  width: 16px;
+}
+
+// Large
+.progress.vertical.progress-bar-lg {
+  width: 30px
+}
+
+// Extra Large
+.progress.vertical.progress-bar-xl {
+  width: 40px
+}
+

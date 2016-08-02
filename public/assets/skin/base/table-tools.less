@@ -1,0 +1,169 @@
+// ====================== Helpers =======================
+
+
+// Table Styling
+
+table tbody tr.message-read td {
+  color: #999;
+  background-color: @light-gray;
+}
+table tbody tr.message-unread td {
+  background-color: #fff;
+}
+
+table.tc-text-center-head thead th,
+table.tc-text-center-head tfoot th { text-align: center; }
+table.tc-fs11-head thead th,
+table.tc-fs11-head tfoot th { font-size: 12px; }
+table.tc-fs12-head thead th,
+table.tc-fs12-head tfoot th { font-size: 12px; }
+
+table.tc-checkbox-1 tbody td:first-child,
+table.tc-checkbox-2 tbody td:nth-child(2),
+table.tc-checkbox-3 tbody td:nth-child(3),
+table.tc-checkbox-last tbody td:last-child {
+    text-align: center;
+    padding: 11px;
+}
+
+table.tc-list-1 tbody td:first-child,
+table.tc-list-2 tbody td:nth-child(2),
+table.tc-list-3 tbody td:nth-child(3),
+table.tc-list-last tbody td:last-child {
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    width: 45px;
+    padding: 0 10px;
+    border-right: 1px solid #e5e5e5;
+    background: #fdfdfd;
+}
+table.tc-icon-bold tbody td {
+    color: @brand-dark;
+    font: 700 12px/30px 'Open Sans';
+    padding-top: 18px;
+    padding-bottom: 18px;
+    text-transform: uppercase;
+}
+table.tc-icon-bold td:last-child {
+    font-size: 16px;
+    text-align: right;
+}
+table.tc-icon-bold tbody td .favicons,
+table.tc-icon-bold tbody td .fa {
+    font-size: 18px;
+}
+table.tc-bold-2 tbody td:nth-child(2),
+table.tc-bold-3 tbody td:nth-child(3),
+table.tc-bold-last tbody td:last-child {
+    color: @brand-dark;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+}
+table.tc-med-1 tbody td:first-child,
+table.tc-med-2 tbody td:nth-child(2),
+table.tc-med-3 tbody td:nth-child(3),
+table.tc-med-last tbody td:last-child {
+    font-weight: 400;
+    color: #999;
+}
+table.tc-icon-1 tbody td:first-child,
+table.tc-icon-2 tbody td:nth-child(2),
+table.tc-icon-3 tbody td:nth-child(3),
+table.tc-icon-last tbody td:last-child {
+    font-size: 18px;
+    text-align: center;
+    color: #999;
+}
+
+table.tc-text-muted-1 tbody td:first-child,
+table.tc-text-muted-2 tbody td:nth-child(2),
+table.tc-text-muted-3 tbody td:nth-child(3),
+table.tc-text-muted-last tbody td:last-child {
+    color: #999;
+}
+table.tc-text-primary-1 tbody td:first-child,
+table.tc-text-primary-2 tbody td:nth-child(2),
+table.tc-text-primary-3 tbody td:nth-child(3),
+table.tc-text-primary-last tbody td:last-child {
+    color: #4a89dc;
+}
+
+table.tc-fw600-1 tbody td:first-child,
+table.tc-fw600-2 tbody td:nth-child(2),
+table.tc-fw600-3 tbody td:nth-child(3),
+table.tc-fw600-last tbody td:last-child {
+    font-weight: 600;
+}
+table.tc-fw600-1 tbody td:first-child,
+table.tc-fw600-2 tbody td:nth-child(2),
+table.tc-fw600-3 tbody td:nth-child(3),
+table.tc-fw600-last tbody td:last-child {
+    font-weight: 600;
+}
+
+table.tc-fs13-1 tbody td:first-child,
+table.tc-fs13-2 tbody td:nth-child(2),
+table.tc-fs13-3 tbody td:nth-child(3),
+table.tc-fs13-last tbody td:last-child {
+    font-size: 13px;
+}
+
+table.tc-text-left-1 tbody td:first-child,
+table.tc-text-left-2 tbody td:nth-child(2),
+table.tc-text-left-3 tbody td:nth-child(3),
+table.tc-text-left-last tbody td:last-child {
+    text-align: right;
+}
+table.tc-text-center-1 tbody td:first-child,
+table.tc-text-center-2 tbody td:nth-child(2),
+table.tc-text-center-3 tbody td:nth-child(3),
+table.tc-text-center-last tbody td:last-child {
+    text-align: center;
+}
+table.tc-text-right-1 tbody td:first-child,
+table.tc-text-right-2 tbody td:nth-child(2),
+table.tc-text-right-3 tbody td:nth-child(3),
+table.tc-text-right-last tbody td:last-child {
+    text-align: right;
+}
+
+table.tc-va-t-1 tbody td:first-child,
+table.tc-va-t-2 tbody td:nth-child(2),
+table.tc-va-t-3 tbody td:nth-child(3),
+table.tc-va-t-last tbody td:last-child {
+    vertical-align: top;
+}
+table.tc-va-m-1 tbody td:first-child,
+table.tc-va-m-2 tbody td:nth-child(2),
+table.tc-va-m-3 tbody td:nth-child(3),
+table.tc-va-m-last tbody td:last-child {
+    vertical-align: middle;
+}
+table.tc-va-b-1 tbody td:first-child,
+table.tc-va-b-2 tbody td:nth-child(2),
+table.tc-va-b-3 tbody td:nth-child(3),
+table.tc-va-b-last tbody td:last-child {
+    vertical-align: bottom;
+}
+
+// Table Checklist
+.table-checklist td { cursor: pointer }
+.table-widget .tab-content {
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+}
+
+// Table items
+.table-widget .progress {
+    width: 80%;
+    height: 13px;
+    margin: 0;
+}
+.table-widget .label, .table-widget .badge { margin-right: 7px }
+.table-checklist tr.task-checked { color: #BBB }
+.table-checklist tr.task-checked .text-slash { text-decoration: line-through }
+.table-checklist tr.task-checked .label, .table-checklist tr.task-checked .progress { opacity: 0.3 }
+

@@ -1,0 +1,36 @@
+// ====================== Contextual backgrounds =======================
+
+.navbar-variant(@color) {
+  background-color: @color;
+
+  // Navbar active nav item bg color
+  .nav > li.open > a,
+  .nav > li:hover > a,
+  .nav > li:focus > a,
+  .nav > li.active > a,
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+      color: #FFF;
+      background-color: @color;
+  }
+
+  // Top border color on dropdown menu
+  .nav > li.dropdown.open .dropdown-menu,
+  .nav > li.dropdown .open .dropdown-menu {
+    border-top-color: @color; 
+    &:after {
+       border-bottom-color: @color;
+    }
+
+  }
+  .nav > li.dropdown.open .dropdown-menu:after,
+  .nav > li.dropdown .open .dropdown-menu:after {
+    border-bottom-color: @color;
+  }
+
+  // Navbar user menu multiselect dropdown :active item bg
+  .nav > li .dropdown-toggle {
+    .dropdown-variant(@color); 
+  }
+
+}

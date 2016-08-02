@@ -1,0 +1,79 @@
+// ====================== Bootstrap Multiselect =======================
+.multiselect-container.dropdown-menu {
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 4px;
+}
+.multiselect-container.dropdown-menu .input-group {
+    margin: 5px
+}
+.multiselect-container.dropdown-menu > li {
+    padding: 0
+}
+.multiselect-container.dropdown-menu > li > a.multiselect-all label {
+    font-weight: 600
+}
+.multiselect-container.dropdown-menu > li.multiselect-group {
+    background: @light-gray;
+    border-bottom: 1px solid @brand-light;
+}
+.bg-dark .multiselect-container.dropdown-menu > li.multiselect-group {
+    background: transparent;
+    border-bottom: 1px solid lighten(@dropdown-bg-dark,13%);
+    color: @white;
+}
+.multiselect-container.dropdown-menu > li.multiselect-group label {
+    margin: 0;
+    padding: 6px 12px 5px;
+    height: 100%;
+    font-weight: 600
+}
+.multiselect-container.dropdown-menu > li.multiselect-group-clickable label {
+    cursor: pointer
+}
+.multiselect-container.dropdown-menu > li > a {
+    padding: 0
+}
+.multiselect-container.dropdown-menu >li>a>label {
+    margin: 0;
+    height: 100%;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 4px 20px 6px 32px
+}
+.multiselect-container.dropdown-menu>li>a>label.radio,
+.multiselect-container.dropdown-menu>li>a>label.checkbox {
+    margin: 0
+}
+.multiselect-container.dropdown-menu>li>a>label>input[type=checkbox] {
+    margin-bottom: 5px
+}
+.filter .btn.multiselect-clear-filter {
+    padding: 9px 5px;
+}
+.filter .btn.multiselect-clear-filter i.glyphicon {
+    font-size: 11px;
+    color: #AAA;
+}
+.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+.form-inline .multiselect-container.dropdown-menu label.checkbox,
+.form-inline .multiselect-container.dropdown-menu label.radio {
+    padding: 3px 20px 3px 40px
+}
+.form-inline .multiselect-container.dropdown-menu li a label.checkbox input[type=checkbox],
+.form-inline .multiselect-container.dropdown-menu li a label.radio input[type=radio] {
+    margin-left: -20px;
+    margin-right: 0
+}
+
+.multiselect-container.dropdown-menu > li.multiselect-item.filter {
+    min-width: 175px;
+}
+.btn.multiselect .caret {
+    margin-left: 5px;
+}

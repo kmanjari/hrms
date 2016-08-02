@@ -1,0 +1,12 @@
+// ====================== Progress bars =======================
+
+.progress-bar-variant(@color) {
+  background-color: @color;
+
+  &.light { background-color: lighten(@color, 3.5%); }
+  &.dark { background-color: darken(@color, 3.5%); }
+
+  .progress-striped & {
+    #gradient > .striped();
+  }
+}

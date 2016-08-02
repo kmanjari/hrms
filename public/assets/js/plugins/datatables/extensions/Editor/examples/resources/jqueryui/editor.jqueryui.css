@@ -1,0 +1,19 @@
+
+
+div.DTE div.DTE_Header {
+	display: none;
+}
+
+div.DTE div.DTE_Body {
+	padding: 0;
+}
+
+div.DTE div.DTE_Footer {
+	display: none;
+}
+
+div.DTE_Form_Error {
+	padding-top: 1em;
+	color: red;
+}
+

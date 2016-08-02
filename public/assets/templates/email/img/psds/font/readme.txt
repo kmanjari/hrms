@@ -1,0 +1,2 @@
+Email Layouts use Font Awesome icons via installed font. Simply copy and paste any icon from the Font Awesome cheatsheet into a photoshop text field. Make sure the photoshop text field has the font "FontAwesome Regular" selected.
+Cheat Sheet: http://fortawesome.github.io/Font-Awesome/cheatsheet/

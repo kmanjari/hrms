@@ -1,0 +1,46 @@
+// ====================== Tables =======================
+
+.table-row-variant(@state; @background) {
+  // This selectors required to override ".table-striped" and prevent inheritance to nested tables
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    > td.@{state},
+    > th.@{state},
+    &.@{state} > td,
+    &.@{state} > th {
+      color: darken(@background, 30%);
+      border-color: lighten(@background, 10%);
+      background-color: lighten(@background, 22%);
+    }
+
+    > td.system,
+    > td.dark,
+    > th.system,
+    > th.dark,
+    &.system > td,
+    &.dark > td,
+    &.system > th,
+    &.dark > th {
+      color: @white;
+    }
+
+	&.@{state} + tr > th,
+	&.@{state} + tr > td {
+		border-top: 1px solid lighten(@background, 10%);
+	}
+
+  }
+
+
+  // ".table-hover" :hover not available for cells or rows within "thead" or "tfoot"
+  .table-hover > tbody > tr {
+    > td.@{state}:hover,
+    > th.@{state}:hover,
+    &.@{state}:hover > td,
+    &:hover > .@{state},
+    &.@{state}:hover > th {
+      background-color: lighten(@background, 25%);
+    }
+  }
+}

@@ -1,0 +1,104 @@
+// ====================== Colorpicker/Datepicker/DateRangePicker =======================
+
+//alter picker z-indexes if inside an overlay
+body.mfp-bg-open .datepicker,
+body.mfp-bg-open .ui-datepicker,
+body.mfp-bg-open .colorpicker.dropdown-menu,
+body.mfp-bg-open .daterangepicker.dropdown-menu,
+body.mfp-bg-open .bootstrap-datetimepicker-widget {
+    z-index: 9999 !important;
+}
+// disable z-index modifcation for inline pickers
+body.mfp-bg-open .ui-datepicker-inline {
+    z-index: inherit !important;
+}
+
+//colorpicker
+.colorpicker.dropdown-menu {
+    z-index: 1025;
+    padding: 6px 12px;
+    min-width: 0;
+    top: 0;
+    left: 0;
+    min-width: 130px;
+    padding: 4px;
+    margin-top: 1px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border-color: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+//datepicker
+.datepicker {
+    padding: 6px;
+}
+
+//daterangepicker
+.daterangepicker.dropdown-menu {  }
+.daterangepicker .calendar-date {
+    border-radius: 2px;
+}
+.daterangepicker.opensleft .ranges,
+.daterangepicker.opensleft .calendar {
+    margin: 4px 6px;
+}
+.daterangepicker.opensleft .calendar.left {
+    margin-right: 2px;
+}
+.daterangepicker .ranges li {
+    background: #FFF;
+    border-radius: 1px;
+    padding: 4px 12px;
+    border: 1px solid #EEE;
+    margin-bottom: 6px;
+}
+.daterangepicker .ranges li.active,
+.daterangepicker .ranges li:hover {
+    background: @brand-primary;
+    border-color: @brand-primary;
+}
+.daterangepicker .ranges .input-mini {
+    border-radius: 2px;
+}
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+    background: @brand-primary;
+    border-color: @brand-primary;
+}
+.daterangepicker td.start-date,
+.daterangepicker td.end-date {
+    border-radius: 0;
+}
+.daterangepicker.opensleft::after,
+.daterangepicker.opensleft::before {display: none;}
+.daterangepicker .calendar-date {border: 0;}
+
+//bootstrap datetimepicker
+.bootstrap-datetimepicker-widget td span.glyphicon,
+.bootstrap-datetimepicker-widget td span.glyphicons {
+    line-height: 54px;
+}
+//bootstrap datetimepicker toggle switch
+.bootstrap-datetimepicker-widget .picker-switch .btn {
+    padding: 4px 12px;
+    border-color: transparent;
+}
+.timepicker-sm .bootstrap-datetimepicker-widget td,
+.timepicker-sm .bootstrap-datetimepicker-widget td span,
+.timepicker-sm .bootstrap-datetimepicker-widget td span.glyphicons {
+    height: 28px;
+    line-height: 28px;
+}
+
+
+// inline datewidget
+.datewidget-inline {
+    z-index: 1020 !important;
+    display: block !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+}

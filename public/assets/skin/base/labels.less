@@ -1,0 +1,61 @@
+// ====================== Labels =======================
+
+.label {
+  display: inline;
+  padding: .3em .7em .4em;
+  font-size: 84%;
+  font-weight: 600;
+  line-height: 24px;
+  color: @label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: @border-radius-base;
+
+  // Label size
+  &.label-xs {
+    padding: 0 .35em .1em;
+    font-size: 75%;
+  }
+
+  // Label size
+  &.label-sm {
+    padding: .1em .65em .2em;
+    font-size: 75%;
+  }
+  &.label-lg {
+    padding: .4em .9em .5em;
+    font-size: 95%;
+  }
+
+  // Rounded option
+  &.label-rounded {
+    padding: .2em 0.85em .3em;
+    border-radius: 1em;
+      &.label-xs { padding: 0 .35em .1em; }
+      &.label-sm { padding: .1em .65em .2em; }
+      &.label-lg { padding: .4em .9em .5em; }
+  }
+
+  // Add hover effects for links only
+  a& {
+    &:hover,
+    &:focus {
+      color: @label-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Empty labels collapse automatically
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+}
+

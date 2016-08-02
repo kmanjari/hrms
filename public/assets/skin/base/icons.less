@@ -1,0 +1,254 @@
+// ====================== Icons =======================
+
+.wf-loading .glyphicons,
+.wf-loading .glyphicon,
+.wf-loading .imoon,
+.wf-loading .fa,
+.wf-loading .iconsweets { 
+  opacity: 0 !important;
+}
+
+// Font Awesome Fixed Width Helpers
+.fs15.fa-fw { width: 35px; }
+.fs16.fa-fw { width: 40px; }
+.fs17.fa-fw { width: 43px; }
+.fs18.fa-fw { width: 46px; }
+
+// Icon Transitions
+.glyphicon, .glyphicons,
+.imoon, .fa, .iconsweets { 
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
+   -moz-transition: opacity 0.1s ease-in;
+   -webkit-transition: opacity 0.1s ease-in;
+}
+// Yphicon Pro and Halfling
+.glyphicons-2x, .glyphicon-2x { font-size: 2em }
+.glyphicons-3x, .glyphicon-3x { font-size: 3em }
+.glyphicons-4x, .glyphicon-4x { font-size: 4em }
+.glyphicons-5x, .glyphicon-5x { font-size: 5em }
+// Icomoon Font Icons
+.imoon-2x { font-size: 2em }
+.imoon-3x { font-size: 3em }
+.imoon-4x { font-size: 4em }
+.imoon-5x { font-size: 5em }
+// IconSweets2 Font Icons
+.iconsweets-2x { font-size: 2em }
+.iconsweets-3x { font-size: 3em }
+.iconsweets-4x { font-size: 4em }
+.iconsweets-5x { font-size: 5em }
+
+// Buttons with Icons
+.btn .glyphicon, .btn .glyphicons {
+  top: -1px;
+  vertical-align: middle;
+  line-height: 0;
+  font-size: 1.1em;
+}
+// A Helper Class to Align Icons Right in Control-forms
+span.field-icon-right,
+i.field-icon-right {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+// Icon Background and Borders
+
+.icon-circle {
+  top: 0;
+  padding: 9px;
+  position: relative;
+  overflow: visible;
+  border-radius: 64px; }
+
+.icon-square {
+  top: 0;
+  padding: 9px;
+  border-radius: 4px; }
+
+// Icon Background Sizes
+.icon-circle.glyphicon-2x,
+.icon-circle.glyphicons-2x {
+  padding: 12px; }
+
+.icon-circle.glyphicon-3x,
+.icon-circle.glyphicons-3x {
+  padding: 20px; }
+
+.icon-circle.glyphicon-4x,
+.icon-circle.glyphicons-4x {
+  padding: 35px; }
+
+.icon-square.glyphicon-2x,
+.icon-square.glyphicons-2x {
+  padding: 12px; }
+
+.icon-square.glyphicon-3x,
+.icon-square.glyphicons-3x {
+  padding: 20px; }
+
+.icon-square.glyphicon-4x,
+.icon-square.glyphicons-4x {
+  padding: 35px; }
+
+
+// WIDGET SPECIFIC ICON STYLING
+
+// Header Button Icons
+.navbar-menus > div > button > span,
+.navbar-menus > div > button > i {
+    font-size: 15px;
+    vertical-align: middle;
+}
+// Special on-hover styles for user dropdown menu
+.user-menu ul.dropdown-items > li:hover .glyphicon { color: #d9534f; }
+.user-menu ul.dropdown-items > li:last-child:hover .glyphicon { color: #888; }
+.user-menu ul.dropdown-items > li:last-child > div:hover .glyphicon { color: #d9534f; }
+
+// Breadcrumb "Home" Icon
+.breadcrumb .fa,
+.breadcrumb .glyphicon,
+.breadcrumb .glyphicons {
+  background-color: @brand-danger;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  color: @white;
+  display: block;
+  font-size: 17px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+}
+// Panel Sidemenu Icons
+.panel-sidemenu ul.nav li.active .fa { color: @brand-primary; }
+.panel-sidemenu ul.nav li a:hover { background: none }
+.panel-sidemenu ul.nav li .fa {
+    width: 28px;
+    color: #BBB;
+    font-size: 18px;
+}
+
+// Panel Tabs Icons
+.panel-tabs li .glyphicon,
+.panel-tabs li .glyphicons,
+.panel-tabs li .fa { 
+  font-size: 14px 
+}
+.panel-tabs .imoon,
+.panel-tabs .iconsweets {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.mini-action-icons .fa {
+    position: relative;
+    top: 2px;
+    padding-right: 10px;
+    color: #777;
+    font-size: 16px;
+    cursor: pointer;
+}
+// Pricing Table Icons
+.pricing-tables .pricing-icons li .fa-times { color: #e74a4a }
+.pricing-tables .pricing-icons li .fa-ellipsis-h { color: #555 }
+// Tab Navigation Icons
+.nav-tabs li .fa { font-size: 14px }
+.nav-tabs li .fa.fa-caret-down { font-size: 12px }
+
+// Timeline Widget Icons
+.timeline-widget span.glyphicons {
+    z-index: 11;
+    position: relative;
+  top: 2px;
+    width: auto;
+    padding: 6px;
+    font-size: 18px;
+    border-radius: 50%;
+    -webkit-box-shadow: 1px 1px 2px #AAA;
+    box-shadow: 1px 1px 2px #AAA;
+}
+
+// Sprites
+
+// Favicon sprite
+.favicons {
+  background: url('@{img-path}/sprites/favicons-sm.png') no-repeat;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.google { background-position: 0 0;}
+.yahoo { background-position: 0 -15px ;}
+.bing { background-position: 0 -30px ;}
+.chrome { background-position: 0 -45px;}
+.firefox { background-position: 0 -61px ;}
+.ie { background-position: 0 -78px ;}
+.safari { background-position: 0 -96px ;}
+
+.favicons-sm {
+  background: url('@{img-path}/sprites/favicons-sm.png') no-repeat;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.favicons-sm.google { background-position: 0 0;}
+.favicons-sm.yahoo { background-position: 0 -29px ;}
+.favicons-sm.bing { background-position: 0 -58px ;}
+.favicons-sm.chrome { background-position: 0 -87px;}
+.favicons-sm.firefox { background-position: 0 -116px ;}
+.favicons-sm.ie { background-position: 0 -147px ;}
+.favicons-sm.safari { background-position: 0 -177px ;}
+
+// News Sprite - Demo purposes
+.news-sprite {
+  width: 25px;
+  height: 26px;
+  vertical-align: middle;
+  display: inline-block;
+  background: url("@{img-path}/sprites/logos.png") no-repeat;
+  background-position: 0 0;
+}
+.news-sprite.google {
+  background-position: 0 0;
+}
+.news-sprite.twttr {
+  background-position: 0 -26px;
+}
+.news-sprite.bing {
+  background-position: 0 -52px;
+}
+
+// Flag Icons
+.flag-xs,
+.flag-sm,
+.flag,
+.flag-lg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.flag-xs {
+  width: 16px;
+  height: 16px;
+  background: url('@{img-path}/sprites/flag-xs.png') no-repeat top left;
+}
+.flag-sm {
+  width: 32px;
+  height: 32px;
+  background: url('@{img-path}/sprites/flag-sm.png') no-repeat top left;
+}
+.flag-sm.flag-ca { background-position: 0 0; }
+.flag-sm.flag-gb { background-position: 0 -33px; }
+.flag-sm.flag-mx { background-position: 0 -66px; }
+.flag-sm.flag-cn { background-position: 0 -99px; }
+.flag-sm.flag-ru { background-position: 0 -132px; }
+.flag-sm.flag-us { background-position: 0 -165px; } 
+.flag-xs.flag-ca { background-position: 0 -1px;  }
+.flag-xs.flag-gb { background-position: 0 -18px;  }
+.flag-xs.flag-cn { background-position: 0 -35px;  }
+.flag-xs.flag-ru { background-position: 0 -52px;  }
+.flag-xs.flag-us { background-position: 0 -69px;  }
+.flag-xs.flag-mx { background-position: 0 -86px;  }

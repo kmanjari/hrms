@@ -1,0 +1,402 @@
+// Set base file path
+@base-path: "../../base";
+
+// Include animations
+@import "@{base-path}/animate.less";
+// main animation styles
+@animate-flips: true;
+@animate-slides: true;
+@animate-zooms: true;
+@animate-fades: true;
+@animate-fades-big: false;
+@animate-bounces: false;
+@animate-rotates: false;
+@animate-specials: false;
+@animate-lightspeed: false;
+@animate-attention: false;
+
+// Include Fonts
+@base-fonts-path: "../../base/fonts";
+@import "@{base-fonts-path}/themerex.less";
+@import "@{base-fonts-path}/glyphicons.less";
+@import "@{base-fonts-path}/font-awesome.less";
+@import "@{base-fonts-path}/stateface.less";
+
+// Include Plugin Styles
+@plugins-path: "../../base/plugins";
+@import "@{plugins-path}/circlegraphs.less";
+@import "@{plugins-path}/ckeditor.less";
+@import "@{plugins-path}/countdown.less";
+@import "@{plugins-path}/datatables.less";
+@import "@{plugins-path}/dropzone.less";
+@import "@{plugins-path}/expose.less";
+@import "@{plugins-path}/fileupload.less";
+@import "@{plugins-path}/flot.less";
+@import "@{plugins-path}/fullcalendar.less";
+@import "@{plugins-path}/gmap.less";
+@import "@{plugins-path}/highcharts.less";
+@import "@{plugins-path}/jqueryspinner.less";
+@import "@{plugins-path}/jvectormap.less";
+@import "@{plugins-path}/magnific.less";
+@import "@{plugins-path}/markitup.less";
+@import "@{plugins-path}/multiselect.less";
+@import "@{plugins-path}/nestable.less";
+@import "@{plugins-path}/nanoscroller.less";
+@import "@{plugins-path}/pickers.less";
+@import "@{plugins-path}/pnotify.less";
+@import "@{plugins-path}/rangeslider.less";
+@import "@{plugins-path}/summernote.less";
+@import "@{plugins-path}/tagmanager.less";
+@import "@{plugins-path}/treeview.less";
+@import "@{plugins-path}/tagsinput.less";
+@import "@{plugins-path}/datepicker.less";
+@import "@{plugins-path}/typeahead.less";
+@import "@{plugins-path}/duallistbox.less";
+@import "@{plugins-path}/cropper.less";
+@import "@{plugins-path}/markdown.less";
+@import "@{plugins-path}/nprogress.less";
+@import "@{plugins-path}/scroller.less";
+@import "@{plugins-path}/select2.less";
+@import "@{plugins-path}/allcpdock.less";
+@import "@{plugins-path}/allcpmodals.less";
+@import "@{plugins-path}/allcppanels.less";
+@import "@{plugins-path}/footable.less";
+
+// Main Color Variables
+
+@skin-primary: true;
+@skin-success: true;
+@skin-info: true;
+@skin-warning: true;
+@skin-danger: true;
+@skin-alert: true;
+@skin-system: true;
+@skin-dark: true;
+@skin-light: true;
+
+// Element Colors
+
+// Background Skin Colors
+@skin-primary-bg: true;
+@skin-success-bg: true;
+@skin-info-bg: true;
+@skin-warning-bg: true;
+@skin-danger-bg: true;
+@skin-alert-bg: true;
+@skin-system-bg: true;
+@skin-dark-bg: true;
+@skin-light-bg: true;
+
+// Badge Skin Colors
+@skin-primary-badge: true;
+@skin-success-badge: true;
+@skin-info-badge: true;
+@skin-warning-badge: true;
+@skin-danger-badge: true;
+@skin-alert-badge: true;
+@skin-system-badge: true;
+@skin-dark-badge: true;
+@skin-light-badge: true;
+
+// Label Skin Colors
+@skin-primary-label: true;
+@skin-success-label: true;
+@skin-info-label: true;
+@skin-warning-label: true;
+@skin-danger-label: true;
+@skin-alert-label: true;
+@skin-system-label: true;
+@skin-dark-label: true;
+@skin-light-label: true;
+
+// Button Skin Colors
+@skin-primary-btn: true;
+@skin-success-btn: true;
+@skin-info-btn: true;
+@skin-warning-btn: true;
+@skin-danger-btn: true;
+@skin-alert-btn: true;
+@skin-system-btn: true;
+@skin-dark-btn: true;
+@skin-light-btn: true;
+
+// Checkbox/Radio Skin Colors
+@skin-primary-checkbox: true;
+@skin-success-checkbox: true;
+@skin-info-checkbox: true;
+@skin-warning-checkbox: true;
+@skin-danger-checkbox: true;
+@skin-alert-checkbox: true;
+@skin-system-checkbox: true;
+@skin-dark-checkbox: true;
+@skin-light-checkbox: true;
+
+// List Group Skin Colors
+@skin-primary-listgroup: true;
+@skin-success-listgroup: true;
+@skin-info-listgroup: true;
+@skin-warning-listgroup: true;
+@skin-danger-listgroup: true;
+@skin-alert-listgroup: true;
+@skin-system-listgroup: true;
+@skin-dark-listgroup: true;
+@skin-light-listgroup: true;
+
+// Panel Skin Colors
+@skin-primary-panel: true;
+@skin-success-panel: true;
+@skin-info-panel: true;
+@skin-warning-panel: true;
+@skin-danger-panel: true;
+@skin-alert-panel: true;
+@skin-system-panel: true;
+@skin-dark-panel: true;
+@skin-light-panel: true;
+
+// Progress Bar Skin Colors
+@skin-primary-pbar: true;
+@skin-success-pbar: true;
+@skin-info-pbar: true;
+@skin-warning-pbar: true;
+@skin-danger-pbar: true;
+@skin-alert-pbar: true;
+@skin-system-pbar: true;
+@skin-dark-pbar: true;
+@skin-light-pbar: true;
+
+// Switch Skin Colors
+@skin-primary-switch: true;
+@skin-success-switch: true;
+@skin-info-switch: true;
+@skin-warning-switch: true;
+@skin-danger-switch: true;
+@skin-alert-switch: true;
+@skin-system-switch: true;
+@skin-dark-switch: true;
+@skin-light-switch: true;
+
+// Table Skin Colors
+@skin-primary-table: true;
+@skin-success-table: true;
+@skin-info-table: true;
+@skin-warning-table: true;
+@skin-danger-table: true;
+@skin-alert-table: true;
+@skin-system-table: true;
+@skin-dark-table: true;
+@skin-light-table: true;
+
+// Text Skin Colors
+@skin-primary-text: true;
+@skin-success-text: true;
+@skin-info-text: true;
+@skin-warning-text: true;
+@skin-danger-text: true;
+@skin-alert-text: true;
+@skin-system-text: true;
+@skin-dark-text: true;
+@skin-light-text: true;
+
+// Blockquote Skin Colors
+@skin-primary-blockquote: true;
+@skin-success-blockquote: true;
+@skin-info-blockquote: true;
+@skin-warning-blockquote: true;
+@skin-danger-blockquote: true;
+@skin-alert-blockquote: true;
+@skin-system-blockquote: true;
+@skin-dark-blockquote: true;
+@skin-light-blockquote: true;
+
+// Dropcap Skin Colors
+@skin-primary-dropcap: true;
+@skin-success-dropcap: true;
+@skin-info-dropcap: true;
+@skin-warning-dropcap: true;
+@skin-danger-dropcap: true;
+@skin-alert-dropcap: true;
+@skin-system-dropcap: true;
+@skin-dark-dropcap: true;
+@skin-light-dropcap: true;
+
+// Alert Skin Colors
+@skin-primary-alert: true;
+@skin-success-alert: true;
+@skin-info-alert: true;
+@skin-warning-alert: true;
+@skin-danger-alert: true;
+@skin-alert-alert: true;
+@skin-system-alert: true;
+@skin-dark-alert: true;
+@skin-light-alert: true;
+
+// Tabs Skin Colors
+@skin-primary-tabs: true;
+@skin-success-tabs: true;
+@skin-info-tabs: true;
+@skin-warning-tabs: true;
+@skin-danger-tabs: true;
+@skin-alert-tabs: true;
+@skin-system-tabs: true;
+@skin-dark-tabs: true;
+@skin-light-tabs: true;
+
+// Header Customization Settings for "light" skin
+
+// navbar dropdown active border
+@navbar-dropdown-active-border: @brand-primary;
+
+// UserMenu multiselect dropdowns - active
+@navbar-component-active-text: #FFF;
+@navbar-component-active-bg: @brand-primary;
+
+// Sidebar Settings
+
+// Horizontal Menu styles
+@sidebar-generate-top-style: true;
+
+// Sidebar Width
+@sidebar-open-width: 296px;
+@sidebar-minified-width: 60px;
+@sidebar-closed-width: 0;
+
+// Sidebar Item Spacing 
+@sidebar-item-spacing: 37px;
+
+// Sidebar Caret Style
+@sidebar-caret-style: "chevron";
+
+// Sidebar Skin Settings - for "dark" skin
+
+// Sidebar Background
+@sb-bg-color: @brand-dark-dark;
+
+// Sidebar Label Text
+@sb-label: #87888b;
+
+// Menu Item Caret
+@sb-caret: @main-bg;
+
+// Open Menu Item Caret
+@sb-caret-open: #FFF;
+
+// 1st level menu items (Top Most)
+@sb-menu-text: #FFFFFF;
+// item text color
+@sb-menu-item-hover: transparent;
+// bg color on item hover
+@sb-menu-text-hover: inherit;
+// text color on item hover
+@sb-menu-border-hover: transparent;
+// border color on item hover
+@sb-active-text: #FFFFFF;
+// active item bg color
+@sb-active-bg: @transparent;
+// active item bg color
+@sb-active-border: @transparent;
+// active item border color
+@sb-active-icon: @brand-primary;
+// active item icon color
+
+// 2nd level menu items (Submenu)
+@sub-menu-bg: @brand-dark-dark;
+// menu container bg color
+@sub-menu-text: #bcbdc0;
+// text color of item
+@sub-menu-item-hover: transparent;
+// bg color on item hover
+@sub-menu-text-hover: inherit;
+// text color on item hover
+@sub-menu-border-hover: @brand-primary;
+// border color on item hover
+@sub-active-bg: transparent;
+// active item bg color
+@sub-active-icon: @brand-primary;
+// active item icon color
+@sub-active-border: @brand-primary;
+// active item border color
+
+// 3rd level menu items
+@multi-menu-bg: transparent;
+// menu container bg color
+@multi-menu-text: #bcbdc0;
+// text color of item
+@multi-menu-item-hover: transparent;
+// bg color on item hover
+@multi-menu-text-hover: inherit;
+// text color on item hover
+@multi-menu-border-hover: @brand-alert;
+// border color on item hover
+@multi-active-bg: transparent;
+// active item bg color
+@multi-active-icon: #FFF;
+// active item icon color
+@multi-active-border: @brand-alert;
+// active item border color
+
+// Sidebar Widgets
+@sb-widget-bg: @brand-dark-dark;
+// Menu bg color
+
+// Menu Widget (slidedown)
+@sb-menuwidget-item-hover: rgba(255, 255, 255, 0.1);
+// usermenu bg color state:hover
+@sb-menuwidget-icon: @sub-menu-text;
+// item icon color
+@sb-menuwidget-icon-hover: @brand-warning;
+// item icon color:hover
+
+// Sidebar Widget Settings
+
+@sb-widget-bg: @brand-dark-dark;
+// Menu bg color
+
+// Menu Widget (slidedown)
+@sb-menuwidget-item-hover: rgba(255, 255, 255, 0.1);
+// usermenu bg color state:hover
+@sb-menuwidget-icon: @sub-menu-text;
+// item icon color
+@sb-menuwidget-icon-hover: @brand-warning;
+// item icon color:hover
+
+// Horizontal Menu Specific Styling
+
+// Menu Item Caret
+@sb-top-caret: @light-gray;
+
+// 1st level menu items (Top Most Level)
+@sb-top-menu-text: #FFFFFF;
+// text color of item
+@sb-top-text-hover: @brand-primary;
+// text color on item hover
+@sb-top-active-text: @brand-primary;
+// active item text color
+@sb-top-active-icon: #FFF;
+// active item icon color
+
+// Miscellaneous Navigation Contextual Settings
+
+// Nav Tabs - Active Item Border Color
+@tab-block-active-item: @brand-primary;
+
+// Nav Pills - Menu Items
+@nav-pills-link-hover-color: #888;
+// Item Text Color
+@nav-pills-active-link-hover-bg: @brand-primary;
+// Active Item BG Color
+
+// Miscellaneous Plugin Contextual Settings
+
+// Multiselect Plugin - Active Dropdown Item Background
+@component-active-bg: @brand-primary;
+
+// Typeahead Plugin - Active/Hover suggestion item 
+@suggestion-active-text: #FFF;
+@suggestion-active-bg: @brand-primary;
+
+// NProgress Loader Plugin - Default BG Color
+@nprogress-active-loader: @brand-warning;
+// page loading progress indicator
+@nprogress-active-spinner: @brand-primary;
+// spinning indicator
+

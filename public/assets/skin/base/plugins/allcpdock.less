@@ -1,0 +1,177 @@
+// ====================== AllCPDock =======================
+.dockmodal,
+.dockmodal *,
+.dockmodal *:before,
+.dockmodal *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.modal-placeholder {
+    display: none;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.dockmodal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1050;
+    background: #000;
+    opacity: 0.7;
+    display: none;
+}
+
+.dockmodal {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+    top: auto;
+    z-index: 1000;
+    height: 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 0;
+    box-shadow: 0 1px 0px #000;
+    overflow: hidden;
+    border: 0;
+}
+
+.dockmodal-header {
+    height: 36px;
+    padding: 5px 5px 5px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #30363e;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.dockmodal-body {
+    background: #FFF;
+    position: absolute;
+    top: 36px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    padding: 10px 15px;
+}
+
+.dockmodal-footer {
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #CCC;
+    overflow: hidden;
+    text-align: right;
+}
+.dockmodal-footer-buttonset {
+    height: 30px;
+    line-height: 30px;
+}
+.dockmodal.no-footer .dockmodal-body {
+    bottom: 0;
+}
+
+.dockmodal-header .title-text {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 26px;
+    vertical-align: top;
+    white-space: nowrap;
+    max-width: 100%;
+    margin-right: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dockmodal-header .header-action {
+    padding: 5px;
+    float: right;
+    margin-right: 1px;
+    line-height: 16px;
+}
+
+.dockmodal-header .header-action:hover {
+    background: #555;
+}
+
+.dockmodal-header .header-action i {
+    background: url("@{img-path}/plugins/allcpdock-sprite.png") no-repeat top left;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 16px;
+    height: 16px;
+}
+
+.dockmodal-header .header-action .icon-dockmodal-close {
+    background-position: 0 0;
+}
+
+.dockmodal-header .header-action .icon-dockmodal-popin {
+    background-position: 0 -40px;
+}
+
+.dockmodal-header .header-action .icon-dockmodal-popout {
+    background-position: 0 -60px;
+}
+
+.dockmodal.popped-out .header-action .icon-dockmodal-popout {
+    background-position: 0 -40px;
+}
+
+.dockmodal-header .header-action .icon-dockmodal-minimize {
+    background-position: 0 -75px;
+}
+
+.dockmodal-header .header-action .icon-dockmodal-restore {
+    background-position: 0 -80px;
+}
+
+.dockmodal.minimized .header-action .icon-dockmodal-minimize {
+    background-position: 0 -25px;
+}
+
+.dockmodal.popped-out {
+    width: auto;
+    height: auto;
+    border: 0;
+    z-index: 1501;
+}
+
+.dockmodal.minimized {
+    height: 36px;
+    top: auto;
+    left: auto;
+    right: 20px;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.dockmodal.minimized .dockmodal-header {}
+
+.dockmodal.minimized .dockmodal-body {}
+
+.dockmodal.minimized .dockmodal-footer {}
+
+.dockmodal .dockmodal-footer-buttonset > a {
+    min-width: 60px;
+}
+
+.dockmodal .dockmodal-footer-buttonset > a + a {
+    margin-left: 5px;
+}

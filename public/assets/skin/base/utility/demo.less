@@ -1,0 +1,321 @@
+// ====================== Demo Pages =======================
+
+// 1. Global
+.ajax-loading {
+  overflow-y: scroll;
+}
+
+.panel-tabs > li > a:hover {
+  background-color: #f2f2f2;
+}
+
+#return-arrow {
+  color: #555;
+  padding-left: 15px;
+  padding-top: 15px;
+  position: fixed;
+  opacity: 0.7;
+  cursor: pointer;
+  display: block;
+  z-index: 1050;
+}
+
+#return-arrow i.fa {
+  float: left;
+  padding-top: 2px;
+}
+
+#return-arrow span {
+  float: left;
+  padding-left: 15px;
+  padding-top: 0px;
+  font-size: 16px;
+}
+
+#return-arrow:hover {
+  opacity: 1
+}
+
+// 2. basic-timeline.html
+body.basic-timeline .panel-clone {
+  display: none;
+}
+
+// 3. basic-calendar.html
+.basic-calendar .chute-left {
+  padding: 15px 18px;
+}
+
+.basic-calendar .chute-left .fc-event {
+  margin-left: 2px;
+  margin-right: 2px;
+  background: #FFF;
+}
+
+// 4. user-interface-icons.html
+.icons-list {
+  font-size: 12px;
+  padding-left: 0;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+  list-style: none;
+  overflow: hidden;
+}
+
+.icons-list li {
+  float: left;
+  width: 20%;
+  height: 100px;
+  padding: 5px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.icons-list li:hover {
+  color: @brand-primary;
+}
+
+.icons-list li span {
+  display: block;
+  margin: 5px auto 15px;
+  font-size: 24px;
+}
+
+.iconsweets-list li span {
+  font-size: 32px;
+}
+
+.stateface-list li span {
+  font-size: 36px;
+}
+
+// 5. Customizer
+#customizer {
+  z-index: 999;
+  overflow: visible !important;
+  position: fixed;
+  top: 120px;
+  right: -338px;
+  width: 338px;
+
+  -webkit-transition: right 0.1s ease-in-out;
+  -moz-transition: right 0.1s ease-in-out;
+  transition: right 0.1s ease-in-out;
+}
+
+#customizer.customizer-open {
+  right: 0;
+}
+
+#customizer .panel {
+  background-color: @brand-dark;
+}
+
+#customizer .panel-heading {
+  background-color: @brand-dark;
+  border: 0;
+  color: @white;
+  cursor: pointer;
+  font: 700 13px/57px 'Lato';
+  height: 57px;
+  margin-right: 30px;
+  right: 55px;
+  text-transform: uppercase;
+  width: 395px;
+
+  .panel-title {
+    position: relative;
+    top: -4px;
+  }
+}
+
+#customizer .panel-heading .panel-title {
+  padding-left: 0;
+}
+
+#customizer .panel-body {
+  border: 0;
+  border-top: 0;
+  padding: 18px;
+
+  .nav-list.nav-list-sm {
+    border-bottom: 1px solid lighten(@brand-dark, 15%);
+    margin: 0 18px 30px;
+    padding: 5px 0 18px;
+  }
+  .nav-list.nav-list-sm li {
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .nav-list.nav-list-sm li a {
+    background-color: @brand-primary;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border-color: transparent;
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #FFF;
+    font-size: 13px;
+    padding: 5px 11px 1px;
+    text-transform: uppercase;
+  }
+  .nav-list.nav-list-sm li a:hover {
+    background-color: lighten(@brand-dark, 15%);
+  }
+
+  .tab-content {
+    color: @white;
+    font-size: 13px;
+
+    form {
+      > .form-group {
+        margin-bottom: 0;
+      }
+
+      .checkbox-custom.fill > label:before {
+        background-color: @white;
+        border: 0;
+        border-bottom: 3px solid rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+        height: 25px;
+        width: 25px;
+      }
+
+      .checkbox-custom.fill.checkbox-system > label:before {
+        background-color: @brand-system;
+      }
+
+      .checkbox-custom.fill.checkbox-info > label:before {
+        background-color: @brand-info;
+      }
+
+      .checkbox-custom.fill.checkbox-dark > label:before {
+        background-color: @brand-dark;
+      }
+      .checkbox-custom.fill.checkbox-alert > label:before {
+        background-color: @brand-alert;
+      }
+
+      .checkbox-custom.fill.checkbox-primary > label:before {
+        background-color: @brand-primary;
+      }
+      .checkbox-custom.fill.checkbox-warning > label:before {
+        background-color: @brand-warning;
+      }
+      .checkbox-custom.fill.checkbox-success > label:before {
+        background-color: @brand-success;
+      }
+      .checkbox-custom.fill.checkbox-danger > label:before {
+        background-color: @brand-danger;
+      }
+      .checkbox-custom.fill.checkbox-dark > label:before {
+        background-color: lighten(@brand-dark-dark, 25%);
+      }
+
+      .checkbox-custom.fill input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill input[type="radio"]:checked + label:after {
+        color: #8bc63f !important;
+        content: "\f00c";
+        font-size: 15px;
+        left: 5px;
+        top: 1px;
+        transform: none;
+      }
+
+      .checkbox-custom.fill.checkbox-alert input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-dark input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-info input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-system input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-primary input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-warning input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-success input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-danger input[type="checkbox"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-alert input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-info input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-system input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-dark input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-primary input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-warning input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-success input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-dark input[type="radio"]:checked + label:after,
+      .checkbox-custom.fill.checkbox-danger input[type="radio"]:checked + label:after {
+        color: @white !important;
+      }
+    }
+  }
+  .tab-content form > h6 {
+    color: @white;
+    text-transform: uppercase;
+  }
+}
+
+#customizer .panel-icon {
+  font-size: 27px;
+  padding-right: 20px;
+  padding-left: 1px;
+}
+
+// 6. Source Code Viewer
+
+// HTML Source wrapper
+.bs-component {
+  position: relative;
+}
+
+// Source :hover button
+#source-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  font-weight: 600;
+}
+
+// Source Modal
+#source-modal {
+
+  .modal-header {
+    background-color: #fafafa;
+  }
+  .btn-clipboard {
+    letter-spacing: 0.5px;
+  }
+
+  .hljs {
+    padding: 10px 13px;
+  }
+
+}
+
+// 7. AllCPDock Example
+#dock-content > div {
+  display: none;
+}
+
+#dock-content > div.active-content {
+  display: block;
+}
+
+#dock-content .active-content .modal-placeholder {
+  position: relative;
+  visibility: visible;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+#dock-content .active-content .modal-placeholder:before {
+  content: "It's been sent to AdminDock!";
+}
+
+#dock-content .active-content .modal-placeholder:after {
+  content: "\f0a7";
+  font-family: "FontAwesome";
+  font-size: 30px;
+  position: relative;
+  top: 3px;
+  padding-left: 20px;
+  color: #999;
+}

@@ -1,0 +1,74 @@
+// ====================== CKEditor =======================
+
+.allcp-skin.cke_chrome {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
+    background: #fafafa;
+    border-color: #e7e7e7;
+}
+// editor header/toolbar
+.allcp-skin .cke_top {
+    background: #fafafa;
+    padding: 0px 10px 11px;
+    -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid #e7e7e7;
+}
+// editor toolbar buttons
+.allcp-skin .cke_toolgroup,
+.allcp-skin .cke_combo_button {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    box-shadow: none;
+    background: #FFF;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    border-color: #DDD;
+}
+.allcp-skin a.cke_button {
+    padding: 5px 4px;
+}
+// editor textarea
+.allcp-skin .cke_contents {
+    border-radius: 0;
+    border-color: #e7e7e7;
+}
+.allcp-skin .cke_top + .cke_contents,
+.allcp-skin .cke_contents + .cke_bottom {
+    border-top: 0;
+}
+// editor footer
+.allcp-skin .cke_bottom {
+    background: none;
+    padding: 6px 4px;
+    border: 1px solid #e7e7e7;
+}
+// footer resizer 
+.allcp-skin .cke_resizer {
+    margin-top: 6px;
+    margin-right: 4px;
+    border-right-color: #999;
+}
+// modify inline editing border
+.cke_editable_inline.cke_show_borders:focus {
+    outline-width: 2px;
+    outline-style: dashed;
+    outline-offset: 6px;
+    outline-color: @brand-warning;
+    background: #f2f2f2;
+}
+// option - remove bottom bar
+.cke-hide-bottom .cke_bottom {
+    display: none;
+}
+// option - remove button toolbreak
+.cke_toolbar_break {
+    clear: none !important;
+    display: block !important;
+}

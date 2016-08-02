@@ -1,0 +1,135 @@
+// ====================== Navbar Settings =======================
+
+// Fixed header primary containers padding modification
+.navbar.navbar-fixed-top + #sidebar_left + #content_wrapper {
+  padding-top: 66px;
+}
+
+// ====================== Sidebar Settings =======================
+
+// Fixed Sidebar
+#sidebar_left.affix {
+  position: fixed;
+}
+
+// Scrollbar for fixed position Sidebars
+#sidebar_left.affix > .sidebar-menu {
+  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
+  top: 85px;
+  bottom: 52px;
+  transition: top .2s ease-in-out;
+}
+
+#sidebar_left.affix > .email-menu + .sidebar-menu {
+  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
+  top: 485px;
+  bottom: 52px;
+  transition: top .2s ease-in-out;
+}
+
+// Corrects Pseudo sidebar for fixed bg
+#sidebar_left.affix:before {
+  left: 0;
+}
+
+body.sidebar-hidden #sidebar_left.affix:before,
+body.sidebar-rtl #sidebar_left.affix:before {
+  left: -(@sidebar-open-width);
+}
+
+// Sidebar User Area - Hidden
+.user-info.hidden,
+.user-info.hidden + .user-divider {
+  display: none;
+}
+
+body.usermenu-hidden .user-info,
+body.usermenu-hidden .user-info + .user-divider {
+  display: none
+}
+
+body.usermenu-hidden #sidebar_left.affix .user-info + .user-divider + .sidebar-menu,
+body.usermenu-hidden #sidebar_left.affix .user-info + .user-divider + .menu-widget + .sidebar-menu {
+  top: 0;
+}
+
+#sidebar_left.affix > .menu-widget.menu-widget-open + .sidebar-menu {
+  top: 250px;
+}
+
+// ====================== Breadcrumbs Settings =======================
+
+// fixed state
+#topbar.affix {
+  z-index: 1027; // below navbar and sidebar but above most ui-widgets
+  width: auto;
+  left: 0;
+  right: 0;
+  margin-left: @sidebar-open-width;
+  position: fixed;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+// match content margin to topbar height
+#topbar.affix + #content {
+  margin-top: 51px;
+}
+
+#topbar.affix.alt + #content {
+  margin-top: 71px;
+}
+
+// fixed state - with open sidebar
+body.sb-l-o #topbar.affix {
+  margin-left: @sidebar-open-width;
+}
+
+// fixed state - with minified sidebar
+body.sb-l-m #topbar.affix {
+  margin-left: @sidebar-minified-width;
+}
+
+// fixed state - with closed sidebar
+body.sb-l-c #topbar.affix {
+  margin-left: 0;
+}
+
+// Responsive Affix Settings
+@media (max-width: 900px) {
+
+  // fixed state - with open sidebar
+  body.sb-l-o #topbar.affix {
+    width: 100%;
+    margin-left: @sidebar-open-width;
+  }
+
+  // fixed state - with minified sidebar
+  body.sb-l-m #topbar.affix {
+    width: auto;
+    margin-left: 45px;
+  }
+
+  // fixed state - with closed sidebar
+  body.sb-l-c #topbar.affix {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+#topbar.affix.hidden + #content {
+  margin-top: 0;
+}
+
+// Topbar / Breadcrumbs Area - Hidden
+body.hidden-breadcrumbs #topbar {
+  display: none
+}
+
+body.sidebar-collapsed #sidebar:before {
+  width: 40px
+}

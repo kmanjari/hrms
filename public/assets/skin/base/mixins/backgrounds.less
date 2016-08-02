@@ -1,0 +1,62 @@
+// ====================== Contextual backgrounds =======================
+
+.bg-variant(@color) {
+  background-color: @color !important;
+  color: lighten(@color, 40%);
+
+  // bg link
+  a&:hover {
+    background-color: darken(@color, 10%) !important;
+  }
+
+  // muted color variation
+  .text-muted {
+    color: saturate(lighten(@color, 30%), 15%);  
+  }
+
+  // bg darkened text variation
+  .text-darken {
+    color: darken(@color, 10%);  
+  }
+
+  // color shade variations
+  &.light { background-color: lighten(@color, 6%) !important; }
+  &.lighter { background-color: lighten(@color, 10%) !important; }
+  &.dark { background-color: darken(@color, 6%) !important; }
+  &.darker { background-color: darken(@color, 10%) !important; }
+
+  // Backgrounds containing an "open" dropdown
+  & .open > a,
+  & .open > a:hover,
+  & .open > a:focus {
+      color:#fff
+  }
+  
+}
+
+.bg-variant-light(@color) {
+  background-color: @brand-default;
+  color: #666; 
+
+  // bg link
+  a&:hover {
+    background-color: darken(@color, 7%) !important;
+  }
+
+  // muted color variation
+  .text-muted {
+    color: #999;  
+  }
+
+  // bg darkened text variation
+  .text-darken {
+    color: #222;  
+  }
+
+  // color shade variations
+  &.light { background-color: #FEFEFE; }
+  &.lighter { background-color: #FFF; }
+  &.dark { background-color: #F2F2F2; }
+  &.darker { background-color: #E7E7E7; }
+
+}

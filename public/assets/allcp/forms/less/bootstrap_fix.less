@@ -1,0 +1,116 @@
+// Panel
+.allcp-form .panel {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 1px solid #DDD;
+}
+
+// Panel Header
+.allcp-form .panel-heading {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  padding: 19px 22px 18px;
+  color: #999;
+  border-radius: 0;
+  border-top: 1px solid transparent;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #DDD;
+  background-color: #FAFAFA;
+}
+
+.allcp-form .heading-border:before {
+  content: "";
+  background-color: #9999A3;
+  position: absolute;
+  height: 10px;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.allcp-form .heading-border .panel-heading {
+  padding: 30px 22px 17px;
+}
+
+.allcp-form .heading-border .panel-title {
+  color: #999;
+}
+
+.allcp-form .panel-title {
+  text-align: left;
+  font-weight: 300;
+  font-size: 26px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.allcp-form .panel-title i {
+  font-size: 26px;
+  position: relative;
+  margin-right: 15px;
+  top: 0;
+  border-width: 0;
+}
+
+// Panel Body
+.allcp-form .panel-body {
+  padding: 25px;
+  border: 0;
+}
+
+// Panel Footer
+.allcp-form .panel-footer {
+  padding: 12px 13px;
+  border: 0;
+  border-top: 1px solid #DDD;
+  background: #f2f2f2;
+}
+
+// Progress Bars
+.allcp-form .progress-section {
+  display: none;
+}
+
+.progress-striped .progress-bar, .progress-bar-striped {
+  background-size: 18px 18px;
+  background-image: -webkit-linear-gradient(top left,
+  transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%,
+  transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+
+  background-image: -moz-linear-gradient(top left,
+  transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%,
+  transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+
+  background-image: -o-linear-gradient(top left,
+  transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%,
+  transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+
+  background-image: linear-gradient(to bottom right,
+  transparent, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 50%,
+  transparent 50%, transparent 75%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.3));
+}
+
+// Checkbox and Radio Conflicts fixes
+.allcp-form .radio,
+.allcp-form .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  top: 1px;
+  vertical-align: bottom;
+}
+
+.allcp-form .checkbox:after,
+.allcp-form .checkbox:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
+}
+

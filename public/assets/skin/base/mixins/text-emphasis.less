@@ -1,0 +1,13 @@
+// ====================== Text emphasis =======================
+
+.text-emphasis-variant(@color) {
+  color: @color;
+  a&:hover {
+    color: darken(@color, 50%);
+  }
+
+  &-light { color: lighten(@color, 3.5%); }
+  &-lighter { color: lighten(@color, 7.5%); }
+  &-dark { color: darken(@color, 3.5%); }
+  &-darker { color: darken(@color, 7.5%); }
+}

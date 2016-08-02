@@ -1,0 +1,100 @@
+// ====================== Alerts =======================
+
+// Base styles
+
+.alert {
+  color: @white;
+  font-size: @alert-font-size;
+  padding: @alert-padding;
+  margin-bottom: @line-height-computed;
+  border: 0;
+  border-radius: @alert-border-radius;
+
+  // Adjust close link position
+  .close {
+    color: @text-color;
+    &:hover {
+      color: @text-color;
+    }
+  }
+
+  //alert block
+  &.alert-block {
+    padding: @alert-padding * 2;
+  }
+  // Divider
+  hr {
+    border-top-color: rgba(0, 0, 0, 0.1);
+  }
+
+  // Larger alerts heading
+  h4 {
+    margin-top: 0;
+    color: inherit;
+  }
+  .alert-link {
+    color: @white;
+    font-weight: @alert-link-font-weight;
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  > p + p {
+    margin-top: 5px;
+  }
+
+  // Alert sizes
+  &.alert-micro, .alert-sm {
+    font-size: 13px;
+    padding: 9px 35px 9px 9px;
+    border-radius: 0;
+  }
+  &.alert-sm {
+    padding: 12px 35px 12px 12px;
+  }
+
+  // Border variations
+  &.alert-border {
+    border: 1px solid transparent;
+  }
+  &.alert-border-right {
+    border-right-width: 6px;
+  }
+  &.alert-border-top {
+    border-top-width: 3px;
+  }
+  &.alert-border-bottom {
+    border-bottom-width: 3px;
+  }
+  &.alert-border-left {
+    padding-left: 15px;
+    border-left-width: 6px;
+  }
+
+}
+
+// Dismissible alerts
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: (@alert-padding + 20);
+
+  // Adjust "close" link position
+  .close {
+    position: relative;
+    right: -19px;
+    color: #FFF;
+    opacity: 0.75;
+
+    &:hover {
+      color: #FFF;
+      opacity: 1
+    }
+  }
+
+  &.alert-block .close {
+    top: -25px;
+  }
+}

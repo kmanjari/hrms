@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+    <title>Editor example - Ajax override - using localStorage for the data source</title>
+    <link rel="stylesheet" type="text/css" href="../../../../media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../../../TableTools/css/dataTables.tableTools.css">
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.editor.css">
+    <link rel="stylesheet" type="text/css" href="../../../../examples/resources/syntax/shCore.css">
+    <link rel="stylesheet" type="text/css" href="../../../../examples/resources/demo.css">
+    <style type="text/css" class="init">
+
+    </style>
+    <script type="text/javascript" language="javascript" src="../../../../media/js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="../../../../media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="../../../TableTools/js/dataTables.tableTools.js"></script>
+    <script type="text/javascript" language="javascript" src="../../js/dataTables.editor.js"></script>
+    <script type="text/javascript" language="javascript" src="../../../../examples/resources/syntax/shCore.js"></script>
+    <script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script>
+    <script type="text/javascript" language="javascript" src="../resources/editor-demo.js"></script>
+    <script type="text/javascript" language="javascript" class="init">
+
+
+        var editor; // use a global for the submit and return data rendering in the examples
+
+        $(document).ready(function () {
+            // Create or update the todo localStorage entry
+            if (!localStorage.getItem('datatable_todo')) {
+                localStorage.setItem('datatable_todo', '[]');
+            }
+            else {
+                // Loop over the array, removing any nulls from previous deletes on init
+                var a = JSON.parse(localStorage.getItem('datatable_todo'));
+                for (var i = a.length - 1; i >= 0; i--) {
+                    if (a[i] === null) {
+                        a.splice(i, 1);
+                    }
+                }
+                localStorage.setItem('datatable_todo', JSON.stringify(a));
+            }
+
+            // Set up the editor
+            editor = new $.fn.dataTable.Editor({
+                table: "#example",
+                fields: [{
+                    label: "Item:",
+                    name: "item"
+                }, {
+                    label: "Status:",
+                    name: "status",
+                    type: "radio",
+                    def: "To do",
+                    ipOpts: [
+                        {label: "To do", value: "To do"},
+                        {label: "Done", value: "Done"}
+                    ]
+                }
+                ],
+                ajax: function (method, url, data, successCallback, errorCallback) {
+                    var id = null;
+                    var store = JSON.parse(localStorage.getItem('datatable_todo'));
+
+                    if (data.action === 'create') {
+                        store.push({
+                            "DT_RowId": 'row_' + store.length,
+                            "item": data.data.item,
+                            "status": data.data.status
+                        });
+                        id = 'row_' + (store.length - 1);
+                    }
+                    else if (data.action === 'edit') {
+                        var index = findIndex(store, data.id);
+                        store[index].item = data.data.item;
+                        store[index].status = data.data.status;
+                        id = data.id;
+                    }
+                    else if (data.action === 'remove') {
+                        for (var i = 0, iLen = data.id.length; i < iLen; i++) {
+                            var index = findIndex(store, data.id[i]);
+                            if (index >= 0) {
+                                store[index] = null; // Don't upset the indexes
+                            }
+                        }
+                    }
+
+                    localStorage.setItem('datatable_todo', JSON.stringify(store));
+                    successCallback({"id": id});
+                }
+            });
+
+            // Initialise the DataTable
+            $('#example').dataTable({
+                dom: "Tfrtip",
+                data: JSON.parse(localStorage.getItem('datatable_todo')),
+                columns: [
+                    {data: "item"},
+                    {data: "status"}
+                ],
+                tableTools: {
+                    sRowSelect: "os",
+                    aButtons: [
+                        {sExtends: "editor_create", editor: editor},
+                        {sExtends: "editor_edit", editor: editor},
+                        {sExtends: "editor_remove", editor: editor}
+                    ]
+                }
+            });
+        });
+
+        function findIndex(store, id) {
+            for (var i = 0, iLen = store.length; i < iLen; i++) {
+                if (store[i] && store[i].DT_RowId === id) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+
+    </script>
+</head>
+
+<body class="dt-example">
+<div class="container">
+    <section>
+        <h1>Editor example <span>Ajax override - using localStorage for the data source</span></h1>
+
+        <div class="info">
+            <p>This example shows how the <a href="//editor.datatables.net/reference/option/ajax"><code class=
+                                                                                                                "option"
+                                                                                                        title="Editor initialisation option">ajax<span>E</span></code></a>
+                initialisation option can
+                be used to replace the default Ajax call that Editor makes and instead use the browser's
+                <code>localStorage</code> abilities to save the state of the table locally on the browser. This means
+                that the user effectively has persistent storage, but it is available only to them on their current
+                browser.</p>
+
+            <p>The code in this example shows the <a href=
+                                                             "//editor.datatables.net/reference/option/ajax"><code
+                    class="option" title=
+                    "Editor initialisation option">ajax<span>E</span></code></a> option as a function that effectively
+                implements everything that is required by Editor for data storage and retrieval. The 'create', 'edit'
+                and 'remove' actions are each handled by manipulating the JSON data array that is stored in the
+                browser's <code>localStorage</code>.</p>
+
+            <p>Although this particular use case is fairly limited, it does show how Editor's <a href=
+                                                                                                         "//editor.datatables.net/reference/option/ajax"><code
+                    class="option" title=
+                    "Editor initialisation option">ajax<span>E</span></code></a> option can be used to intercept and
+                manage
+                the data requests that Editor makes so almost any data storage system could be used from <a href=
+                                                                                                                    "https://www.firebase.com/">Firebase</a>
+                to WebSockets.</p>
+        </div>
+
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Item</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+
+            <tfoot>
+            <tr>
+                <th>Item</th>
+                <th>Status</th>
+            </tr>
+            </tfoot>
+        </table>
+
+        <ul class="tabs">
+            <li class="active">Javascript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Ajax</li>
+            <li>Server-side script</li>
+        </ul>
+
+        <div class="tabs">
+            <div class="js">
+                <p>The Javascript shown below is used to initialise the table shown in this
+                    example:</p><code class="multiline brush: js;">var editor; // use a global for the submit and return
+                data rendering in the examples
+
+                $(document).ready(function() {
+                // Create or update the todo localStorage entry
+                if ( !localStorage.getItem('datatable_todo') ) {
+                localStorage.setItem('datatable_todo', '[]');
+                }
+                else {
+                // Loop over the array, removing any nulls from previous deletes on init
+                var a = JSON.parse( localStorage.getItem('datatable_todo') );
+                for ( var i=a.length-1 ; i&gt;=0 ; i-- ) {
+                if ( a[i] === null ) {
+                a.splice( i, 1 );
+                }
+                }
+                localStorage.setItem('datatable_todo', JSON.stringify(a));
+                }
+
+                // Set up the editor
+                editor = new $.fn.dataTable.Editor( {
+                table: &quot;#example&quot;,
+                fields: [ {
+                label: &quot;Item:&quot;,
+                name: &quot;item&quot;
+                }, {
+                label: &quot;Status:&quot;,
+                name: &quot;status&quot;,
+                type: &quot;radio&quot;,
+                def: &quot;To do&quot;,
+                ipOpts: [
+                { label: &quot;To do&quot;, value: &quot;To do&quot; },
+                { label: &quot;Done&quot;, value: &quot;Done&quot; }
+                ]
+                }
+                ],
+                ajax: function ( method, url, data, successCallback, errorCallback ) {
+                var id = null;
+                var store = JSON.parse( localStorage.getItem('datatable_todo') );
+
+                if ( data.action === 'create' ) {
+                store.push( {
+                &quot;DT_RowId&quot;: 'row_'+store.length,
+                &quot;item&quot;: data.data.item,
+                &quot;status&quot;: data.data.status
+                } );
+                id = 'row_'+(store.length-1);
+                }
+                else if ( data.action === 'edit' ) {
+                var index = findIndex( store, data.id );
+                store[index].item = data.data.item;
+                store[index].status = data.data.status;
+                id = data.id;
+                }
+                else if ( data.action === 'remove' ) {
+                for ( var i=0, iLen=data.id.length ; i&lt;iLen ; i++ ) {
+                var index = findIndex( store, data.id[i] );
+                if ( index &gt;= 0 ) {
+                store[index] = null; // Don't upset the indexes
+                }
+                }
+                }
+
+                localStorage.setItem('datatable_todo', JSON.stringify(store));
+                successCallback( {&quot;id&quot;: id} );
+                }
+                } );
+
+                // Initialise the DataTable
+                $('#example').dataTable( {
+                dom: &quot;Tfrtip&quot;,
+                data: JSON.parse( localStorage.getItem('datatable_todo') ),
+                columns: [
+                { data: &quot;item&quot; },
+                { data: &quot;status&quot; }
+                ],
+                tableTools: {
+                sRowSelect: &quot;os&quot;,
+                aButtons: [
+                { sExtends: &quot;editor_create&quot;, editor: editor },
+                { sExtends: &quot;editor_edit&quot;, editor: editor },
+                { sExtends: &quot;editor_remove&quot;, editor: editor }
+                ]
+                }
+                } );
+                } );
+
+                function findIndex( store, id ) {
+                for ( var i=0, iLen=store.length ; i&lt;iLen ; i++ ) {
+                if ( store[i] &amp;&amp; store[i].DT_RowId === id ) {
+                return i;
+                }
+                }
+                return -1;
+                }</code>
+
+                <p>In addition to the above code, the following Javascript library files are loaded for use in this
+                    example:</p>
+
+                <ul>
+                    <li><a href="../../../../media/js/jquery.js">../../../../media/js/jquery.js</a></li>
+                    <li><a href=
+                                   "../../../../media/js/jquery.dataTables.js">../../../../media/js/jquery.dataTables.js</a>
+                    </li>
+                    <li><a href=
+                                   "../../../TableTools/js/dataTables.tableTools.js">../../../TableTools/js/dataTables.tableTools.js</a>
+                    </li>
+                    <li><a href="../../js/dataTables.editor.js">../../js/dataTables.editor.js</a></li>
+                </ul>
+            </div>
+
+            <div class="table">
+                <p>The HTML shown below is the raw HTML table element, before it has been enhanced by
+                    DataTables:</p>
+            </div>
+
+            <div class="css">
+                <div>
+                    <p>This example uses a little bit of additional CSS beyond what is loaded from the library
+                        files (below), in order to correctly display the table. The additional CSS used is shown
+                        below:</p><code class="multiline brush: js;"></code>
+                </div>
+
+                <p>The following CSS library files are loaded for use in this example to provide the styling of the
+                    table:</p>
+
+                <ul>
+                    <li><a href=
+                                   "../../../../media/css/jquery.dataTables.css">../../../../media/css/jquery.dataTables.css</a>
+                    </li>
+                    <li><a href=
+                                   "../../../TableTools/css/dataTables.tableTools.css">../../../TableTools/css/dataTables.tableTools.css</a>
+                    </li>
+                    <li><a href="../../css/dataTables.editor.css">../../css/dataTables.editor.css</a></li>
+                </ul>
+            </div>
+
+            <div class="ajax">
+                <p>This table loads data by Ajax. The latest data that has been loaded is shown below. This data
+                    will update automatically as any additional data is loaded.</p>
+            </div>
+
+            <div class="php">
+                <p>The script used to perform the server-side processing for this table is shown below. Please note
+                    that this is just an example script using PHP. Server-side processing scripts can be written in any
+                    language, using <a href="//datatables.net/manual/server-side">the protocol described in the
+                        DataTables documentation</a>.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section>
+    <div class="footer">
+        <div class="gradient"></div>
+
+        <div class="liner">
+            <h2>Other examples</h2>
+
+            <div class="toc">
+                <div class="toc-group">
+                    <h3><a href="../simple/index.html">Simple initialisation</a></h3>
+                    <ul class="toc">
+                        <li><a href="../simple/simple.html">Basic initialisation</a></li>
+                        <li><a href="../simple/fieldDefaults.html">Setting defaults</a></li>
+                        <li><a href="../simple/fieldTypes.html">Field types</a></li>
+                        <li><a href="../simple/dates.html">Dates (with jQuery UI datepicker)</a></li>
+                        <li><a href="../simple/i18n.html">Internationalisation</a></li>
+                        <li><a href="../simple/inTableControls.html">In table form controls</a></li>
+                        <li><a href="../simple/responsive.html">Responsive table extension</a></li>
+                        <li><a href="../simple/server-side-processing.html">Server-side processing</a></li>
+                        <li><a href="../simple/join.html">Join tables - working with multiple SQL tables</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-group">
+                    <h3><a href="./index.html">Advanced initialisation</a></h3>
+                    <ul class="toc active">
+                        <li><a href="./formOnlyData.html">Data shown only in the form</a></li>
+                        <li><a href="./tableOnlyData.html">Data shown in table only</a></li>
+                        <li><a href="./deepObjects.html">Complex (nested) JSON data source</a></li>
+                        <li><a href="./REST.html">REST interface</a></li>
+                        <li class="active"><a href="./localstorage.html">Ajax override - using localStorage for the
+                            data source</a></li>
+                        <li><a href="./jsonId.html">Row ID source specification</a></li>
+                        <li><a href="./htmlTable.html">DOM sourced table</a></li>
+                        <li><a href="./exportButtons.html">Export buttons</a></li>
+                        <li><a href="./joinSelf.html">Join tables - self referencing join</a></li>
+                        <li><a href="./joinLinkTable.html">Join tables - link table</a></li>
+                        <li><a href="./joinArray.html">Join tables - one-to-many join</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-group">
+                    <h3><a href="../bubble-editing/index.html">Bubble editing</a></h3>
+                    <ul class="toc">
+                        <li><a href="../bubble-editing/simple.html">Simple bubble editing</a></li>
+                        <li><a href="../bubble-editing/grouped.html">Multiple fields in a bubble</a></li>
+                        <li><a href="../bubble-editing/options.html">Form control and display options</a></li>
+                        <li><a href="../bubble-editing/defaultOptions.html">Default control and display
+                            options</a></li>
+                        <li><a href="../bubble-editing/inTableControls.html">Bubble editing with in table row
+                            controls</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-group">
+                    <h3><a href="../inline-editing/index.html">Inline editing</a></h3>
+                    <ul class="toc">
+                        <li><a href="../inline-editing/simple.html">Simple inline editing</a></li>
+                        <li><a href="../inline-editing/tabControl.html">Tab between columns</a></li>
+                        <li><a href="../inline-editing/options.html">Editing options - submit on blur</a></li>
+                        <li><a href="../inline-editing/submitButton.html">Inline editing with a submit
+                            button</a></li>
+                        <li><a href="../inline-editing/editIcon.html">Edit icon</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-group">
+                    <h3><a href="../api/index.html">API</a></h3>
+                    <ul class="toc">
+                        <li><a href="../api/confirmClose.html">Events - unsaved changes close confirmation</a></li>
+                        <li><a href="../api/clientValidation.html">Client-side validation</a></li>
+                        <li><a href="../api/triggerButton.html">Customised control buttons</a></li>
+                        <li><a href="../api/backNext.html">Previous / next editing buttons</a></li>
+                        <li><a href="../api/duplicateButton.html">Duplicate button</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-group">
+                    <h3><a href="../standalone/index.html">Standalone</a></h3>
+                    <ul class="toc">
+                        <li><a href="../standalone/simple.html">Simple standalone editing</a></li>
+                        <li><a href="../standalone/bubble.html">Bubble editing</a></li>
+                        <li><a href="../standalone/inline.html">Inline editing</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-group">
+                    <h3><a href="../styling/index.html">Styling</a></h3>
+                    <ul class="toc">
+                        <li><a href="../styling/envelope.html">Envelope display controller</a></li>
+                        <li><a href="../styling/envelopeInTable.html">Envelope display with in table
+                            controls</a></li>
+                        <li><a href="../styling/stackedInputs.html">Styled for stacked inputs</a></li>
+                        <li><a href="../styling/bootstrap.html">Bootstrap</a></li>
+                        <li><a href="../styling/jqueryui.html">jQuery UI</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-group">
+                    <h3><a href="../plug-ins/index.html">Plug-ins</a></h3>
+                    <ul class="toc">
+                        <li><a href="../plug-ins/fieldPlugin.html">Custom field type plug-ins</a></li>
+                        <li><a href="../plug-ins/displayController.html">Custom display controller</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="epilogue">
+                <p>Please refer to the <a href="http://www.datatables.net">DataTables documentation</a> for full
+                    information about its API properties and methods.<br>
+                    Additionally, there are a wide range of <a href="http://www.datatables.net/extras">extras</a> and
+                    <a href="http://www.datatables.net/plug-ins">plug-ins</a> which extend the capabilities of
+                    DataTables.</p>
+
+                <p class="copyright">DataTables designed and created by <a href=
+                                                                                   "http://www.sprymedia.co.uk">SpryMedia
+                    Ltd</a> &#169; 2007-2014<br>
+                    DataTables is licensed under the <a href="http://www.datatables.net/mit">MIT license</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

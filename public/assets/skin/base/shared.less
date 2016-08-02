@@ -1,0 +1,49 @@
+// ====================== Shared styles =======================
+
+html {
+    height: 100%;
+    background: #fff;
+}
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 900px;
+    margin: 0;
+    padding: 0;
+    background: #e9e9e9;
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    font-size-adjust: 100%;
+}
+#main {
+    position: relative;
+    min-height: 100%;
+    background: @main-bg;
+}
+
+#main:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: @main-bg;
+}
+#content_wrapper {
+    position: relative;
+    left: 0;
+    margin-left: @sidebar-open-width;
+}
+
+body.onload-check .navbar,
+body.onload-check .navbar-logo-wrapper,
+body.onload-check #sidebar_left,
+body.onload-check #sidebar_right,
+body.onload-check #content_wrapper,
+body.onload-check #topbar {
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}

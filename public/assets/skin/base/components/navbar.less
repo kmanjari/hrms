@@ -1,0 +1,1160 @@
+// ====================== Navbar =======================
+
+.navbar {
+    z-index: 1030;
+    margin-bottom: 0;
+    height: 66px;
+
+    color: @brand-dark;
+    background-color: @light-gray;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+
+    // Shadow option
+    &.navbar-shadow {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+}
+
+// Nav Item Containers
+.navbar .nav {
+    margin: 0;
+
+    // Nav Items
+    > li { float: left; }
+
+    // Nav Links
+    > li > a {
+        color: @brand-dark;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 65px;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 65px;
+        max-height: 65px;
+    }
+
+    > li > a.dropdown-toggle {
+        margin-left: 22px;
+        text-transform: uppercase;
+    }
+
+    > li > a.dropdown-toggle > .fa {
+       font-size: 12px;
+       position: relative;
+       top: -2px;
+       text-align: center;
+       width: 34px;
+     }
+
+    > li > a.dropdown-toggle > .fa:before {content: '\f078';}
+    > li.open > a.dropdown-toggle > .fa:before {content: '\f077';}
+    // Nav Item / Link States
+    > li.open > a,
+    > li:hover > a,
+    > li:focus > a,
+    > li.active > a,
+    > li > a:hover,
+    > li > a:focus {
+        color: #222;
+        background-color: darken(#fafafa, 1%);
+    }
+
+    // Nav Item - Open Dropdown
+    > li.dropdown.open .dropdown-menu {
+        margin-top: 10px;
+        border-radius: 2px;
+
+        // Dropdown Links
+        > a {
+          font-weight: 600;
+        }
+    }
+
+    // Menu Item Divider - Small Circle
+    .menu-divider {
+        color: rgba(0, 0, 0, 0.15);
+        font-size: 8px;
+        padding: 25px 10px;
+    }
+
+}
+
+// Dropdown Helper - Item Divider
+.navbar .dropdown-menu .menu-divider {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 8px;
+    padding: 25px 10px;
+}
+
+// Dropdown Helper - Header Item
+.navbar .dropdown-menu > li.dropdown-header {
+    padding: 8px;
+    background: #fafafa;
+    border-bottom: 1px solid #e5e5e5;
+
+    // Header Item - Title
+    .dropdown-title {
+        color: #666;
+        font-size: 13px;
+        font-weight: 600;
+        padding-left: 5px;
+        line-height: 30px;
+    }
+    // Header Item - Label
+    .label {
+        font-size: 75%;
+        padding: .1em .6em .2em;
+        float: right;
+        height: 20px;
+        line-height: 20px;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+}
+.navbar:not(.bg-dark) .dropdown-menu > li.dropdown-header {
+    background-color: transparent;
+    border: 0;
+}
+// Dropdown Helper - Dark Header Item
+.bg-dark.navbar .dropdown-menu > li.dropdown-header {
+  background: @dropdown-bg-dark;
+  border-bottom: 1px solid @dropdown-border-dark;
+
+  // Header Item - Title
+  .dropdown-title {
+    color: @white;
+  }
+}
+
+// ====================== Navbar Utility Styles =======================
+
+// Define height for panels with scroller
+.scroller-navbar {
+  max-height: 250px;
+}
+
+// Negative margin helper to adjust to panel scroller padding
+.scroller-nm {
+  margin: -12px;
+}
+
+// Navbar Left Settings
+.navbar-left > li.dropdown.open:first-child .dropdown-menu:after,
+.navbar-left > li.dropdown:first-child > .open .dropdown-menu:after {
+  left: 10px;
+  right: auto;
+}
+
+// ====================== Navbar Dropdown Carets =======================
+
+.navbar .caret {
+  position: relative;
+  top: -1px;
+  margin-left: 3px;
+}
+
+// Alt Caret Style
+.navbar .caret.alt {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: inherit;
+  margin: 0;
+  border: 0;
+}
+.navbar li.dropdown .caret.alt:after {
+  opacity: 0.75;
+  font-size: 14px;
+  display: inline-block;
+  content: "\f107";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+.navbar li.dropdown.open .caret.alt:after {
+  opacity: 1;
+}
+
+// ====================== Navbar Advanced Dropdown - Button Dropdowns =======================
+
+.navbar .navbar-btn {
+  padding: 0 5px;
+
+  // split button mod
+  &.btn-group > .btn + .dropdown-toggle {
+      border-left: 0;
+  }
+  > .btn > span.ad,
+  > .btn > span.fa,
+  > .btn > span.glyphicon,
+  > .btn > span.glyphicons {
+      position: relative;
+      top: -1px;
+      font-size: 14px;
+      vertical-align: middle;
+  }
+
+
+  &.btn-group > .btn {
+    color: #888;
+    border-color: rgba(0, 0, 0, 0.15);
+    background-color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.045);
+  }
+  &.btn-group > .btn:hover {
+    color: #333;
+    border-color: rgba(0, 0, 0, 0.20);
+  }
+  &.btn-group.open > .btn,
+  &.btn-group > .btn.active {
+    color: #222;
+  }
+
+  // btn badges
+  .badge {
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    padding: 3px 6px;
+    opacity: 0.95;
+  }
+
+}
+
+// Modify buttons dropdown menus
+.navbar .nav > li.dropdown > .open .dropdown-menu {
+  color: #222;
+  padding: 0;
+  margin-top: 25px;
+  border-radius: 2px;
+  border-top: 3px solid transparent;
+  &:after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    right: 11px;
+    bottom: 100%;
+    border-width: 0 10px 10px;
+    border-bottom-color: #4a89dc;
+  }
+}
+
+
+// Modify buttons inside contextuals navbars
+.navbar {
+
+  .navbar-btn {
+    &.btn-group > .btn {
+      color: darken(@white,30%);
+      background-color: @white;
+      border: 0;
+      border-radius: 5px;
+      border-bottom: 3px solid darken(@white,10%);
+      font-size: 12px;
+      height: 38px;
+      line-height: 38px;
+      padding: 0;
+      width: 42px;
+      z-index: 5;
+    }
+
+    &.btn-group > .btn:hover {
+      color: darken(@white,45%);
+    }
+
+    &.btn-group.open > .btn,
+     &.btn-group > .btn.active {
+       color: darken(@white,45%);
+     }
+
+    &.btn-group > .btn + .btn {
+      color: #fff;
+      background-color: #222222;
+      background-color: rgba(0, 0, 0, 0.4);
+      border: 0;
+      border-radius: 0 5px 5px 0;
+      font-weight: 700;
+      left: -5px;
+      width: 48px;
+      z-index: 1;
+    }
+  }
+
+}
+.navbar.bgc-light:not([class *="bg-"]) {
+
+  .navbar-btn {
+    &.btn-group > .btn {
+      color: @brand-dark;
+    }
+
+
+    &.btn-group > .btn + .btn {
+      background-color: darken(@white,10%);
+    }
+  }
+
+}
+
+// ====================== Navbar Dropdown Menu Helpers =======================
+
+// Menu Merge and Disable Arrow Settings
+.navbar .nav > li.dropdown.dropdown-fuse,
+.navbar .nav > li.dropdown.disable-arrow {
+
+  // For btn dropdowns
+  > .navbar-btn.open .dropdown-menu {
+    margin-top: 15px;
+  }
+
+  // For normal dropdowns
+  &.open .dropdown-menu {
+    margin-top: 1px;
+  }
+
+}
+// In contextual navbars modification
+.navbar[class*='bg-'] .nav > li.dropdown.dropdown-fuse {
+  &.open .dropdown-menu,
+  > .navbar-btn.open .dropdown-menu {
+    border-top: 0;
+    &:after {
+      border-bottom-color: #fafafa;
+    }
+  }
+}
+
+// Disable Arrow Setting
+.navbar .nav > li.dropdown.disable-arrow {
+  &.open .dropdown-menu:after,
+  > .navbar-btn.open .dropdown-menu:after {
+    display: none;
+  }
+}
+
+// In contextual navbars modification
+.navbar[class*='bg-'] .nav > li.dropdown.disable-arrow {
+  &.open .dropdown-menu,
+  > .navbar-btn.open .dropdown-menu {
+    border-top: 0;
+  }
+}
+
+
+// ======================  Navbar Advanced Dropdown - Media Lists =======================
+
+
+.navbar .media-list > li.media {
+    margin: 0;
+    padding: 0 10px 10px;
+
+    // Media Item - Image
+    > a {
+        padding: 0;
+        padding-right: 10px;
+        display: table-cell;
+    }
+
+    // Media Item - Heading, small
+    .media-heading small {
+        color: #AAA;
+    }
+}
+
+// ======================  Navbar Advanced Dropdown - List Group =======================
+
+.navbar .nav .list-group > li.list-group-item {
+    border: 0;
+    padding: 0;
+
+    // List-Group Link
+    > a { padding: 12px 20px; }
+
+    // List-Group Label
+    > a .label {
+        font-size: 75%;
+        padding: .1em .65em .2em;
+        float: right;
+        height: 20px;
+        line-height: 20px;
+    }
+
+    // List-Group Icon
+    > a .fa,
+    > a .glyphicon,
+    > a .glyphicons {
+         padding-right: 5px;
+     }
+
+}
+
+// Dropdown Header - Remove top border
+.navbar .list-group > li.dropdown-header + li.list-group-item {
+    border-top: 0;
+}
+
+// Dropdown Footer
+.navbar .dropdown-menu > li.dropdown-footer a {
+  color: @white;
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+.navbar .dropdown-menu > li.dropdown-footer a:hover {
+  background-color: darken(@brand-primary,15%);
+  color: @white;
+}
+
+// Dropdown Footer Dark
+.bg-dark.navbar .dropdown-menu > li.dropdown-footer a {
+}
+.bg-dark.navbar .dropdown-menu > li.dropdown-footer a:hover {
+}
+
+// ======================  Navbar Advanced Dropdown - Panels =======================
+
+// Panel menu
+.navbar .nav > li.dropdown {
+
+  // Panel Heading
+  .panel-heading {
+    border-top: 0;
+  }
+
+  .panel-menu {
+    background-color: transparent;
+    color: @brand-dark;
+    border: 0;
+    border-bottom: 1px solid @brand-light;
+    margin: 0 20px;
+    padding: 20px 0;
+    border-top: 0;
+
+    .panel-title {text-transform: uppercase;}
+  }
+
+  .panel-body {
+    background-color: transparent;
+    border: 0;
+
+    .media {
+      border-bottom: 1px solid @brand-light;
+      font-weight: @font-weight-base;
+      margin: 20px 20px 0 20px;
+      padding-bottom: 20px;
+
+      .media-response {display: none;}
+    }
+  }
+
+  .panel-footer {
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid @brand-light;
+    margin: 0 20px;
+    padding: 20px 0;
+  }
+
+}
+
+.navbar.bg-dark .nav > li.dropdown {
+
+  .panel {
+    background-color: transparent;
+  }
+
+  .panel-body {
+    border-color: transparent;
+
+    .media {
+      border-bottom-color: lighten(@brand-dark,15%);
+      color: #ffffff;
+
+      .media-heading {
+        color: #ffffff;
+        font-size: 14px;
+      }
+    }
+  }
+  .panel-menu {
+    border-bottom-color: lighten(@brand-dark,15%);
+    color: #ffffff;
+  }
+
+  .panel-footer {
+    border-top-color: lighten(@brand-dark,15%);
+  }
+
+}
+
+// ======================  Navbar Logo Wrapper - Logo/Text =======================
+
+.navbar-logo-wrapper {
+    background-color: @brand-primary !important;
+    border-bottom: 0;
+    float: left;
+    height: 66px;
+    margin-right: 10px;
+    overflow: hidden;
+    position: relative;
+    width: @sidebar-open-width;
+
+    &.dark.bg-dark {background-color: @brand-primary !important;}
+    &.bgc-light {background-color: @brand-dark !important;}
+
+    // Logo
+    .navbar-logo-text {
+        color: #666;
+        height: 66px;
+        line-height: 64px;
+        padding: 0;
+        padding-left: 27px;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0;
+        text-transform: uppercase;
+    }
+    .navbar-logo-text b { font-weight: bold; }
+}
+
+.sb-l-c .navbar-logo-wrapper {
+      border-bottom: 0;
+      height: 66px;
+}
+
+// ======================  Navbar Toggle Buttons - Collapses Sidebars =======================
+
+#sidebar_left_toggle,
+#sidebar_top_toggle {
+    color: #666;
+    float: right;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 67px;
+    max-height: 66px;
+    width: @sidebar-minified-width;
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    &:hover {}
+}
+
+#sidebar_top_toggle {
+    display: none;
+    width: 31px;
+    height: 66px;
+    line-height: 64px;
+    margin-left: 10px;
+    background-color: rgba(0,0,0,0.06);
+    border-left: 1px solid rgba(0,0,0,0.08);
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: rgba(0,0,0,0.09);
+      border-left: 1px solid rgba(0,0,0,0.1);
+    }
+}
+#sidebar_top_toggle .fa-caret-up {
+    position: relative;
+    font-size: 13px;
+    border: 1px solid;
+    border-top: 3px solid;
+    padding: 0px 3px 1px 3px;
+    margin-bottom: 2px;
+
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+body.sb-top #sidebar_top_toggle {
+  display: block;
+}
+
+// ======================  Navbar Left/Right Containers =======================
+
+// Navbar Left
+.navbar-nav.navbar-left {
+    float: left;
+    position: relative;
+    max-height: 66px;
+    > li > a {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+}
+
+// Navbar Right
+.navbar-nav.navbar-right,
+.navbar-nav.navbar-right:last-child {
+    float: right;
+    margin: 0 30px 0 0;
+}
+
+
+// ======================  Navbar Forms - Specifically Search Form =======================
+
+.navbar-form {
+    margin-top: 14px;
+    margin-bottom: 14px;
+
+    // search bar
+    &.search-form input {
+        height: 38px;
+        line-height: 36px;
+        padding: 0 12px;
+        -webkit-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        box-shadow: none;
+        border-radius: 20px;
+        border-color: #EEE;
+	    &:focus {
+	      background-color: #f8f8f8;
+	      border-color: #f0f0f0;
+	    }
+    }
+
+    // search bar - square
+    &.search-form.square input {
+        height: 38px;
+        border-radius: 5px 0 0 5px;
+    }
+
+    &.search-form .btn {
+        background-color: @brand-primary;
+        border-color: transparent;
+        border-radius: 0 5px 5px 0;
+        color: @white;
+        line-height: 38px;
+        margin-left: 0;
+        padding: 0 11px;
+        width: 38px;
+    }
+
+    &.search-form .btn:hover {
+        background-color: darken(@brand-primary,10%);
+        border-color: transparent;
+    }
+
+}
+
+// ======================  Navbar UserMenu Dropdown =======================
+
+.navbar .dropdown.open .btn-group.open .multiselect-container.dropdown-menu {
+    background-color: @light-gray;
+    border: 0 !important;
+    -webkit-border-radius: @border-radius-base;
+    border-radius: @border-radius-base;
+    margin-top: 0;
+    padding: 0 10px 10px;
+
+   > .active > a {
+     background-color: darken(@light-gray, 4%);
+     color: @text-color;
+   }
+}
+.navbar.bg-dark .dropdown.open .btn-group.open .multiselect-container.dropdown-menu {
+  background-color: @brand-dark-dark;
+
+  > .active > a {
+    background-color: @brand-dark;
+  }
+}
+.navbar .dropdown.open .btn-group.open .multiselect-container.dropdown-menu:after {
+    display: none;
+}
+
+#user-role + .btn-group > button.multiselect {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#user-status + .btn-group .multiselect-container.dropdown-menu {
+    right: auto !important;
+    left: 0 !important;
+}
+#user-status + .btn-group .multiselect-container.dropdown-menu,
+#user-role + .btn-group .multiselect-container.dropdown-menu {
+    top: 0 !important;
+    position: relative !important;
+    margin-top: 9px;
+    margin-bottom: 3px;
+    width: 212px;
+}
+#user-status + .btn-group .multiselect-container.dropdown-menu > li:first-child,
+#user-role + .btn-group .multiselect-container.dropdown-menu > li:first-child,
+#user-status + .btn-group .multiselect-container.dropdown-menu > li:first-child label,
+#user-role + .btn-group .multiselect-container.dropdown-menu > li:first-child label {
+    cursor: pointer;
+    position: relative;
+}
+#user-status + .btn-group .multiselect-container.dropdown-menu > li:first-child:after,
+#user-role + .btn-group .multiselect-container.dropdown-menu > li:first-child:after {
+    content: "\f00d";
+    font-family: "FontAwesome";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 6px;
+    right: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #AAA;
+    -webkit-transition: color 0.15s ease;
+    transition: color 0.15s ease;
+}
+#user-status + .btn-group .multiselect-container.dropdown-menu > li:first-child:hover:after,
+#user-role + .btn-group .multiselect-container.dropdown-menu > li:first-child:hover:after {
+    color: @brand-primary;
+}
+
+// ======================  Navbar Dropdown Menu Color Settings =======================
+
+.navbar {
+
+  // Top Arrow color
+  .nav > li.dropdown.open .dropdown-menu:after,
+  .nav > li.dropdown .open .dropdown-menu:after {
+    border-bottom-color: @navbar-dropdown-active-border;
+  }
+
+  // Navbar usermenu multiselect - Active item bg
+  .nav > li .dropdown-toggle + .dropdown-menu > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @navbar-component-active-text;
+      background-color: @navbar-component-active-bg;
+    }
+  }
+
+}
+
+// ======================  Navbar Contextual/Skin Settings =======================
+
+.navbar.bg-primary when (@skin-primary) {
+  .navbar-variant(@brand-primary);
+}
+.navbar.bg-success when (@skin-success) {
+  .navbar-variant(@brand-success);
+}
+.navbar.bg-info when (@skin-info) {
+  .navbar-variant(@brand-info);
+}
+.navbar.bg-warning when (@skin-warning) {
+  .navbar-variant(@brand-warning);
+}
+.navbar.bg-danger when (@skin-danger) {
+  .navbar-variant(@brand-danger);
+}
+.navbar.bg-alert when (@skin-alert) {
+  .navbar-variant(@brand-alert);
+}
+.navbar.bg-system when (@skin-system) {
+  .navbar-variant(@brand-system);
+}
+.navbar.bg-dark when (@skin-dark) {
+  .navbar-variant(@brand-dark);
+}
+
+// Navbar with contextual class
+.navbar[class*='bg-'] {
+  border-bottom-color: transparent;
+  box-shadow: none;
+
+  // Change several text elements to white
+  .nav > li > a {
+    color: #fff;
+    color: rgba(255,255,255,0.9);
+  }
+  .nav > li.open > a {
+    color: #fff;
+    color: rgba(255,255,255,1);
+  }
+
+  &:not(.bg-dark) .nav > li > a name {
+    color: @white;
+  }
+  // Dropdown Caret
+  .caret.caret-tp { border-top-color: rgba(255, 255, 255, 0.3); }
+
+  // Sidemenu toggle icon
+
+  #sidebar_top_toggle {
+    color: @white;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+  }
+
+  #sidebar_top_toggle:hover,
+  #sidebar_top_toggle:focus {
+    color: @brand-primary;
+  }
+
+  // search bar
+  .search-form input,
+  .search-form input:focus {
+    border-color: transparent;
+  }
+
+  // alternate search bar
+  .search-form.alt input {
+    color: #BBB;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #BBB;
+    background-color: rgba(255,255,255, 0.2);
+    border-color: transparent;
+    &:focus {
+      border-color: transparent;
+    }
+  }
+
+  // Disable navbar shadow option for navbar bg
+  &.navbar-shadow {
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+  }
+
+}
+.navbar {
+  .navbar-logo-text { color: #fff; }
+
+  // Sidemenu toggle icon
+  #sidebar_left_toggle,
+  #sidebar_left_toggle:hover,
+  #sidebar_left_toggle:focus {
+    color: #FFF;
+  }
+}
+
+// Modify whitespace for user menu dropdown - Firefox alignment bug fix
+.navbar .navbar-right > li:last-child > .dropdown-menu > li > a {
+    white-space: inherit;
+}
+
+// ======================  Navbar Responsive =======================
+@media (max-width: 900px) {
+
+    // user menu dropdown modifications
+    .navbar .navbar-right:last-child { margin-right: 5px; }
+    .navbar .navbar-right > li:last-child > a > img { margin-right: 5px !important; }
+    .navbar .navbar-right > li:last-child > a > span { display: none; }
+    .navbar .navbar-right > li:last-child > a > span.caret { display: inline-block; }
+
+     // Search Mobile Mode
+     .navbar-form.search-form {
+        padding: 18px 8px;
+        font-size: 16px;
+        margin: 0;
+        cursor: pointer;
+        width: auto;
+        float: left;
+     }
+
+     .navbar-form.search-form .form-group { margin: 0 !important;}
+
+     // Search bar to single icon
+     .navbar-form.search-form:after {
+        content: "\f002";
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        position: relative;
+        line-height: 1;
+        display: inline-block;
+        text-decoration: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-rendering: auto;
+        transform: translate(0,0);
+     }
+
+     // transform searchbar input to menu slider
+     .navbar-form.search-form input {
+        opacity: 0;
+        z-index: -1;
+        visibility: hidden;
+        position: absolute;
+        top: -66px;
+        left: 0;
+        width: 100%;
+        height: 66px;
+        margin: 0;
+        font-size: 24px;
+        color: #AAA;
+        border-radius: 0;
+        border: 0;
+        text-align: center;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+     }
+     .navbar-form.search-form input:focus,
+     .navbar.bg-light .navbar-form.search-form input:focus {
+        background-color: #FFF;
+     }
+     // slide menu down when set to open
+     .navbar-form.search-form.search-open input {
+        z-index: 1040;
+        opacity: 1 !important;
+        visibility: visible;
+        top: 0;
+        color: #666 !important;
+        border-bottom: 0;
+        background-color: #FFF !important;
+        -webkit-box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08), 0px 2px 0px 0px rgba(0, 0, 0, 0.02) !important;
+        box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08), 0px 2px 0px 0px rgba(0, 0, 0, 0.02) !important;
+       height: 66px;
+     }
+
+     .navbar-form.search-form.search-open input:focus {
+       border-bottom-color: #DDD;
+     }
+
+  .navbar-form.search-form > .input-group.add-on {
+    position: inherit;
+  }
+
+    // close search bar icon
+     .navbar-form.search-form .search-remove {
+        display: none;
+        z-index: 1040;
+        position: absolute;
+        color: #AAA;
+        top: 0;
+        right: 0;
+        height: 66px;
+        line-height: 65px;
+        padding-left: 15px;
+        padding-right: 25px;
+     }
+     .navbar-form.search-form .search-remove:after {
+        position: relative;
+        content: "\e014";
+        font-family: 'Glyphicons Halflings';
+        text-align: center;
+        font-size: 20px;
+     }
+     .navbar-form.search-form.search-open .search-remove:hover {
+        color: lighten(@brand-danger, 10%);
+     }
+
+}
+
+// Float navbar dropdowns with 100% width
+@media (max-width: 599px) {
+
+     // parent => static
+     .sb-l-m .navbar > .navbar-right,
+     .navbar .navbar-nav > li.dropdown,
+     .navbar .navbar-nav > li.dropdown .navbar-btn {
+        position: static !important;
+     }
+     .navbar .navbar-right:last-child {
+        margin-right: 0;
+     }
+
+     .navbar .nav > li.dropdown.open .dropdown-menu:after,
+     .navbar .nav > li.dropdown > .open .dropdown-menu:after {
+      display: none;
+     }
+
+     // rebuild dropdown menus
+     .navbar-left .dropdown-menu,
+     .navbar-right .dropdown-menu,
+     .navbar-left .open .dropdown-menu,
+     .navbar-right .open .dropdown-menu {
+        z-index: 1000;
+        margin-top: 0 !important;
+        float: left;
+        position: absolute;
+        top: 100%;
+        left: -1px;
+        min-width: 101%;
+        list-style: none;
+
+        background-color: @brand-dark;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        background-clip: padding-box;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+     }
+
+     // revert usermenu dropdowns to absolute pos
+     #user-status + .btn-group .multiselect-container.dropdown-menu,
+     #user-role + .btn-group .multiselect-container.dropdown-menu {
+        top: 34px !important;
+        position: absolute !important;
+        right: 0;
+        left: auto;
+     }
+
+}
+
+// ======================  Navbar Dropdown - Widget mods =======================
+
+// Timeline Widget
+.navbar .nav > li.dropdown .timeline-list  {
+
+  padding-left: 35px;
+  padding-right: 20px;
+
+  li.timeline-item {
+    padding: 18px 70px 18px 30px;
+  }
+  li.timeline-item .timeline-icon {
+    -webkit-border-radius: @border-radius-base;
+    border-radius: @border-radius-base;
+    height: 32px;
+    left: -14px;
+    top: 20px;
+    width: 32px;
+  }
+  li.timeline-item:after {
+    left: 0;
+    top: 0;
+  }
+  li.timeline-item .timeline-desc {
+    letter-spacing: 0;
+
+    b {display: block;}
+  }
+  li.timeline-item .timeline-date {
+    font-size: 11px;
+    right: 8px;
+    top: 29px;
+  }
+
+  li.timeline-item .timeline-desc a:hover,
+  li.timeline-item .timeline-desc a {
+    color: @brand-primary;
+  }
+
+}
+// Navbar Dark
+.bg-dark.navbar .nav > li.dropdown .timeline-list  {
+  color: @white;
+
+  li.timeline-item {
+    border-top-color: lighten(@brand-dark,15%);
+
+    &:after {background-color: lighten(@brand-dark,15%)}
+
+    .timeline-desc b,
+    .timeline-desc strong {color: @white;}
+  }
+}
+
+
+// Chat Widget
+.navbar .nav > li.dropdown .chat-widget  {
+
+  // Author Avatar
+  .media-left { padding-right: 10px; }
+  .media-right { padding-left: 10px; }
+  .media-left img,
+  .media-right img {
+    max-width: 40px;
+    border-radius: 2px;
+    border: 0;
+  }
+
+  // Chat content
+  .media-body {
+    padding: 5px;
+    background-color: #fafafa;
+  }
+
+  // Author Status
+  .media-status:after { font-size: 9px }
+
+}
+
+.bg-dark.navbar .nav > li.dropdown .chat-widget {
+  .media-body {
+    background-color: @brand-dark-dark;
+    border-color: @brand-dark-dark;
+  }
+
+  // right media arrow
+  .media-left:before,
+  .media-left:after,
+  .media-left + .media-body:before,
+  .media-left + .media-body:after {
+    border-right-color: @brand-dark-dark;
+  }
+  .media-body:before,
+  .media-body:after {border-left-color: @brand-dark-dark;}
+}
+
+// Alerts Widget
+.navbar .nav > li.dropdown .alerts-widget  {
+  
+  .media { position: relative; }
+
+  // Alert Left Col
+  .media-left {
+    border: 0;
+    font-size: 32px;
+    padding: 0;
+    line-height: 32px;
+    vertical-align: middle;
+    width: 32px;
+  }
+
+  // Alert Icon
+  a.media-left { 
+    color: #AAA;
+  }
+
+  // Alert Message
+  .media-body {
+    font-size: 13px;
+    font-weight: 400;
+    padding-left: 10px;
+    max-width: 188px;
+  }
+
+  // Alert Message Heading
+  .media-heading {
+    font-size: @font-size-small;
+    margin-bottom: 3px;
+  }
+
+  // Alert Response Chute
+  .media-right {
+    position: absolute;
+    right: 0;
+    top: -3px;
+    text-align: right;
+  }
+  .media-right .btn.btn-xs {
+    font-size: 11px;
+    padding: 0px 5px;
+  }
+  .media-right .media-response {
+    font-size: 10px;
+    font-weight: 400;
+    margin-bottom: 2px;
+    &.single {
+      font-size: 11px;
+      padding-top: 10px;
+    }
+  }
+
+}
+

@@ -1,0 +1,731 @@
+// ====================== Sidebar =======================
+
+.sidebar-caret(@style) {
+
+  .sidebar-menu {
+
+    li > a > span.caret,
+    li > a.menu-open > span.caret {
+      color: inherit;
+      width: 20px;
+      height: 36px;
+      line-height: 32px;
+      margin: 0;
+      border: 0;
+    }
+    li > a > span.caret:after {
+      content: "\f067";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      font-size: 10px;
+      display: inline-block;
+      padding-right: 3px;
+      float: right;
+      right: 0;
+    }
+    li > a.menu-open > span.caret:after {
+      content: "\f068";
+    }
+
+    li > ul > li > a > span.caret,
+    li > ul > li > a.menu-open > span.caret {
+      top: 11px;
+    }
+
+  }
+  // End sidebar menu
+
+  // Horizontal Menu Alt Caret style
+  .sb-top .sidebar-menu {
+
+    li > a > span.caret,
+    li > a.menu-open > span.caret {
+      width: 18px;
+      height: 18px;
+      line-height: 16px;
+    }
+
+    li > ul > li > a > span.caret,
+    li > ul > li > a.menu-open > span.caret {
+      top: 11px !important;
+    }
+
+  }
+  // sidebar menu
+
+}
+
+// Caret Style mixin
+
+// Sidebar "Top" Variant - Horizontal Menu Style
+.sidebar-top-variant() {
+
+  // Alter primary content wrappers for static navbar
+  .navbar + #sidebar_left + #content_wrapper,
+  .navbar.navbar-static-top + #sidebar_left + #content_wrapper {
+    margin-left: 0;
+    padding-top: 55px;
+  }
+
+  // Alter primary content wrappers for fixed navbar
+  .navbar.navbar-fixed-top + #sidebar_left + #content_wrapper {
+    margin-left: 0;
+    padding-top: 121px;
+  }
+
+  // Hide sidebar_right when horizontal menu is used
+  #sidebar_right_toggle {
+    display: none !important;
+  }
+
+  // Alter topbar-dropmenu-wrapper settings when in Boxed layout
+  #topbar-dropmenu-wrapper {
+    top: 0;
+  }
+
+  // Alter Topbar fixed settings
+  #topbar.affix {
+    margin-left: 0;
+  }
+
+  // Alter Topbar fixed settings when in Boxed layout
+  &.boxed-layout #topbar.affix {
+    width: 1140px !important;
+    margin-left: 0;
+    margin-right: 0;
+    left: auto;
+    right: auto;
+  }
+
+  // Alter Topbar fixed settings when in boxed layout and sidebar_right is open
+  &.boxed-layout.sb-r-o #topbar.affix {
+    width: 840px !important;
+  }
+
+  // Alter navbar chutes
+  .navbar-nav.navbar-right,
+  .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+  }
+
+  // Alter navbar logo wrapper
+  .navbar-logo-wrapper {
+    width: 160px;
+  }
+
+  // Convert Left Sidebar into Horizontal "OnHover" Menu
+  #sidebar_left {
+    overflow: visible;
+    z-index: 1028;
+    width: 100%;
+    min-height: 0;
+    margin-top: 60px;
+    padding: 0;
+    border: 0;
+    top: 6px;
+
+    // Hide unneeded sidebar elements
+    .sidebar-toggler,
+    .sidebar-menu .sidebar-label,
+    .sidebar-menu li > ul > li > ul > li .label,
+    .sidebar-menu .sidebar-title-chute {
+      display: none !important;
+    }
+
+    .sidebar-left-content {
+      background-color: @brand-dark-dark;
+    }
+
+    // Top Level Menu
+    .sidebar-menu {
+      padding-bottom: 0;
+
+      // items
+      > li {
+        float: left;
+      }
+      > li:first-child {
+        padding-top: 0;
+      }
+
+      // item links
+      > li > a {
+        overflow: visible;
+        color: @sb-top-menu-text;
+        padding: 0 18px;
+        height: 55px;
+        line-height: 55px;
+      }
+
+      // item link states
+      > li.active > a,
+      > li:hover > a,
+      > li > a.menu-open,
+      > li > a:hover,
+      > li > a:focus {
+        color: @sb-top-text-hover;
+        background-color: @brand-dark-darker;
+        -webkit-transition: background-color 0.2s ease;
+        transition: background-color 0.2s ease;
+      }
+
+      // active item link
+      > li.active > a {
+        color: @sb-top-active-text !important;
+      }
+
+      // item title
+      > li > a > .sidebar-title {
+        font-weight: 400;
+      }
+
+      // item icon
+      > li > a > span:nth-child(1) {
+        width: auto;
+        padding-left: 0;
+        padding-right: 5px;
+        line-height: 55px;
+      }
+
+      > li > a.menu-open > span:nth-child(1),
+      > li > a:hover > span:nth-child(1),
+      > li > a:focus > span:nth-child(1),
+      > li:hover > a > span:nth-child(1),
+      > li.active > a > span:nth-child(1) {
+        color: @white;
+      }
+
+      // item caret
+      li > a > span.caret {
+        color: @sb-top-caret;
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-left: 5px;
+      }
+
+    }
+    // Top Level Menu
+
+    // Sub Level menu
+    .sidebar-menu > li > ul {
+      background-color: @brand-dark-darker;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 195px;
+      height: auto;
+      border-left: 0;
+      padding-bottom: 2px;
+      overflow: hidden;
+
+      // item
+      > li {
+        overflow: hidden;
+      }
+
+      // item link
+      > li > a {
+        line-height: 1.45;
+        padding: 8px 15px 8px 15px;
+      }
+
+      // item - states
+      > li > a.menu-open:after,
+      > li.active > a:after,
+      > li:hover > a:after,
+      > li:focus > a:after {
+        left: 0;
+        width: 0;
+      }
+
+      // item submenu
+      > li ul {
+        width: 195px;
+      }
+
+      // item caret
+      > li > a .caret {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+      }
+
+    }
+    // End Sub Level menu
+
+    // Multi Level menu
+    .sidebar-menu > li > ul > li > ul {
+
+      // item link
+      > li a {
+        padding: 8px 15px 8px 20px;
+      }
+
+      // item - active border
+      > li.active > a:after,
+      > li:hover > a:after,
+      > li:focus > a:after {
+        left: 0;
+        width: 0;
+      }
+
+    }
+    // End Multi Level menu
+
+    // OnHover - Open Menu / Submenu Override
+    .sidebar-menu li > ul > li > a.menu-open + ul {
+      display: block !important;
+    }
+
+    // Sidebar "Light" version
+    &.sidebar-light {
+      border-right: 0;
+      -webkit-box-shadow: 0 1px 0 #DDD;
+      box-shadow: 0 1px 0 #DDD;
+
+      // Sidebar menu
+      .sidebar-menu {
+
+        // item link
+        > li > a > span:nth-child(2) {
+          color: #888;
+        }
+
+        // item link - states
+        > li.active > a,
+        > li:hover > a,
+        > li > a.menu-open,
+        > li > a:hover,
+        > li > a:focus {
+          background-color: #f2f2f2;
+        }
+
+        // item submenu
+        > li > ul {
+          top: 99%;
+          border: 0;
+          -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        // submenu item links
+        li > ul > li > a {
+          padding: 9px 15px 8px 17px;
+        }
+
+      }
+      // End Sidebar Menu
+
+    }
+    // End Sidebar "light" version
+
+  }
+  // End #sidebar_left
+
+  // Menu Option - Small - ".sb-top-sm" on body
+  &.sb-top-sm {
+
+    // Alter primary content wrappers for static navbar
+    .navbar + #sidebar_left + #content_wrapper,
+    .navbar.navbar-static-top + #sidebar_left + #content_wrapper {
+      padding-top: 45px;
+    }
+
+    // Alter primary content wrappers for fixed navbar
+    .navbar.navbar-fixed-top + #sidebar_left + #content_wrapper {
+      padding-top: 111px;
+    }
+
+    #sidebar_left {
+      height: 45px;
+
+      // sidebar menu items
+      .sidebar-menu > li > a {
+        height: 45px;
+        line-height: 45px;
+        padding: 0 16px;
+      }
+
+      // sidebar menu icons
+      .sidebar-menu > li > a > span:nth-child(1) {
+        font-size: 12px;
+        line-height: 45px;
+      }
+
+    }
+    // End #sidebar_left
+
+  }
+  // End Menu Option - Small
+
+  // Menu Option - Large - ".sb-top-lg" on body
+  &.sb-top-lg {
+
+    // Alter primary content wrappers for static navbar
+    .navbar + #sidebar_left + #content_wrapper,
+    .navbar.navbar-static-top + #sidebar_left + #content_wrapper {
+      padding-top: 69px;
+    }
+
+    // Alter primary content wrappers for fixed navbar
+    .navbar.navbar-fixed-top + #sidebar_left + #content_wrapper {
+      padding-top: 135px;
+    }
+
+    #sidebar_left {
+      height: 69px;
+
+      // sidebar menu item links
+      .sidebar-menu > li > a {
+        height: 69px;
+        line-height: inherit;
+        text-align: center;
+        padding: 0 10px;
+      }
+
+      // sidebar menu icons
+      .sidebar-menu > li > a > span:nth-child(1) {
+        width: 100%;
+        font-size: 20px;
+        line-height: 40px;
+        padding-top: 3px;
+      }
+
+      // sidebar menu title
+      .sidebar-menu > li > a > .sidebar-title {
+        padding-left: 0;
+      }
+
+    }
+    // End #sidebar_left
+
+  }
+  // End Menu Option - Large
+
+  // Sidebar State - Collapsed
+  &.sb-top-collapsed {
+
+    #sidebar_left {
+      top: -110px;
+    }
+
+    // Alter primary content wrappers for static navbar
+    .navbar + #sidebar_left + #content_wrapper,
+    .navbar.navbar-static-top + #sidebar_left + #content_wrapper {
+      padding-top: 0;
+    }
+
+    // Alter primary content wrappers for fixed navbar
+    .navbar.navbar-fixed-top + #sidebar_left + #content_wrapper {
+      padding-top: 66px;
+    }
+
+    // rotate menu toggle caret
+    #sidebar_top_toggle .fa-caret-up {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+
+    // modify caret color if navbar is using a contextual
+    .navbar[class*='bg-'] #sidebar_top_toggle .fa-caret-up {
+      color: #FFF;
+    }
+
+  }
+  // End Sidebar State - Collapsed
+
+
+
+// HORIZONTAL MENU RESPONSIVE SETTINGS
+
+  @media (max-width: 1100px) {
+
+    #content_wrapper {
+      margin-left: 0 !important;
+      left: 0 !important;
+    }
+
+  }
+
+  @media (max-width: 900px) {
+
+    #sidebar_left {
+      top: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      height: auto !important;
+
+      -webkit-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+
+      // sidebar menu
+      .sidebar-menu {
+
+        // item
+        > li {
+          float: none;
+          width: 100%;
+        }
+
+        // item link
+        > li > a {
+          height: 45px !important;
+          line-height: 45px !important;
+          padding: 0 16px !important;
+          text-align: left !important;
+        }
+
+        // item icon
+        > li > a > span:nth-child(1) {
+          width: auto !important;
+          font-size: 12px !important;
+          line-height: 45px !important;
+          padding: 0 !important;
+        }
+
+        // item title
+        > li > a > .sidebar-title {
+          padding-left: 8px !important;
+        }
+
+        // item submenus
+        > li > ul,
+        > li > ul > li ul {
+          position: relative;
+          width: auto;
+        }
+
+      }
+      // End sidebar menu
+
+      // Sidebar "light" version
+      &.sidebar-light {
+        border-right: 0;
+        -webkit-box-shadow: 0 1px 0 #DDD;
+        box-shadow: 0 1px 0 #DDD;
+
+        // item submenu
+        .sidebar-menu > li > ul {
+          border: 0;
+          box-shadow: none;
+        }
+
+        // submenu links
+        .sidebar-menu li > ul > li > a {
+          padding: 9px 15px 8px 17px;
+        }
+
+      }
+      // End #sidebar_left "Light" version
+
+    }
+
+    // End #sidebar_left
+
+    // Navbar Logo wrapper
+    .navbar-logo-wrapper {
+      width: 0;
+      display: none;
+    }
+
+    // Toggle Menu Button
+    #sidebar_top_toggle {
+      width: 44px;
+    }
+
+    // Fixed Navbar
+    .navbar.navbar-fixed-top + #sidebar_left + #content_wrapper {
+      padding-top: 60px !important;
+    }
+
+    // Collapsed State
+    &.sb-top-collapsed {
+      #sidebar_left {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
+
+    // End Sidebar State - Collapsed
+
+  }
+
+  @media (min-width: 901px) {
+
+    // Menus has been converted to show only on:hover. Hide by default
+    .sidebar-menu > li > a.menu-open + ul {
+      display: none;
+    }
+
+    // Menus has been converted. We display them only on:hover
+    .sidebar-menu > li:hover > a + ul {
+      z-index: 1;
+      display: block !important;
+    }
+
+  }
+
+}
+
+// End Horizontal Menu Variant mixin
+
+
+
+// Generate Sidebar Light Skin
+
+.sidebar-light-variant() {
+  color: @sb-label;
+  background-color: @brand-light;
+  border-right: 0;
+
+  // Top Level Menu Item - Label color
+  .sidebar-menu .sidebar-label {
+    color: #9d9fa9;
+  }
+  // Top Level Menu Item - Caret color
+  .sidebar-menu li > a > span.caret {
+    color: @brand-dark;
+  }
+  .sidebar-menu li > a.menu-open > span.caret {
+    color: @brand-dark;
+  }
+
+  // Menu Item Links - Color
+  .sidebar-menu > li a {
+    color: @submenu-link;
+  }
+
+  // Top Level Menu Item - Background Color:hover
+  .sidebar-menu > li > a:hover,
+  .sidebar-menu > li > a:focus,
+  .sidebar-menu > li > a:active {
+    background-color: transparent;
+    color: @submenu-link-hover;
+  }
+  // Top Level Menu Item - Icon
+  .sidebar-menu > li > a > span:nth-child(1) {
+    color: @submenu-link-hover;
+  }
+  // Top Level Menu Item - Title
+  .sidebar-menu > li > a > span:nth-child(2) {
+    color: @submenu-link-hover;
+  }
+  // Top Level Menu Active Item - Icon Color
+  .sidebar-menu > li.active > a > span:nth-child(1) {
+    color: @submenu-link-hover;
+  }
+
+  // Sub-Menu level Background
+  .sidebar-menu > li > ul {
+    background-color: @brand-light;
+  }
+  // Sub-Menu Level Item - Background Color:hover
+  .sidebar-menu > li > ul > li.active > a,
+  .sidebar-menu > li > ul > li > a:hover,
+  .sidebar-menu > li > ul > li > a:focus {
+    background-color: transparent;
+    color: @brand-primary;
+  }
+  // Sub-Menu Level Active Item - Icon Color
+  .sidebar-menu > li > ul > li.active > a > span:nth-child(1),
+  .sidebar-menu > li > ul > li > a.menu-open > span:nth-child(1) {
+    color: @submenu-link-hover;
+  }
+
+  // Multi-level menu - Background Color
+  .sidebar-menu > li > ul > li ul {
+    background-color: @brand-light;
+  }
+  // Multi-level menu item - Background Color:hover
+  .sidebar-menu > li > ul > li > ul > li.active > a,
+  .sidebar-menu > li > ul > li > ul > li > a:hover,
+  .sidebar-menu > li > ul > li > ul > li > a:focus {
+    background-color: transparent;
+    color: @brand-primary;
+  }
+
+  // Top Level item left border
+  .sidebar-menu > li > a.menu-open:after,
+  .sidebar-menu > li > ul > li > a.menu-open:after {
+    background: transparent;
+  }
+  // Sub-Menu item left border
+  .sidebar-menu > li > ul > li > a.menu-open:after,
+  .sidebar-menu > li > ul > li > ul > li > a.menu-open:after {
+    background: @brand-info;
+  }
+  // Multi level item left border
+  .sidebar-menu > li > ul > li > ul > li.active > a:after,
+  .sidebar-menu > li > ul > li > ul > li:hover > a:after,
+  .sidebar-menu > li > ul > li > ul > li:focus > a:after {
+    background: @brand-alert;
+  }
+
+  // Active Menu item Caret
+  .sidebar-menu > li > ul > li.active > a > span.caret {
+    color: #AAA;
+  }
+  // Progress bar background
+  .sidebar-menu .sidebar-stat .progress {
+    background-color: #ddd;
+  }
+
+  // sidebar toggle close btn
+  .sidebar-toggler a {
+    background-color: #f7f7f7;
+    border-color: #eaeaea;
+  }
+
+  // bg-light.light version
+  &.light {
+    background-color: #fff;
+    .sidebar-menu > li > ul {
+      background-color: #fbfbfb;
+    }
+    .sidebar-menu > li > ul > li ul {
+      background-color: #f5f5f5;
+    }
+  }
+
+  // Sidebar Author Widget
+  .sidebar-widget.author-widget {
+    .media-body {
+      color: #666;
+      .media-author {
+        color: @brand-primary;
+      }
+    }
+    .media-links a {
+      color: @submenu-link;
+    }
+    .media-links a:hover {
+      color: @brand-primary;
+    }
+    &.menu-widget-open .media-links a.sidebar-menu-toggle {
+      color: @submenu-link-hover;
+    }
+  }
+  // Sidebar Menu Widget
+  .sidebar-widget.menu-widget {
+    background-color: @brand-light;
+    border-top: 0;
+    border-bottom: 0;
+    a span {
+      color: @submenu-link;
+    }
+
+    a:hover span {
+      color: @brand-primary;
+    }
+  }
+  // Sidebar Search Widget
+  .sidebar-widget.search-widget {
+    background-color: #f2f2f2;
+    border-top: 1px solid darken(#f2f2f2, 3%);
+    border-bottom: 1px solid darken(#f2f2f2, 3%);
+  }
+}
+

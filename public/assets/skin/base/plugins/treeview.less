@@ -1,0 +1,113 @@
+// ====================== Treeview Plugin =======================
+
+// fancytree container
+ul.fancytree-container {
+    color: #999;
+    font-size: 14px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+// fancytree items
+ul.fancytree-container li {
+    padding: 2px 0;
+}
+
+// fancytree item
+span.fancytree-node {
+    padding: 4px 0;
+}
+
+// fancytree item title
+span.fancytree-title {
+    color: #666;
+}
+
+// fancytree item icon
+span.fancytree-icon {
+    position: relative;
+}
+
+// fancytree item hover
+span.fancytree-node:hover {
+    background-color: #EEE;
+    border-color: #CCC;
+}
+
+// fancytree active item
+span.fancytree-node.fancytree-active,
+span.fancytree-node.fancytree-selected {
+    background-color: #EEE;
+    border-color: #CCC;
+}
+
+// fancytree active item hover
+span.fancytree-node.fancytree-active:hover,
+span.fancytree-node.fancytree-selected:hover {
+    background-color: #EEE;
+    border-color: #CCC;
+}
+
+// fancytree active item focus
+.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active,
+.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-selected {
+    background-color: #EEE;
+    border-color: #CCC;
+}
+
+// fancytree addon - childcounter
+span.fancytree-childcounter {
+    color: #fff;
+    background: #428BCA;
+    position: absolute;
+    top: -9px;
+    right: -8px;
+    min-width: 13px;
+    height: 13px;
+    line-height: 9px;
+    vertical-align: baseline;
+    border-radius: 10px;
+    padding: 2px;
+    text-align: center;
+    font-size: 10px;
+}
+
+// fancytree addon - columnview
+table.fancytree-ext-columnview {
+    outline: 0;
+    border: 0;
+}
+table.fancytree-container tbody tr td {
+    padding: 8px 14px;
+    border-color: #EEE;
+    max-width: 300px;
+}
+//  prevent long lines to wrap
+table.fancytree-container span.fancytree-node {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+//  prevent long lines to start with a break after the icon
+table.fancytree-container span.fancytree-title {
+    display: inline;
+}
+table.fancytree-container span.selTag {
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px 7px;
+    margin: 1px 5px;
+    background-color: #dec;
+    border: 0;
+    border-radius: 1px;
+}
+table.fancytree-ext-columnview tbody tr #tags,
+table.fancytree-ext-columnview tbody tr #preview {
+    padding: 12px 14px;
+    vertical-align: middle;
+    background: #fbfbfb;
+}

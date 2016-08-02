@@ -1,0 +1,536 @@
+// ====================== AllCPPanels =======================
+.allcp-panels.fade-onload {
+  opacity: 0;
+}
+
+.preserve-grid {
+  background: transparent !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 10px;
+  outline: 0 !important;
+}
+
+.panel + .preserve-grid {
+  padding: 0;
+}
+
+body.ui-drag-active .preserve-grid {
+  visibility: hidden;
+  padding: 0;
+}
+
+// placeholder
+.ui-sortable-handle {
+  cursor: pointer;
+}
+
+.panel-placeholder {
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 0;
+  background-color: #eee;
+  border: 2px dashed #ccc;
+}
+
+.ui-sortable-helper.panel {
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.panel-sortable .panel-heading {
+  cursor: move;
+}
+
+.sortable-grid {
+  min-height: 200px;
+}
+
+.sortable-grid.col-lg-12,
+.sortable-grid.col-md-12,
+.sortable-grid.col-sm-12,
+.sortable-grid.col-xs-12 {
+  min-height: 0;
+}
+
+// title/color editboxes
+.panel-colorbox,
+.panel-editbox {
+  position: relative;
+  display: none;
+  text-align: center;
+  padding: 9px;
+  color: #AAA;
+  background-color: #f9f9f9;
+  border-left: 2px dashed #d9d9d9;
+  border-right: 2px dashed #d9d9d9;
+  border-bottom: 1px solid #ddd;
+
+  border-color: #e8e8e8;
+}
+
+// titlebox
+.panel-editbox {
+  padding: 12px 16px;
+}
+
+.panel-editbox input {
+  height: 40px;
+  background-color: #fff;
+  border-radius: 2px;
+  text-align: center;
+  color: #AAA;
+  font-size: 16px;
+}
+
+.panel-editbox input:focus {
+  border-color: #DDD;
+  color: #666;
+}
+
+// colorbox
+.panel-colorbox {
+  text-align: right;
+  padding: 8px 9px;
+}
+
+.panel-colorbox > span {
+  cursor: pointer;
+  display: inline-block;
+  width: 27px;
+  height: 25px;
+  margin: 4px 5px 0;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.panel-colorbox > span:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.panel-heading + div + .panel-body,
+.panel-heading + div + .panel-menu,
+.panel-heading + div + div + .panel-body,
+.panel-heading + div + div + .panel-menu {
+  border-top: 0;
+}
+
+// fullscreen
+body.panel-fullscreen-active {
+  overflow: hidden;
+  position: fixed;
+}
+
+body.panel-fullscreen-active .navbar,
+body.panel-fullscreen-active #topbar,
+body.panel-fullscreen-active #sidebar_left,
+body.panel-fullscreen-active #sidebar_right {
+  z-index: -1;
+  display: none !important;
+}
+
+body.panel-fullscreen-active #content_wrapper {
+  position: relative;
+  z-index: 9999;
+}
+
+.panel-fullscreen {
+  display: block !important;
+  z-index: 9999 !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+}
+
+// hide remove and collapse icon during fullscreen
+.panel-fullscreen .panel-controls > .panel-control-remove,
+.panel-fullscreen .panel-controls > .panel-control-collapse {
+  display: none !important;
+}
+
+// collapsed
+.panel-control-collapse:after {
+  content: "\f068";
+}
+
+.panel-collapsed .panel-control-collapse:after {
+  content: "\f067";
+}
+
+// controls
+.panel-controls {
+  float: right;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 7px;
+  margin-right: -8px;
+  background: transparent;
+  border-left: 0;
+}
+
+.panel-controls > a {
+  padding-top: 1px;
+  display: inline-block;
+  color: @muted;
+  font-size: 15px;
+  font-weight: normal;
+  text-align: center;
+  width: 26px;
+}
+
+.panel-controls > a:hover {
+  color: @brand-primary;
+  text-decoration: none;
+}
+
+// Icon colors for panel contextuals
+.panel-primary .panel-controls > a,
+.panel-info .panel-controls > a,
+.panel-success .panel-controls > a,
+.panel-warning .panel-controls > a,
+.panel-danger .panel-controls > a,
+.panel-alert .panel-controls > a,
+.panel-system .panel-controls > a,
+.panel-dark .panel-controls > a {
+  color: #FFF;
+}
+
+// control button icons
+.panel-controls > a:after {
+  font-family: "FontAwesome";
+}
+
+// title icon
+.panel-control-title:after {
+  content: "\f040";
+}
+
+.panel-editbox-open .panel-control-title:after {
+  content: "\f0c7";
+}
+
+// color icon
+.panel-control-color:after {
+  content: "\f043";
+}
+
+.panel-colorbox-open .panel-control-color:after {
+  content: "\f0c7";
+}
+
+// collapsed icon
+.panel-control-collapse:after {
+  content: "\f068";
+}
+
+.panel-collapsed .panel-control-collapse:after {
+  content: "\f067";
+}
+
+// fullscreen icon
+.panel-control-fullscreen:after {
+  content: "\f066";
+}
+
+// remove icon
+.panel-control-remove:after {
+  content: "\f00d";
+}
+
+// callback icon
+.panel-control-callback:after {
+  content: "\f121";
+}
+
+// expose icon
+.panel-control-expose:after {
+  content: "\f06e";
+}
+
+.panel-exposed .panel-control-expose:after {
+  content: "\f070";
+}
+
+// dockable icon
+.panel-control-dockable:after {
+  content: "\f187";
+}
+
+// loading icon
+.panel-controls > a.panel-control-loader {
+  opacity: 1;
+  display: none;
+  position: absolute;
+  top: 1px;
+  left: -35px;
+}
+
+.panel-loader-active .panel-controls > a.panel-control-loader {
+  display: inline-block !important;
+}
+
+.panel-control-loader:after {
+  content: "\f110";
+  -webkit-animation: fa-spin 2s infinite linear;
+  -moz-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+// loading icon animation
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.panel.mobile-controls .panel-heading {
+  padding-right: 40px !important;
+}
+
+.panel.mobile-controls .panel-heading > .panel-controls {
+  width: 28px;
+  height: 28px;
+  margin-top: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  background: #F4F4F4;
+  border-radius: 2px;
+  border: 1px solid #EEE;
+}
+
+.panel.mobile-controls .panel-heading > .panel-controls:after {
+  position: absolute;
+  content: "\f0c9";
+  font-family: "FontAwesome";
+  top: 0;
+  left: 7px;
+  line-height: 28px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #AAA;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+// menu open states
+.panel.mobile-controls .panel-heading > .panel-controls:hover,
+.panel.mobile-controls .panel-heading > .panel-controls.panel-controls-open {
+  background: #F0F0F0;
+  border-color: #E6E6E6;
+}
+
+.panel.mobile-controls .panel-heading > .panel-controls:hover:after,
+.panel.mobile-controls .panel-heading > .panel-controls.panel-controls-open:after {
+  color: #777;
+}
+
+.panel.mobile-controls .panel-controls a {
+  color: #999 !important;
+}
+
+.panel.mobile-controls .panel-heading > .panel-controls > a {
+  display: none;
+}
+
+.panel.mobile-controls .panel-heading .panel-controls a.panel-control-loader,
+.panel.mobile-controls .panel-heading .panel-controls a.panel-control-loader:after {
+  display: none !important;
+  opacity: 0 !important;
+  width: 0;
+  height: 0;
+}
+
+.panel.mobile-controls.panel-loader-active .panel-heading > .panel-controls:after {
+  display: block;
+  content: "\f110" !important;
+  -webkit-animation: fa-spin 2s infinite linear;
+  -moz-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+.panel.mobile-controls .popover-content:after {
+  display: none;
+}
+
+.panel.mobile-controls .panel-controls + .popover {
+  border: 1px solid #ddd;
+}
+
+.panel.mobile-controls .panel-controls + .popover > .arrow {
+  border-left-color: #ccc;
+}
+
+.panel.mobile-controls .panel-controls + .popover > .popover-content {
+  padding: 2px 5px;
+}
+
+.panel.mobile-controls .popover-content {
+  float: none;
+  margin: 0;
+  width: auto;
+  height: auto;
+  background: none;
+  border: 0;
+}
+
+.panel.mobile-controls .popover-content .panel-controls > a {
+  display: inline-block;
+}
+
+// mobile control modifications during panel fullscreen mode
+.panel.mobile-controls.panel-fullscreen .panel-heading > .panel-controls {
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+  background: none;
+  border-radius: 0;
+  border: 0;
+}
+
+.panel.mobile-controls.panel-fullscreen .panel-heading > .panel-controls:after {
+  display: none !important;
+}
+
+.panel.mobile-controls.panel-fullscreen .panel-controls a {
+  color: inherit !important;
+}
+
+.panel.mobile-controls.panel-fullscreen .panel-heading > .panel-controls > a {
+  display: inline-block;
+}
+
+.panel.mobile-controls.panel-fullscreen .popover {
+  display: none !important;
+}
+
+// Fix panel nav tab bg on color/editbox open
+.panel-editbox-open .panel-tabs > li.active > a,
+.panel-editbox-open .panel-tabs > li.active > a:hover,
+.panel-editbox-open .panel-tabs > li.active > a:focus,
+.panel-colorbox-open .panel-tabs > li.active > a,
+.panel-colorbox-open .panel-tabs > li.active > a:hover,
+.panel-colorbox-open .panel-tabs > li.active > a:focus {
+  background: #f9f9f9;
+}
+
+.panel.panel-primary .panel-tabs > li > a,
+.panel.panel-info .panel-tabs > li > a,
+.panel.panel-success .panel-tabs > li > a,
+.panel.panel-info .panel-tabs > li > a,
+.panel.panel-warning .panel-tabs > li > a,
+.panel.panel-danger .panel-tabs > li > a,
+.panel.panel-alert .panel-tabs > li > a,
+.panel.panel-system .panel-tabs > li > a,
+.panel.panel-dark .panel-tabs > li > a {
+  left: 7px;
+  padding: 6px 20px 10px;
+  color: #FFF !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+}
+
+.panel.panel-primary .panel-tabs > li > a:hover,
+.panel.panel-info .panel-tabs > li > a:hover,
+.panel.panel-success .panel-tabs > li > a:hover,
+.panel.panel-info .panel-tabs > li > a:hover,
+.panel.panel-warning .panel-tabs > li > a:hover,
+.panel.panel-danger .panel-tabs > li > a:hover,
+.panel.panel-alert .panel-tabs > li > a:hover,
+.panel.panel-system .panel-tabs > li > a:hover,
+.panel.panel-dark .panel-tabs > li > a:hover {
+  color: #FFF !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.panel.panel-primary .panel-tabs > li > a:focus,
+.panel.panel-info .panel-tabs > li > a:focus,
+.panel.panel-success .panel-tabs > li > a:focus,
+.panel.panel-info .panel-tabs > li > a:focus,
+.panel.panel-warning .panel-tabs > li > a:focus,
+.panel.panel-danger .panel-tabs > li > a:focus,
+.panel.panel-alert .panel-tabs > li > a:focus,
+.panel.panel-system .panel-tabs > li > a:focus,
+.panel.panel-dark .panel-tabs > li > a:focus {
+  color: #FFF !important;
+  color: rgba(255, 255, 255, 1) !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.panel.panel-primary .panel-tabs > li.active > a:focus,
+.panel.panel-info .panel-tabs > li.active > a:focus,
+.panel.panel-success .panel-tabs > li.active > a:focus,
+.panel.panel-info .panel-tabs > li.active > a:focus,
+.panel.panel-warning .panel-tabs > li.active > a:focus,
+.panel.panel-danger .panel-tabs > li.active > a:focus,
+.panel.panel-alert .panel-tabs > li.active > a:focus,
+.panel.panel-system .panel-tabs > li.active > a:focus,
+.panel.panel-dark .panel-tabs > li.active > a:focus {
+  color: #666 !important;
+  background: #FFF !important;
+}
+
+.panel .panel-tabs > li.active > a,
+.panel .panel-tabs > li.active > a:hover,
+.panel .panel-tabs > li.active > a:focus {
+  color: #666 !important;
+  -webkit-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
+}
+
+// MOBILE MENU MODS
+.panel.mobile-controls .panel-heading > .panel-controls {
+  width: 32px;
+  height: 30px;
+  margin-top: 0px;
+  margin-right: 2px;
+  background: #f0f0f0;
+  border-color: #DDD;
+}
+
+.panel.mobile-controls .panel-heading > .panel-controls:after {
+  top: 0;
+  left: 8px;
+  font-size: 17px;
+}
+
+.panel.mobile-controls .panel-controls + .popover > .popover-content {
+  padding: 0 5px;
+}
+
+.panel.mobile-controls .panel-controls + .popover .panel-controls {
+  background: transparent !important;
+  border-color: transparent !important;
+}

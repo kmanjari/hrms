@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>Editor example - Customised control buttons</title>
+	<link rel="stylesheet" type="text/css" href="../../../../media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="../../../TableTools/css/dataTables.tableTools.css">
+	<link rel="stylesheet" type="text/css" href="../../css/dataTables.editor.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/demo.css">
+	<style type="text/css" class="init">
+
+	a.marginLeft {
+		margin-left: 1em;
+	}
+
+	</style>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../TableTools/js/dataTables.tableTools.js"></script>
+	<script type="text/javascript" language="javascript" src="../../js/dataTables.editor.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/syntax/shCore.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/editor-demo.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+
+
+var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		ajax: "../php/staff.php",
+		table: "#example",
+		fields: [ {
+				label: "First name:",
+				name: "first_name"
+			}, {
+				label: "Last name:",
+				name: "last_name"
+			}, {
+				label: "Position:",
+				name: "position"
+			}, {
+				label: "Office:",
+				name: "office"
+			}, {
+				label: "Extension:",
+				name: "extn"
+			}, {
+				label: "Start date:",
+				name: "start_date"
+			}, {
+				label: "Salary:",
+				name: "salary"
+			}
+		]
+	} );
+
+	var salaryEditor = new $.fn.dataTable.Editor( {
+		ajax: "../php/staff.php",
+		table: "#example",
+		fields: [ {
+			label: "Salary:",
+			name:  "salary"
+		} ]
+	} );
+
+	var table = $('#example').DataTable( {
+		dom: "Tfrtip",
+		ajax: "../php/staff.php",
+		columns: [
+			{ data: null, render: function ( data, type, row ) {
+				// Combine the first and last names into a single table field
+				return data.first_name+' '+data.last_name;
+			} },
+			{ data: "position" },
+			{ data: "office" },
+			{ data: "extn" },
+			{ data: "start_date" },
+			{ data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+		],
+		tableTools: {
+			sRowSelect: "os",
+			aButtons: [
+				{ sExtends: "editor_create", editor: editor },
+				{ sExtends: "editor_edit",   editor: editor },
+				{ sExtends: "editor_remove", editor: editor },
+				{
+					sExtends: 'select_single',
+					sButtonClass: 'marginLeft',
+					sButtonText: 'Alter salary',
+					fnClick: function () {
+						if ( table.row( '.selected' ).length !== 0 ) {
+							// Show the salary submit form
+							salaryEditor
+								.title( 'Edit salary' )
+								.buttons( { label: 'Save', fn: function() { this.submit(); } } )
+								.edit( table.row( '.selected' ).node() );
+						}
+					}
+				},
+				{
+					sExtends: 'select_single',
+					sButtonText: 'Salary +250',
+					fnClick: function () {
+						if ( table.row( '.selected' ).length !== 0 ) {
+							// Immediately add `250` to the value of the salary and submit
+							salaryEditor
+								.edit( table.row( '.selected' ).node(), false )
+								.set( 'salary', (salaryEditor.get( 'salary' )*1) + 250 )
+								.submit();
+						}
+					}
+				}
+			]
+		}
+	} );
+} );
+
+
+
+	</script>
+</head>
+
+<body class="dt-example">
+	<div class="container">
+		<section>
+			<h1>Editor example <span>Customised control buttons</span></h1>
+
+			<div class="info">
+				<p>Very often, when editing a form, the system user is required to perform a repetitious task that you
+				wish to optimise the action of. For example, this might be activating a user account in a list of
+				users, where you simply click an <em>Activate</em> button.</p>
+
+				<p>In this example, we make use of <a href="//datatables.net/extensions/tabletools">TableTools's</a>
+				ability to customise button actions in its <code>fnClick</code> function to show two additional buttons
+				for the table:</p>
+
+				<ul class="markdown">
+					<li><em>Alter salary</em> shows a simple form that allows only the salary to be edited for a
+					row.</li>
+					<li><em>Salary +250</em> doesn't show a form to the user at all, it just immediately adds a value
+					(250 in this case) to the currency salary for the selected row and then submits it to the server
+					without user interaction. This button in particular shows how Editor's API can be used to allow the
+					system users to perform common actions extremely quickly.</li>
+				</ul>
+
+				<p>It is worth noting that TableTools buttons are used in this example for simplicity, but you could
+				use any control on your page that you wish!</p>
+
+				<p>In this example, a second Editor instance is created and the <a href=
+				"//editor.datatables.net/reference/api/edit()"><code class="api" title=
+				"Editor API method">edit()<span>E</span></code></a>, <a href=
+				"//editor.datatables.net/reference/api/set()"><code class="api" title=
+				"Editor API method">set()<span>E</span></code></a>, <a href=
+				"//editor.datatables.net/reference/api/get()"><code class="api" title=
+				"Editor API method">get()<span>E</span></code></a> and <a href=
+				"//editor.datatables.net/reference/api/submit()"><code class="api" title=
+				"Editor API method">submit()<span>E</span></code></a> methods used with that instance. This second
+				instance defines only a single field, but it uses the same <code class="path" title=
+				"File path">staff.php</code> file as the full editing instance. This is possible because the Editor PHP
+				libraries will only operate on the fields submitted, to make exactly this type of operation super easy.
+				See the <a href="//editor.datatables.net/manual/php">Editor PHP manual</a> for further information.</p>
+			</div>
+
+			<table id="example" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Position</th>
+						<th>Office</th>
+						<th>Extn.</th>
+						<th>Start date</th>
+						<th>Salary</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>Position</th>
+						<th>Office</th>
+						<th>Extn.</th>
+						<th>Start date</th>
+						<th>Salary</th>
+					</tr>
+				</tfoot>
+			</table>
+
+			<ul class="tabs">
+				<li class="active">Javascript</li>
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>Ajax</li>
+				<li>Server-side script</li>
+			</ul>
+
+			<div class="tabs">
+				<div class="js">
+					<p>The Javascript shown below is used to initialise the table shown in this
+					example:</p><code class="multiline brush: js;">var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		ajax: &quot;../php/staff.php&quot;,
+		table: &quot;#example&quot;,
+		fields: [ {
+				label: &quot;First name:&quot;,
+				name: &quot;first_name&quot;
+			}, {
+				label: &quot;Last name:&quot;,
+				name: &quot;last_name&quot;
+			}, {
+				label: &quot;Position:&quot;,
+				name: &quot;position&quot;
+			}, {
+				label: &quot;Office:&quot;,
+				name: &quot;office&quot;
+			}, {
+				label: &quot;Extension:&quot;,
+				name: &quot;extn&quot;
+			}, {
+				label: &quot;Start date:&quot;,
+				name: &quot;start_date&quot;
+			}, {
+				label: &quot;Salary:&quot;,
+				name: &quot;salary&quot;
+			}
+		]
+	} );
+
+	var salaryEditor = new $.fn.dataTable.Editor( {
+		ajax: &quot;../php/staff.php&quot;,
+		table: &quot;#example&quot;,
+		fields: [ {
+			label: &quot;Salary:&quot;,
+			name:  &quot;salary&quot;
+		} ]
+	} );
+
+	var table = $('#example').DataTable( {
+		dom: &quot;Tfrtip&quot;,
+		ajax: &quot;../php/staff.php&quot;,
+		columns: [
+			{ data: null, render: function ( data, type, row ) {
+				// Combine the first and last names into a single table field
+				return data.first_name+' '+data.last_name;
+			} },
+			{ data: &quot;position&quot; },
+			{ data: &quot;office&quot; },
+			{ data: &quot;extn&quot; },
+			{ data: &quot;start_date&quot; },
+			{ data: &quot;salary&quot;, render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+		],
+		tableTools: {
+			sRowSelect: &quot;os&quot;,
+			aButtons: [
+				{ sExtends: &quot;editor_create&quot;, editor: editor },
+				{ sExtends: &quot;editor_edit&quot;,   editor: editor },
+				{ sExtends: &quot;editor_remove&quot;, editor: editor },
+				{
+					sExtends: 'select_single',
+					sButtonClass: 'marginLeft',
+					sButtonText: 'Alter salary',
+					fnClick: function () {
+						if ( table.row( '.selected' ).length !== 0 ) {
+							// Show the salary submit form
+							salaryEditor
+								.title( 'Edit salary' )
+								.buttons( { label: 'Save', fn: function() { this.submit(); } } )
+								.edit( table.row( '.selected' ).node() );
+						}
+					}
+				},
+				{
+					sExtends: 'select_single',
+					sButtonText: 'Salary +250',
+					fnClick: function () {
+						if ( table.row( '.selected' ).length !== 0 ) {
+							// Immediately add `250` to the value of the salary and submit
+							salaryEditor
+								.edit( table.row( '.selected' ).node(), false )
+								.set( 'salary', (salaryEditor.get( 'salary' )*1) + 250 )
+								.submit();
+						}
+					}
+				}
+			]
+		}
+	} );
+} );</code>
+
+					<p>In addition to the above code, the following Javascript library files are loaded for use in this
+					example:</p>
+
+					<ul>
+						<li><a href="../../../../media/js/jquery.js">../../../../media/js/jquery.js</a></li>
+						<li><a href=
+						"../../../../media/js/jquery.dataTables.js">../../../../media/js/jquery.dataTables.js</a></li>
+						<li><a href=
+						"../../../TableTools/js/dataTables.tableTools.js">../../../TableTools/js/dataTables.tableTools.js</a></li>
+						<li><a href="../../js/dataTables.editor.js">../../js/dataTables.editor.js</a></li>
+					</ul>
+				</div>
+
+				<div class="table">
+					<p>The HTML shown below is the raw HTML table element, before it has been enhanced by
+					DataTables:</p>
+				</div>
+
+				<div class="css">
+					<div>
+						<p>This example uses a little bit of additional CSS beyond what is loaded from the library
+						files (below), in order to correctly display the table. The additional CSS used is shown
+						below:</p><code class="multiline brush: js;">a.marginLeft {
+		margin-left: 1em;
+	}</code>
+					</div>
+
+					<p>The following CSS library files are loaded for use in this example to provide the styling of the
+					table:</p>
+
+					<ul>
+						<li><a href=
+						"../../../../media/css/jquery.dataTables.css">../../../../media/css/jquery.dataTables.css</a></li>
+						<li><a href=
+						"../../../TableTools/css/dataTables.tableTools.css">../../../TableTools/css/dataTables.tableTools.css</a></li>
+						<li><a href="../../css/dataTables.editor.css">../../css/dataTables.editor.css</a></li>
+					</ul>
+				</div>
+
+				<div class="ajax">
+					<p>This table loads data by Ajax. The latest data that has been loaded is shown below. This data
+					will update automatically as any additional data is loaded.</p>
+				</div>
+
+				<div class="php">
+					<p>The script used to perform the server-side processing for this table is shown below. Please note
+					that this is just an example script using PHP. Server-side processing scripts can be written in any
+					language, using <a href="//datatables.net/manual/server-side">the protocol described in the
+					DataTables documentation</a>.</p>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<section>
+		<div class="footer">
+			<div class="gradient"></div>
+
+			<div class="liner">
+				<h2>Other examples</h2>
+
+				<div class="toc">
+					<div class="toc-group">
+						<h3><a href="../simple/index.html">Simple initialisation</a></h3>
+						<ul class="toc">
+							<li><a href="../simple/simple.html">Basic initialisation</a></li>
+							<li><a href="../simple/fieldDefaults.html">Setting defaults</a></li>
+							<li><a href="../simple/fieldTypes.html">Field types</a></li>
+							<li><a href="../simple/dates.html">Dates (with jQuery UI datepicker)</a></li>
+							<li><a href="../simple/i18n.html">Internationalisation</a></li>
+							<li><a href="../simple/inTableControls.html">In table form controls</a></li>
+							<li><a href="../simple/responsive.html">Responsive table extension</a></li>
+							<li><a href="../simple/server-side-processing.html">Server-side processing</a></li>
+							<li><a href="../simple/join.html">Join tables - working with multiple SQL tables</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../advanced/index.html">Advanced initialisation</a></h3>
+						<ul class="toc">
+							<li><a href="../advanced/formOnlyData.html">Data shown only in the form</a></li>
+							<li><a href="../advanced/tableOnlyData.html">Data shown in table only</a></li>
+							<li><a href="../advanced/deepObjects.html">Complex (nested) JSON data source</a></li>
+							<li><a href="../advanced/REST.html">REST interface</a></li>
+							<li><a href="../advanced/localstorage.html">Ajax override - using localStorage for the data
+							source</a></li>
+							<li><a href="../advanced/jsonId.html">Row ID source specification</a></li>
+							<li><a href="../advanced/htmlTable.html">DOM sourced table</a></li>
+							<li><a href="../advanced/exportButtons.html">Export buttons</a></li>
+							<li><a href="../advanced/joinSelf.html">Join tables - self referencing join</a></li>
+							<li><a href="../advanced/joinLinkTable.html">Join tables - link table</a></li>
+							<li><a href="../advanced/joinArray.html">Join tables - one-to-many join</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../bubble-editing/index.html">Bubble editing</a></h3>
+						<ul class="toc">
+							<li><a href="../bubble-editing/simple.html">Simple bubble editing</a></li>
+							<li><a href="../bubble-editing/grouped.html">Multiple fields in a bubble</a></li>
+							<li><a href="../bubble-editing/options.html">Form control and display options</a></li>
+							<li><a href="../bubble-editing/defaultOptions.html">Default control and display
+							options</a></li>
+							<li><a href="../bubble-editing/inTableControls.html">Bubble editing with in table row
+							controls</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../inline-editing/index.html">Inline editing</a></h3>
+						<ul class="toc">
+							<li><a href="../inline-editing/simple.html">Simple inline editing</a></li>
+							<li><a href="../inline-editing/tabControl.html">Tab between columns</a></li>
+							<li><a href="../inline-editing/options.html">Editing options - submit on blur</a></li>
+							<li><a href="../inline-editing/submitButton.html">Inline editing with a submit
+							button</a></li>
+							<li><a href="../inline-editing/editIcon.html">Edit icon</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="./index.html">API</a></h3>
+						<ul class="toc active">
+							<li><a href="./confirmClose.html">Events - unsaved changes close confirmation</a></li>
+							<li><a href="./clientValidation.html">Client-side validation</a></li>
+							<li class="active"><a href="./triggerButton.html">Customised control buttons</a></li>
+							<li><a href="./backNext.html">Previous / next editing buttons</a></li>
+							<li><a href="./duplicateButton.html">Duplicate button</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../standalone/index.html">Standalone</a></h3>
+						<ul class="toc">
+							<li><a href="../standalone/simple.html">Simple standalone editing</a></li>
+							<li><a href="../standalone/bubble.html">Bubble editing</a></li>
+							<li><a href="../standalone/inline.html">Inline editing</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../styling/index.html">Styling</a></h3>
+						<ul class="toc">
+							<li><a href="../styling/envelope.html">Envelope display controller</a></li>
+							<li><a href="../styling/envelopeInTable.html">Envelope display with in table
+							controls</a></li>
+							<li><a href="../styling/stackedInputs.html">Styled for stacked inputs</a></li>
+							<li><a href="../styling/bootstrap.html">Bootstrap</a></li>
+							<li><a href="../styling/jqueryui.html">jQuery UI</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../plug-ins/index.html">Plug-ins</a></h3>
+						<ul class="toc">
+							<li><a href="../plug-ins/fieldPlugin.html">Custom field type plug-ins</a></li>
+							<li><a href="../plug-ins/displayController.html">Custom display controller</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="epilogue">
+					<p>Please refer to the <a href="http://www.datatables.net">DataTables documentation</a> for full
+					information about its API properties and methods.<br>
+					Additionally, there are a wide range of <a href="http://www.datatables.net/extras">extras</a> and
+					<a href="http://www.datatables.net/plug-ins">plug-ins</a> which extend the capabilities of
+					DataTables.</p>
+
+					<p class="copyright">DataTables designed and created by <a href=
+					"http://www.sprymedia.co.uk">SpryMedia Ltd</a> &#169; 2007-2014<br>
+					DataTables is licensed under the <a href="http://www.datatables.net/mit">MIT license</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

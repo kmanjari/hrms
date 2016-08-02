@@ -1,0 +1,842 @@
+// ====================== Pages =======================
+
+/*
+	  1. basic-gallery.html
+	  2. basic-calendar.html
+	  3. basic-messages.html
+	  4. user-forms-editors.html
+	  5. utility pages
+	  6. basic-invoice.html
+	  7. basic-timeline.html
+	  8. maps pages
+	  9. basic-profile.html
+	  10. utility-404-error.html
+	  11. sales stats pages
+	  12. basic-search-results.html
+*/
+
+// 1. basic-gallery.html
+
+body.basic-gallery {
+
+  #mixitup-container {
+    padding: 15px;
+    text-align: justify;
+    font-size: 0.1px;
+  }
+  #mixitup-container:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+  }
+
+  // items
+  #mixitup-container .mix,
+  #mixitup-container .gap {
+    display: none;
+    vertical-align: top;
+    width: 23.5%;
+    margin-bottom: 20px;
+  }
+  #mixitup-container .gap {
+    display: inline-block;
+  }
+
+  // mixitup content panels
+  #mixitup-container .mix .panel {
+    margin: 0;
+    img {
+      cursor: pointer;
+    }
+  }
+
+  // fail message
+  .filter-error-message {
+    display: none;
+    text-align: center;
+    font-size: 22px;
+    color: #999;
+    margin-top: 50px;
+  }
+  .fail .filter-error-message {
+    display: block;
+  }
+
+  // responsive styles
+
+  @media (max-width: 1350px) {
+    #mixitup-container .mix,
+    #mixitup-container .gap {
+      width: 31.5%;
+    }
+  }
+
+  @media (max-width: 750px) {
+    #mixitup-container .mix,
+    #mixitup-container .gap {
+      width: 48%;
+    }
+  }
+
+}
+
+//  2. basic-calendar.html
+body.basic-calendar {
+
+  .fc-title-clone {  }
+
+  // left chute mini calendar datepicker
+  .chute-left .ui-datepicker {
+    background: none;
+    margin: 0;
+    border: 0;
+  }
+  .chute-left .ui-datepicker-header {
+    display: none;
+  }
+  .chute-left .ui-datepicker td {
+    padding: 8px 5px;
+  }
+  .chute-left .ui-datepicker td span,
+  .chute-left .ui-datepicker td a {
+    background: #DDD;
+    padding: .50em .20em;
+  }
+
+  .chute-left #compose-event-btn {
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+    padding-left: 8px;
+    color: #888;
+    font-size: 16px;
+  }
+
+  // Calendar title mods
+  .chute-center .fc-toolbar .fc-center h2 {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 400;
+  }
+
+  // responsive styles
+
+  @media (max-width: 900px) {
+
+    .fc-toolbar .fc-center {
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 600px) {
+
+    .fc-view-container {
+      margin-bottom: 30px;
+    }
+
+    .fc-toolbar .fc-button {
+      margin-bottom: 5px;
+      padding: 4px 8px;
+    }
+
+    .fc-toolbar .fc-left {
+    }
+
+    .fc-toolbar .fc-right {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .fc-toolbar .fc-center {
+      float: left;
+      width: 100%;
+    }
+
+    .fc-toolbar .fc-center h2 {
+      float: none;
+      text-align: center;
+    }
+
+    .fc-title-clone {
+      display: none;
+    }
+
+    #external-events {
+      padding: 15px 10px 10px;
+      background: #e8e8e8;
+      border: 1px solid #ccc;
+    }
+
+  }
+
+  @media (max-width: 359px) {
+    .fc-toolbar .fc-button {
+      padding: 4px 5px;
+    }
+  }
+
+}
+
+//  3. basic-messages.html
+body.basic-messages {
+
+  // message menu
+  .message-menu {
+    padding: 10px 15px;
+    background-color: #FFF;
+    border-bottom: 1px solid #EEE;
+  }
+
+  // message compose button
+  .compose-btn {
+    font-weight: 600;
+    margin-top: 2px;
+    margin-bottom: 12px;
+    padding: 11px 15px;
+  }
+
+  // message menu pane
+  .nav-messages {
+  }
+  .nav-messages li a {
+    color: #AAA;
+  }
+  .nav-messages li.active a,
+  .nav-messages li:hover a,
+  .nav-messages li:focus a {
+    color: #666;
+  }
+
+  .message-view {
+    padding: 20px;
+
+    h3.subject {
+      margin-top: 0;
+      font-size: 17px;
+    }
+    hr {
+      border-color: #EEE;
+    }
+  }
+
+  .message-reply {
+    // summernote modifications
+    .note-editor .note-toolbar {
+      background: #fcfcfc;
+      border: 1px solid #E6E6E6;
+      padding: 3px 0;
+    }
+    .note-editor .note-toolbar .btn-group {
+      margin-top: 0;
+    }
+    .note-editor .note-toolbar .btn-group:first-child {
+      margin-left: 0;
+    }
+    // toolbar button sizes
+    .note-editor .btn-default {
+      padding: 5px 10px 6px;
+    }
+    // text area padding
+    .note-editor .note-editable {
+      font-size: 14px;
+      padding: 15px 10px;
+    }
+  }
+
+  // message-table styles
+  #message-table > tbody > tr {
+    cursor: pointer;
+  }
+  #message-table > tbody > tr.highlight > td {
+    background-color: lighten(@brand-primary, 35%);
+  }
+
+  // quick compose form
+  .quick-compose-form {
+    display: none;
+  }
+
+  // dockmodal mods
+  .dockmodal {}
+  .dockmodal-header .title-text {
+    font-size: 15px;
+  }
+  .dockmodal-body {
+    padding: 0;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+  }
+  .dockmodal-footer {
+    background-color: #f3f3f3;
+    padding: 7px 10px 8px;
+    border-top: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+  }
+
+  // dockmodal with form mods
+  .dockmodal-body .quick-compose-form {
+    display: block;
+  }
+  .dockmodal-body .quick-compose-form input.form-control {
+    border: 0;
+    border-bottom: 1px solid #EEE;
+  }
+  .dockmodal-body .quick-compose-form .note-editor .note-editable {
+    background: #f9f9f9;
+  }
+  .popped-out .dockmodal-body .quick-compose-form .note-editor .note-editable {
+    background: #fff;
+  }
+  .dockmodal-body .quick-compose-form .note-editor .note-editable:focus,
+  .dockmodal-body .quick-compose-form .note-editor .note-editable:active {
+    background: #fff;
+  }
+  .dockmodal-body .quick-compose-form .note-editor .note-toolbar {
+    padding: 0 4px 9px;
+  }
+  .dockmodal-body .quick-compose-form .note-editor .note-statusbar .note-resizebar {
+    display: none;
+  }
+
+}
+
+// responsive styles
+
+@media (max-width: 1020px) {
+  body.basic-messages.chute-rescale #content.table-layout .chute-center {
+    padding-right: 65px !important;
+  }
+
+  body.basic-messages .message-chute {
+    height: 175px;
+    overflow: hidden;
+    -webkit-transition: height 0.5s ease;
+    transition: height 0.5s ease;
+  }
+
+  body.basic-messages .message-chute:hover {
+    height: 665px;
+  }
+}
+
+@media (max-width: 600px) {
+  body.basic-messages.chute-rescale #content.table-layout .chute-center {
+    padding: 0px !important;
+  }
+}
+
+//  4. user-forms-editors.html
+body.user-forms-editors {}
+
+//  5. Utility Pages - coming soon, confirmation, forgot passw, login, register
+body.utility-page {
+  min-height: 0;
+  overflow: auto;
+
+  #main {
+    overflow: hidden;
+    background: url("@{img-path}/patterns/backgrounds/1.jpg") no-repeat top center #2d494d;
+  }
+  #main:before {
+    display: none;
+  }
+
+  // canvas wrapper
+  #canvas-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  // content form
+  #content .allcp-form {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 8%;
+  }
+  #content .panel {
+    box-shadow: 0 1px 40px 0 rgba(0, 0, 0, 0.3);
+  }
+  #content .panel-heading {
+    padding: 32px 10px 15px
+  }
+
+  // login links
+  .login-links {
+    font-size: 15px;
+    color: #DDD;
+  }
+  .login-links a {
+    color: #DDD;
+    font-weight: 300;
+  }
+  .login-links a.active {
+    color: #FFF;
+    font-weight: 600;
+  }
+  .login-links a:hover,
+  .login-links a:focus {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  .coming-soon-title {
+    text-align: center;
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 400;
+    margin-top: 70px;
+    margin-bottom: 20px;
+  }
+}
+
+//  6. basic-invoice.html
+body.basic-invoice {
+  #invoice-info {
+    margin-bottom: 15px;
+  }
+  // Invoice table
+  .table-condensed tbody tr td:last-child {
+    text-align: right;
+    padding-right: 15px;
+  }
+  // Invoice summary
+  #basic-invoice-result {
+    margin: 0;
+  }
+  #basic-invoice-result thead th:first-child {
+    text-align: right;
+    width: 200px;
+    padding-right: 55px;
+  }
+  #basic-invoice-result thead th:last-child {
+    width: 50px;
+    font-weight: 400;
+  }
+  #basic-invoice-result tbody tr td {
+    border-top: 0;
+  }
+  #basic-invoice-result tbody tr td:first-child {
+    text-align: right;
+    width: 200px;
+    padding-right: 55px;
+  }
+  #basic-invoice-result tbody tr:last-child td {
+    background: #fafafa;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    height: 24px;
+    line-height: 24px;
+  }
+  .basic-invoice-buttons {
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+  }
+}
+
+//  7. basic-timeline.html
+
+body.basic-timeline #main {
+  min-height: 1400px;
+}
+
+body.basic-timeline #content {
+  padding: 8px 35px 50px 35px;
+}
+
+#timeline {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    margin-left: -2px;
+    height: 100%;
+    content: "";
+    background: @brand-primary;
+  }
+
+  .timeline-divider {
+    position: relative;
+    margin: 10px 0 45px;
+    z-index: 3;
+  }
+  .timeline-divider .divider-label {
+    position: relative;
+    width: 110px;
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+    border: 0;
+    color: #fff;
+    font-weight: 600;
+    background: @brand-primary;
+  }
+
+  .panel {
+    position: relative;
+    z-index: 11;
+    overflow: visible;
+    margin-bottom: 30px;
+  }
+
+  // Panel Arrows
+  .panel:before,
+  .panel:after {
+    content: "";
+    z-index: 2;
+    position: absolute;
+    top: 10px;
+    left: 99.8%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 12px;
+    border-color: transparent transparent transparent #fff;
+  }
+  .panel:after {
+    z-index: 1;
+    border-left-color: #fff;
+  }
+  .right-column .panel:before,
+  .right-column .panel:after {
+    top: 10px;
+    right: 99.8%;
+    left: auto;
+    border-width: 8px 12px 8px 0;
+    border-color: transparent #fff transparent transparent;
+  }
+  .right-column .panel:after {
+    border-right-color: #fff;
+  }
+
+  // Panel Positions
+  > .row > .left-column .timeline-item {
+    padding-right: 30px;
+  }
+  > .row > .right-column .timeline-item {
+    padding-left: 30px;
+  }
+  > .row > .right-column {
+    margin-top: 80px
+  }
+
+  // Responsive Styles
+  @media (max-width: 770px) {
+    > .row > .left-column .panel {
+      margin-right: 0
+    }
+
+    > .row > .right-column .panel {
+      margin-left: 0
+    }
+
+    > .row .panel:before {
+      display: none
+    }
+
+    > .row .panel:after {
+      display: none
+    }
+  }
+
+  // Tab content
+  .tab-content {
+    min-height: 0;
+  }
+  .map {
+    width: 100%;
+    height: 275px;
+  }
+
+  // timeline icons
+  .timeline-icon {
+    z-index: 1;
+    position: absolute;
+    right: -18px;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 20px;
+    color: #FFF;
+    text-align: center;
+    border-radius: 50%;
+    background: @main-bg;
+    box-shadow: 0 0 0 5px @main-bg;
+  }
+  .right-column .timeline-icon {
+    right: auto;
+    left: -18px;
+  }
+
+  // SINGLE TIMELINE
+  &.timeline-single {
+    margin-left: 6%;
+    max-width: 750px;
+
+    &:after {
+      left: 0;
+    }
+
+    // timeline cols
+    > .row > .col-sm-6 {
+      width: 100%;
+      padding-left: 65px;
+    }
+    > .row > .right-column {
+      margin-top: 0;
+    }
+    > .row > .right-column .timeline-item,
+    > .row > .left-column .timeline-item {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    // Divider label
+    .timeline-divider .divider-label {
+      margin-left: -55px;
+    }
+    // Icon
+    .timeline-icon {
+      left: -8px;
+      right: auto;
+    }
+
+    // Panel arrows
+    .panel:before,
+    .panel:after {
+      right: 99.8%;
+      left: auto;
+      border-width: 8px 12px 8px 0;
+      border-color: transparent #fff transparent transparent;
+    }
+    .panel:after {
+      border-right-color: #fff;
+    }
+
+  }
+
+}
+
+// Responsive styles
+@media (max-width: 359px) {
+  #timeline.timeline-single > .row > .col-sm-6 {
+    padding-left: 30px;
+  }
+}
+
+//  8. maps pages
+.maps-full,
+.maps-vector {
+
+  #main,
+  #content_wrapper,
+  #content,
+  .map {
+    height: 100%;
+    min-height: 0;
+  }
+  #content {
+    padding: 1px;
+    max-width: 1920px !important;
+  }
+  .map {
+    height: 100% !important;
+  }
+
+  .map-toggle-menu {
+    overflow: hidden;
+    z-index: 999;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 550px;
+    height: 43px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  .map-toggle-menu.collapsed {
+    width: 48px;
+    overflow: hidden;
+  }
+  .map-toggle-menu .map-header-icon {
+    cursor: pointer;
+    width: 47px;
+    padding: 10px 13px;
+    color: #FFF;
+    font-size: 22px;
+    float: left;
+    margin-right: 10px;
+  }
+  .map-toggle-menu .flag-sm {
+    cursor: pointer;
+  }
+  .map-toggle-menu input.form-control {
+    min-width: 250px;
+  }
+
+// responsive styles
+  @media (max-width: 800px) {
+    .map-toggle-menu {
+      display: none;
+    }
+  }
+
+}
+
+
+.maps-full .map-toggle-menu {
+  top: 10px;
+  left: 186px;
+}
+
+//  9. basic-profile.html
+body.basic-profile {
+  #content .tab-block .nav-tabs > li > a {
+    padding: 9px 35px;
+  }
+}
+
+//  10. utility-404-error.html
+body.error-404 {
+
+  #main:before {
+    background: #F5F5F5;
+  }
+  #return-arrow {
+    top: 75px;
+    padding-top: 0;
+  }
+  .mid-section {
+    position: relative;
+    width: 100%;
+    height: 215px;
+    background: #FFF;
+    border-top: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+  }
+  .mid-content {
+    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 50px 20px 35px;
+  }
+  .mid-content input {
+    color: #AAA;
+    height: 55px;
+    border-radius: 1px;
+    padding: 10px 20px;
+    border: 0;
+    font-size: 16px;
+    border: 1px solid #EEE;
+    border-left: 5px solid @brand-primary;
+    background: #FBFBFB;
+  }
+
+  // Search bar
+  #search-widget {
+    background: #f1f1f1;
+  }
+}
+
+//  11. sales stats pages
+.sales-stats-page {
+
+// fileupload field styles
+  .fileupload .thumbnail {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .fileupload .thumbnail:empty {
+    min-height: 150px;
+    -webkit-transition: all 0s ease;
+    transition: all 0s ease;
+  }
+  .fileupload .thumbnail:empty:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+    left: 6px;
+    z-index: 0;
+    background-color: #EEE;
+  }
+
+//select filter dropdowns
+  .allcp-form select option {
+    color: black !important;
+  }
+  .empty {
+    color: #BBB !important;
+  }
+
+  ol.timeline-list li.timeline-item:first-child:after {
+    top: -25px;
+    height: 140%;
+  }
+
+  input.bg-light + .bootstrap-tagsinput,
+  input.bg-light + .bootstrap-tagsinput .tag:hover,
+  input.bg-light + .bootstrap-tagsinput .tag:focus {
+    background-color: #FAFAFA;
+  }
+
+}
+
+//  12. basic-search-results.html
+.basic-search-results {
+
+// Search Result Item styles
+  .search-result + .search-result {
+    margin-top: 31px;
+    padding-top: 20px;
+    border-top: 1px dashed #DDD;
+  }
+
+  .search-result h3,
+  .search-result > a {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  ul.result-info {
+    list-style: none;
+    padding-left: 0;
+    margin-left: -5px;
+    margin-bottom: 5px;
+  }
+  ul.result-info > li {
+    position: relative;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  ul.result-info > li + li {
+    padding-left: 12px;
+  }
+  ul.result-info > li + li:after {
+    content: "-";
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  ul.result-info > li > a {
+    font-size: 13px;
+    color: #999;
+  }
+
+}

@@ -1,0 +1,15 @@
+[
+	{"key": "1", "title": "Tier 1 - Single Item", "extraClasses": "custom-class" },
+	{"key": "2", "title": "Folder 1", "folder": true, "children": [
+		{"key": "2_1", "title": "Sub-item 1.1", "children": [
+			{"key": "2_1_1", "title": "Sub-item 2.1.1"},
+			{"key": "2_1_2", "title": "Sub-item 2.1.2"}
+		]},
+		{"key": "2_2", "title": "Sub-item 2.2", "children": [
+			{"key": "2_2_1", "title": "Sub-item 2.2.1"},
+			{"key": "2_2_2", "title": "Sub-item 2.2.2"}
+		]}
+	]},
+
+
+]

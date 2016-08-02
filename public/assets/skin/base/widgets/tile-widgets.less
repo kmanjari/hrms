@@ -1,0 +1,33 @@
+// ====================== Tile Widgets =======================
+// Panel Tile
+.panel-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-tile .panel-body,
+.panel-tile .panel-footer {
+    border: 0;
+}
+
+
+// Tile Icon BG
+.icon-bg {
+  position: absolute;
+  opacity: 0.8;
+  right: 0;
+  top: 0;
+  line-height: 100px;
+  font-size: 100px;
+}
+.icon-bg.left {
+  right: auto;
+  left: 0;
+}
+
+@media (max-width: 479px) {
+  .icon-bg {
+    line-height: 70px;
+    font-size: 70px;
+  }
+}

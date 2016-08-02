@@ -1,0 +1,223 @@
+// ====================== DataTables =======================
+
+table.dataTable {
+  margin: 0 !important;
+}
+// Table Row Changes
+table.dataTable tr.odd {
+  background-color: #fff;
+}
+// Table Header Changes
+table.dataTable thead th {
+  background: #f9f9f9;
+  padding: 10px;
+}
+// Table Footer Changes
+table.dataTable tfoot th {
+  border-top: 1px solid #ddd;
+  padding: 4px 18px 4px 10px;
+  font-weight: 600;
+  background: #f2f2f2;
+}
+// DataTable panel-menu, commonly holds filters
+.dt-panelmenu {
+  padding: 10px 14px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e5e5e5;
+}
+// DataTable panel-footer, commonly holds paginator
+.dt-panelfooter {
+  padding: 6px 14px;
+  background: #f8f8f8;
+  border-top: 1px solid #e5e5e5;
+}
+// DataTable Length
+.dataTables_length {
+  float: left;
+}
+.dataTables_length select {
+  margin: 0 5px;
+}
+// DataTable Filter
+.dataTables_filter {
+  float: right;
+}
+.dataTables_length label,
+.dataTables_filter label {
+  margin: 0;
+}
+// DataTable Search bar
+table.dataTable .form-control {
+  width: 100%;
+}
+// DataTable Footer Elements
+div.dataTables_info {
+  float: left;
+  padding-top: 12px;
+}
+div.dataTables_paginate {
+  margin-top: 5px;
+}
+// Filter Returned No results Pane
+table.dataTable td.dataTables_empty {
+  padding: 50px !important;
+  background: #f6f6f6 !important;
+}
+// Datatables abc filter
+.dt-abc-filter {
+  padding: 4px 0;
+}
+.dt-abc-filter span {
+  cursor: pointer;
+  padding: 0 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: @brand-primary;
+  display: inline-block;
+}
+.dt-abc-filter .abc-label {
+  color: #999;
+  padding: 0 3px;
+}
+// Contextual Row Filter Example
+table.dataTable tr.row-label td {
+  background: #f6f6f6;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+}
+// Table Selected/Active Row
+
+.table.dataTable tbody tr.active td,
+.table.dataTable tbody tr.active th {
+  color: #555;
+  border-color: #EEE;
+  background-color: #FFFEF0 !important;
+}
+.table.dataTable tbody tr.active:hover td,
+.table.dataTable tbody tr.active:hover th {
+  color: #555;
+  border-color: #EEE;
+  background-color: #FAF9DF !important;
+}
+// DataTable Modals
+
+.DTE .DTE_Header {
+  background-color: #fafafa;
+}
+.DTE .DTE_Header h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
+.DTE .DTE_Body {
+  min-height: 100px;
+}
+.DTE .DTE_Body:before,
+.DTE .DTE_Body:after {
+  content: " ";
+  display: table;
+}
+.DTE .DTE_Body:after {
+  clear: both;
+}
+.DTE .DTE_Body:before,
+.DTE .DTE_Body:after {
+  content: " ";
+  display: table;
+}
+.DTE .DTE_Body:after {
+  clear: both;
+}
+
+// DataTables Editor Addon - Checkbox
+.fchild-checkbox.dataTable thead th.sorting_disabled {
+  background: #FFF;
+}
+.fchild-checkbox.dataTable tr td:first-child {
+  text-align: center;
+}
+.fchild-checkbox.dataTable tr td:first-child:before {
+  content: "\f096";
+  font-family: FontAwesome;
+  color: #BBB;
+}
+.fchild-checkbox.dataTable tr.active td:first-child:before {
+  content: "\f046";
+  color: #555;
+}
+.fchild-checkbox.dataTable tr td.dataTables_empty:first-child:before {
+  content: "";
+}
+div.DTE_Inline div.DTE_Field input {
+  background-color: #FFFEF0;
+}
+
+// PRINTING
+ .DTTT_Print #content_wrapper {
+ 	margin: 0 !important;
+ 	padding: 0 !important;
+ 	left: 0 !important;
+ 	top: 0 !important;
+ 	right: 0 !important;
+ 	bottom: 0 !important;
+}
+.DTTT_print_info {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  width: 400px;
+  height: 150px;
+  margin-left: -200px;
+  margin-top: -75px;
+  text-align: center;
+  color: #333;
+  padding: 10px 30px;
+  background: #ffffff;
+  /* Old browsers */
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  /* W3C */
+  /* IE6-9 */
+  opacity: 0.95;
+  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+  -ms-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+}
+.DTTT_print_info h6 {
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 28px;
+  margin: 1em;
+}
+.DTTT_print_info p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+// Datatables Collapsible Rows
+//
+tr.shown + tr { background-color: #f7f7f7; }
+td.details-control {
+    background: url('@{img-path}/plugins/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('@{img-path}/plugins/details_close.png') no-repeat center center;
+}

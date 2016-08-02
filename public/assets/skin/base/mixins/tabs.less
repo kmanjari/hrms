@@ -1,0 +1,39 @@
+// ====================== Tabs =======================
+
+.tabs-variant(@state; @color) {
+
+	// tabs top
+	.tab-block .tabs-border.nav-tabs.tabs-@{state} > li.active > a {
+	    border-top-color: @color;
+	}
+  	// tabs left
+	.tab-block .tabs-border.tabs-left.tabs-@{state} > li.active > a {
+	    border-left-color: @color;
+	}
+  	// tabs right
+	.tab-block .tabs-border.tabs-right.tabs-@{state} > li.active > a {
+	    border-right-color: @color;
+	}
+  	// tabs bottom
+	.tab-block .tabs-border.tabs-below.tabs-@{state} > li.active > a {
+	    border-bottom-color: @color;
+	}
+
+  	// panel tabs
+	.panel-tabs.panel-tabs-border.tabs-@{state} > li.active > a {
+	    border-top-color: @color;
+	}
+
+}
+
+// Nav Pill Contextuals
+.pills-variant(@state; @color) {
+
+	.nav-pills.nav-@{state} > li.active > a {
+	      &,
+	      &:hover,
+	      &:focus {
+	        background-color: @color;
+	      }
+	    }
+	}

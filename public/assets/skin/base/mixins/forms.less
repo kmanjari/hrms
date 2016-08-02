@@ -1,0 +1,64 @@
+// ====================== Form validation states =======================
+
+.form-control-validation(@text-color: #555; @border-color: #ccc; @background-color: #f5f5f5) {
+  // Color label and help text
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline,
+  .append-icon {
+    color: @text-color;
+  }
+  // Set border and box shadow on specific inputs to match
+  .form-control {
+    border-color: lighten(@border-color, 10%);
+    .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075)); // Redeclare so transitions work
+    &:focus {
+      border-color: darken(@border-color, 10%);
+      @shadow: inset 0 1px 1px rgba(0, 0, 0, .025), 0 0 3px lighten(@border-color, 20%);
+      .box-shadow(@shadow);
+    }
+  }
+  // Set addons validation states
+  .input-group-addon {
+    color: darken(@background-color, 30%);
+    border-color: @border-color;
+    background-color: lighten(@background-color, 20%);
+  }
+  // Optional feedback icon
+  .form-control-feedback {
+    color: @text-color;
+  }
+}
+
+// Form control :focus
+.form-control-focus(@color: @input-border-focus) {
+  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+  &:focus {
+    border-color: @color;
+    outline: 0;
+  }
+}
+
+// Form control sizing
+.input-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  height: @input-height;
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+
+  select& {
+    height: @input-height;
+    line-height: @input-height;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  textarea&,
+  select[multiple] & {
+    height: auto;
+  }
+}

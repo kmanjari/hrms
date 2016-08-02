@@ -1,0 +1,38 @@
+// ====================== Wells =======================
+
+// Well container
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: @well-bg;
+  border: 1px solid @well-border;
+  border-radius: @border-radius-base;
+  .box-shadow(none);
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+
+// Sizes
+.well-lg {
+  padding: 24px;
+  border-radius: @border-radius-large;
+}
+.well-sm {
+  padding: 9px;
+  border-radius: @border-radius-small;
+}
+.well.well-xs {
+  padding: 6px;
+  border-radius: @border-radius-small;
+}
+
+// alt style
+.well.well-clean {
+    border-radius: 0;
+    border-color: #DDD;
+    box-shadow: none;
+}
+

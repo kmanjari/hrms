@@ -1,0 +1,118 @@
+// ====================== Dropzone =======================
+.dropzone {
+  min-height: 200px;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 15px;
+}
+
+.dropzone .dz-default.dz-message {
+  cursor: pointer;
+  background-image: none;
+  width: 100%;
+  height: 100%;
+  top: 23%;
+  margin-left: 0px;
+  margin-top: -23px;
+  text-align: center;
+  left: 0;
+}
+
+.dropzone .dz-default.dz-message span {
+  display: inline-block;
+  text-align: center;
+}
+
+.dropzone .dz-default.dz-message span.main-text {
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 400;
+  color: #666;
+}
+
+.dropzone .dz-default.dz-message span.main-text b {
+  cursor: pointer;
+  font-size: 40px;
+  color: #555;
+}
+
+.dropzone .dz-default.dz-message span.sub-text {
+  font-size: 20px;
+  color: #888;
+}
+
+.dropzone .dz-default.dz-message i.fa {
+  cursor: pointer;
+  color: #4a89dc;
+  font-size: 100px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.dropzone a.dz-remove,
+.dropzone-previews a.dz-remove {
+  cursor: pointer;
+}
+
+// dropzone preview
+.dropzone .dz-preview,
+.dropzone-previews .dz-preview {
+  box-shadow: none;
+  border-color: #DDD;
+}
+
+// dropzone preview file size
+.dropzone .dz-preview .dz-details .dz-size,
+.dropzone-previews .dz-preview .dz-details .dz-size {
+  font-size: 13px;
+}
+
+// dropzone preview thumb
+.dropzone .dz-preview .dz-details,
+.dropzone-previews .dz-preview .dz-details,
+.dropzone .dz-preview .dz-details img,
+.dropzone-previews .dz-preview .dz-details img {
+  width: 115px;
+}
+
+// dropzone preview remove btn
+.dropzone a.dz-remove,
+.dropzone-previews a.dz-remove {
+  margin-top: 30px;
+  border-radius: 0;
+}
+
+// dropzone preview error indicator
+.dropzone .dz-preview.dz-error .dz-error-mark,
+.dropzone-previews .dz-preview.dz-error .dz-error-mark,
+.dropzone .dz-preview.dz-error .dz-success-mark,
+.dropzone-previews .dz-preview.dz-error .dz-success-mark {
+  -webkit-transform: scale(0.70);
+  transform: scale(0.70);
+}
+
+// dropzone small
+.dropzone.dropzone-sm .dz-default.dz-message i.fa {
+  color: #BBB;
+  font-size: 70px;
+  margin-bottom: 6px;
+}
+
+.dropzone.dropzone-sm .dz-default.dz-message span.main-text {
+  font-size: 22px;
+}
+
+.dropzone.dropzone-sm .dz-default.dz-message span.main-text b {
+  font-size: 32px;
+}
+
+.dropzone.dropzone-sm .dz-default.dz-message span.sub-text {
+  font-size: 16px;
+}
+
+/* Demonstration Purposes ONLY */
+.dropzone .dz-preview .dz-error-message,
+.dropzone-previews .dz-preview .dz-error-message {
+  display: none !important;
+}

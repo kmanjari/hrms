@@ -1,0 +1,45 @@
+// ====================== Background Options =======================
+// transparent bg
+.bg-tp {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+// BG gradient setting
+.bg-gradient {
+  border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background-repeat: repeat-x;
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.30) 1%, rgba(255, 255, 255, 0.15) 100%);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.30) 1%, rgba(255, 255, 255, 0.15) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80ffffff', endColorstr='#00ffffff', GradientType=0);
+}
+
+// Background Images
+
+.bg-background {
+  z-index: 0;
+  color: #FFF;
+  position: relative;
+
+  &.bg-psuedo-tp:before,
+  &.bg-psuedo-tp-dark:before,
+  &.bg-psuedo-tp-light:before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  &.bg-psuedo-tp-dark:before {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  &.bg-psuedo-tp-light:before {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+}
+

@@ -1,0 +1,62 @@
+// ====================== Media Groups =======================
+
+.media {
+  color: @media-body-color;
+  font-weight: @media-font-weight;
+
+  margin-top: 15px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.media-right,
+.media > .pull-right {
+  padding-left: 10px;
+}
+
+.media-left,
+.media > .pull-left {
+  padding-right: 10px;
+}
+
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.media-middle {
+  vertical-align: middle;
+}
+
+.media-bottom {
+  vertical-align: bottom;
+}
+
+// Reset margins on headings
+.media-heading {
+  font-size: 14px;
+  color: @media-heading-color;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.media-body {
+  line-height: 1.5;
+}
+
+// Media list variation
+.media-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+@media (max-width: 479px) {
+  .media > a > img {
+    height: 30px !important;
+    width: 30px !important;
+  }
+}

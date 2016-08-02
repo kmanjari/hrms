@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>Editor example - Basic initialisation</title>
+	<link rel="stylesheet" type="text/css" href="../../../../media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="../../../TableTools/css/dataTables.tableTools.css">
+	<link rel="stylesheet" type="text/css" href="../../css/dataTables.editor.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/demo.css">
+	<style type="text/css" class="init">
+
+	</style>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../TableTools/js/dataTables.tableTools.js"></script>
+	<script type="text/javascript" language="javascript" src="../../js/dataTables.editor.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/syntax/shCore.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+
+
+var editor; // use a global for the submit and return data rendering in the examples
+var jsRank_rankAdmin = 665;
+var jsRank_rankEngr = 666;
+var jsRank_rankOutsource = 667;
+
+var editor; // use a global for the submit and return data rendering in the examples
+
+(function ($) {
+    $(document).ready(function () {
+        //---Admin---//
+        if ( false ) {
+            editor = new $.fn.dataTable.Editor({
+                ajax: "php/TRRecordManHrsEditor.php",
+                table: "#TRrecordmanhrs",
+                fields: [{
+                    label: "Test Environment: ",
+                    name: "TestEnvironment.Name",
+                    type: "hidden"
+                }, {
+                    label: "Actual Date: ",
+                    name: "TestRequestActualSchedule.ActualDate",
+                    type: "date"
+                }, {
+                    label: "Actual Man Hours (Normal): ",
+                    name: "TestRequestActualSchedule.ManHrsNM"
+                }, {
+                    label: "Actual Man Hours (OT - Wkday/Sat): ",
+                    name: "TestRequestActualSchedule.ManHrsOT"
+                }, {
+                    label: "Actual Man Hours (OT - Sun/PH): ",
+                    name: "TestRequestActualSchedule.ManHrsOTSunPH"
+                }, {
+                    label: "Scheduled Man Hours (Normal): ",
+                    name: "TestRequestPlannedSchedule.ScheduledManHrsNM",
+                    type: "hidden"
+                }, {
+                    label: "Scheduled Man Hours (OT - Wkday/Sat): ",
+                    name: "TestRequestPlannedSchedule.ScheduledManHrsOT",
+                    type: "hidden"
+                }, {
+                    label: "Scheduled Man Hours (OT - Sun/PH): ",
+                    name: "TestRequestPlannedSchedule.ScheduledManHrsOTSunPH",
+                    type: "hidden"
+                }, {
+                    label: "Status: ",
+                    name: "TestRequestMain.Status",
+                    type: "select"
+                }, {
+                    label: "Confirmation (Admin): ",
+                    name: "TestRequestActualSchedule.RazerApproval",
+                    type: "select"
+                }, {
+                    label: "Remarks (Admin):",
+                    name: "TestRequestAdv.RemarksRazer"
+                }, {
+                    label: "Project Name: ",
+                    name: "TestRequestMain.ProjectName",
+                    type: "hidden"
+                }, {
+                    label: "Assigned Group ID: ",
+                    name: "TestRequestMain.AssignedGroupID",
+                    type: "hidden"
+                }, {
+                    label: "Engineer ID: ",
+                    name: "TestRequestMain.SWQAEngineerID",
+                    type: "hidden"
+                }],
+                i18n: {
+                    edit: {
+                        title: "Actual Man Hours"
+                    }
+                }
+            });
+
+            /*
+			editor.on('preSubmit', function(e,obj,action){
+				var actDate 		= obj.data.TestRequestActualSchedule.ActualDate;
+				var actHrsNm		= obj.data.TestRequestActualSchedule.ManHrsNM;
+				var actHrsOT		= obj.data.TestRequestActualSchedule.ManHrsOT;
+				var actHrsOTSunPH	= obj.data.TestRequestActualSchedule.ManHrsOTSunPH;
+				var difHrsNm		= obj.data.TestRequestPlannedSchedule.ScheduledManHrsNM;
+				var difHrsOT		= obj.data.TestRequestPlannedSchedule.ScheduledManHrsOT;
+				var difHrsOTSunPH	= obj.data.TestRequestPlannedSchedule.ScheduledManHrsOTSunPH;
+				var status_ID		= obj.data.TestRequestMain.Status;
+				var rzApv 			= obj.data.TestRequestActualSchedule.RazerApproval;
+				var rmksRzr			= obj.data.TestRequestAdv.RemarksRazer;
+				
+				var prjName			= obj.data.TestRequestMain.ProjectName;
+				var testEnv 		= obj.data.TestEnvironment.Name;
+				$.ajax({
+					type: "POST",
+					url: "php/TRRecordManHrsEditor_procEmail.php", //AJAX FILE
+					data: {
+							actDate: 		actDate,
+							actHrsNm:		actHrsNm,
+							actHrsOT:		actHrsOT,
+							actHrsOTSunPH:	actHrsOTSunPH,
+							difHrsNm:		difHrsNm,
+							difHrsOT:		difHrsOT,
+							difHrsOTSunPH:	difHrsOTSunPH,
+							status_ID:		status_ID,
+							rzApv: 			rzApv,
+							rmksRzr:		rmksRzr,
+							prjName:		prjName,
+							testEnv:		testEnv
+							}
+				});
+			});
+			*/
+
+            $('#TRrecordmanhrs').dataTable({ // INCLUDE IDENTIFIER FOR THE FORM HERE.
+                dom: "Tfrtip",
+                ajax: "php/TRRecordManHrsEditor.php", // PHP CODE FOR THE EDITOR
+                columns: [ //	COLUMN DATA TO BE DISPLAYED
+                {
+                    data: "TestRequestActualSchedule.TestRequestNo"
+                }, // 0
+                {
+                    data: "TestRequestMain.POnumber"
+                }, // 1
+                {
+                    data: "TestRequestMain.ProjectName"
+                }, // 2
+                {
+                    data: "TestEnvironment.Name"
+                }, // 3
+                {
+                    data: "TestRequestActualSchedule.ActualDate"
+                }, // 4
+                {
+                    data: "TestRequestActualSchedule.ManHrsNM"
+                }, // 5
+                {
+                    data: "TestRequestActualSchedule.ManHrsOT"
+                }, // 6
+                {
+                    data: "TestRequestActualSchedule.ManHrsOTSunPH"
+                }, // 7
+                {
+                    data: null,
+                    render: function (data, type, row) { //--- 8: Discrepancy Man Hours: Normal ---//
+                        var discrepancy = parseFloat(data.TestRequestActualSchedule.ManHrsNM).toFixed(2) - parseFloat(data.TestRequestPlannedSchedule.ScheduledManHrsNM).toFixed(2);
+                        return discrepancy.toFixed(2);
+                    }
+                }, {
+                    data: null,
+                    render: function (data, type, row) { //--- 9: Discrepancy Man Hours: OT (Weekdays/Sat) ---//
+                        var discrepancy = parseFloat(data.TestRequestActualSchedule.ManHrsOT).toFixed(2) - parseFloat(data.TestRequestPlannedSchedule.ScheduledManHrsOT).toFixed(2);
+                        return discrepancy.toFixed(2);
+                    }
+                }, {
+                    data: null,
+                    render: function (data, type, row) { //--- 10: Discrepancy Man Hours: OT (Sun/Public Holidays) ---//
+                        var discrepancy = parseFloat(data.TestRequestActualSchedule.ManHrsOTSunPH).toFixed(2) - parseFloat(data.TestRequestPlannedSchedule.ScheduledManHrsOTSunPH).toFixed(2);
+                        return discrepancy.toFixed(2);
+                    }
+                }, {
+                    data: null,
+                    render: function (data, type, row) { //--- 11: Total Actual Man Hours ---//
+                        var total = parseFloat(data.TestRequestActualSchedule.ManHrsNM) + parseFloat(data.TestRequestActualSchedule.ManHrsOT) + parseFloat(data.TestRequestActualSchedule.ManHrsOTSunPH);
+                        return total.toFixed(2);
+                    }
+                }, {
+                    data: "StatusMirror.String"
+                }, // 12
+                {
+                    data: "RazerConfirmationMirror.String"
+                }, // 13
+                {
+                    data: "TestRequestAdv.RemarksRazer"
+                }, // 14
+                {
+                    data: "TestRequestMain.AssignedGroupID"
+                }, // 15
+                {
+                    data: "AssignedGroup.Name"
+                }, // 16
+                {
+                    data: "TestRequestMain.SWQAEngineerID"
+                } // 17
+                ],
+                    "columnDefs": [{
+                    "targets": [15],
+                        "visible": false,
+                        "searchable": false
+                }, {
+                    "targets": [17],
+                        "visible": false,
+                        "searchable": false
+                }],
+                tableTools: {
+                    sRowSelect: "os",
+                    sSwfPath: "extensions/tabletools/swf/copy_csv_xls_pdf.swf",
+                    aButtons: [{
+                        sExtends: "editor_edit",
+                        editor: editor,
+                        sButtonText: "Actual"
+                    }, {
+                        sExtends: "xls",
+                        sButtonText: "Export as Excel",
+                        sAction: "flash_save"
+                    }, {
+                        sExtends: "csv",
+                        sButtonText: "Export as CSV",
+                        sAction: "flash_save"
+                    }, {
+                        sExtends: "pdf",
+                        sButtonText: "Export as PDF",
+                        sPdfOrientation: "landscape"
+                    },
+                        "print"]
+                },
+                    "deferRender": true,
+                initComplete: function (settings, json) { // This map to show dropdown options when using 'Edit' function
+                    editor.field('TestRequestMain.Status').update(json.StatusMirror);
+                    editor.field('TestRequestActualSchedule.RazerApproval').update(json.ConfirmationMirror);
+                }
+            });
+        }
+        //---Outsource---//
+        else {
+            editor = new $.fn.dataTable.Editor({
+                ajax: "test.php",
+                table: "#TRrecordmanhrs",
+                fields: [{
+                    label: "Test Environment: ",
+                    name: "TestEnvironment.Name",
+                    type: "hidden"
+                }, {
+                    label: "Actual Date: ",
+                    name: "TestRequestActualSchedule.ActualDate",
+                    type: "date"
+                }, {
+                    label: "Actual Man Hours (Normal): ",
+                    name: "TestRequestActualSchedule.ManHrsNM"
+                }, {
+                    label: "Actual Man Hours (OT - Wkday/Sat): ",
+                    name: "TestRequestActualSchedule.ManHrsOT"
+                }, {
+                    label: "Actual Man Hours (OT - Sun/PH): ",
+                    name: "TestRequestActualSchedule.ManHrsOTSunPH"
+                }, {
+                    label: "Planned Man Hours (Normal): ",
+                    name: "TestRequestPlannedSchedule.ScheduledManHrsNM",
+                    type: "hidden"
+                }, {
+                    label: "Planned Man Hours (OT - Wkday/Sat): ",
+                    name: "TestRequestPlannedSchedule.ScheduledManHrsOT",
+                    type: "hidden"
+                }, {
+                    label: "Planned Man Hours (OT - Sun/PH): ",
+                    name: "TestRequestPlannedSchedule.ScheduledManHrsOTSunPH",
+                    type: "hidden"
+                }, {
+                    label: "Status: ",
+                    name: "TestRequestMain.Status",
+                    type: "select"
+                }, {
+                    label: "Confirmation (Admin): ",
+                    name: "TestRequestActualSchedule.RazerApproval",
+                    type: "hidden"
+                }, {
+                    label: "Remarks (Admin):",
+                    name: "TestRequestAdv.RemarksRazer",
+                    type: "hidden"
+                }, {
+                    label: "Project Name: ",
+                    name: "TestRequestMain.ProjectName",
+                    type: "hidden"
+                }, {
+                    label: "Assigned Group ID: ",
+                    name: "TestRequestMain.AssignedGroupID",
+                    type: "hidden"
+                }, {
+                    label: "Engineer ID: ",
+                    name: "TestRequestMain.SWQAEngineerID",
+                    type: "hidden"
+                }],
+                i18n: {
+                    edit: {
+                        title: "Actual Man Hours"
+                    }
+                }
+            });
+
+            $('#TRrecordmanhrs').dataTable({
+                dom: "Tfrtip",
+                ajax: "test.php",
+                columns: [{
+                    data: "TestRequestActualSchedule.TestRequestNo"
+                }, // 0
+                {
+                    data: "TestRequestMain.POnumber"
+                }, // 1
+                {
+                    data: "TestRequestMain.ProjectName"
+                }, // 2
+                {
+                    data: "TestEnvironment.Name"
+                }, // 3
+                {
+                    data: "TestRequestActualSchedule.ActualDate"
+                }, // 4
+                {
+                    data: "TestRequestActualSchedule.ManHrsNM"
+                }, // 5
+                {
+                    data: "TestRequestActualSchedule.ManHrsOT"
+                }, // 6
+                {
+                    data: "TestRequestActualSchedule.ManHrsOTSunPH"
+                }, // 7
+                {
+                    data: null,
+                    render: function (data, type, row) { //--- 8: Discrepancy Man Hours: Normal ---//
+                        var discrepancy = parseFloat(data.TestRequestActualSchedule.ManHrsNM).toFixed(2) - parseFloat(data.TestRequestPlannedSchedule.ScheduledManHrsNM).toFixed(2);
+                        return discrepancy.toFixed(2);
+                    }
+                }, {
+                    data: null,
+                    render: function (data, type, row) { //--- 9: Discrepancy Man Hours: OT (Weekdays/Sat) ---//
+                        var discrepancy = parseFloat(data.TestRequestActualSchedule.ManHrsOT).toFixed(2) - parseFloat(data.TestRequestPlannedSchedule.ScheduledManHrsOT).toFixed(2);
+                        return discrepancy.toFixed(2);
+                    }
+                }, {
+                    data: null,
+                    render: function (data, type, row) { //--- 10: Discrepancy Man Hours: OT (Sun/Public Holidays) ---//
+                        var discrepancy = parseFloat(data.TestRequestActualSchedule.ManHrsOTSunPH).toFixed(2) - parseFloat(data.TestRequestPlannedSchedule.ScheduledManHrsOTSunPH).toFixed(2);
+                        return discrepancy.toFixed(2);
+                    }
+                }, {
+                    data: null,
+                    render: function (data, type, row) { //--- 11: Total Actual Man Hours ---//
+                        var total = parseFloat(data.TestRequestActualSchedule.ManHrsNM) + parseFloat(data.TestRequestActualSchedule.ManHrsOT) + parseFloat(data.TestRequestActualSchedule.ManHrsOTSunPH);
+                        return total.toFixed(2);
+                    }
+                }, {
+                    data: "StatusMirror.String"
+                }, // 12
+                {
+                    data: "RazerConfirmationMirror.String"
+                }, // 13
+                {
+                    data: "TestRequestAdv.RemarksRazer"
+                }, // 14
+                {
+                    data: "TestRequestMain.AssignedGroupID"
+                }, // 15
+                {
+                    data: "AssignedGroup.Name"
+                }, // 16
+                {
+                    data: "TestRequestMain.SWQAEngineerID"
+                } // 17
+                ],
+                    "columnDefs": [{
+                    "targets": [1],
+                        "visible": false,
+                        "searchable": false
+                }, {
+                    "targets": [15],
+                        "visible": false,
+                        "searchable": false
+                }, {
+                    "targets": [17],
+                        "visible": false,
+                        "searchable": false
+                }],
+                tableTools: {
+                    sRowSelect: "os",
+                    sSwfPath: "extensions/tabletools/swf/copy_csv_xls_pdf.swf",
+                    aButtons: [{
+                        sExtends: "editor_edit",
+                        editor: editor,
+                        sButtonText: "Actual"
+                    }, {
+                        sExtends: "xls",
+                        sButtonText: "Export as Excel",
+                        sAction: "flash_save"
+                    }, {
+                        sExtends: "csv",
+                        sButtonText: "Export as CSV",
+                        sAction: "flash_save"
+                    }, {
+                        sExtends: "pdf",
+                        sButtonText: "Export as PDF",
+                        sPdfOrientation: "landscape"
+                    },
+                        "print"]
+                },
+                    "deferRender": true,
+                initComplete: function (settings, json) {
+                    editor.field('TestRequestMain.Status').update(json.StatusMirror);
+                }
+            });
+        }
+    });
+}(jQuery));
+
+
+
+	</script>
+</head>
+
+<body class="dt-example">
+	<div class="container">
+		<section>
+			<h1>Editor example <span>Basic initialisation</span></h1>
+
+			<div class="info">
+				<p><a href="//editor.datatables.net">Editor</a> is a Create, Read, Update and Delete (CRUD) extensions
+				for <a href="//datatables.net">DataTables</a> that provides the ability to easily add, edit and delete
+				rows on a database that is displayed by a DataTable. Editor provides a clean API that allows form
+				creation and manipulation to let the end user modify enter the required data, and a well defined server
+				interaction protocol.</p>
+
+				<p>This simple example shows a table with seven fields, each of which can be edited as plain text. In
+				other examples we will explore how to add date pickers, <code class="tag" title=
+				"HTML tag">select</code> elements and other controls to make form input intuitive for the system user,
+				among many other aspects of the Editor API.</p>
+			</div>
+
+			<table id="TRrecordmanhrs" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>5</th>
+						<th>6</th>
+						<th>7</th>
+						<th>8</th>
+						<th>9</th>
+						<th>10</th>
+						<th>11</th>
+						<th>12</th>
+						<th>13</th>
+						<th>14</th>
+						<th>15</th>
+						<th>16</th>
+						<th>17</th>
+						<th>18</th>
+					</tr>
+				</thead>
+			</table>
+
+			<ul class="tabs">
+				<li class="active">Javascript</li>
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>Ajax</li>
+				<li>Server-side script</li>
+			</ul>
+
+			<div class="tabs">
+				<div class="js">
+					<p>The Javascript shown below is used to initialise the table shown in this
+					example:</p><code class="multiline brush: js;">var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		ajax: &quot;../php/staff.php&quot;,
+		table: &quot;#example&quot;,
+		fields: [ {
+				label: &quot;First name:&quot;,
+				name: &quot;first_name&quot;
+			}, {
+				label: &quot;Last name:&quot;,
+				name: &quot;last_name&quot;
+			}, {
+				label: &quot;Position:&quot;,
+				name: &quot;position&quot;
+			}, {
+				label: &quot;Office:&quot;,
+				name: &quot;office&quot;
+			}, {
+				label: &quot;Extension:&quot;,
+				name: &quot;extn&quot;
+			}, {
+				label: &quot;Start date:&quot;,
+				name: &quot;start_date&quot;,
+				type: &quot;date&quot;
+			}, {
+				label: &quot;Salary:&quot;,
+				name: &quot;salary&quot;
+			}
+		]
+	} );
+
+	$('#example').DataTable( {
+		dom: &quot;Tfrtip&quot;,
+		ajax: &quot;../php/staff.php&quot;,
+		columns: [
+			{ data: null, render: function ( data, type, row ) {
+				// Combine the first and last names into a single table field
+				return data.first_name+' '+data.last_name;
+			} },
+			{ data: &quot;position&quot; },
+			{ data: &quot;office&quot; },
+			{ data: &quot;extn&quot; },
+			{ data: &quot;start_date&quot; },
+			{ data: &quot;salary&quot;, render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+		],
+		tableTools: {
+			sRowSelect: &quot;os&quot;,
+			aButtons: [
+				{ sExtends: &quot;editor_create&quot;, editor: editor },
+				{ sExtends: &quot;editor_edit&quot;,   editor: editor },
+				{ sExtends: &quot;editor_remove&quot;, editor: editor }
+			]
+		}
+	} );
+} );</code>
+
+					<p>In addition to the above code, the following Javascript library files are loaded for use in this
+					example:</p>
+
+					<ul>
+						<li><a href="../../../../media/js/jquery.js">../../../../media/js/jquery.js</a></li>
+						<li><a href=
+						"../../../../media/js/jquery.dataTables.js">../../../../media/js/jquery.dataTables.js</a></li>
+						<li><a href=
+						"../../../TableTools/js/dataTables.tableTools.js">../../../TableTools/js/dataTables.tableTools.js</a></li>
+						<li><a href="../../js/dataTables.editor.js">../../js/dataTables.editor.js</a></li>
+					</ul>
+				</div>
+
+				<div class="table">
+					<p>The HTML shown below is the raw HTML table element, before it has been enhanced by
+					DataTables:</p>
+				</div>
+
+				<div class="css">
+					<div>
+						<p>This example uses a little bit of additional CSS beyond what is loaded from the library
+						files (below), in order to correctly display the table. The additional CSS used is shown
+						below:</p><code class="multiline brush: js;"></code>
+					</div>
+
+					<p>The following CSS library files are loaded for use in this example to provide the styling of the
+					table:</p>
+
+					<ul>
+						<li><a href=
+						"../../../../media/css/jquery.dataTables.css">../../../../media/css/jquery.dataTables.css</a></li>
+						<li><a href=
+						"../../../TableTools/css/dataTables.tableTools.css">../../../TableTools/css/dataTables.tableTools.css</a></li>
+						<li><a href="../../css/dataTables.editor.css">../../css/dataTables.editor.css</a></li>
+					</ul>
+				</div>
+
+				<div class="ajax">
+					<p>This table loads data by Ajax. The latest data that has been loaded is shown below. This data
+					will update automatically as any additional data is loaded.</p>
+				</div>
+
+				<div class="php">
+					<p>The script used to perform the server-side processing for this table is shown below. Please note
+					that this is just an example script using PHP. Server-side processing scripts can be written in any
+					language, using <a href="//datatables.net/manual/server-side">the protocol described in the
+					DataTables documentation</a>.</p>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<section>
+		<div class="footer">
+			<div class="gradient"></div>
+
+			<div class="liner">
+				<h2>Other examples</h2>
+
+				<div class="toc">
+					<div class="toc-group">
+						<h3><a href="./index.html">Simple initialisation</a></h3>
+						<ul class="toc active">
+							<li class="active"><a href="./simple.html">Basic initialisation</a></li>
+							<li><a href="./fieldDefaults.html">Setting defaults</a></li>
+							<li><a href="./fieldTypes.html">Field types</a></li>
+							<li><a href="./dates.html">Dates (with jQuery UI datepicker)</a></li>
+							<li><a href="./i18n.html">Internationalisation</a></li>
+							<li><a href="./inTableControls.html">In table form controls</a></li>
+							<li><a href="./responsive.html">Responsive table extension</a></li>
+							<li><a href="./server-side-processing.html">Server-side processing</a></li>
+							<li><a href="./join.html">Join tables - working with multiple SQL tables</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../advanced/index.html">Advanced initialisation</a></h3>
+						<ul class="toc">
+							<li><a href="../advanced/formOnlyData.html">Data shown only in the form</a></li>
+							<li><a href="../advanced/tableOnlyData.html">Data shown in table only</a></li>
+							<li><a href="../advanced/deepObjects.html">Complex (nested) JSON data source</a></li>
+							<li><a href="../advanced/REST.html">REST interface</a></li>
+							<li><a href="../advanced/localstorage.html">Ajax override - using localStorage for the data
+							source</a></li>
+							<li><a href="../advanced/jsonId.html">Row ID source specification</a></li>
+							<li><a href="../advanced/htmlTable.html">DOM sourced table</a></li>
+							<li><a href="../advanced/exportButtons.html">Export buttons</a></li>
+							<li><a href="../advanced/joinSelf.html">Join tables - self referencing join</a></li>
+							<li><a href="../advanced/joinLinkTable.html">Join tables - link table</a></li>
+							<li><a href="../advanced/joinArray.html">Join tables - one-to-many join</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../bubble-editing/index.html">Bubble editing</a></h3>
+						<ul class="toc">
+							<li><a href="../bubble-editing/simple.html">Simple bubble editing</a></li>
+							<li><a href="../bubble-editing/grouped.html">Multiple fields in a bubble</a></li>
+							<li><a href="../bubble-editing/options.html">Form control and display options</a></li>
+							<li><a href="../bubble-editing/defaultOptions.html">Default control and display
+							options</a></li>
+							<li><a href="../bubble-editing/inTableControls.html">Bubble editing with in table row
+							controls</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../inline-editing/index.html">Inline editing</a></h3>
+						<ul class="toc">
+							<li><a href="../inline-editing/simple.html">Simple inline editing</a></li>
+							<li><a href="../inline-editing/tabControl.html">Tab between columns</a></li>
+							<li><a href="../inline-editing/options.html">Editing options - submit on blur</a></li>
+							<li><a href="../inline-editing/submitButton.html">Inline editing with a submit
+							button</a></li>
+							<li><a href="../inline-editing/editIcon.html">Edit icon</a></li>
+							<li><a href="../inline-editing/server-side-processing.html">Server-side processing and tab
+							control</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../api/index.html">API</a></h3>
+						<ul class="toc">
+							<li><a href="../api/confirmClose.html">Events - unsaved changes close confirmation</a></li>
+							<li><a href="../api/clientValidation.html">Client-side validation</a></li>
+							<li><a href="../api/triggerButton.html">Customised control buttons</a></li>
+							<li><a href="../api/backNext.html">Previous / next editing buttons</a></li>
+							<li><a href="../api/duplicateButton.html">Duplicate button</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../standalone/index.html">Standalone</a></h3>
+						<ul class="toc">
+							<li><a href="../standalone/simple.html">Simple standalone editing</a></li>
+							<li><a href="../standalone/bubble.html">Bubble editing</a></li>
+							<li><a href="../standalone/inline.html">Inline editing</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../styling/index.html">Styling</a></h3>
+						<ul class="toc">
+							<li><a href="../styling/envelope.html">Envelope display controller</a></li>
+							<li><a href="../styling/envelopeInTable.html">Envelope display with in table
+							controls</a></li>
+							<li><a href="../styling/stackedInputs.html">Styled for stacked inputs</a></li>
+							<li><a href="../styling/bootstrap.html">Bootstrap</a></li>
+							<li><a href="../styling/jqueryui.html">jQuery UI</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../plug-ins/index.html">Plug-ins</a></h3>
+						<ul class="toc">
+							<li><a href="../plug-ins/fieldPlugin.html">Custom field type plug-ins</a></li>
+							<li><a href="../plug-ins/displayController.html">Custom display controller</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="epilogue">
+					<p>Please refer to the <a href="http://www.datatables.net">DataTables documentation</a> for full
+					information about its API properties and methods.<br>
+					Additionally, there are a wide range of <a href="http://www.datatables.net/extras">extras</a> and
+					<a href="http://www.datatables.net/plug-ins">plug-ins</a> which extend the capabilities of
+					DataTables.</p>
+
+					<p class="copyright">DataTables designed and created by <a href=
+					"http://www.sprymedia.co.uk">SpryMedia Ltd</a> &#169; 2007-2014<br>
+					DataTables is licensed under the <a href="http://www.datatables.net/mit">MIT license</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

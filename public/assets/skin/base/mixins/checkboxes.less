@@ -1,0 +1,44 @@
+// ====================== Checkboxes/Radio Contextual Skins =======================
+
+.checkbox-variant(@brand, @color) {
+
+  @color-light: lighten(@color, 6%);
+
+  .radio-custom.radio-@{brand} label:before,
+  .checkbox-custom.checkbox-@{brand} label:before {
+    border-color: @color-light;
+  }
+  .radio-custom.radio-@{brand} input[type=radio]:checked + label:after,
+  .radio-custom.radio-@{brand} input[type=checkbox]:checked + label:after,
+  .checkbox-custom.checkbox-@{brand} input[type=checkbox]:checked + label:after,
+  .checkbox-custom.checkbox-@{brand} input[type=radio]:checked + label:after {
+    background-color: @color-light;
+    color: @color-light;
+  }
+
+  .checkbox-custom.fill.checkbox-@{brand} label:before {
+    background-color: @color-light;
+  }
+
+}
+
+// Light Skin
+.checkbox-light-variant(@brand, @color) {
+
+  .radio-custom.radio-@{brand} label:before,
+  .checkbox-custom.checkbox-@{brand} label:before {
+    border-color: #eee;
+  }
+  .radio-custom.radio-@{brand} input[type=radio]:checked + label:after,
+  .radio-custom.radio-@{brand} input[type=checkbox]:checked + label:after,
+  .checkbox-custom.checkbox-@{brand} input[type=checkbox]:checked + label:after,
+  .checkbox-custom.checkbox-@{brand} input[type=radio]:checked + label:after {
+    background-color: #666;
+    color: #666 !important;
+  }
+
+  .checkbox-custom.fill.checkbox-@{brand} label:before {
+    background-color: #eee;
+  }
+
+}

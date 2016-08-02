@@ -1,0 +1,145 @@
+// ====================== Switches =======================
+
+div.switch label {
+  display: block;
+  position: relative;
+  color: transparent;
+  background: transparent;
+  border: 2px solid @brand-light;
+  text-indent: 100%;
+  width: 52px;
+  height: 26px;
+  cursor: pointer;
+  transition: left .15s ease-out;
+  border-radius: 2px;
+}
+
+div.switch input {
+  display: none
+}
+
+div.switch input + label {
+  margin-left: 0;
+  margin-right: 0
+}
+
+div.switch label:after {
+  content: "";
+  display: block;
+  background: @brand-light;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+
+  border-radius: 2px;
+  -webkit-transition: left .15s ease-out;
+  -moz-transition: left .15s ease-out;
+  transition: left .15s ease-out;
+}
+
+div.switch input:checked + label:after {
+  left: 28px
+}
+
+div.switch label {
+  width: 52px;
+  height: 26px
+}
+
+div.switch label:after {
+  width: 18px;
+  height: 18px
+}
+
+div.switch input:checked + label:after {
+  left: 28px
+}
+
+div.switch label {
+  background: transparent;
+  border-color: @brand-light;
+  color: transparent;
+}
+
+div.switch label:after {
+  background: @brand-light
+}
+
+div.switch input:checked + label {
+  border-color: #2ba6cb
+}
+
+// Switch Sizes
+div.switch.switch-lg label {
+  width: 65px;
+  height: 32px
+}
+
+div.switch.switch-lg label:after {
+  width: 24px;
+  height: 24px
+}
+
+div.switch.switch-lg input:checked + label:after {
+  left: 35px
+}
+
+div.switch.switch-sm label {
+  width: 45px;
+  height: 22px
+}
+
+div.switch.switch-sm label:after {
+  width: 14px;
+  height: 14px
+}
+
+div.switch.switch-sm input:checked + label:after {
+  left: 26px
+}
+
+div.switch.switch-xs label {
+  width: 39px;
+  height: 19px
+}
+
+div.switch.switch-xs label:after {
+  width: 11px;
+  height: 11px
+}
+
+div.switch.switch-xs input:checked + label:after {
+  left: 22px
+}
+
+div.switch.radius label {
+  border-radius: 4px
+}
+
+div.switch.radius label:after {
+  border-radius: 3px
+}
+
+// Rounded Switch
+div.switch.round {
+  border-radius: 1000px
+}
+
+div.switch.round label {
+  border-radius: 26px
+}
+
+div.switch.round label:after {
+  border-radius: 26px
+}
+
+// Inline Switch
+.switch.switch-inline {
+  display: inline-block
+}
+
+.switch.switch-inline + .switch.switch-inline {
+  margin-left: 15px
+}

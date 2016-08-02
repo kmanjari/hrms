@@ -1,0 +1,235 @@
+// ====================== Scroller =======================
+
+.scroller {
+  height: 100%;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+
+  &::-webkit-scrollbar
+  {
+    display: none;
+  }
+}
+.scroller,
+.scroller * {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
+}
+.scroller,
+.scroller-content,
+.scroller-bar,
+.scroller-track,
+.scroller-handle {
+  box-sizing: border-box;
+}
+.scroller-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.scroller-content::-webkit-scrollbar,
+.scroller-content::-webkit-scrollbar-button,
+.scroller-content::-webkit-scrollbar-track,
+.scroller-content::-webkit-scrollbar-track-piece,
+.scroller-content::-webkit-scrollbar-thumb,
+.scroller-content::-webkit-scrollbar-corner,
+.scroller-content::-webkit-resizer {
+  background: transparent;
+  opacity: 0;
+  width: 0 !important;
+}
+.scroller-bar {
+  width: 6px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &::-webkit-scrollbar
+  {
+    display: none;
+  }
+}
+.scroller-active .scroller-bar { opacity: 1; }
+
+.scroller-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::-webkit-scrollbar
+  {
+    display: none;
+  }
+}
+.scroller-handle {
+  width: 5px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background: @brand-primary;
+  cursor: pointer;
+  transition: height 0.3s ease;
+}
+.scroller-horizontal .scroller-content {
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 0 16px 0;
+}
+.scroller-horizontal .scroller-bar {
+  width: 100%;
+  height: 5px;
+  top: auto;
+  bottom: 0;
+  border-width: 1px 0 0 0;
+}
+.scroller-horizontal .scroller-handle {
+  width: 20px;
+  height: 5px;
+  top: auto;
+  right: auto;
+  bottom: 3px;
+}
+.scroller-setup .scroller-content,
+.scroller-active .scroller-content {
+  padding: 0;
+}
+.scroller-setup .scroller-bar,
+.scroller-active .scroller-bar {
+  display: block;
+}
+
+
+// Scroller - Panel Style
+.panel-scroller {
+  padding: 0;
+  height: 600px;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+// scroller content
+.panel-scroller .scroller-content {
+  padding: 0 10px 0 0;
+}
+
+// scroller bar container
+.panel-scroller .scroller-bar {
+  background: transparent;
+  border-left: 0;
+  width: 15px;
+}
+.panel-scroller {position: relative;}
+.panel-scroller:after {
+  background-color: @brand-light;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0; right:5px;
+  width: 1px;
+}
+.bg-dark .panel-scroller:after {background-color: lighten(@brand-dark,15%);}
+
+.scroller-overlay.panel-scroller:after {width: 0;}
+
+// scroller bar container handle
+.panel-scroller .scroller-handle {
+  right: 3px;
+  width: 5px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+// Scroller Bar - Height Options
+.scroller-xs {
+  height: 125px;
+  max-height: 125px;
+}
+.scroller-sm {
+  height: 200px;
+  max-height: 200px;
+}
+.scroller-md {
+  height: 300px;
+  max-height: 300px;
+}
+.scroller-lg {
+  height: 400px;
+  max-height: 400px;
+}
+
+// Scroller Bar Style
+.scroller-thick .scroller-bar {
+  width: 12px;
+}
+.scroller-thick .scroller-handle { 
+  width: 12px;
+  right: 0;
+  border-radius: 0;
+}
+
+// Scroller Bar - Overlay Style
+.panel-scroller.scroller-overlay {}
+.panel-scroller.scroller-overlay .scroller-bar {
+  background: transparent;
+  border: 0;
+}
+.panel-scroller.scroller-overlay .scroller-handle {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.panel-scroller.scroller-overlay:hover .scroller-handle {
+  opacity: 1;
+}
+.panel-scroller.scroller-overlay .scroller-content {
+  padding: 0;
+  margin-right: -17px;
+}
+
+// scroller nopad helper
+.scroller.scroller-pn .scroller-content {
+  padding: 0 !important;
+  width: 100%;
+}
+
+.ff .panel-scroller .scroller-content {
+  padding: 0 26px 0 0 !important;
+  position: relative;
+  right: -18px;
+}
+
+// Scroller Contextuals
+.scroller-primary .scroller-handle { background: @brand-primary; }
+.scroller-success .scroller-handle { background: @brand-success; }
+.scroller-info .scroller-handle { background: @brand-info; }
+.scroller-warning .scroller-handle { background: @brand-warning; }
+.scroller-danger .scroller-handle { background: @brand-danger; }
+.scroller-alert .scroller-handle { background: @brand-alert; }
+.scroller-system .scroller-handle { background: @brand-system; }
+.scroller-dark .scroller-handle { background: @brand-dark; }
+
+// inverse light contextuals
+.scroller-light .scroller-handle,
+.scroller-white .scroller-handle { background: @brand-light; }
+
+.scroller-light .scroller-bar,
+.scroller-white .scroller-bar { 
+  border-left: 0;
+  background: transparent;
+}

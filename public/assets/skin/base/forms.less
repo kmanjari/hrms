@@ -1,0 +1,524 @@
+// ====================== Forms =======================
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: @line-height-computed;
+  font-size: (@font-size-base * 1.5);
+  line-height: inherit;
+  color: @legend-color;
+  border: 0;
+  border-bottom: 1px solid @legend-border-color;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+// Override content-box in Normalize
+input[type="search"] {
+  .box-sizing(border-box);
+}
+
+// Position radios and checkboxes
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9; // IE8-9
+  line-height: normal;
+}
+
+// Set file controls height to match text inputs
+input[type="file"] {
+  display: block;
+}
+
+// Make range inputs behave like textual form control
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+// Make multiple select elements height unfixed
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+// Focus inputs
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  .tab-focus();
+}
+
+// Adjust output element
+output {
+  display: block;
+  padding-top: (@padding-base-vertical + 1);
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @input-color;
+}
+
+// Form control styles
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: @input-height-base;
+  padding: @padding-base-vertical @padding-base-horizontal;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @input-color;
+  background-color: @input-bg;
+  background-image: none;
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
+  -webkit-appearance: none;
+  .transition(~"border-color ease-in-out .15s");
+
+  .form-control-focus();
+
+  .placeholder();
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    background-color: @input-bg-disabled;
+    opacity: 1;
+  }
+
+  // Height to auto
+  textarea& {
+    height: auto;
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+textarea.textarea-grow {
+  height: @input-height-base;
+  resize: none;
+}
+textarea.textarea-grow:focus {
+  height: auto;
+  resize: vertical;
+}
+
+.input-hero .form-control {
+    padding: 14px 25px;
+    height: 60px;
+    background: @light-gray;
+    border: 1px solid @brand-light;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+// Webkit hacks
+
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  line-height: @input-height-base;
+  line-height: @line-height-base ~"\0";
+
+  &.input-sm {
+    line-height: @input-height-small;
+  }
+  &.input-lg {
+    line-height: @input-height-large;
+  }
+}
+
+
+// Form group
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+
+// Radios and checkboxes
+
+.radio,
+.checkbox {
+  position: relative;
+  display: block;
+  min-height: @line-height-computed;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  label {
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px \9;
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: -5px;
+}
+
+// Radios and checkboxes on the same line
+.radio-inline,
+.checkbox-inline {
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+.radio-inline,
+.checkbox-inline {
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+.radio,
+.checkbox {
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: not-allowed;
+    }
+  }
+}
+
+
+// Form control static - text
+
+.form-control-static {
+  padding-top: (@padding-base-vertical + 1);
+  padding-bottom: (@padding-base-vertical + 1);
+  margin-bottom: 0;
+
+  &.input-lg,
+  &.input-sm {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+// Form control sizing
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+
+.input-lg {
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}
+
+
+// Form control feedback
+
+.has-feedback {
+  position: relative;
+  .form-control {
+    padding-right: (@input-height-base * 1.25);
+  }
+}
+// Feedback icon
+.form-control-feedback {
+  position: absolute;
+  top: (@line-height-computed + 5);
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: @input-height-base;
+  height: @input-height-base;
+  line-height: @input-height-base;
+  text-align: center;
+}
+.input-lg + .form-control-feedback {
+  width: @input-height-large;
+  height: @input-height-large;
+  line-height: @input-height-large;
+}
+.input-sm + .form-control-feedback {
+  width: @input-height-small;
+  height: @input-height-small;
+  line-height: @input-height-small;
+}
+
+.has-primary when (@skin-primary) {
+  .form-control-validation(@state-primary-text; @state-primary-text; @state-primary-bg);
+}
+.has-success when (@skin-success) {
+  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+}
+.has-info when (@skin-info) {
+  .form-control-validation(@state-info-text; @state-info-text; @state-info-bg);
+}
+.has-warning when (@skin-warning) {
+  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
+}
+.has-error when (@skin-danger) {
+  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+}
+.has-alert when (@skin-alert) {
+  .form-control-validation(@state-alert-text; @state-alert-text; @state-alert-bg);
+}
+.has-system when (@skin-system) {
+  .form-control-validation(@state-system-text; @state-system-text; @state-system-bg);
+}
+
+// Reposition feedback icon if label is hidden
+.has-feedback label.sr-only ~ .form-control-feedback {
+  top: 0;
+}
+
+
+// Help text block
+
+.help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: lighten(@text-color, 25%);
+}
+
+// Form inline
+
+.form-inline {
+
+  @media (min-width: @screen-sm-min) {
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .input-group {
+      display: inline-table;
+      vertical-align: middle;
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+
+    .input-group > .form-control {
+      width: 100%;
+    }
+
+    .control-label {
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+
+      label {
+        padding-left: 0;
+      }
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      position: relative;
+      margin-left: 0;
+    }
+
+    .has-feedback .form-control-feedback {
+      top: 0;
+    }
+  }
+}
+
+
+// Form horizontal
+
+.form-horizontal {
+
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: (@padding-base-vertical + 1);
+  }
+  .radio,
+  .checkbox {
+    min-height: (@line-height-computed + (@padding-base-vertical + 1));
+  }
+
+  .form-group {
+    .make-row();
+  }
+
+  @media (min-width: @screen-sm-min) {
+    .control-label {
+      text-align: right;
+      margin-bottom: 0;
+      padding-top: (@padding-base-vertical + 1);
+    }
+  }
+
+  // Validation
+  .has-feedback .form-control-feedback {
+    top: 0;
+    right: (@grid-gutter-width / 2);
+  }
+
+  // Form group sizes
+  .form-group-lg {
+    @media (min-width: @screen-sm-min) {
+      .control-label {
+        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+      }
+    }
+    .form-control {
+      &:extend(.input-lg);
+    }
+  }
+  .form-group-sm {
+    @media (min-width: @screen-sm-min) {
+      .control-label {
+        padding-top: (@padding-small-vertical + 1);
+      }
+    }
+    .form-control {
+      &:extend(.input-sm);
+    }
+  }
+}
+
+
+// ====================== Form Group =======================
+.form-bordered .form-group {
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+.form-bordered .form-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+// ====================== Field Icons/Addons =======================
+.append-icon {
+  position: absolute;
+  left: 23px;
+  top: 8px;
+  font-size: 14px; }
+
+.append-icon.right {
+  left: auto;
+  right: 30px;
+  top: 4px;
+}
+
+.append-icon + input.form-control {
+  padding-right: 40px; }
+
+.input-group-addon {
+  color: #4a89dc;
+  background-color: #fafafa;
+  border-color: #DDD; }
+
+
+// ====================== Input Hero =======================
+.input-group.input-hero {
+    display: block;
+}
+.input-group.input-hero .input-group-addon {
+    position: absolute;
+    top: 10px;
+    left: 13px;
+    border: 0;
+    background: transparent;
+    z-index: 3;
+    font-size: 18px;
+}
+.input-group.input-hero .input-group-addon + input.form-control {
+    display: block;
+    float: none;
+    padding-left: 60px;
+    z-index: 0 !important;
+}
+
+
+.input-hero.input-hero-sm .form-control {
+  height: 54px;
+  background: #FFF;
+}
+.input-hero.input-hero-sm .input-group-addon {
+  top: 8px;
+  left: 10px;
+}
+.input-group.input-hero-sm .input-group-addon + input.form-control {
+  padding-left: 54px;
+}
+
+
+// ====================== Bootstrap maxlength =======================
+.bootstrap-maxlength {
+    opacity: 0.6;
+    padding: 0px 15px;
+    border-radius: 0;
+}
+.bootstrap-maxlength.maxlength-right {
+    padding: 7px 12px;
+    margin-top: -8px;
+    margin-left: 7px;
+}

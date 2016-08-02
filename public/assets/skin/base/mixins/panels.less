@@ -1,0 +1,43 @@
+// ====================== Panels =======================
+
+.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
+
+  &.panel-border {
+    border-color: @border;
+  }
+
+  & > .panel-heading {
+    color: @heading-text-color;
+    background-color: @heading-bg-color;
+    border-color: darken(@heading-border, 8.5%);
+
+    + .panel-collapse > .panel-body {
+      border-top-color: @border;
+    }
+    .badge {
+      color: @heading-bg-color;
+      background-color: @heading-text-color;
+    }
+
+    & > .panel-title {
+      color: @heading-text-color;
+    }
+  }
+  & > .panel-footer {
+    + .panel-collapse > .panel-body {
+      border-bottom-color: @border;
+    }
+  }
+
+  & > .panel-body {
+    &.fill {
+      color: #FFF;
+      border-color: lighten(@heading-bg-color, 13%);
+      background-color: lighten(@heading-bg-color, 13%);
+    }
+    &.border {
+      border: 3px solid @border;
+    }
+  }
+
+}

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>Editor example - Duplicate button</title>
+	<link rel="stylesheet" type="text/css" href="../../../../media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="../../../TableTools/css/dataTables.tableTools.css">
+	<link rel="stylesheet" type="text/css" href="../../css/dataTables.editor.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/demo.css">
+	<style type="text/css" class="init">
+
+	</style>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../TableTools/js/dataTables.tableTools.js"></script>
+	<script type="text/javascript" language="javascript" src="../../js/dataTables.editor.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/syntax/shCore.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/editor-demo.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+
+
+var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		ajax: "../php/join.php",
+		table: "#example",
+		fields: [ {
+				label: "First name:",
+				name: "users.first_name"
+			}, {
+				label: "Last name:",
+				name: "users.last_name"
+			}, {
+				label: "Phone #:",
+				name: "users.phone"
+			}, {
+				label: "Site:",
+				name: "users.site",
+				type: "select"
+			}
+		]
+	} );
+
+	$('#example').dataTable( {
+		dom: "Tfrtip",
+		ajax: {
+			url: "../php/join.php",
+			type: 'POST'
+		},
+		columns: [
+			{ data: "users.first_name" },
+			{ data: "users.last_name" },
+			{ data: "users.phone" },
+			{ data: "sites.name" }
+		],
+		tableTools: {
+			sRowSelect: "os",
+			aButtons: [
+				{ sExtends: "editor_create", editor: editor },
+				{ sExtends: "editor_edit",   editor: editor },
+				{
+					sExtends:    "select_single",
+					sButtonText: "Duplicate",
+					fnClick:     function( button, config ) {
+						var node = this.fnGetSelected();
+
+						if ( node.length !== 1 ) {
+							return;
+						}
+
+						// Place the selected row into edit mode (but hidden),
+						// then get the values for all fields in the form
+						var values = editor.edit( node[0], false ).val();
+
+						// Create a new entry (discarding the previous edit) and
+						// set the values from the read values
+						editor
+							.create( {
+								title: 'Duplicate '+values['users.first_name']+' '+values['users.last_name'],
+								buttons: 'Create from existing'
+							} )
+							.set( values );
+					}
+				},
+				{ sExtends: "editor_remove", editor: editor }
+			]
+		},
+		initComplete: function ( settings, json ) {
+			// Populate the site select list with the data available in the
+			// database on load
+			editor.field( 'users.site' ).update( json.sites );
+		}
+	} );
+} );
+
+
+
+	</script>
+</head>
+
+<body class="dt-example">
+	<div class="container">
+		<section>
+			<h1>Editor example <span>Duplicate button</span></h1>
+
+			<div class="info">
+				<p>This example shows how a duplicate button can be created for Editor, allowing a row to be selected
+				and a new entry form be populated with the values from the selected row. This can allow data entry that
+				contains common information, such as monthly salary information, invoices, etc, to be performed
+				extremely quickly.</p>
+
+				<p>A <a href="//datatables.net/blog/2014-07-25">blog post is available</a> which explains in detail how
+				this duplicate button in created, and how to modify it into a reusable button. As a quick summary, the
+				code defines a TableTools button based on the the <code>select_single</code> button type (so it shows
+				as active only when a single row is selected). It then places the selected row into edit mode (although
+				the end user doesn't see this) and the values read. <a href=
+				"//editor.datatables.net/reference/api/create"><code class="api" title=
+				"Editor API method">create<span>E</span></code></a> is then used to show a <em>create</em> form and the
+				data populated from the previously read data.</p>
+
+				<p>The <a href="../simple/join.html">Join table example</a> is used as a basis here to show the
+				duplicate button working with complex nested data.</p>
+			</div>
+
+			<table id="example" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Phone #</th>
+						<th>Location</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Phone #</th>
+						<th>Location</th>
+					</tr>
+				</tfoot>
+			</table>
+
+			<ul class="tabs">
+				<li class="active">Javascript</li>
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>Ajax</li>
+				<li>Server-side script</li>
+			</ul>
+
+			<div class="tabs">
+				<div class="js">
+					<p>The Javascript shown below is used to initialise the table shown in this
+					example:</p><code class="multiline brush: js;">var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		ajax: &quot;../php/join.php&quot;,
+		table: &quot;#example&quot;,
+		fields: [ {
+				label: &quot;First name:&quot;,
+				name: &quot;users.first_name&quot;
+			}, {
+				label: &quot;Last name:&quot;,
+				name: &quot;users.last_name&quot;
+			}, {
+				label: &quot;Phone #:&quot;,
+				name: &quot;users.phone&quot;
+			}, {
+				label: &quot;Site:&quot;,
+				name: &quot;users.site&quot;,
+				type: &quot;select&quot;
+			}
+		]
+	} );
+
+	$('#example').dataTable( {
+		dom: &quot;Tfrtip&quot;,
+		ajax: {
+			url: &quot;../php/join.php&quot;,
+			type: 'POST'
+		},
+		columns: [
+			{ data: &quot;users.first_name&quot; },
+			{ data: &quot;users.last_name&quot; },
+			{ data: &quot;users.phone&quot; },
+			{ data: &quot;sites.name&quot; }
+		],
+		tableTools: {
+			sRowSelect: &quot;os&quot;,
+			aButtons: [
+				{ sExtends: &quot;editor_create&quot;, editor: editor },
+				{ sExtends: &quot;editor_edit&quot;,   editor: editor },
+				{
+					sExtends:    &quot;select_single&quot;,
+					sButtonText: &quot;Duplicate&quot;,
+					fnClick:     function( button, config ) {
+						var node = this.fnGetSelected();
+
+						if ( node.length !== 1 ) {
+							return;
+						}
+
+						// Place the selected row into edit mode (but hidden),
+						// then get the values for all fields in the form
+						var values = editor.edit( node[0], false ).val();
+
+						// Create a new entry (discarding the previous edit) and
+						// set the values from the read values
+						editor
+							.create( {
+								title: 'Duplicate '+values['users.first_name']+' '+values['users.last_name'],
+								buttons: 'Create from existing'
+							} )
+							.set( values );
+					}
+				},
+				{ sExtends: &quot;editor_remove&quot;, editor: editor }
+			]
+		},
+		initComplete: function ( settings, json ) {
+			// Populate the site select list with the data available in the
+			// database on load
+			editor.field( 'users.site' ).update( json.sites );
+		}
+	} );
+} );</code>
+
+					<p>In addition to the above code, the following Javascript library files are loaded for use in this
+					example:</p>
+
+					<ul>
+						<li><a href="../../../../media/js/jquery.js">../../../../media/js/jquery.js</a></li>
+						<li><a href=
+						"../../../../media/js/jquery.dataTables.js">../../../../media/js/jquery.dataTables.js</a></li>
+						<li><a href=
+						"../../../TableTools/js/dataTables.tableTools.js">../../../TableTools/js/dataTables.tableTools.js</a></li>
+						<li><a href="../../js/dataTables.editor.js">../../js/dataTables.editor.js</a></li>
+					</ul>
+				</div>
+
+				<div class="table">
+					<p>The HTML shown below is the raw HTML table element, before it has been enhanced by
+					DataTables:</p>
+				</div>
+
+				<div class="css">
+					<div>
+						<p>This example uses a little bit of additional CSS beyond what is loaded from the library
+						files (below), in order to correctly display the table. The additional CSS used is shown
+						below:</p><code class="multiline brush: js;"></code>
+					</div>
+
+					<p>The following CSS library files are loaded for use in this example to provide the styling of the
+					table:</p>
+
+					<ul>
+						<li><a href=
+						"../../../../media/css/jquery.dataTables.css">../../../../media/css/jquery.dataTables.css</a></li>
+						<li><a href=
+						"../../../TableTools/css/dataTables.tableTools.css">../../../TableTools/css/dataTables.tableTools.css</a></li>
+						<li><a href="../../css/dataTables.editor.css">../../css/dataTables.editor.css</a></li>
+					</ul>
+				</div>
+
+				<div class="ajax">
+					<p>This table loads data by Ajax. The latest data that has been loaded is shown below. This data
+					will update automatically as any additional data is loaded.</p>
+				</div>
+
+				<div class="php">
+					<p>The script used to perform the server-side processing for this table is shown below. Please note
+					that this is just an example script using PHP. Server-side processing scripts can be written in any
+					language, using <a href="//datatables.net/manual/server-side">the protocol described in the
+					DataTables documentation</a>.</p>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<section>
+		<div class="footer">
+			<div class="gradient"></div>
+
+			<div class="liner">
+				<h2>Other examples</h2>
+
+				<div class="toc">
+					<div class="toc-group">
+						<h3><a href="../simple/index.html">Simple initialisation</a></h3>
+						<ul class="toc">
+							<li><a href="../simple/simple.html">Basic initialisation</a></li>
+							<li><a href="../simple/fieldDefaults.html">Setting defaults</a></li>
+							<li><a href="../simple/fieldTypes.html">Field types</a></li>
+							<li><a href="../simple/dates.html">Dates (with jQuery UI datepicker)</a></li>
+							<li><a href="../simple/i18n.html">Internationalisation</a></li>
+							<li><a href="../simple/inTableControls.html">In table form controls</a></li>
+							<li><a href="../simple/responsive.html">Responsive table extension</a></li>
+							<li><a href="../simple/server-side-processing.html">Server-side processing</a></li>
+							<li><a href="../simple/join.html">Join tables - working with multiple SQL tables</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../advanced/index.html">Advanced initialisation</a></h3>
+						<ul class="toc">
+							<li><a href="../advanced/formOnlyData.html">Data shown only in the form</a></li>
+							<li><a href="../advanced/tableOnlyData.html">Data shown in table only</a></li>
+							<li><a href="../advanced/deepObjects.html">Complex (nested) JSON data source</a></li>
+							<li><a href="../advanced/REST.html">REST interface</a></li>
+							<li><a href="../advanced/localstorage.html">Ajax override - using localStorage for the data
+							source</a></li>
+							<li><a href="../advanced/jsonId.html">Row ID source specification</a></li>
+							<li><a href="../advanced/htmlTable.html">DOM sourced table</a></li>
+							<li><a href="../advanced/exportButtons.html">Export buttons</a></li>
+							<li><a href="../advanced/joinSelf.html">Join tables - self referencing join</a></li>
+							<li><a href="../advanced/joinLinkTable.html">Join tables - link table</a></li>
+							<li><a href="../advanced/joinArray.html">Join tables - one-to-many join</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../bubble-editing/index.html">Bubble editing</a></h3>
+						<ul class="toc">
+							<li><a href="../bubble-editing/simple.html">Simple bubble editing</a></li>
+							<li><a href="../bubble-editing/grouped.html">Multiple fields in a bubble</a></li>
+							<li><a href="../bubble-editing/options.html">Form control and display options</a></li>
+							<li><a href="../bubble-editing/defaultOptions.html">Default control and display
+							options</a></li>
+							<li><a href="../bubble-editing/inTableControls.html">Bubble editing with in table row
+							controls</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../inline-editing/index.html">Inline editing</a></h3>
+						<ul class="toc">
+							<li><a href="../inline-editing/simple.html">Simple inline editing</a></li>
+							<li><a href="../inline-editing/tabControl.html">Tab between columns</a></li>
+							<li><a href="../inline-editing/options.html">Editing options - submit on blur</a></li>
+							<li><a href="../inline-editing/submitButton.html">Inline editing with a submit
+							button</a></li>
+							<li><a href="../inline-editing/editIcon.html">Edit icon</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="./index.html">API</a></h3>
+						<ul class="toc active">
+							<li><a href="./confirmClose.html">Events - unsaved changes close confirmation</a></li>
+							<li><a href="./clientValidation.html">Client-side validation</a></li>
+							<li><a href="./triggerButton.html">Customised control buttons</a></li>
+							<li><a href="./backNext.html">Previous / next editing buttons</a></li>
+							<li class="active"><a href="./duplicateButton.html">Duplicate button</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../standalone/index.html">Standalone</a></h3>
+						<ul class="toc">
+							<li><a href="../standalone/simple.html">Simple standalone editing</a></li>
+							<li><a href="../standalone/bubble.html">Bubble editing</a></li>
+							<li><a href="../standalone/inline.html">Inline editing</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../styling/index.html">Styling</a></h3>
+						<ul class="toc">
+							<li><a href="../styling/envelope.html">Envelope display controller</a></li>
+							<li><a href="../styling/envelopeInTable.html">Envelope display with in table
+							controls</a></li>
+							<li><a href="../styling/stackedInputs.html">Styled for stacked inputs</a></li>
+							<li><a href="../styling/bootstrap.html">Bootstrap</a></li>
+							<li><a href="../styling/jqueryui.html">jQuery UI</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../plug-ins/index.html">Plug-ins</a></h3>
+						<ul class="toc">
+							<li><a href="../plug-ins/fieldPlugin.html">Custom field type plug-ins</a></li>
+							<li><a href="../plug-ins/displayController.html">Custom display controller</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="epilogue">
+					<p>Please refer to the <a href="http://www.datatables.net">DataTables documentation</a> for full
+					information about its API properties and methods.<br>
+					Additionally, there are a wide range of <a href="http://www.datatables.net/extras">extras</a> and
+					<a href="http://www.datatables.net/plug-ins">plug-ins</a> which extend the capabilities of
+					DataTables.</p>
+
+					<p class="copyright">DataTables designed and created by <a href=
+					"http://www.sprymedia.co.uk">SpryMedia Ltd</a> &#169; 2007-2014<br>
+					DataTables is licensed under the <a href="http://www.datatables.net/mit">MIT license</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

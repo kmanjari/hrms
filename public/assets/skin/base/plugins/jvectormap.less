@@ -1,0 +1,41 @@
+// ====================== Jvector Maps =======================
+.jvectormap-label {
+    z-index: 10;
+    position: absolute;
+    display: none;
+    border: solid 1px #CDCDCD;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #292929;
+    color: white;
+    font-family: sans-serif, Verdana;
+    font-size: smaller;
+    padding: 3px;
+}
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: auto;
+    right: 30px;
+    padding: 0;
+    width: 40px;
+    height: 35px;
+    line-height: 35px;
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+    font-size: 22px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.5);
+}
+.jvectormap-zoomout {
+    right: 80px;
+}
+
+.hide-jzoom .jvectormap-zoomin,
+.hide-jzoom .jvectormap-zoomout {
+    display: none;
+}

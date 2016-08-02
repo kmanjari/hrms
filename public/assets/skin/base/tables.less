@@ -1,0 +1,241 @@
+// ====================== Tables =======================
+
+table {
+  background-color: @table-bg;
+}
+th {
+  text-align: left;
+}
+
+// Baseline
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        font: 600 12px 'Open Sans';
+        padding: @table-cell-padding;
+        line-height: @line-height-base;
+        vertical-align: middle;
+        border-top: 1px solid @table-border-color;
+      }
+    }
+  }
+  > thead > tr > th {
+    border-bottom: 1px solid @table-border-color;
+    font-size: 12px;
+    font-weight: 700;
+    vertical-align: bottom;
+    text-transform: uppercase;
+  }
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  > tbody + tbody {
+    border-top: 2px solid @table-border-color;
+  }
+  
+  tbody > tr:first-child > td { border-top: 0 }
+
+  // Nested tables
+  .table {
+    margin-bottom: 0;
+    background-color: @body-bg;
+  }
+}
+
+.scroller-content table {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding-right: 18px;
+      }
+    }
+  }
+}
+
+// Condensed table - half padding
+.table-condensed {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: @table-condensed-cell-padding;
+      }
+    }
+  }
+}
+
+
+// Bordered tables
+
+.table-bordered {
+  border: 1px solid @table-border-color;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: 1px solid @table-border-color;
+      }
+    }
+  }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 2px;
+    }
+  }
+}
+
+
+// Tables striped
+
+.table-striped {
+  > tbody > tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: @table-bg-accent;
+    }
+  }
+}
+
+
+// Tables hovered
+
+.table-hover {
+  > tbody > tr:hover {
+    > td,
+    > th {
+      background-color: @table-bg-hover;
+    }
+  }
+}
+
+// Table Curved
+.table-curved > tbody > tr > td {
+  &:first-child { border-radius: 4px 0 0 4px; }
+  &:last-child { border-radius: 0 4px 4px 0; }
+}
+
+
+// Cell sizing
+
+table col[class*="col-"] {
+  position: static;
+  float: none;
+  display: table-column;
+}
+table {
+  td,
+  th {
+    &[class*="col-"] {
+      position: static;
+      float: none;
+      display: table-cell;
+    }
+  }
+}
+
+
+// Default table styling
+.table > thead > tr,
+.table > tbody > tr,
+.table > tfoot > tr {
+  > td.default,
+  > th.default,
+  &.default > td,
+  &.default > th {
+    color: #777;
+    border-color: #ddd;
+    background-color: #f0f0f0;
+  }
+}
+.table-hover > tbody > tr {
+  > td.default:hover,
+  > th.default:hover,
+  &.default:hover > td,
+  &:hover > .default,
+  &.default:hover > th {
+    background-color: #fcfcfc;
+  }
+}
+
+
+// Responsive tables
+
+.table-responsive {
+  @media screen and (max-width: @screen-xs-max) {
+    width: 100%;
+    margin-bottom: (@line-height-computed * 0.75);
+    overflow-y: hidden;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid @table-border-color;
+    -webkit-overflow-scrolling: touch;
+
+    > .table {
+      margin-bottom: 0;
+
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th,
+          > td {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    > .table-bordered {
+      border: 0;
+
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th:first-child,
+          > td:first-child {
+            border-left: 0;
+          }
+          > th:last-child,
+          > td:last-child {
+            border-right: 0;
+          }
+        }
+      }
+
+      > tbody,
+      > tfoot {
+        > tr:last-child {
+          > th,
+          > td {
+            border-bottom: 0;
+          }
+        }
+      }
+
+    }
+  }
+}

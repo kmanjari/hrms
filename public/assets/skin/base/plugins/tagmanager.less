@@ -1,0 +1,58 @@
+// ====================== Tags Manager =======================
+.tag-container {
+  margin-top: 10px;
+}
+
+.tm-tag {
+  margin-right: 8px;
+  padding: 4px 8px;
+  color: #FFF;
+  font-size: 13px;
+  font-weight: 600;
+  border: 0;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  box-shadow: none;
+  background: #AAA;
+}
+
+.tm-tag .tm-tag-remove {
+  color: #FFF;
+  opacity: 0.6;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0 3px;
+}
+
+.tm-tag .tm-tag-remove:hover {
+  color: #FFF;
+  opacity: 1;
+}
+
+.tm-tag.tm-tag-primary {
+  .tag-variant(@brand-primary);
+}
+
+.tm-tag.tm-tag-info {
+  .tag-variant(@brand-info);
+}
+
+.tm-tag.tm-tag-success {
+  .tag-variant(@brand-success);
+}
+
+.tm-tag.tm-tag-warning {
+  .tag-variant(@brand-warning);
+}
+
+.tm-tag.tm-tag-danger {
+  .tag-variant(@brand-danger);
+}
+
+.tm-tag.tm-tag-alert {
+  .tag-variant(@brand-alert);
+}
+
+.tm-tag.tm-tag-system {
+  .tag-variant(@brand-system);
+}

@@ -1,0 +1,370 @@
+// ====================== FullCalendar.JS =======================
+
+// External Events
+.fc-event {
+  position: relative;
+  cursor: pointer;
+  padding: 8px;
+  margin: 10px;
+  color: @brand-dark;
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid @table-border-color;
+
+  &.fc-day-grid-event {
+    border: 0;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+
+    & > .fc-content {
+      white-space: normal;
+    }
+
+    &.fc-event-info {
+      background-color: @brand-info;
+      color: @white;
+    }
+    &.fc-event-success {
+      background-color: @brand-success;
+      color: @white;
+    }
+    &.fc-event-primary {
+      background-color: @brand-primary;
+      color: @white;
+    }
+    &.fc-event-warning {
+      background-color: @brand-warning;
+      color: @white;
+    }
+    &.fc-event-alert {
+      background-color: @brand-alert;
+      color: @white;
+    }
+    &.fc-event-danger {
+      background-color: @brand-danger;
+      color: @white;
+    }
+    &.fc-event-system {
+      background-color: @brand-system;
+      color: @white;
+    }
+    &.fc-event-dark {
+      background-color: @brand-dark;
+      color: @white;
+    }
+    &.fc-event-light {
+      background-color: @brand-light;
+    }
+  }
+}
+
+// event desc
+.fc-event-desc {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 5px;
+
+  b {
+    display: block;
+  }
+}
+
+// event icon
+.fc-event-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  font-size: 32px;
+  text-align: left;
+}
+
+// fc event hover state
+.fc-event:hover,
+.fc-event:focus {
+  background: @light-gray;
+  color: @brand-dark;
+}
+
+// event inside calendar
+.fc-view-container .fc-event {
+  padding: 10px;
+  margin: 5px 10px 3px;
+  background: @light-gray;
+}
+
+.fc-view-container .fc-event .fc-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fc-view-container .fc-event .fc-content .fc-time {
+  display: none;
+}
+
+// event contextuals
+.fc-event-primary {
+  border-left-color: @brand-primary
+}
+
+.fc-event-primary .fc-event-icon {
+  color: @brand-primary
+}
+
+.fc-event-info {
+  border-left-color: @brand-info
+}
+
+.fc-event-info .fc-event-icon {
+  color: @brand-info
+}
+
+.fc-event-success {
+  border-left-color: @brand-success
+}
+
+.fc-event-success .fc-event-icon {
+  color: @brand-success
+}
+
+.fc-event-warning {
+  border-left-color: @brand-warning
+}
+
+.fc-event-warning .fc-event-icon {
+  color: @brand-warning
+}
+
+.fc-event-danger {
+  border-left-color: @brand-danger
+}
+
+.fc-event-danger .fc-event-icon {
+  color: @brand-danger
+}
+
+.fc-event-alert {
+  border-left-color: @brand-alert
+}
+
+.fc-event-alert .fc-event-icon {
+  color: @brand-alert
+}
+
+.fc-event-system {
+  border-left-color: @brand-system
+}
+
+.fc-event-system .fc-event-icon {
+  color: @brand-system
+}
+
+// Buttons
+
+.fc button {
+
+  .btn;
+  .btn-default;
+  height: auto;
+  padding: 6px 12px;
+  .btn-lg;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.fc-state-default {
+  border: 1px solid;
+}
+
+.fc-button {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.fc-state-default.fc-corner-left {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.fc-state-default.fc-corner-right {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.fc-today-button.fc-state-default.fc-corner-right {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+// icons in buttons
+.fc button .fc-icon {
+  position: relative;
+  margin: 0 .1em;
+}
+
+//  button states
+
+.fc-state-default {
+  background-color: @brand-light;
+  background-image: none;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #333;
+  text-shadow: none;
+  .box-shadow(none);
+}
+
+.fc-state-hover,
+.fc-state-down,
+.fc-state-active {
+  color: #ffffff !important;
+  background-color: @brand-dark !important;
+}
+
+.fc-state-disabled {
+
+}
+
+.fc-state-hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.fc-state-down,
+.fc-state-active {
+  background-color: @brand-dark !important;
+  background-image: none;
+  .box-shadow(none);
+}
+
+.fc-state-disabled {
+  cursor: default;
+  background-image: none;
+  opacity: 0.55;
+  filter: alpha(opacity=55);
+  box-shadow: none;
+}
+
+.fc-toolbar {
+  margin-bottom: 3em;
+}
+
+.fc-toolbar .fc-state-active,
+.fc-toolbar .ui-state-active {
+  z-index: 1;
+}
+
+// Buttons Groups
+.fc-button-group {
+  display: inline-block;
+}
+
+.fc .fc-button-group > * {
+  float: left;
+  margin: 0 0 0 -1px;
+}
+
+.fc .fc-button-group > :first-child {
+  margin-left: 0;
+}
+
+// Background
+.fc-bg {
+  background-color: #fefefe;
+}
+
+.fc-bg .fc-today {
+  background-color: @light-gray;
+}
+
+.fc-bg .fc-other-month {
+  background-color: #ffffff;
+}
+
+// Week Days
+.fc-day-header {
+  background-color: @brand-light;
+  border-color: @light-gray !important;
+  color: @btn-default-color;
+  font-size: 11px;
+  height: 35px;
+  line-height: 35px;
+  text-transform: uppercase;
+}
+
+// Text
+.fc-basic-view td.fc-day-number {
+  color: @brand-dark;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 5px;
+  padding-left: 15px;
+  text-align: left !important;
+}
+
+.fc-basic-view td.fc-today.fc-day-number {
+  color: #444;
+  font-weight: 600;
+}
+
+// Title Clone
+.chute h5,
+.fc-title-clone {
+  color: @btn-default-color;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 5px;
+  padding-bottom: 15px;
+}
+
+// Minimal Style
+.minimal-mp .ui-datepicker {
+  background: none;
+  margin: 0;
+  border: 0;
+}
+
+.minimal-mp .ui-datepicker-header {
+  display: none;
+}
+
+.minimal-mp .ui-datepicker td {
+  padding: 8px 5px;
+}
+
+.minimal-mp .ui-datepicker td span,
+.minimal-mp .ui-datepicker td a {
+  background: @brand-light;
+  color: @btn-default-color;
+  line-height: 38px;
+  padding: 0;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.minimal-mp .ui-datepicker td:hover span,
+.minimal-mp .ui-datepicker td:hover a {
+  background: darken(@brand-light, 3%);
+}
+
+.minimal-mp .ui-datepicker td span.ui-state-highlight,
+.minimal-mp .ui-datepicker td a.ui-state-highlight,
+.minimal-mp .ui-datepicker td span.ui-state-active,
+.minimal-mp .ui-datepicker td a.ui-state-active {
+  color: @white;
+}
+
+.fc-unthemed .fc-popover,
+.fc-unthemed .fc-row,
+.fc-unthemed hr,
+.fc-unthemed tbody,
+.fc-unthemed td,
+.fc-unthemed th,
+.fc-unthemed thead {
+  border-color: @brand-light;
+}

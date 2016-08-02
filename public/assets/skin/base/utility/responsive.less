@@ -1,0 +1,377 @@
+// ====================== RESPONSIVE STYLES =======================
+
+#content {
+  padding: 40px 30px 50px 31px;
+}
+
+@media (width: 1440px) {
+  .ui-datepicker { padding:20px 10px 5px; }
+}
+@media (max-width: 1440px) {
+
+  // Sidebar left
+  .sidebar-left-content {
+	-webkit-box-shadow: -22px 7px 0 0 @sub-menu-bg inset;
+	box-shadow: -22px 7px 0 0 @sub-menu-bg inset;
+  }
+
+  #sidebar_right.nano > .nano-pane {
+	width: 10px;
+  }
+
+  // Footer
+
+  #content-footer {
+    font-size: 14px;
+    height: 66px;
+    line-height: 66px;
+  }
+
+  #content-footer .footer-return-top {top:15px;}
+
+
+  // Widgets
+  // calendar
+  .fc button {
+    padding: 5px 10px;
+  }
+
+  // traffic sources
+  .circle-text h2 {
+    font-size: 25px;
+  }
+
+
+
+}
+
+@media (min-width: 1300px) and (max-width: 1400px) {
+  .ui-datepicker { padding:20px 5px 5px; }
+  .ui-datepicker td { padding: 0; }
+
+  .ui-datepicker .ui-datepicker-header .ui-datepicker-year,
+  .ui-datepicker .ui-datepicker-header .ui-datepicker-month {
+    font: 600 14px/20px 'Lato';
+  }
+
+  .nav.chart-legend > li > a {
+    font-size: 10px;
+    padding: 0;
+  }
+}
+ 
+// content padding on large resolutions
+@media (min-width: 1024px) {
+  #content-footer.affix {
+    bottom: 0;
+  }
+}
+@media (min-width: 1100px) {
+  #content {
+    padding: 40px 30px 50px 31px; }
+}
+
+// responsive styles
+@media (max-width: 991px) {
+	#content .col-md-2 + .col-md-2,
+	#content .col-md-2 + .col-md-4, 
+	#content .col-md-2 + .col-md-6,
+	#content .col-md-4 + .col-md-2,
+	#content .col-md-4 + .col-md-4:not(.col-sm-6),
+	#content .col-md-4 + .col-md-6,
+	#content .col-md-6 + .col-md-2,
+	#content .col-md-6 + .col-md-4, 
+	#content .col-md-6 + .col-md-6 {
+		padding-top: 10px;
+	}
+}
+
+ @media (max-width: 960px) {
+   .navbar-form.search-form.square input {
+	 -webkit-border-radius: 5px;
+	 border-radius: 5px;
+   }
+   .navbar-form.search-form input + .input-group-btn{
+	 display: none;
+   }
+ }
+
+@media (max-width: 900px) {
+  .navbar-form.search-form input {
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	max-width: 100%;
+  }
+
+  #topbar.alt .breadcrumb {padding-top: 6px}
+
+  // Invoice page
+  body.basic-invoice .basic-invoice-buttons {
+    position: relative;
+    left: auto; bottom: auto;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 815px) and (min-width:768px) {
+  .topbar-menu .service-box .service-title {font-size: 12px;}
+}
+
+@media (max-width: 815px) {
+	#content .panel .panel-body {
+		overflow: hidden !important;
+		min-width: 0 !important;
+	}
+
+  // Utility
+  .ph10 { padding: 0 11px !important; }
+
+  // Slick Slider
+  .slick-prev { left: -15px; }
+  .slick-next { right: -15px; }
+
+  .fc-event {font-size: 11px;}
+}
+
+@media (max-width: 767px) {
+  #content {
+	padding: 20px 20px 30px 21px;
+  }
+
+  #topbar.alt {padding: 15px 15px 10px 20px}
+
+  #topbar-dropmenu-wrapper {padding: 15px 20px 0;}
+
+  .navbar-form.search-form {margin-left: 15px;}
+
+  .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xl-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xl-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xl-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xl-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xl-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xl-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xl-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xl-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xl-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xl-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xl-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12, .col-xl-12 {
+	  // Inner gutter via padding
+	  padding-left:  (@grid-gutter-width / 2);
+	  padding-right: (@grid-gutter-width / 2);
+  }
+
+  .topbar-menu .service-box {margin-bottom: 20px;}
+
+  #customizer {
+	right: -270px;
+	width: 270px;
+  }
+
+  // Buttons
+  .btn { padding: 6px 12px; }
+  .btn-lg { padding: 6px 15px; }
+  .btn-sm { padding: 4px 10px; }
+  .btn-xs { padding: 3px 6px;}
+
+  // Widgets
+  // calendar
+  .fc button {
+    font-size: 10px;
+  }
+
+  .panel-tabs > li > a {line-height: 16px;}
+
+  .allcp-form .section [class*='col-'] {margin-bottom: 5px;}
+
+}
+
+ @media (max-width: 640px) {
+   #topbar.alt {
+	 padding: 10px 15px 10px 20px;
+   }
+
+   .wizard .steps li a {
+     margin-bottom: 10px;
+     padding: 6px 9px !important;
+   }
+
+   #content .panel-heading .panel-title + .nav.panel-tabs {bottom: -7px;}
+
+   // Tables
+   .dataTables_filter input {width: auto;}
+ }
+
+ @media (max-width: 480px) {
+   #content-footer .footer-return-top {right:15px;}
+
+   .panel {
+     margin-bottom: 15px;
+   }
+
+   .panel.preserve-grid {
+     padding: 7px 15px 8px !important;
+   }
+
+   // Widgets
+   //calendar
+   .fc-toolbar h2 {
+     margin: 15px 0 0 0;
+   }
+   .fc-toolbar {
+     margin-bottom: 1em;
+   }
+
+   // Utility
+   .fs35 { font-size: 30px !important; }
+
+   .pagination > li > a, .pagination > li > span {margin-bottom: 5px;}
+
+   // Tables
+   .dataTables_info {display: none;}
+
+   .dataTables_length {margin-bottom: 5px;}
+   .dataTables_length + .dataTables_filter {float: left;}
+ }
+
+ @media (max-width: 479px) {
+
+   #content-footer .footer-legal {display: none;}
+
+   .topbar-menu .service-box .service-title {font-size: 12px;}
+   .navbar .nav > li > a.dropdown-toggle img {
+	 height: 37px;
+	 width: 37px;
+   }
+   .navbar .nav > li > a.dropdown-toggle {
+	 margin-left: 5px;
+   }
+
+   .navbar .navbar-btn.btn-group > .btn {width: 35px;}
+
+   #content .panel {padding: 15px;}
+
+   .w375 {width:100% !important;}
+
+   .dropdown-menu .panel > .panel-menu .btn-sm {padding: 5px}
+
+   // Panels
+   #content .panel .panel-heading .panel-header-menu.pull-right {
+     float: none !important;
+   }
+
+   // Widgets
+   // task-list
+   .task-widget ul.task-list .task-item .task-desc {
+     height: 40px;
+     overflow: hidden;
+   }
+
+   .panel-tabs > li > a {padding: 4px 10px 6px;}
+
+   .ui-datepicker { padding:20px 5px 5px; }
+   .ui-datepicker td { padding: 0; }
+
+   #content .panel-heading .panel-title + .nav.panel-tabs {bottom: 0;}
+
+   body.basic-profile #content .tab-block .nav-tabs > li > a {
+     padding: 9px 5px;
+   }
+
+   // Navs and Tabs
+   .nav-pills {
+
+     // Sizes
+     &.nav-pills-sm > li > a {
+       font-size: 11px;
+       padding: 1px 4px;
+     }
+     &.nav-pills-lg > li > a {
+       font-size: 13px;
+       padding: 6px 9px;
+     }
+
+     > li {
+       margin-bottom: 2px;
+       // Links rendered as pills
+       > a {
+         padding: 1px 6px;
+       }
+     }
+   }
+
+   .tab-block .nav-tabs > li > a {
+    padding: 4px 10px;
+   }
+
+   .tabs-left > li > a,
+   .tabs-right > li > a { padding: 4px 5px; }
+
+   #content .panel-heading .nav.panel-tabs {
+     bottom: -18px;
+   }
+
+   // Icons
+   .user-interface-icons .icons-list {font-size: 10px;}
+
+   // Gallery
+   body.basic-gallery #mixitup-container .mix, body.basic-gallery #mixitup-container .gap {
+     width: 100%;
+   }
+
+
+   // charts
+   #high-area text tspan:first-child {font-size: 10px;}
+
+   .c3-chart-arc text {
+     font-size: 10px;
+   }
+
+   // plugins
+   .zoom-switcher a {font-size: 8px !important;}
+ }
+
+ @media (max-width: 359px) {
+
+   #customizer {
+     right: -215px;
+     width: 215px;
+   }
+
+   #content .panel .panel-heading .panel-title { font-size: 16px; }
+
+   .navbar .navbar-btn.btn-group > .btn { width: 32px; }
+   .navbar .nav > li > a.dropdown-toggle { padding: 0; }
+
+   #sidebar_right_toggle {display: none !important;}
+
+   #topbar.alt .breadcrumb { padding-top: 0; }
+
+   #high-area {
+     height: 200px !important;
+     padding: 0;
+   }
+
+   // Tabs
+   .tab-block .nav-tabs > li > a {
+     padding: 4px 5px;
+   }
+
+   // Tables
+   .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {padding: 2px;}
+
+   table.dataTable thead > tr > th {
+     padding-left: 10px;
+   }
+
+   .dataTables_filter input {
+     margin-left: 10px !important;
+     padding-left: 30px;
+   }
+
+   // plugins
+   #geocoding_form div {padding: 0 !important;}
+
+   // maps
+   .highcharts-container {padding-left: 40px;}
+   .highcharts-container .highcharts-legend {
+     display: block;
+     float: none;
+
+   }
+   .highcharts-container .highcharts-series-group {
+     display: block;
+     float: none;
+     padding: 0 20px;
+     width: 100%;
+   }
+ }

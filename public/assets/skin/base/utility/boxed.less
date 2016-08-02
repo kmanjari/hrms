@@ -1,0 +1,185 @@
+/* ==============================================
+   Boxed Layout - Coming Soon
+=================================================
+  A. Boxed Settings
+================================================= */
+
+@media (min-width: 1140px) {
+  body.boxed-layout {
+    // background-color: #efefef;
+    background-color: @white !important;
+
+    &.sb-top-collapsed {
+      .navbar {
+        .box-shadow(0 1px 0 #ddd);
+      }
+    }
+
+    // Navbar
+    .navbar {
+      width: 1140px !important;
+      margin: 0 auto;
+
+      .nav > li > a > span:first-child {
+        display: none;
+      }
+
+      .search-form {
+        width: 200px;
+      }
+    }
+
+    // Navbar Containers
+    .navbar-nav.navbar-right,
+    .navbar-nav.navbar-right:last-child {
+      margin-right: 0;
+    }
+
+    // Content Container
+    #main {
+      overflow: hidden;
+      width: 1140px !important;
+      margin: 0 auto;
+    }
+
+    // Inner BG + Borders
+    #main:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: @light-gray;
+      margin: 0 auto;
+      width: 1142px;
+      border-right: 0;
+      border-left: 0;
+    }
+
+    // Outer Background
+    #main:after {
+      z-index: -1;
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: @white;
+    }
+
+    // Inner Content Container
+    #content_wrapper {
+      margin-top: 0px;
+    }
+    .navbar.navbar-fixed-top + #main > #content_wrapper {
+      margin-top: 60px;
+    }
+
+    // Sidebar Left - Fixed
+    &.sb-top #sidebar_left.affix {
+      width: 1140px;
+    }
+
+    // Sidebar Top - Fixed
+    #sidebar_left.affix {
+      left: auto;
+    }
+
+    #sidebar_left.nano > .nano-content {
+      padding-top: 0;
+    }
+    .navbar.navbar-fixed-top + #main > #sidebar_left.nano > .nano-content {
+      // padding-top: 60px;
+    }
+
+    // sidebar closed
+    &.sb-l-c #sidebar_left,
+    &.sb-l-c.sb-l-m #sidebar_left {
+      left: -230px;
+    }
+
+    // Right Sidebar
+    #sidebar_right {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    // sidebar open
+    &.sb-r-o #sidebar_right {
+      display: block;
+    }
+
+    .navbar.navbar-fixed-top + #main > #sidebar_right {
+      // top: 60px;
+    }
+
+    // Topbar Settings - Fixed
+    #topbar.affix {
+      width: 910px !important;
+      margin-left: 0;
+      left: auto;
+      right: auto;
+    }
+
+    // right sidebar open
+    &.sb-r-o #topbar.affix {
+      width: 780px !important;
+    }
+
+    // left sidebar minified
+    &.sb-l-m #topbar.affix {
+      width: 1080px !important;
+    }
+
+    // left sidebar closed
+    &.sb-l-c #topbar.affix {
+      width: 1140px !important;
+    }
+
+    // left minified + right open
+    &.sb-l-m.sb-r-o #topbar.affix {
+      width: 780px !important;
+    }
+    // left minified + right open
+    &.sb-l-c.sb-r-o #topbar.affix {
+      width: 840px !important;
+    }
+
+    // adjust content as the navbar is out of container now
+    #topbar.affix + #content {
+      // margin-top: 60px;
+    }
+    #topbar-dropmenu-wrapper {
+      top: 0;
+    }
+    .navbar.navbar-fixed-top + #sidebar_left + #content_wrapper > #topbar-dropmenu-wrapper {
+      top: 1px;
+    }
+    &.sb-top .navbar.navbar-fixed-top + #sidebar_left + #content_wrapper > #topbar-dropmenu-wrapper {
+      top: 0;
+    }
+
+  }
+
+}
+
+@media (max-width: 1140px) {
+  body.boxed-layout {
+
+    .navbar.navbar-fixed-top + #main {
+      margin-top: 60px;
+    }
+
+    &.sb-l-o .navbar + #main > #sidebar_left.nano > .nano-content {
+      padding-top: 60px;
+    }
+    &.sb-l-m .navbar + #main > #sidebar_left.nano > .nano-content {
+      padding-top: 0;
+    }
+
+  }
+}

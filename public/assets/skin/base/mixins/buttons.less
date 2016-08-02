@@ -1,0 +1,136 @@
+// ====================== Button variations =======================
+
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 7.5%);
+    border-color: rgba(0,0,0, 0.05);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background;
+          border-color: @border;
+    }
+  }
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+
+  // Create Shade Variations
+  &.light { 
+    background-color: lighten(@background, 6%);
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+      background-color:  darken(@background, 6%);
+    }
+  }
+  &.dark { 
+    background-color: darken(@background, 6%);
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+      background-color: darken(@background, 12%);
+    }
+  }
+}
+
+// Light and neutral variation
+.button-variant-light(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.15);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 2.5%);
+ 
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background;
+          border-color: @border;
+    }
+  }
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+
+  // btn gradient
+  &.btn-gradient {
+    text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.4);
+    border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.09);
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.3) 100%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.3) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80ffffff', endColorstr='#00ffffff', GradientType=0);
+  }  
+
+  // Create Shade Variations
+  &.light { 
+    background-color: #FAFAFA;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+      background-color:  darken(@background, 1.5%);
+    }
+  }
+  &.dark { 
+    background-color: darken(@background, 3%);
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+      background-color: darken(@background, 6%);
+    }
+  }
+}
+
+// Button sizes
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}

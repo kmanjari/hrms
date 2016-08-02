@@ -1,0 +1,94 @@
+// ====================== RangeSlider =======================
+
+// Slider Container
+.ui-rangeSlider .ui-rangeSlider-bar {
+  margin: 5px 0;
+  height: 20px;
+  background-color: #6390a7;
+}
+
+// Slider Inner bar
+.ui-rangeSlider .ui-rangeSlider-innerBar {
+  height: 24px;
+  margin: 3px 0;
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 -1px 0 rgba(255, 255, 255, 0.65) inset;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 -1px 0 rgba(255, 255, 255, 0.65) inset;
+}
+
+// Slider Label
+.ui-rangeSlider-label {
+  border: 0;
+  box-shadow: none;
+  background: none;
+  background-image: none;
+}
+
+.ui-rangeSlider-label-value {
+  position: relative;
+  top: -8px;
+  min-width: 40px;
+  min-height: 25px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  background: #fafafa;
+  background-image: none;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.ui-rangeSlider-label:after {
+  content: "\f0d7";
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin: 0 -6px;
+  color: #f8f8f8;
+  font-family: FontAwesome;
+  font-size: 18px;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+// Slider Input Label
+input.ui-editRangeSlider-inputValue {
+  border: 1px solid #DDD;
+  width: 2.2em;
+}
+
+// Slider Handles
+.ui-rangeSlider .ui-rangeSlider-handle {
+  background: none;
+}
+
+.ui-rangeSlider .ui-rangeSlider-handle-inner {
+  background: url('') no-repeat center top;
+  width: 22px;
+  height: 24px;
+}
+
+.ui-rangeSlider-leftHandle .ui-rangeSlider-handle-inner {
+  margin-left: -10px;
+}
+
+.ui-rangeSlider-rightHandle .ui-rangeSlider-handle-inner {
+  margin-left: -4px;
+}
+
+// Slider Arrows
+.ui-rangeSlider-arrow {
+  margin: 6px 0;
+}
+
+.ui-rangeSlider-arrow.ui-rangeSlider-leftArrow {
+  left: -13px !important;
+}
+
+.ui-rangeSlider-arrow.ui-rangeSlider-rightArrow {
+  right: -13px !important;
+}

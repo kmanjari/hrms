@@ -1,0 +1,567 @@
+// ====================== Panel Widgets =======================
+
+// High Area
+#high-area {
+  padding: 0 60px 0 40px;
+}
+
+// Poll Widget
+
+.c3 svg {
+  font-family: 'Lato';
+}
+
+// Timeline Widget
+ol.timeline-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  color: #AAA;
+
+  // timeline entries
+  li.timeline-item {
+    position: relative;
+    padding: 15px 120px 15px 50px;
+
+    &:hover .timeline-icon,
+    &:focus .timeline-icon {
+      opacity: 1;
+    }
+
+    // item spine
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 23px;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: #E8E8E8;
+    }
+
+    // item dividers
+    + .timeline-item {
+      border-top: 1px solid #E8E8E8;
+    }
+
+    // timeline desc
+    .timeline-desc {
+      letter-spacing: 0.2px;
+
+      // desc author
+      b, strong {
+        color: #333;
+        font-weight: 600;
+      }
+      // desc link
+      a {
+        padding: 0 2px;
+        color: @brand-primary;
+      }
+    }
+
+    // timeline icon
+    .timeline-icon {
+      opacity: 0.85;
+      z-index: 2;
+      position: absolute;
+      left: 8px;
+      top: 12px;
+      background: #BBB;
+      width: 32px;
+      height: 32px;
+      line-height: 26px;
+      color: #FFF;
+      text-align: center;
+      border: 2px solid #FFF;
+    }
+
+    // timeline date
+    .timeline-date {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+
+  }
+}
+
+// Timeline list widget
+.chute-left ol.timeline-list,
+.chute-right ol.timeline-list {
+
+  // timeline entries
+  li.timeline-item {
+    position: relative;
+    padding: 15px 80px 15px 50px;
+  }
+
+}
+
+@media (max-width: 479px) {
+  ol.timeline-list li.timeline-item {
+    padding: 15px 0 15px 50px;
+  }
+
+  ol.timeline-list li.timeline-item .timeline-date {
+    right: 0;
+    top: 2px;
+    font-size: 11px;
+  }
+}
+
+// Task Widget
+.task-widget {
+
+  // task widget panel body
+  .panel-body {
+    padding: 0;
+  }
+
+  // task list
+  ul.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+  ul.task-list + .task-list {
+    border-top: 0;
+  }
+
+  // task list label
+  ul.task-list .task-label {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-bottom: 0;
+    background-color: #fff;
+  }
+
+  // task item
+  ul.task-list .task-item {
+    background-color: @light-gray;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+
+  }
+  ul.task-list .task-label + .task-item,
+  ul.task-list .task-item + .task-item {
+    margin-top: 10px;
+  }
+  // task item handle
+  ul.task-list .task-item .task-handle {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+    height: 40px;
+    padding: 8px 10px 7px;
+    position: absolute;
+    width: 37px;
+  }
+
+  ul.task-list.task-completed .task-item .task-handle {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+  }
+  // task item contextual handle
+  ul.task-list .task-item .task-handle:after {
+    content: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: transparent;
+  }
+  ul.task-list .task-item .task-handle .checkbox-custom label {
+    display: inline;
+  }
+
+  // task item desc
+  ul.task-list .task-item .task-desc {
+    color: @brand-dark;
+    font: 700 12px/25px 'Open Sans';
+    margin-left: 60px;
+    margin-right: 40px;
+    padding: 8px 11px 7px 0;
+    text-transform: uppercase;
+  }
+
+  // task item menu
+  ul.task-list .task-item .task-menu {
+    z-index: 1;
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    font-weight: normal;
+    color: #CCC;
+  }
+  ul.task-list .task-item .task-menu:hover {
+    cursor: pointer;
+    color: #777;
+  }
+
+  // Checked task item
+  ul.task-list .task-item.item-checked .task-desc {
+    text-decoration: line-through;
+  }
+
+  // Custom Small Checkboxes
+  ul.task-list .checkbox-custom label:before {
+    border-radius: 3px;
+    border-width: 0;
+    left: 1px;
+    top: 1px;
+    height: 15px;
+    width: 15px;
+  }
+  ul.task-list .checkbox-custom input[type=checkbox]:checked + label:after,
+  ul.task-list .checkbox-custom input[type=radio]:checked + label:after {
+    color: #c4c7c9;
+    top: 1px;
+    left: 2px;
+    font-size: 11px;
+  }
+
+  // Task Widget Contextuals
+  ul.task-list .task-item.primary .task-handle {
+    background-color: @brand-primary;
+  }
+  ul.task-list .task-item.success .task-handle {
+    background-color: @brand-success;
+  }
+  ul.task-list .task-item.info .task-handle {
+    background-color: @brand-info;
+  }
+  ul.task-list .task-item.warning .task-handle {
+    background-color: @brand-warning;
+  }
+  ul.task-list .task-item.danger .task-handle {
+    background-color: @brand-danger;
+  }
+  ul.task-list .task-item.item-alert .task-handle {
+    background-color: @brand-alert;
+  }
+  ul.task-list .task-item.system .task-handle {
+    background-color: @brand-system;
+  }
+  ul.task-list .task-item.dark .task-handle {
+    background-color: @brand-dark;
+  }
+
+  &.task-alt {
+    // task widget mod
+    ul.task-list {
+      border: 0;
+      border-left: 0;
+      background-color: transparent;
+    }
+    // task widget list title
+    h5 {
+      font-weight: 700;
+      color: @btn-default-color;
+      font-size: 14px;
+    }
+    // task list widget - border
+    ul.task-list .task-item .task-handle:after {
+      width: 4px;
+      left: -1px;
+    }
+  }
+
+  // task menu - handle
+  ul.task-current .task-item .task-menu {
+    cursor: move !important;
+  }
+  ul.task-current .task-item .task-menu:before {
+    background: url("@{img-path}/plugins/grippy_large.png") no-repeat top left;
+    color: @muted;
+    content: "";
+    height: 20px;
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    width: 6px;
+  }
+
+  // task menu - remove
+  ul.task-completed .task-item .task-menu:before {
+    color: @muted;
+    content: "\e6bc";
+    font-family: "icomoon";
+    font-size: 10px;
+    display: block;
+    position: absolute;
+    background-image: none;
+    top: 13px;
+    right: 15px;
+  }
+  ul.task-completed .task-item .task-menu:hover:before {
+    color: #333;
+  }
+
+}
+
+
+// Calendar Widget
+
+.calendar-widget {
+
+  // widget panel body
+  .panel-body {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  // calendar container
+  .fc-view-container {
+    margin-right: -2px;
+    margin-left: -2px;
+    overflow: hidden;
+  }
+
+  // calendar toolbar
+  .fc-toolbar {
+    padding: 9px 10px;
+    margin: 0;
+    background: #f4f4f4;
+  }
+
+  // calendar toolbar - date
+  .fc-toolbar h2 {
+    padding-left: 3px;
+    padding-top: 4px;
+    font-size: 17px;
+  }
+
+  // calendar toolbar - btns
+  .fc button {
+    padding: 4px 8px;
+    box-shadow: none;
+  }
+
+  // calendar toolbar - btns
+  .fc button .fc-icon {
+    top: 0;
+    font-size: 1.5em;
+    height: 1.24em;
+    line-height: 1.24em;
+  }
+
+  // calendar master bg
+  .fc-bg {
+    background-color: #fcfcfc;
+  }
+
+  // calendar other-month bg
+  .fc-bg .fc-other-month {
+    background-color: #f9f9f9;
+  }
+
+  // calendar date thead
+  .fc-basic-view td.fc-day-number {
+    font-size: 11px;
+    color: #BBB;
+  }
+
+  // calendar date integer
+  th.fc-day-header {
+    color: #999;
+    font-size: 11px;
+    font-weight: 400;
+    padding: 2px;
+    background-color: #f5f5f5;
+  }
+
+  // calendar events
+  .fc-view-container .fc-event {
+    line-height: 1.2;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 0;
+    background-color: #fefefe;
+  }
+
+  // CALENDAR ALT STYLE
+  &.calendar-alt {
+
+    .fc-toolbar {
+      background: transparent;
+      margin-bottom: 15px;
+      padding: 0;
+    }
+    .fc-toolbar h2 {
+      color: #AAA;
+      font-size: 18px;
+      font-weight: 400;
+    }
+    // calendar header
+    th.fc-day-header {
+      padding: 4px 2px;
+    }
+    // event items
+    .fc-view-container .fc-event {
+      padding: 6px 5px;
+      margin: 2px 5px 3px;
+      border-radius: 2px;
+      background-color: #FFF;
+      border-top-color: #EEE;
+      border-right-color: #EEE;
+      border-bottom-color: #EEE;
+    }
+
+  }
+
+}
+
+// Chat Widget
+.chat-widget {
+
+  // media image
+  .media-left {
+    padding-right: 20px;
+  }
+  .media-right {
+    padding-left: 20px;
+  }
+  .media-left img,
+  .media-right img {
+    max-width: 55px;
+    border-radius: 3px;
+    border: 2px solid #FFF;
+  }
+
+  // media body
+  .media-body {
+    position: relative;
+    padding: 7px;
+    border-radius: 2px;
+    border: 1px solid #e4e4e4;
+    background-color: #fefefe;
+    font-weight: 400;
+  }
+
+  // right media body arrow
+  .media-body:before,
+  .media-body:after {
+    content: "";
+    position: absolute;
+    right: -9px;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 8px 0px 8px 9px;
+    border-left-color: #777;
+  }
+  .media-body:after {
+    border-left-color: #fff;
+  }
+
+  // right media arrow
+  .media-left + .media-body:before,
+  .media-left + .media-body:after {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 8px 9px 8px 0px;
+    border-right-color: #777;
+  }
+  .media-left + .media-body:after {
+    border-right-color: #fff;
+  }
+
+  // media-status
+  .media-status {
+    position: absolute;
+  }
+  .media-status + .media-heading {
+    padding-left: 20px;
+  }
+  .media-status:after {
+    position: absolute;
+    top: 0;
+    left: 3px;
+    font-family: "FontAwesome";
+    content: "\f111";
+    font-size: 10px;
+    color: #AAA;
+  }
+  .media-status.online:after {
+    color: #c3d62d;
+  }
+  .media-status.offline:after {
+    color: #F5393D;
+  }
+
+  // chat widget footer
+  .panel-footer .input-group .form-control {
+    z-index: 0;
+  }
+
+}
+
+// Compose Widget
+.compose-widget {
+
+  // widget body
+  .panel-body {
+    padding: 0;
+  }
+
+  // widget footer
+  .panel-footer {
+    padding: 8px;
+  }
+
+  // editor text area
+  .note-editor .note-editable {
+    background: #f5f5f5;
+  }
+  .note-editor .note-editable:focus {
+    background: #fff;
+  }
+
+  // editor resizebar (hide)
+  .note-editor .note-resizebar {
+    display: none;
+  }
+}
+
+// User Group Widget
+.user-group-widget {
+
+  .user-avatar {
+    border: 0;
+    display: block;
+    width: 100% \9;
+    max-width: 100%;
+    height: auto;
+  }
+  .panel-menu {
+    padding: 8px;
+  }
+}
+
+// Tag Cloud Widget
+.tagcloud-widget {
+
+  // tagcloud widget labels
+  .panel-body .label {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 8px;
+    line-height: 15px;
+  }
+
+}

@@ -1,0 +1,1304 @@
+// Form Wrappers
+.allcp-form,
+.allcp-form *{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.allcp-form {
+	line-height: 1.231;
+	font-weight: 400;
+	font-size: 14px;
+	color: #626262;
+}
+.allcp-form .section { margin-bottom:22px; }
+
+// Reset Browser Styling
+.allcp-form .gui-input,
+.allcp-form .gui-textarea,
+.allcp-form .select > select,
+.allcp-form input[type="button"],
+.allcp-form input[type="submit"],
+.allcp-form input[type="search"],
+.allcp-form .select-multiple select {
+	-webkit-tap-highlight-color:transparent;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.allcp-form input[type="search"]::-webkit-search-decoration,
+.allcp-form input[type="search"]::-webkit-search-cancel-button,
+.allcp-form input[type="search"]::-webkit-search-results-button,
+.allcp-form input[type="search"]::-webkit-search-results-decoration {
+	display: none;
+}
+
+// Prevent user selection
+.allcp-form .radio,
+.allcp-form .button,
+.allcp-form .checkbox,
+.allcp-form .select .arrow,
+.allcp-form .switch > label,
+.allcp-form .ui-slider .ui-slider-handle{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+// Input General Styles
+.allcp-form label,
+.allcp-form input,
+.allcp-form button,
+.allcp-form select,
+.allcp-form textarea {
+	margin: 0;  
+	font-size: 14px;
+	font-weight:400;
+	color: #626262;
+	outline:none;
+}
+
+// Input Animations
+.allcp-form .radio,
+.allcp-form .button,
+.allcp-form .tooltip,
+.allcp-form .checkbox,
+.allcp-form .gui-input,
+.allcp-form .input-footer,
+.allcp-form .notification,
+.allcp-form .gui-textarea,
+.allcp-form .select > select,
+.allcp-form .select-multiple select {
+	-webkit-transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-ms-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	transition:all 0.5s ease-in-out;
+	outline:none;
+}
+.allcp-form .input-link,
+.allcp-form .panel-heading,
+.allcp-form .section-divider span,
+.allcp-form .select > select,
+.allcp-form .select-multiple select{
+	-webkit-transition:all 0.2s ease-in-out;
+	-moz-transition:all 0.2s ease-in-out;
+	-ms-transition:all 0.2s ease-in-out;
+	-o-transition:all 0.2s ease-in-out;
+	transition:all 0.2s ease-in-out;
+}
+
+// Form Dividers
+.allcp-form .spacer {
+  border-top:1px solid #eee; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display:block;
+  height:0; 
+}
+
+// Form Text Elements
+.allcp-form .theme-link { color: @brand-primary; text-decoration:none; }
+.allcp-form .theme-link:hover { text-decoration: underline; }
+
+.allcp-form .section-divider {
+	height:0; 
+	border-top:1px solid #DDD; 
+	text-align:center; 
+	margin-top: 20px; 
+	margin-bottom: 30px;  
+}
+.allcp-form .section-divider span {
+	display: inline-block;
+	position: relative;
+	padding: 0 17px; 
+	background: #e9e9e9;
+	color: #999;
+	top: -11px;  
+	font-size: 15px;
+}
+.allcp-form.panel .section-divider span,
+.allcp-form .panel .section-divider span,
+.allcp-form.tab-content .section-divider span,
+.allcp-form .tab-content .section-divider span {
+	background: #fff;
+}
+.allcp-form.bg-light .section-divider span,
+.allcp-form .bg-light .section-divider span {
+	background: #FAFAFA;
+}
+.allcp-form.bg-light.light .section-divider span,
+.allcp-form .bg-light.light .section-divider span {
+	background: #FEFEFE;
+}
+.allcp-form.bg-light.dark .section-divider span,
+.allcp-form .bg-light.dark .section-divider span {
+	background: #F2F2F2;
+}
+.allcp-form.well .section-divider span,
+.allcp-form .well .section-divider span{
+	background: #f5f5f5;
+}
+
+.allcp-form .switch,
+.allcp-form .option,
+.allcp-form .field-label{ font-size: 14px; }
+
+.allcp-form .field-label[class*='col-']  {
+	line-height: 42px;
+}
+
+.allcp-form .field-align {
+	line-height: 42px;
+}
+
+
+// General Input Styling
+.allcp-form .radio,
+.allcp-form .option,
+.allcp-form .checkbox {
+  cursor: pointer;
+}
+
+.allcp-form .field{ display:block; position:relative; }
+.allcp-form .field-icon i { color:@brand-primary; position:relative; }
+.allcp-form .field-icon.text-primary i { color:@brand-primary;}
+.allcp-form .field-icon.text-alert i { color:@brand-alert;}
+.allcp-form .field-icon.text-warning i { color:@brand-warning;}
+.allcp-form .field-icon.text-success i { color:@brand-success;}
+.allcp-form .field-icon.text-info i { color:@brand-info;}
+.allcp-form .field-icon.text-dark i { color:@brand-dark;}
+.allcp-form .field-icon.text-system i { color:@brand-system;}
+.allcp-form .field-icon.text-danger i { color:@brand-danger;}
+.allcp-form .field-label { display: block; margin-bottom: 7px; }
+.allcp-form .field-label em{
+	color:#e74c3c;
+	font-size:14px;
+	font-style:normal;
+	display:inline-block;
+	margin-left:4px;
+	position:relative; 
+	top:3px;  
+}
+
+.allcp-form .gui-input,
+.allcp-form .gui-textarea { padding:10px; }
+
+.allcp-form .select,
+.allcp-form .gui-input,
+.allcp-form .gui-textarea,
+.allcp-form .select > select,
+.allcp-form .select-multiple select{
+	position: relative;
+	vertical-align: top;
+	border: 1px solid #DDD;
+	display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+	color: #626262;
+	outline:none;
+	height: 42px;
+	width: 100%;
+	*zoom: 1;
+}
+.allcp-form .select option{	background: #fff;}
+
+.allcp-form select[disabled],
+.allcp-form .select > select[disabled]{color: #aaa !important;}
+
+
+// Form Textarea
+.allcp-form .gui-textarea {
+    resize: none;
+	line-height: 19px;
+	overflow: auto;
+	max-width:100%;
+    height: 96px;
+}
+
+// Form Selects
+.allcp-form .select {
+	border:0;
+	z-index:10;
+	background: #FFF;
+}
+.allcp-form .select > select {
+	display: block;
+	z-index:10;
+	margin: 0;	
+    padding:9px 10px; 
+    color: #626262;
+	outline:none;
+	text-indent: 0.01px;
+    text-overflow: ''; 
+    background: #FFF;   	
+    border: 1px solid #DDD;	
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:normal;
+}
+
+.allcp-form .select:before,
+.allcp-form .select:after {
+    background: #FFF;   	
+}
+
+.allcp-form .select > select::-ms-expand { display: none; }
+.allcp-form .select .arrow {
+	pointer-events:none;
+	position: absolute;
+	top: 9px;
+	right: 4px;
+	width: 24px;
+	height: 24px;
+	color:#9F9F9F;
+	z-index:100;
+}
+
+.allcp-form .select .arrow:after,
+.allcp-form .select .arrow:before {
+	content: '';
+	position: absolute;
+	font:12px "Consolas", monospace;
+	font-style:normal;
+	pointer-events:none;
+	display:none\9;
+	left:5px;
+}
+
+.allcp-form .select .arrow:before { content:'\25BC'; bottom:4px; }
+.allcp-form .select .double:after { content:'\25B2'; top:-1px;  }
+.allcp-form .select .double:before { content:'\25BC'; bottom:-1px; }
+.allcp-form .select-multiple select {
+	width:100%; 
+	height: 123px;
+	padding: 10px;
+}
+
+// Form File Inputs
+.allcp-form .file {
+	display:block;
+	 width:100%;
+}
+.allcp-form .file .gui-file {
+	width:100%;
+	height:100%;
+	cursor:pointer;
+	padding:8px 10px;
+	position:absolute;
+	-moz-opacity:0;
+	opacity: 0;
+	z-index:11;
+	bottom:0;	
+	right:0;
+}
+.allcp-form .file .button {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	float: none;
+	height: 34px;
+	line-height: 34px;
+	padding: 0 16px;
+	z-index: 10;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.allcp-form .file.append-button .button {
+  left: 4px;
+  right: auto;
+}
+.allcp-form .file.append-button > input.gui-input {
+  padding-right: 40px;
+  padding-left: 125px;
+  text-align: right;
+}
+.allcp-form .file.append-button > label.field-icon {
+  right: 4px;
+  left: auto;
+}
+
+// Form Inputs :hover
+.allcp-form .gui-input:hover,
+.allcp-form .gui-textarea:hover,
+.allcp-form .select > select:hover,
+.allcp-form .select-multiple select:hover,
+.allcp-form .gui-input:hover ~ .input-footer,
+.allcp-form .file .gui-file:hover + .gui-input,
+.allcp-form .gui-textarea:hover ~ .input-footer{
+	border-color: #888;
+}
+
+// Form Inputs :focus
+.allcp-form .gui-input:focus,
+.allcp-form .gui-textarea:focus,
+.allcp-form .select > select:focus,
+.allcp-form .select-multiple select:focus{
+    color: #3c3c3c;
+    background: #fff;
+	border:1px solid #999;
+    outline: none; 
+}
+
+.allcp-form .select > select:focus {
+	z-index:10;
+	z-index:20\9;
+}
+
+.allcp-form .gui-textarea:focus{  height: 120px; }
+.allcp-form .select > select:focus { z-index:10; z-index:20\9; }
+.allcp-form .gui-input:focus ~ .field-icon i,
+.allcp-form .gui-textarea:focus ~ .field-icon i{ color:#999; }
+.allcp-form .select-multiple select:focus,
+.allcp-form .gui-input:focus ~ .input-footer,
+.allcp-form .gui-textarea:focus ~ .input-footer,
+.allcp-form .file .gui-file:focus + .gui-input{ border-color: #999; }
+.allcp-form .select > select:focus + .arrow{ color:#999; }
+
+// Radio and Checkboxes
+.allcp-form .option {
+    position: relative;	
+	padding-right:15px;    
+	display: inline-block;
+    vertical-align: middle;
+}
+.allcp-form .option > input {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    opacity: 0;
+	left: 0;
+}
+
+.allcp-form .checkbox,
+.allcp-form .radio {
+	cursor: pointer;
+	position:relative;
+	margin-right:5px;
+	background: #fff;
+	display: inline-block;
+  border: 2px solid #b9bbc5;
+	height: 21px;
+	width: 21px;
+	top:4px;	
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.allcp-form .checkbox:before,
+.allcp-form .radio:before {
+    content: '';
+    display: none;
+}
+
+.allcp-form input:checked + .checkbox:before,
+.allcp-form input:checked + .radio:before {
+    display: block;
+}
+
+.allcp-form .checkbox:before {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 6px;
+    height: 3px;
+    border: solid #aaaaaa;
+    border-width: 0 0 2px 2px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.allcp-form input:checked + .checkbox,
+.allcp-form input:checked + .radio{ border: 2px solid #aaaaaa; }
+.allcp-form .radio {
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	-o-border-radius: 20px; 
+	border-radius: 20px;
+ 
+}
+.allcp-form .radio:before {
+    margin: 5px;
+    width: 7px;
+    height: 7px;
+    background: #aaa;
+  	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px; 
+	-o-border-radius: 10px; 
+	border-radius: 10px;
+}
+
+// Radio and Checkboxes :hover
+.allcp-form input:not([disabled]):hover + .checkbox,
+.allcp-form input:not([disabled]):hover + .radio{
+     border-color:#aaa;
+}
+
+// Radio and Checkboxes :focus
+.allcp-form input:focus + .checkbox,
+.allcp-form input:focus + .radio{ border-color: #aaa; }
+.allcp-form input:focus + .radio:before{ background: #aaa; }
+.allcp-form input:focus + .checkbox:before{ border-color: #aaa; }
+
+// Switches
+.allcp-form .switch {
+	cursor:pointer; 
+	position: relative; 
+	padding-right:10px;
+  display: inline-block;
+	margin-bottom:5px;
+	height: 26px;
+}
+.allcp-form .switch > label {
+	cursor:pointer;
+  display: inline-block;
+  position: relative;
+  height: 25px;
+	width: 58px;
+  color: #b9bbc5;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  background: transparent;
+  border: 2px solid #b9bbc5;
+  text-transform: uppercase;
+  font-family:Helvetica, Arial, sans-serif;
+  -webkit-transition: 0.3s ease-out;
+  -moz-transition: 0.3s ease-out;
+  -o-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.allcp-form .switch > label + span {
+	display:inline-block; 
+	padding-left:5px;
+	position:relative; 
+	top:-7px; 
+}
+.allcp-form .switch > label:before {
+    content: attr(data-off);
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    width: 33px;
+}
+
+.allcp-form .switch > label:after {
+	  content:"";	
+    margin: 2px;
+    width: 17px;
+    height: 17px;
+  	display: block;
+    background: #b9bbc5;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.allcp-form .switch > input {
+	-webkit-appearance: none;
+	position: absolute;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+	left: 0;
+	top: 0;
+}
+
+// Switches :focus
+.allcp-form .switch > input:focus { outline: none; }
+
+// Switches :checked
+.allcp-form .switch > input:checked + label {
+    border-color: #aaa;
+	background: transparent;
+	padding-left: 33px;
+	color: #aaa;
+}
+
+.allcp-form .switch > input:checked + label:before {
+    content: attr(data-on);
+    left: 1px;
+	top:1px;
+}
+
+.allcp-form .switch > input:checked + label:after {
+    margin: 2px;
+    width: 17px;
+    height: 17px;
+    background: #aaa;
+}
+
+// Switches :checked:focus
+.allcp-form .switch > input:checked:focus + label { background: transparent; border-color: #aaa; }
+
+.allcp-form .switch-round > label {
+	-webkit-border-radius: 13px;
+	-moz-border-radius: 13px;
+	-o-border-radius: 13px;
+	border-radius: 13px; 
+}
+.allcp-form .switch-round > label + span{ top:-2px; }
+.allcp-form .switch-round > label:before { width: 33px; }
+.allcp-form .switch-round > label:after {
+    width: 17px;
+	color:#b9bbc5;
+	content: "\2022";
+	font:20px/20px Times, Serif;
+	-webkit-border-radius: 13px;
+	-moz-border-radius: 13px;
+	-o-border-radius: 13px;
+	border-radius: 13px;
+}
+
+.allcp-form .switch-round > input:checked + label { padding-left: 33px; }
+.allcp-form .switch-round > input:checked + label:after{ color:#aaa; }
+
+
+// Switche - Custom Success / Danger
+.allcp-form .switch-custom > label {
+    color: lighten(@brand-danger, 20%);
+    border-color: lighten(@brand-danger, 20%);
+}
+.allcp-form .switch-custom > label:after {
+    background: lighten(@brand-danger, 20%);
+}
+.allcp-form .switch-custom > input:hover + label,
+.allcp-form .switch-custom > input:focus + label {
+  	color: darken(@brand-danger, 3%);
+    border-color: darken(@brand-danger, 3%);
+}
+.allcp-form .switch-custom > input:hover + label:after,
+.allcp-form .switch-custom > input:focus + label:after {
+	background: darken(@brand-danger, 3%);
+}
+
+.allcp-form .switch-custom > input:checked + label {
+ 	 color: @brand-success;
+	border-color: @brand-success;
+}
+.allcp-form .switch-custom > input:checked + label:after {
+	background: @brand-success;
+}
+.allcp-form .switch-custom > input:checked:hover + label,
+.allcp-form .switch-custom > input:checked:focus + label {
+	color: darken(@brand-success, 15%);
+	border-color: darken(@brand-success, 15%);
+}
+.allcp-form .switch-custom > input:checked:hover + label:after,
+.allcp-form .switch-custom > input:checked:focus + label:after {
+	background: darken(@brand-success, 15%);
+}
+
+// Input :disabled
+.allcp-form .button[disabled],
+.allcp-form .state-disabled .button,
+.allcp-form input[disabled] + .radio,
+.allcp-form input[disabled] + .checkbox,
+.allcp-form .switch > input[disabled] + label{
+	cursor: default;
+	opacity:0.5;
+}
+
+.allcp-form .gui-input[disabled],
+.allcp-form .gui-textarea[disabled],
+.allcp-form .select > select[disabled],
+.allcp-form .select-multiple select[disabled],
+.allcp-form .gui-input[disabled] ~ .input-footer,
+.allcp-form .file .gui-file[disabled] + .gui-input,
+.allcp-form .file .gui-file[disabled]:hover + .gui-input,
+.allcp-form .gui-textarea[disabled] ~ .input-footer {
+	background-color: #f4f6f6;
+	border-color: #d5dbdb!important;
+	cursor: default;
+	color: #d5dbdb;
+	opacity:0.7;
+}
+
+.allcp-form input[disabled] ~ .field-icon i,
+.allcp-form textarea[disabled] ~ .field-icon i,
+.allcp-form .select > select[disabled] + .arrow{
+	opacity:0.4; 
+}
+
+// Form Footer
+.allcp-form .input-footer {
+    padding: 10px;
+	display: block;
+	margin-top: -1px;
+	line-height: 16px;
+	position: relative; 
+    background: #F5F5F5;
+    border: 1px solid #DDD;	   
+	font-family:Arial, Helvetica, sans-serif;
+    -webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+    font-size: 11px;
+    color: #999;
+}
+
+// Input Icons
+.allcp-form .append-icon,
+.allcp-form .prepend-icon{
+	top: 0;
+	left: 0;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+	width:100%;
+}
+
+.allcp-form .append-icon .field-icon,
+.allcp-form .prepend-icon .field-icon{
+	top:0;
+	z-index:4;
+	width:42px;
+	height:42px;
+
+	color: inherit;
+	line-height:42px;
+	position:absolute;
+	text-align: center;
+
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    pointer-events: none;
+}
+
+.allcp-form .append-icon .field-icon i,
+.allcp-form .prepend-icon .field-icon i{
+	position:relative;
+	font-size:14px;
+}
+
+.allcp-form .prepend-icon .field-icon{ left:0;  }
+.allcp-form .append-icon .field-icon{ right:0; }
+.allcp-form .prepend-icon > input,
+.allcp-form .prepend-icon > textarea{ padding-left:36px; }
+.allcp-form .append-icon > input,
+.allcp-form .append-icon > textarea{ padding-right:36px; padding-left:10px;  }
+.allcp-form .append-icon > textarea{ padding-right:36px; }
+
+
+@media (max-width: 359px) {
+  .allcp-form .prepend-icon > .field-icon {
+	display: none;
+  }
+  .allcp-form .prepend-icon > input,
+  .allcp-form .prepend-icon > textarea{
+	padding: 0 18px;
+  	text-align: center;
+  }
+}
+
+// Input Tooltips
+.allcp-form .tooltip {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	color: #fff;	
+	width: 184px;
+	left: -9999px;
+	top:auto;
+	font-size: 11px;
+	font-weight:normal;
+	background: #666;
+	-webkit-transition: margin 0.6s, opacity 0.6s;
+	-moz-transition: margin 0.6s, opacity 0.6s;
+	-ms-transition: margin 0.6s, opacity 0.6s;
+	-o-transition: margin 0.6s, opacity 0.6s;
+	transition: margin 0.6s, opacity 0.6s;
+
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.allcp-form .tooltip > em{ padding:12px; font-style:normal; display:block; position:static; }
+.allcp-form .tooltip:after { content: ''; position: absolute; }
+.allcp-form .gui-input:focus + .tooltip,
+.allcp-form .gui-textarea:focus + .tooltip { opacity: 1; z-index: 999; }
+
+// Tooltip - Left
+.allcp-form .tip-left { top:1px; margin-right:-20px; }
+.allcp-form .tip-left:after {
+	top:12px;
+	left: 100%;
+	border-left: 8px solid #666;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+}
+
+.allcp-form .gui-input:focus + .tip-left,
+.allcp-form .gui-textarea:focus + .tip-left {
+	margin-right:5px;
+	right: 100%;
+	left: auto;
+}
+
+// Tooltip - Right
+.allcp-form .tip-right { top:1px; margin-left:-20px; }
+.allcp-form .tip-right:after {
+	top:12px;
+	right: 100%;
+	border-right: 8px solid #666;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;	
+}
+
+.allcp-form .gui-input:focus + .tip-right,
+.allcp-form .gui-textarea:focus + .tip-right { left: 100%; margin-left:5px; }
+
+// Tooltip - Right-Top
+.allcp-form .tip-right-top { bottom: 100%; margin-bottom: -20px; }
+.allcp-form .tip-right-top:after {
+	top: 100%;
+	right: 12px;
+	border-top: 8px solid #666;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.allcp-form .gui-input:focus + .tip-right-top,
+.allcp-form .gui-textarea:focus + .tip-right-top {
+	right: 0;
+	left: auto;
+	margin-bottom: 10px;
+}
+
+// Tooltip - Left-Top
+.allcp-form .tip-left-top { bottom: 100%; margin-bottom: -20px; }
+.allcp-form .tip-left-top:after {
+	top: 100%;
+	left: 12px;
+	border-top: 8px solid #666;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.allcp-form .gui-input:focus + .tip-left-top,
+.allcp-form .gui-textarea:focus + .tip-left-top {
+	left: 0;
+	right: auto;
+	margin-bottom: 10px;
+}
+
+// Tooltip - Right-Bottom
+.allcp-form .tip-right-bottom { top: 100%; margin-top: -20px; }
+.allcp-form .tip-right-bottom:after {
+	right: 12px;
+	bottom: 100%;
+	border-bottom: 8px solid #666;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.allcp-form .gui-input:focus + .tip-right-bottom,
+.allcp-form .gui-textarea:focus + .tip-right-bottom {
+	margin-top: 10px;
+	left: auto;
+	right: 0;
+}
+
+// Tooltip - Left-Bottom
+.allcp-form .tip-left-bottom { top: 100%; margin-top: -20px; }
+.allcp-form .tip-left-bottom:after {
+	left: 12px;
+	bottom: 100%;
+	border-bottom: 8px solid #666;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+}
+
+.allcp-form .gui-input:focus + .tip-left-bottom,
+.allcp-form .gui-textarea:focus + .tip-left-bottom {
+	margin-top:10px;
+	right: auto;
+	left: 0;
+}
+
+// Validation - error
+.allcp-form .state-error .gui-input,
+.allcp-form .state-error .gui-textarea,
+.allcp-form .state-error.select > select,
+.allcp-form .state-error.select-multiple > select,
+.allcp-form .state-error input:hover + .checkbox,
+.allcp-form .state-error input:hover + .radio,
+.allcp-form .state-error input:focus + .checkbox,
+.allcp-form .state-error input:focus + .radio,
+.allcp-form .state-error .checkbox,
+.allcp-form .state-error .radio{
+	background:#FEE9EA;
+	border-color:#DE888A;
+}
+
+.allcp-form .state-error .gui-input:focus,
+.allcp-form .state-error .gui-textarea:focus,
+.allcp-form .state-error.select > select:focus,
+.allcp-form .state-error.select-multiple > select:focus{
+	-webkit-box-shadow:0px 0px 3px #DE888A inset;
+	-moz-box-shadow:0px 0px 3px #DE888A inset;
+	-o-box-shadow:0px 0px 3px #DE888A inset;
+	box-shadow:0px 0px 3px #DE888A inset;
+}
+
+.allcp-form .state-error .gui-input ~ .field-icon i,
+.allcp-form .state-error .gui-textarea ~ .field-icon i{  color: #DE888A; }
+.allcp-form .state-error.select .arrow { color: #DE888A; }
+.allcp-form .state-error.select > select:focus + .arrow{ color:#DE888A; }
+.allcp-form .state-error .gui-input ~ .input-footer,
+.allcp-form .state-error.file .gui-file:hover + .gui-input,
+.allcp-form .state-error .gui-textarea ~ .input-footer { border-color:#DE888A; }
+.allcp-form .state-error + em{
+	display: block!important;
+	margin-top: 6px;
+	padding: 0 3px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-style: normal;
+	line-height: normal;
+	font-size:0.85em;
+	color:#DE888A;
+}
+
+// Validation - success
+.allcp-form .state-success .gui-input,
+.allcp-form .state-success .gui-textarea,
+.allcp-form .state-success.select > select,
+.allcp-form .state-success.select-multiple > select,
+.allcp-form .state-success input:hover + .checkbox,
+.allcp-form .state-success input:hover + .radio,
+.allcp-form .state-success input:focus + .checkbox,
+.allcp-form .state-success input:focus + .radio,
+.allcp-form .state-success .checkbox,
+.allcp-form .state-success .radio{
+	background:#F0FEE9;
+	border-color:#A5D491;
+}
+
+.allcp-form .state-success .gui-input:focus,
+.allcp-form .state-success .gui-textarea:focus,
+.allcp-form .state-success.select > select:focus,
+.allcp-form .state-success.select-multiple > select:focus{
+	-webkit-box-shadow:0px 0px 3px #A5D491 inset; 
+	-moz-box-shadow:0px 0px 3px #A5D491 inset; 
+	-o-box-shadow:0px 0px 3px #A5D491 inset; 
+	box-shadow:0px 0px 3px #A5D491 inset; 
+}
+
+.allcp-form .state-success .gui-input ~ .field-icon i,
+.allcp-form .state-success .gui-textarea ~ .field-icon i{  color: #A5D491; }
+.allcp-form .state-success.select .arrow { color: #A5D491; }
+.allcp-form .state-success.select > select:focus + .arrow{ color:#A5D491; }
+.allcp-form .state-success .gui-input ~ .input-footer,
+.allcp-form .state-success.file .gui-file:hover + .gui-input,
+.allcp-form .state-success .gui-textarea ~ .input-footer { border-color:#A5D491; }
+
+
+
+
+// Smart Widget
+
+.allcp-form .smart-widget,
+.allcp-form .append-picker-icon,
+.allcp-form .prepend-picker-icon { position: relative; display:block; }
+.allcp-form .smart-widget .field input,
+
+.allcp-form .append-picker-icon input,
+.allcp-form .prepend-picker-icon input {
+	width: 100%; 
+}
+
+.allcp-form .sm-left input,
+.allcp-form .prepend-picker-icon input {
+	-webkit-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+}
+.allcp-form .sm-right input,
+.allcp-form .append-picker-icon input {
+	-webkit-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+}
+
+.allcp-form .append-picker-icon button,
+.allcp-form .prepend-picker-icon button,
+.allcp-form .smart-widget .button {
+	cursor: pointer;
+  position: absolute;
+  top: 0;
+	color: #626262;
+	height: 42px;
+	line-height: 40px;
+	border:1px solid #DDD;
+	background: #F5F5F5;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.allcp-form .prepend-picker-icon button:disabled {
+  background-color: #f4f6f6 !important;
+  border-color: #d5dbdb!important;
+}
+
+.allcp-form .sm-right .button,
+.allcp-form .append-picker-icon button {
+	border-left: 0; 
+	-webkit-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+}
+.allcp-form .sm-left .button,
+.allcp-form .prepend-picker-icon button {
+	border-right:0; 
+	-webkit-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+}
+
+.allcp-form .sm-left .button,
+.allcp-form .prepend-picker-icon button { left: 0; }
+.allcp-form .sm-right .button,
+.allcp-form .append-picker-icon button { right: 0; }
+
+// Smart Widget Button - Left
+.allcp-form .sml-50,
+.allcp-form .prepend-picker-icon { padding-left: 50px; }
+.allcp-form .sml-50 .button,
+.allcp-form .prepend-picker-icon button{ width: 50px; }
+.allcp-form .sml-80{ padding-left: 80px; }
+.allcp-form .sml-80 .button { width: 80px; }
+.allcp-form .sml-120{ padding-left: 120px; }
+.allcp-form .sml-120 .button { width: 120px; }
+.allcp-form .sml-160{ padding-left: 160px; }
+.allcp-form .sml-160 .button { width: 160px; }
+
+// Smart Widget Button - Right
+.allcp-form .smr-50,
+.allcp-form .append-picker-icon{ padding-right: 50px; }
+.allcp-form .smr-50 .button,
+.allcp-form .append-picker-icon button{ width: 50px; }
+.allcp-form .smr-80{ padding-right: 80px; }
+.allcp-form .smr-80 .button { width: 80px; }
+.allcp-form .smr-120{ padding-right: 120px; }
+.allcp-form .smr-120 .button { width: 120px; }
+.allcp-form .smr-140{ padding-right: 140px; }
+.allcp-form .smr-140 .button { width: 140px; }
+.allcp-form .smr-160{ padding-right: 160px; }
+.allcp-form .smr-160 .button { width: 160px; }
+
+// Rating Star Widget - with hover
+.allcp-form .rating { overflow: hidden; }
+.allcp-form .rating.block { display:block; margin:10px 0; }
+.allcp-form .rating label{color: #CCC;}
+.allcp-form .rating label i{ font-size:17px; text-align:center; color:inherit;  }
+.allcp-form .rating label span{ font:22px/22px Times, Serif; }
+.allcp-form .rating-star{ margin-left:4px; }
+.allcp-form .rating-input { position: absolute; left:-9999px; top: auto; }
+.allcp-form .rating:hover .rating-star:hover,
+.allcp-form .rating:hover .rating-star:hover ~ .rating-star,
+.allcp-form .rating-input:checked ~ .rating-star { color: #666;	}
+.allcp-form .rating-star,
+.allcp-form .rating:hover .rating-star {
+	width: 18px;
+	float: right;
+	display: block;
+	cursor:pointer;
+	color: #CCC;	
+}
+
+
+// Buttons
+.allcp-form .button {
+	color: #243140;
+  border: 0;
+	height: 42px;
+	line-height: 42px;
+	font-size:15px; 
+  cursor: pointer;
+	padding: 0 18px;
+	text-align: center;
+	vertical-align: top;
+  background: #DBDBDB;
+	display: inline-block;
+	-webkit-user-drag: none;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+// Button States
+.allcp-form .button:hover { color: #243140; background: #EEE; }
+.allcp-form .button:active{
+	color: #1d2938; 
+	-moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.allcp-form a.button,
+.allcp-form span.button,
+.allcp-form label.button { line-height: 42px; text-decoration: none; }
+.allcp-form .button i{ font-size:14px; }
+.allcp-form .button-list .button{ margin-bottom:5px; }
+
+// Primary Button
+.allcp-form .btn-primary {  background-color: #4FD8B0;  }
+.allcp-form .btn-primary:hover,
+.allcp-form .btn-primary:focus { background-color: #4FD8B0; }
+.allcp-form .btn-primary:active{ background-color: #4FD8B0; }
+.allcp-form .btn-primary,
+.allcp-form .btn-primary:hover,
+.allcp-form .btn-primary:focus,
+.allcp-form .btn-primary:active{ color: #fff; text-shadow: 0 1px rgba(0, 0, 0, 0.08); }
+
+
+// Left and Right Shaped Buttons
+.allcp-form .button-left,
+.allcp-form .button-right {
+    position: relative;
+	z-index:9;
+}
+
+.allcp-form .button-left:before,
+.allcp-form .button-right:before {
+    content:'';
+    z-index:-1;
+    width: 32px;
+    height: 32px;
+	position: absolute;
+    background-color: inherit;
+	border-color: inherit;	
+    border: none;
+	top: 5px;
+}
+
+.allcp-form .button-left {
+    border-left-width: 0; 
+	padding: 0 18px 0 7px;
+    -webkit-border-radius: 0 3px 3px 0;
+	-moz-border-radius: 0 3px 3px 0;
+	-o-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+	margin-left:20px;
+}
+
+.allcp-form .button-left:before {
+    left: -15px;
+    -webkit-border-radius: 2px 5px 0 5px;
+	-moz-border-radius: 2px 5px 0 5px;
+	-o-border-radius: 2px 5px 0 5px;
+	border-radius: 2px 5px 0 5px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.allcp-form .button-right {
+    padding: 0 7px 0 18px;
+    border-right-width: 0;
+    -webkit-border-radius: 3px 0 0 3px;
+	-moz-border-radius: 3px 0 0 3px;
+	-o-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+	margin-right:20px;
+}
+
+.allcp-form .button-right:before {
+    right: -15px;
+    -webkit-border-radius: 5px 2px 5px 0;
+	-moz-border-radius: 5px 2px 5px 0;
+	-o-border-radius: 5px 2px 5px 0;
+	border-radius: 5px 2px 5px 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+// Buttons - Push Effect
+.allcp-form .pushed {
+	-webkit-box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	box-shadow:inset 0 -0.3em 0 rgba(0,0,0,0.2);
+	position:relative;
+}
+
+.allcp-form .pushed:active{
+	-webkit-box-shadow:inset 0 -0.15em 0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0 -0.15em  0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0 -0.15em  0 rgba(0,0,0,0.2);
+	box-shadow:inset 0 -0.15em  0 rgba(0,0,0,0.2);
+	top:2px;
+}
+
+.allcp-form .pushed.button-left:before {
+	-webkit-box-shadow:inset 0.35em 0  0 rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0.35em 0 0 rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0.35em 0 0 rgba(0,0,0,0.2);
+	box-shadow:inset 0.35em 0 0 rgba(0,0,0,0.2);	
+}
+
+.allcp-form .pushed:active.button-left:before{
+	-webkit-box-shadow:inset 0.2em 0  0 rgba(0,0,0,0.2);
+	box-shadow:inset 0.2em 0  0 rgba(0,0,0,0.2);
+}
+
+.allcp-form .pushed.button-right:before {
+	-webkit-box-shadow:inset  -0.35em 0  0 rgba(0,0,0,0.2);
+	box-shadow:inset -0.35em 0  0  rgba(0,0,0,0.2);	
+}
+
+.allcp-form .pushed:active.button-right:before{
+	-webkit-box-shadow:inset -0.2em 0  0 rgba(0,0,0,0.2);
+	box-shadow:inset -0.2em 0  0 rgba(0,0,0,0.2);
+}
+
+// Buttons - Footer Adjustment
+.allcp-form .form-footer .button{ margin-right:10px; margin-bottom:5px; }
+.allcp-form .align-right .button{ margin-right:0; margin-left:10px; }
+
+// Buttons - Social
+.allcp-form .twitter,
+.allcp-form .twitter:hover,
+.allcp-form .twitter:focus,
+.allcp-form .facebook,
+.allcp-form .facebook:hover,
+.allcp-form .facebook:focus,
+.allcp-form .googleplus,
+.allcp-form .googleplus:hover,
+.allcp-form .googleplus:focus { color:#fff; text-shadow: 0 1px rgba(0, 0, 0, 0.08); }
+.allcp-form .facebook { background-color:#3b5998; }
+.allcp-form .twitter { background-color:#00acee;  }
+.allcp-form .googleplus { background-color:#dd4b39; }
+.allcp-form .facebook:hover,
+.allcp-form .facebook:focus { background-color:#25385F;  }
+.allcp-form .twitter:hover,
+.allcp-form .twitter:focus { background-color:#00749F;  }
+.allcp-form .googleplus:hover,
+.allcp-form .googleplus:focus { background-color:#8D2418;  }
+.allcp-form .span-left{ padding-left:56px; text-align:left; }
+.allcp-form .btn-social { position:relative; font-weight: 600; margin-bottom:5px; }
+.allcp-form .btn-social i{ font-size:22px; font-weight: normal; position:relative; top:3px; }
+.allcp-form .btn-social span{
+	-webkit-border-radius:3px 0 0 3px;
+	-moz-border-radius:3px 0 0 3px;
+	-o-border-radius:3px 0 0 3px;
+	border-radius:3px 0 0 3px;	
+	display:inline-block; 
+	text-align:center; 
+	position:absolute;
+	width:45px; 
+	left:0; 
+}
+.allcp-form .twitter span{ background-color:#009AD5; }
+.allcp-form .facebook span{ background-color:#31497D; }
+.allcp-form .googleplus span{ background-color:#C03121; }
+
+// Lists
+.allcp-form .allcp-list{ list-style:none; margin:0; padding:0; }
+.allcp-form .allcp-list li{ margin-bottom:20px; }
+
+
+// Firefox fixes
+@-moz-document url-prefix() {
+	.allcp-form .select:before{
+		content: '';
+		pointer-events:none;		
+		-moz-transition:none;
+		transition:none;
+		position: absolute; 
+		background: #F5F5F5; 
+		width: 36px;
+		right:1px;
+		top:1px; 
+		bottom:1px;
+		z-index:99;  
+	}
+	
+	.allcp-form .select > select:focus,
+	.allcp-form .select > select:hover,
+	.allcp-form .select:hover select,
+	.allcp-form .select:hover:before{
+		background: #fff;
+		-moz-transition:none;
+		transition:none;		
+		-moz-box-shadow:none;  	
+		box-shadow:none;		
+	}
+	
+	.allcp-form .select .arrow {  z-index:100;  }
+	.allcp-form .state-error.select > select:focus,
+	.allcp-form .state-error.select > select:hover,
+	.allcp-form .state-error.select:hover select,
+	.allcp-form .state-error.select:hover:before,
+	.allcp-form .state-error.select:before { background:#FEE9EA;  }
+	.allcp-form .state-success.select > select:focus,
+	.allcp-form .state-success.select > select:hover,
+	.allcp-form .state-success.select:hover select,
+	.allcp-form .state-success.select:hover:before,
+	.allcp-form .state-success.select:before { background:#F0FEE9;  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.allcp-form .select .arrow:after,
+	.allcp-form .select .arrow:before { display:block; }
+}
+
+// ANDROID + IOS FIXES
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.allcp-form .option,
+	.allcp-form .rating,
+	.allcp-form .switch,
+	.allcp-form .captcode { -webkit-animation: bugfix infinite 1s; }
+	@-webkit-keyframes bugfix { 
+	    from { padding: 0;  } 
+	    to { padding: 0; } 
+	}
+	.allcp-form .switch { margin-right:10px;  margin-bottom:5px; }
+	.allcp-form .option { margin-right:15px; }
+}
+
+// Responsive styles
+@media (max-width: 600px) {
+	.allcp-form .section row{ margin:0;  }
+	.allcp-form .section row .colm{  width: 100%; float:none; padding:0; }
+	.allcp-form .bdl { border-left:0;  }
+	.allcp-form .border-right { border-right:0; }
+	.allcp-form .align-right{ text-align: left; }
+}
+
+@media (max-width: 479px) {
+  .allcp-form .select > select {
+	padding-right: 30px;
+  }
+}
+
+.allcp-form.theme-primary .gui-input,
+.allcp-form.theme-primary .select > select,
+.allcp-form.theme-primary .select-multiple select {
+	outline: 1px solid transparent;
+	-webkit-transition: outline-color 0.5s ease;
+	transition: outline-color ease 0.5s;
+}
+
+.allcp-form.theme-primary .gui-input:focus,
+.allcp-form.theme-primary .select > select:focus,
+.allcp-form.theme-primary .select-multiple select:focus {
+	outline-color: @brand-primary;
+}

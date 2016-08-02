@@ -1,0 +1,88 @@
+// ====================== Invoice Page Print Styles =======================
+@media print {
+
+	.basic-invoice {
+
+		// Reset and Hide Primary Page Components
+		header.navbar,
+		#sidebar_left,
+		#sidebar_right,
+		#topbar,
+		#customizer,
+		.panel-heading,
+		.basic-invoice-buttons {
+			display: none !important;
+			visibility: hidden;
+			width: 0 !important;
+			height: 0 !important;
+			outline: 0;
+			padding: 0 !important;
+			margin: 0 !important;
+			overflow: hidden;
+		}
+		// Modify Primary Container
+		#content_wrapper {
+			background: 0;
+			margin: 0 auto !important;
+			padding: 0 !important;
+			left: auto !important;
+			right: auto !important;
+			transition: none;
+		}
+		#content {
+			padding: 0;
+			background: none;
+		}
+		#content_wrapper:after {margin: 0;display: none;}
+		// Shorten and center page
+		#main {
+			width: 1100px !important;
+			margin: 0 auto !important;
+		}
+		// Remove all Panel Borders
+		.panel,
+		.panel-body {
+			border: 0 !important;
+		 	margin: 0 !important;
+		 	box-shadow: none !important;
+		 }
+		// Hide Image Logo and reveal Text logo
+		.invoice-logo {	display: none !important; }
+		.invoice-logo-text {
+			display: block !important;
+			visibility: visible !important;
+		}
+		// Modify Invoice Container
+		.table-layout > .col-md-10 {
+			width: 100% !important;
+			padding: 0 !important;
+		}
+		// Modify Invoice Panels
+		#invoice-info {
+			border-top: 1px dashed #ddd;
+			border-bottom: 1px dashed #ddd;	
+			margin-top: 20px !important;
+			margin-bottom: 40px !important;
+			background-color: #ddd;
+		}
+		// Modify Invoice Panels
+		#invoice-info > .col-md-4 {
+			float: none;
+			display: inline-block;
+			width: 32%;
+			padding: 0;
+			margin: 0;
+		}
+		#invoice-info > .col-md-4:nth-child(2) {
+			text-align: center;
+		}		
+		#invoice-info > .col-md-4:last-child {
+			text-align: right;
+			position: relative;
+			top: 8px;
+		}	
+		#invoice-info > .col-md-4 .panel-body {
+			padding: 10px;
+		}	
+	}
+}

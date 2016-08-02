@@ -1,0 +1,11 @@
+// ====================== Bootstrap/Multiselect Dropdown =======================
+.dropdown-variant(@color) {
+  + .dropdown-menu > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: #FFF;
+      background-color: @color;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+
+.skin-form-variant(@dark; @light; @brand) {
+
+	  // Links
+  	.tagline span{ color:@brand; }
+  	.theme-link{ color:@brand; }
+
+  	// Dividers
+  	.section-divider span { color:@brand; }
+
+	// :hover
+	.gui-input:hover,
+	.gui-textarea:hover,
+	.select > select:hover,
+	.select-multiple select:hover, 
+	.gui-input:hover ~ .input-footer,
+	.file .gui-file:hover + .gui-input,
+	.gui-textarea:hover ~ .input-footer{ border-color: @light; }
+
+	// :focus
+	.gui-input:focus,
+	.gui-textarea:focus,
+	.select > select:focus,
+	.select-multiple select:focus{ 
+		border-color: @light;
+		color: #3C3C3C; 
+	}
+
+	// Focus
+	.gui-textarea:focus{  height: 120px; }
+	.select > select:focus { z-index:10; z-index:20\9; }
+	.gui-input:focus ~ .field-icon i,
+	.gui-textarea:focus ~ .field-icon i{ color:@brand; }
+	.select-multiple select:focus, 
+	.gui-input:focus ~ .input-footer,
+	.gui-textarea:focus ~ .input-footer, 
+	.file .gui-file:focus + .gui-input{ border-color: @light; }
+	.select > select:focus + .arrow{ color:@brand; }
+
+	// Datepicker
+	.ui-datepicker .ui-datepicker-prev,
+	.ui-datepicker .ui-datepicker-next,
+	.ui-datepicker .ui-datepicker-title { color:@brand; }
+	.ui-datepicker-today a,
+	.ui-datepicker-calendar a:hover,
+	.ui-datepicker-today a:hover, 
+	.ui-datepicker .ui-state-highlight {
+	  background-color: @white !important;
+	  color: @brand!important;
+	}
+
+	.ui-datepicker .ui-state-active {
+		background-color: @white !important;
+	    color: @brand!important;
+	}
+
+	// Rating Stars
+	.rating:hover .rating-star:hover,
+	.rating:hover .rating-star:hover ~ .rating-star,
+	.rating-input:checked ~ .rating-star { color: @brand-primary;	}
+	.rating-star,
+	.rating:hover .rating-star { color: #b9bbc5; }
+
+	// Timepicker sliders
+	.ui-datepicker .ui-timepicker-div .ui-slider .ui-slider-handle.ui-state-active { background: #FFF !important; }
+	.ui-datepicker .ui-timepicker-div .ui-slider .ui-slider-handle { border-color: @brand;}
+	.ui-datepicker .ui-timepicker-div .ui-slider .ui-slider-handle:before { background-color: @brand; }
+
+	// Form Wizard
+	.wizard .steps li a,
+	.wizard .actions li a { background-color: @brand; } 
+	.wizard .steps li.current a { background-color: @dark; }
+}
+
+.skin-element-variant(@base; @light; @lighter; @dark; @darker; @brand) {
+
+	// BG's
+	.allcp-form .bg-@{brand} { background-color: @base; }
+	.allcp-form .bg-@{brand}.light { background-color: @light; }
+	.allcp-form .bg-@{brand}.lighter { background-color: @lighter; }
+	.allcp-form .bg-@{brand}.dark { background-color: @dark; }
+	.allcp-form .bg-@{brand}.darker { background-color: @darker; }
+
+	// Panel Contextuals
+	.allcp-form .panel-@{brand} > .panel-heading { border-top-color: @light; }
+	.allcp-form .panel-@{brand} > .panel-heading:before { background-color: @base; }
+
+	.allcp-form .panel-@{brand}.heading-border:before,
+	.allcp-form .panel-@{brand} .heading-border:before { background-color: @base; }
+
+	// Checkbox/Radios
+	.allcp-form .option-@{brand} input:hover + .checkbox,
+	.allcp-form .option-@{brand} input:hover + .radio{ border-color: @light; }
+	.allcp-form .option-@{brand} input:checked + .checkbox,
+	.allcp-form .option-@{brand} input:focus + .checkbox,
+	.allcp-form .option-@{brand} input:checked + .radio,
+	.allcp-form .option-@{brand} input:focus + .radio{ border-color: @base; }
+	.allcp-form .option-@{brand} input:checked + .radio:before,
+	.allcp-form .option-@{brand} input:focus + .radio:before{  background: @base; }
+	.allcp-form .option-@{brand} input:checked + .checkbox:before,
+	.allcp-form .option-@{brand} input:focus + .checkbox:before{ border-color: @base; }
+
+
+	// Buttons
+	.allcp-form .btn-@{brand}{background-color: @base;}
+	.allcp-form .btn-@{brand}:hover,
+	.allcp-form .btn-@{brand}:focus{ background-color: @light; border-color: @light; }
+	.allcp-form .btn-@{brand}:active{background-color: @dark;}
+	.allcp-form .btn-@{brand},
+	.allcp-form .btn-@{brand}:hover,
+	.allcp-form .btn-@{brand}:focus,
+	.allcp-form .btn-@{brand}:active{ color: #fff; text-shadow: 0 1px rgba(0, 0, 0, 0.08);}
+
+	// Form Switch
+	  .allcp-form .switch-@{brand} > input:checked + label { background: transparent; border-color: @base; color: @base;}
+	  .allcp-form .switch-@{brand} > input:checked + label:after { background: @base; color:@base; }
+	  .allcp-form .switch-@{brand} > input:checked:focus + label { background: #fff; border-color: @base; }
+
+	// UI Sliders
+	.allcp-form .slider-wrapper.slider-@{brand} {
+		.ui-slider .ui-slider-range {
+			background-color: @base;
+		}
+		.ui-slider .ui-slider-handle {
+			border-color: @base;
+				&:before {
+					background-color: @base;
+				}
+		}		
+	}
+
+
+}
+
+

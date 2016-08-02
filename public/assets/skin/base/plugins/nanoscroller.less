@@ -1,0 +1,85 @@
+// ====================== Nano Scroller =======================
+
+.nano {
+  position : relative;
+  width    : 100%;
+  overflow : hidden;
+}
+.nano.affix {
+  height: 100%;
+}
+.nano > .nano-content { 
+  height: 100%;
+  overflow-y: auto; 
+}
+.nano.has-scrollbar > .nano-content {
+  height: 100%;
+  overflow-y    : scroll;
+  overflow-x    : hidden;
+}
+.nano.affix > .nano-content:focus {
+  outline: 0;
+}
+.nano.affix > .nano-content::-webkit-scrollbar {
+  display: none;
+}
+.affix.has-scrollbar > .nano-content::-webkit-scrollbar {
+  display: block;
+}
+.nano.affix > .nano-pane {
+  background : rgba(0,0,0,0);
+  position   : absolute;
+  width      : 22px;
+  right      : 0;
+  top        : 0;
+  bottom     : 0;
+  visibility : hidden\9;
+  opacity    : .01;
+  -webkit-transition    : .2s;
+  -moz-transition       : .2s;
+  -o-transition         : .2s;
+  transition            : .2s;
+  -moz-border-radius    : 0;
+  -webkit-border-radius : 0;
+  border-radius         : 0;
+}
+
+.nano.affix > .nano-pane > .nano-slider {
+  background: lighten(@brand-dark,10%);
+  height: 41px;
+  position              : relative;
+  margin                : 73px 0 0;
+  -moz-border-radius    : 0;
+  -webkit-border-radius : 0;
+  border-radius         : 0;
+}
+.nano.affix:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
+  visibility : visible\9;
+  opacity    : 0.99;
+}
+
+// Nano colors/contextuals - default color grey
+.nano.affix.nano-primary > .nano-pane > .nano-slider {
+    background: @brand-primary;
+}
+.nano.affix.nano-success > .nano-pane > .nano-slider {
+    background: @brand-success;
+}
+.nano.affix.nano-info > .nano-pane > .nano-slider {
+    background: @brand-info;
+}
+.nano.affix.nano-warning > .nano-pane > .nano-slider {
+    background: @brand-warning;
+}
+.nano.affix.nano-danger > .nano-pane > .nano-slider {
+    background: @brand-danger;
+}
+.nano.affix.nano-alert > .nano-pane > .nano-slider {
+    background: @brand-alert;
+}
+.nano.affix.nano-system > .nano-pane > .nano-slider {
+    background: @brand-system;
+}
+.nano.affix.nano-dark > .nano-pane > .nano-slider {
+    background: @brand-dark;
+}

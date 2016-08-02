@@ -1,0 +1,101 @@
+// ====================== Sidebar Actions =======================
+
+/*
+     1. Sidebar Left Toggle
+     2. Sidebar Right Toggle
+     3. Left Sidebar Minified Helper
+     4. Mobile Menu Modifications
+*/
+
+// 1. Sidebar Left Toggle
+
+//left sidebar open
+.sb-l-o #sidebar_left {
+  left: 0;
+  overflow: hidden;
+}
+
+.sb-l-o #content_wrapper {
+  margin-left: @sidebar-open-width;
+}
+
+//left sidebar closed
+.sb-l-c #sidebar_left {
+  left: -(@sidebar-open-width);
+  overflow: hidden;
+}
+
+.sb-l-c #content_wrapper {
+  margin-left: 0;
+}
+
+// Adjust navbar logo wrapper when closed
+.sb-l-c .navbar-logo-wrapper {
+  width: @sidebar-minified-width;
+}
+
+.sb-l-c .navbar-logo-text {
+  display: none;
+}
+
+// 2. Sidebar Right Toggle
+
+//Sidebar Right Open
+.sb-r-o #sidebar_right {
+  right: 0;
+}
+
+.sb-r-o #content_wrapper {
+  margin-right: 300px;
+}
+
+//Sidebar Right Closed
+.sb-r-c #sidebar_right {
+  right: -300px;
+}
+
+.sb-r-c #content_wrapper {
+  margin-right: 0;
+}
+
+// 3. Left Sidebar Minified Helper
+
+.sb-l-c.sb-l-m #sidebar_left {
+  left: -(@sidebar-minified-width);
+}
+
+.sb-l-m .navbar .sidebar-menu-toggle,
+.sb-l-c .navbar .sidebar-menu-toggle {
+  margin-left: 10px;
+  display: none;
+}
+
+// 4. Mobile Menu Modifications
+
+// Responsive classes
+@media (max-width: 1280px) {
+
+  #content_wrapper,
+  .sb-l-o #content_wrapper {
+    margin-left: 0;
+    left: @sidebar-open-width;
+  }
+
+  .sb-top #content_wrapper {
+    left: 0;
+  }
+
+  .sb-l-m #content_wrapper {
+    left: 0;
+  }
+
+  .sb-l-c #content_wrapper {
+    margin-left: 0;
+    left: 0;
+  }
+
+  .sb-r-o #content_wrapper {
+    margin-right: 0;
+    left: -300px;
+  }
+}

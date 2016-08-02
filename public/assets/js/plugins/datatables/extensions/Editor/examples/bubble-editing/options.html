@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>Editor example - Form control and display options</title>
+	<link rel="stylesheet" type="text/css" href="../../../../media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="../../../TableTools/css/dataTables.tableTools.css">
+	<link rel="stylesheet" type="text/css" href="../../css/dataTables.editor.css">
+	<link rel="stylesheet" type="text/css" href=
+	"//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="../../../../examples/resources/demo.css">
+	<style type="text/css" class="init">
+
+	table.dataTable tr td:first-child {
+		text-align: center;
+	}
+
+	table.dataTable tr td:first-child:before {
+		content: "\f096"; /* fa-square-o */
+		font-family: FontAwesome;
+	}
+
+	table.dataTable tr.selected td:first-child:before {
+		content: "\f046"; /* fa-check-square-o */
+	}
+
+	</style>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../TableTools/js/dataTables.tableTools.js"></script>
+	<script type="text/javascript" language="javascript" src="../../js/dataTables.editor.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/syntax/shCore.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/editor-demo.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+
+
+var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		ajax: "../php/staff.php",
+		table: "#example",
+		fields: [ {
+				label: "First name:",
+				name: "first_name"
+			}, {
+				label: "Last name:",
+				name: "last_name"
+			}, {
+				label: "Position:",
+				name: "position"
+			}, {
+				label: "Office:",
+				name: "office"
+			}, {
+				label: "Extension:",
+				name: "extn"
+			}, {
+				label: "Start date:",
+				name: "start_date"
+			}, {
+				label: "Salary:",
+				name: "salary"
+			}
+		]
+	} );
+
+	$('#example').on( 'click', 'tbody td', function (e) {
+		var index = $(this).index();
+
+		if ( index === 1 ) {
+			editor.bubble( this, ['first_name', 'last_name'], {
+				title: 'Edit name:'
+			} );
+		}
+		else if ( index === 2 ) {
+			editor.bubble( this, {
+				buttons: false
+			} );
+		}
+		else if ( index === 3 ) {
+			editor.bubble( this );
+		}
+		else if ( index === 4 ) {
+			editor.bubble( this, {
+				message: 'Date must be given in the format `yyyy-mm-dd`'
+			} );
+		}
+		else if ( index === 5 ) {
+			editor.bubble( this, {
+				title: 'Edit salary',
+				message: 'Enter an unformatted number in dollars ($)'
+			} );
+		}
+	} );
+
+	$('#example').DataTable( {
+		dom: "Tfrtip",
+		ajax: "../php/staff.php",
+		columns: [
+			{ data: null, defaultContent: '', orderable: false },
+			{ data: null, render: function ( data, type, row ) {
+				// Combine the first and last names into a single table field
+				return data.first_name+' '+data.last_name;
+			} },
+			{ data: "position" },
+			{ data: "office" },
+			{ data: "start_date" },
+			{ data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+		],
+		order: [ 1, 'asc' ],
+		tableTools: {
+			sRowSelect: "os",
+			sRowSelector: 'td:first-child',
+			aButtons: [
+				{ sExtends: "editor_create", editor: editor },
+				{ sExtends: "editor_edit",   editor: editor },
+				{ sExtends: "editor_remove", editor: editor }
+			]
+		}
+	} );
+} );
+
+
+
+	</script>
+</head>
+
+<body class="dt-example">
+	<div class="container">
+		<section>
+			<h1>Editor example <span>Form control and display options</span></h1>
+
+			<div class="info">
+				<p>Like the other editing methods in Editor, the <a href=
+				"//editor.datatables.net/reference/api/bubble()"><code class="api" title=
+				"Editor API method">bubble()<span>E</span></code></a> method accepts an optional <a href=
+				"//editor.datatables.net/reference/type/form-options"><code class="type" title=
+				"Editor parameter type">form-options<span>E</span></code></a> parameter which can be used to control
+				the display of the bubble. These options include the ability to show the form header and general
+				information text, among others.</p>
+
+				<p>In this example the columns have the following behaviour:</p>
+
+				<ul class="markdown">
+					<li>1 - Row selection for the primary editing form</li>
+					<li>2 - Name - Shows a title using the <code>title</code> option and two fields to edit</li>
+					<li>3 - Position - Editing without a submit button (press return to edit)</li>
+					<li>4 - Office - Default editing options</li>
+					<li>5 - Start date - Shows a message using the <code>message</code> option</li>
+					<li>6 - Salary - Shows a title and a message</li>
+				</ul>
+
+				<p>Typically you wouldn't show a mix of displays as in this example, but it is done this way here to
+				show how the <a href="//editor.datatables.net/reference/type/form-options"><code class="type" title=
+				"Editor parameter type">form-options<span>E</span></code></a> type can be used to display different
+				options.</p>
+
+				<p>Default options for the <a href="//editor.datatables.net/reference/type/form-options"><code class=
+				"type" title="Editor parameter type">form-options<span>E</span></code></a> parameter of the <a href=
+				"//editor.datatables.net/reference/api/bubble()"><code class="api" title=
+				"Editor API method">bubble()<span>E</span></code></a> method can be set at initialisation time using
+				the <a href="//editor.datatables.net/reference/option/formOptions.bubble"><code class="option" title=
+				"Editor initialisation option">formOptions.bubble<span>E</span></code></a> options (<a href=
+				"defaultOptions.html">example</a>).</p>
+			</div>
+
+			<table id="example" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>
+
+						<th>Name</th>
+						<th>Position</th>
+						<th>Office</th>
+						<th>Start date</th>
+						<th>Salary</th>
+					</tr>
+				</thead>
+			</table>
+
+			<ul class="tabs">
+				<li class="active">Javascript</li>
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>Ajax</li>
+				<li>Server-side script</li>
+			</ul>
+
+			<div class="tabs">
+				<div class="js">
+					<p>The Javascript shown below is used to initialise the table shown in this
+					example:</p><code class="multiline brush: js;">var editor; // use a global for the submit and return data rendering in the examples
+
+$(document).ready(function() {
+	editor = new $.fn.dataTable.Editor( {
+		ajax: &quot;../php/staff.php&quot;,
+		table: &quot;#example&quot;,
+		fields: [ {
+				label: &quot;First name:&quot;,
+				name: &quot;first_name&quot;
+			}, {
+				label: &quot;Last name:&quot;,
+				name: &quot;last_name&quot;
+			}, {
+				label: &quot;Position:&quot;,
+				name: &quot;position&quot;
+			}, {
+				label: &quot;Office:&quot;,
+				name: &quot;office&quot;
+			}, {
+				label: &quot;Extension:&quot;,
+				name: &quot;extn&quot;
+			}, {
+				label: &quot;Start date:&quot;,
+				name: &quot;start_date&quot;
+			}, {
+				label: &quot;Salary:&quot;,
+				name: &quot;salary&quot;
+			}
+		]
+	} );
+
+	$('#example').on( 'click', 'tbody td', function (e) {
+		var index = $(this).index();
+
+		if ( index === 1 ) {
+			editor.bubble( this, ['first_name', 'last_name'], {
+				title: 'Edit name:'
+			} );
+		}
+		else if ( index === 2 ) {
+			editor.bubble( this, {
+				buttons: false
+			} );
+		}
+		else if ( index === 3 ) {
+			editor.bubble( this );
+		}
+		else if ( index === 4 ) {
+			editor.bubble( this, {
+				message: 'Date must be given in the format `yyyy-mm-dd`'
+			} );
+		}
+		else if ( index === 5 ) {
+			editor.bubble( this, {
+				title: 'Edit salary',
+				message: 'Enter an unformatted number in dollars ($)'
+			} );
+		}
+	} );
+
+	$('#example').DataTable( {
+		dom: &quot;Tfrtip&quot;,
+		ajax: &quot;../php/staff.php&quot;,
+		columns: [
+			{ data: null, defaultContent: '', orderable: false },
+			{ data: null, render: function ( data, type, row ) {
+				// Combine the first and last names into a single table field
+				return data.first_name+' '+data.last_name;
+			} },
+			{ data: &quot;position&quot; },
+			{ data: &quot;office&quot; },
+			{ data: &quot;start_date&quot; },
+			{ data: &quot;salary&quot;, render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+		],
+		order: [ 1, 'asc' ],
+		tableTools: {
+			sRowSelect: &quot;os&quot;,
+			sRowSelector: 'td:first-child',
+			aButtons: [
+				{ sExtends: &quot;editor_create&quot;, editor: editor },
+				{ sExtends: &quot;editor_edit&quot;,   editor: editor },
+				{ sExtends: &quot;editor_remove&quot;, editor: editor }
+			]
+		}
+	} );
+} );</code>
+
+					<p>In addition to the above code, the following Javascript library files are loaded for use in this
+					example:</p>
+
+					<ul>
+						<li><a href="../../../../media/js/jquery.js">../../../../media/js/jquery.js</a></li>
+						<li><a href=
+						"../../../../media/js/jquery.dataTables.js">../../../../media/js/jquery.dataTables.js</a></li>
+						<li><a href=
+						"../../../TableTools/js/dataTables.tableTools.js">../../../TableTools/js/dataTables.tableTools.js</a></li>
+						<li><a href="../../js/dataTables.editor.js">../../js/dataTables.editor.js</a></li>
+					</ul>
+				</div>
+
+				<div class="table">
+					<p>The HTML shown below is the raw HTML table element, before it has been enhanced by
+					DataTables:</p>
+				</div>
+
+				<div class="css">
+					<div>
+						<p>This example uses a little bit of additional CSS beyond what is loaded from the library
+						files (below), in order to correctly display the table. The additional CSS used is shown
+						below:</p><code class="multiline brush: js;">table.dataTable tr td:first-child {
+		text-align: center;
+	}
+
+	table.dataTable tr td:first-child:before {
+		content: &quot;\f096&quot;; /* fa-square-o */
+		font-family: FontAwesome;
+	}
+
+	table.dataTable tr.selected td:first-child:before {
+		content: &quot;\f046&quot;; /* fa-check-square-o */
+	}</code>
+					</div>
+
+					<p>The following CSS library files are loaded for use in this example to provide the styling of the
+					table:</p>
+
+					<ul>
+						<li><a href=
+						"../../../../media/css/jquery.dataTables.css">../../../../media/css/jquery.dataTables.css</a></li>
+						<li><a href=
+						"../../../TableTools/css/dataTables.tableTools.css">../../../TableTools/css/dataTables.tableTools.css</a></li>
+						<li><a href="../../css/dataTables.editor.css">../../css/dataTables.editor.css</a></li>
+						<li><a href=
+						"//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css</a></li>
+					</ul>
+				</div>
+
+				<div class="ajax">
+					<p>This table loads data by Ajax. The latest data that has been loaded is shown below. This data
+					will update automatically as any additional data is loaded.</p>
+				</div>
+
+				<div class="php">
+					<p>The script used to perform the server-side processing for this table is shown below. Please note
+					that this is just an example script using PHP. Server-side processing scripts can be written in any
+					language, using <a href="//datatables.net/manual/server-side">the protocol described in the
+					DataTables documentation</a>.</p>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<section>
+		<div class="footer">
+			<div class="gradient"></div>
+
+			<div class="liner">
+				<h2>Other examples</h2>
+
+				<div class="toc">
+					<div class="toc-group">
+						<h3><a href="../simple/index.html">Simple initialisation</a></h3>
+						<ul class="toc">
+							<li><a href="../simple/simple.html">Basic initialisation</a></li>
+							<li><a href="../simple/fieldDefaults.html">Setting defaults</a></li>
+							<li><a href="../simple/fieldTypes.html">Field types</a></li>
+							<li><a href="../simple/dates.html">Dates (with jQuery UI datepicker)</a></li>
+							<li><a href="../simple/i18n.html">Internationalisation</a></li>
+							<li><a href="../simple/inTableControls.html">In table form controls</a></li>
+							<li><a href="../simple/responsive.html">Responsive table extension</a></li>
+							<li><a href="../simple/server-side-processing.html">Server-side processing</a></li>
+							<li><a href="../simple/join.html">Join tables - working with multiple SQL tables</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../advanced/index.html">Advanced initialisation</a></h3>
+						<ul class="toc">
+							<li><a href="../advanced/formOnlyData.html">Data shown only in the form</a></li>
+							<li><a href="../advanced/tableOnlyData.html">Data shown in table only</a></li>
+							<li><a href="../advanced/deepObjects.html">Complex (nested) JSON data source</a></li>
+							<li><a href="../advanced/REST.html">REST interface</a></li>
+							<li><a href="../advanced/localstorage.html">Ajax override - using localStorage for the data
+							source</a></li>
+							<li><a href="../advanced/jsonId.html">Row ID source specification</a></li>
+							<li><a href="../advanced/htmlTable.html">DOM sourced table</a></li>
+							<li><a href="../advanced/exportButtons.html">Export buttons</a></li>
+							<li><a href="../advanced/joinSelf.html">Join tables - self referencing join</a></li>
+							<li><a href="../advanced/joinLinkTable.html">Join tables - link table</a></li>
+							<li><a href="../advanced/joinArray.html">Join tables - one-to-many join</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="./index.html">Bubble editing</a></h3>
+						<ul class="toc active">
+							<li><a href="./simple.html">Simple bubble editing</a></li>
+							<li><a href="./grouped.html">Multiple fields in a bubble</a></li>
+							<li class="active"><a href="./options.html">Form control and display options</a></li>
+							<li><a href="./defaultOptions.html">Default control and display options</a></li>
+							<li><a href="./inTableControls.html">Bubble editing with in table row controls</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../inline-editing/index.html">Inline editing</a></h3>
+						<ul class="toc">
+							<li><a href="../inline-editing/simple.html">Simple inline editing</a></li>
+							<li><a href="../inline-editing/tabControl.html">Tab between columns</a></li>
+							<li><a href="../inline-editing/options.html">Editing options - submit on blur</a></li>
+							<li><a href="../inline-editing/submitButton.html">Inline editing with a submit
+							button</a></li>
+							<li><a href="../inline-editing/editIcon.html">Edit icon</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../api/index.html">API</a></h3>
+						<ul class="toc">
+							<li><a href="../api/confirmClose.html">Events - unsaved changes close confirmation</a></li>
+							<li><a href="../api/clientValidation.html">Client-side validation</a></li>
+							<li><a href="../api/triggerButton.html">Customised control buttons</a></li>
+							<li><a href="../api/backNext.html">Previous / next editing buttons</a></li>
+							<li><a href="../api/duplicateButton.html">Duplicate button</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../standalone/index.html">Standalone</a></h3>
+						<ul class="toc">
+							<li><a href="../standalone/simple.html">Simple standalone editing</a></li>
+							<li><a href="../standalone/bubble.html">Bubble editing</a></li>
+							<li><a href="../standalone/inline.html">Inline editing</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../styling/index.html">Styling</a></h3>
+						<ul class="toc">
+							<li><a href="../styling/envelope.html">Envelope display controller</a></li>
+							<li><a href="../styling/envelopeInTable.html">Envelope display with in table
+							controls</a></li>
+							<li><a href="../styling/stackedInputs.html">Styled for stacked inputs</a></li>
+							<li><a href="../styling/bootstrap.html">Bootstrap</a></li>
+							<li><a href="../styling/jqueryui.html">jQuery UI</a></li>
+						</ul>
+					</div>
+
+					<div class="toc-group">
+						<h3><a href="../plug-ins/index.html">Plug-ins</a></h3>
+						<ul class="toc">
+							<li><a href="../plug-ins/fieldPlugin.html">Custom field type plug-ins</a></li>
+							<li><a href="../plug-ins/displayController.html">Custom display controller</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="epilogue">
+					<p>Please refer to the <a href="http://www.datatables.net">DataTables documentation</a> for full
+					information about its API properties and methods.<br>
+					Additionally, there are a wide range of <a href="http://www.datatables.net/extras">extras</a> and
+					<a href="http://www.datatables.net/plug-ins">plug-ins</a> which extend the capabilities of
+					DataTables.</p>
+
+					<p class="copyright">DataTables designed and created by <a href=
+					"http://www.sprymedia.co.uk">SpryMedia Ltd</a> &#169; 2007-2014<br>
+					DataTables is licensed under the <a href="http://www.datatables.net/mit">MIT license</a>.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

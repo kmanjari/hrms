@@ -1,0 +1,38 @@
+// ====================== Alerts =======================
+
+.alert-variant(@color) {
+  background-color: lighten(@color, 8%);
+
+  &.alert-border-right { border-right-color: darken(@color, 13%); }
+  &.alert-border-top { border-top-color: darken(@color, 13%); }
+  &.alert-border-bottom { border-bottom-color: darken(@color, 13%); }
+  &.alert-border-left { border-left-color: darken(@color, 13%); }
+
+  // Color shade variants
+  &.light { background-color: lighten(@color, 15%); }
+  &.dark { background-color: darken(@color, 3%); }
+  &.pastel { 
+    color: darken(@color, 15%);
+    background-color: lighten(@color, 30%);
+    border-color: rgba(0,0,0,0.1);
+
+    // Link color
+    .alert-link { 
+      color: darken(@color, 15%);
+    }
+
+    // Border settings
+    &.alert-micro {
+     border-color: lighten(@color, 10%);
+    }
+
+    // Adjust close link position
+    .close {
+      color: darken(@color, 15%);
+        &:hover { 
+          color: darken(@color, 15%);
+        }
+    }
+  }
+}
+

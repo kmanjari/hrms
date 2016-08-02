@@ -1,0 +1,128 @@
+// ====================== FooTables =======================
+
+// Table row hover
+table.footable > tbody > tr > td.footable-first-column {
+  border-left: 4px solid transparent;
+}
+
+table.footable > tbody > tr:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show > td.footable-first-column {
+  border-left-color: #AAA;
+}
+
+// Primary Row
+table.footable > tbody > tr.row-primary:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-primary > td.footable-first-column {
+  border-left-color: @brand-primary;
+}
+
+// Info Row
+table.footable > tbody > tr.row-info:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-info > td.footable-first-column {
+  border-left-color: @brand-info;
+}
+
+// Success Row
+table.footable > tbody > tr.row-success:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-success > td.footable-first-column {
+  border-left-color: @brand-success;
+}
+
+// Warning Row
+table.footable > tbody > tr.row-warning:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-warning > td.footable-first-column {
+  border-left-color: @brand-warning;
+}
+
+// Danger Row
+table.footable > tbody > tr.row-danger:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-danger > td.footable-first-column {
+  border-left-color: @brand-danger;
+}
+
+// Alert Row
+table.footable > tbody > tr.row-alert:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-moved > td.footable-first-column {
+  border-left-color: @brand-alert;
+}
+
+// System Row
+table.footable > tbody > tr.row-system:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-system > td.footable-first-column {
+  border-left-color: @brand-system;
+}
+
+// Dark Row
+table.footable > tbody > tr.row-dark:hover > td.footable-first-column,
+table.footable > tbody > tr.footable-detail-show.row-dark > td.footable-first-column {
+  border-left-color: @brand-dark
+}
+
+// Fixed width labels
+table.footable.fw-labels > tbody > tr > td:first-child {
+  width: 90px;
+  vertical-align: middle;
+  padding: 11px 12px 11px 8px;
+}
+
+table.footable.fw-labels > tbody > tr > td:first-child .label {
+  width: 100%;
+  display: inline-block;
+  padding: 4px 4px 6px;
+  font-size: 11px;
+  text-align: center;
+  font-weight: 600;
+  line-height: 1;
+}
+
+// expand row padding
+.footable-row-detail-name,
+.footable-row-detail-value {
+  padding: 7px 9px 9px;
+}
+
+// row background color
+table.footable .footable-odd {
+  background-color: #FFF;
+}
+
+table.footable .footable-even {
+  background-color: #fafafa;
+}
+
+// table row open
+table.footable > tbody > tr.footable-row-detail {
+  background-color: #FFF !important;
+}
+
+// table toggle row icon
+table.footable.breakpoint > tbody > tr > td > span.footable-toggle {
+  float: right;
+  font-size: 10px;
+  padding-top: 2px;
+}
+
+.foo-header > tr > th {
+  background-color: #f6f6f6;
+  border: 1px solid #DDD !important;
+}
+
+.foo-footer > tr > td {
+  background-color: #f6f6f6;
+}
+
+.footable-page-arrow a[data-page="first"],
+.footable-page-arrow a[data-page="last"] {
+  display: none;
+}
+
+// footer style - menu
+.footable > tfoot.footer-menu,
+.footable > tfoot.footer-menu > tr {
+  background-color: #f7f7f7;
+}
+
+// pagination settings
+.footable > tfoot .pagination {
+  margin-top: 5px;
+}

@@ -1,0 +1,311 @@
+// ====================== Navs =======================
+
+// Navs container
+.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  &:extend(.clearfix all);
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: @nav-link-padding;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: @nav-link-hover-bg;
+      }
+
+      name {
+        color: @brand-primary;
+        padding-left: 5px;
+      }
+    }
+
+    &.disabled > a {
+      color: @nav-disabled-link-color;
+
+      &:hover,
+      &:focus {
+        color: @nav-disabled-link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  // Dropdown open
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: @nav-link-hover-bg;
+      border-color: #CCC;
+    }
+  }
+
+  // Nav dividers
+  .nav-divider {
+    .nav-divider();
+  }
+
+  > li > a > img {
+    max-width: none;
+  }
+}
+
+// Nav tabs
+
+.nav-tabs {
+  border-bottom: 1px solid @nav-tabs-border-color;
+  > li {
+    float: left;
+    margin-bottom: -1px;
+
+    > a {
+      margin-right: 2px;
+      line-height: @line-height-base;
+      border: 1px solid transparent;
+      border-radius: @border-radius-base @border-radius-base 0 0;
+      &:hover {
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+      }
+    }
+
+    // Active, focus and hover states
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @nav-tabs-active-link-hover-color;
+        background-color: @nav-tabs-active-link-hover-bg;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+  &.nav-justified {
+    .nav-justified();
+    .nav-tabs-justified();
+  }
+}
+
+// Nav Pills
+.nav-pills {
+
+  &.nav-pills-sm > li > a {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  &.nav-pills-lg > li > a {
+    font-size: 14px;
+    padding: 12px 18px;
+  }
+
+  > li {
+    float: left;
+
+    > a {
+      border: 1px solid transparent;
+      border-radius: @nav-pills-border-radius;
+      color: #888;
+      padding: 7px 13px;
+    }
+    + li {
+      margin-left: 7px;
+    }
+
+    // Active, hover and foces states
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: #FFF;
+        background-color: @nav-pills-active-link-hover-bg;
+        border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.18);
+      }
+    }
+  }
+}
+
+// Nav stacked
+.nav-stacked {
+  > li {
+    float: none;
+    + li {
+      margin-top: 2px;
+      margin-left: 0;
+    }
+  }
+}
+
+// Page Heading 
+.page-heading {
+  position: relative;
+  padding: 30px 40px;
+  margin: -25px -20px 25px;
+  background-color: @brand-light;
+}
+
+.page-tabs {
+  margin: -25px -20px 30px;
+  padding: 15px 25px 0;
+  border-bottom: 1px solid #ddd;
+  background: #e9e9e9;
+
+  .nav-tabs {
+    border-bottom: 0;
+  }
+  .nav-tabs > li > a {
+    color: #AAA;
+    padding: 10px 20px;
+  }
+  .nav-tabs > li:hover > a,
+  .nav-tabs > li:focus > a {
+    border-color: #ddd;
+  }
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    color: #666;
+    font-weight: 600;
+    background-color: #eee;
+    border-bottom-color: transparent;
+  }
+
+  @media (max-width: 800px) {
+    padding: 25px 20px 0;
+
+    .nav-tabs li {
+      float: none;
+      margin-bottom: 5px;
+    }
+
+    .nav-tabs li:last-child,
+    .nav-tabs li.active:last-child {
+      margin-bottom: 10px;
+    }
+
+    .nav-tabs > li > a:hover,
+    .nav-tabs > li > a:focus {
+      border: 1px solid #DDD;
+    }
+
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:hover,
+    .nav-tabs > li.active > a:focus {
+      border-bottom-color: #ddd;
+    }
+  }
+
+}
+
+// Nav justified
+
+.nav-justified {
+  width: 100%;
+
+  > li {
+    float: none;
+    > a {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+  }
+
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    > li {
+      display: table-cell;
+      width: 1%;
+      > a {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Nav tabs justified
+.nav-tabs-justified {
+  border-bottom: 0;
+
+  > li > a {
+    margin-right: 0;
+    border-radius: @border-radius-base;
+  }
+
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
+    border: 1px solid @nav-tabs-justified-link-border-color;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    > li > a {
+      border-bottom: 1px solid @nav-tabs-justified-link-border-color;
+      border-radius: @border-radius-base @border-radius-base 0 0;
+    }
+
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      border-bottom-color: @nav-tabs-justified-active-link-border-color;
+    }
+  }
+}
+
+// Tab content
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}
+
+// Dropdown menus in nav tabs
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  .border-top-radius(0);
+}
+
+// Nav-list
+.nav-list {
+  margin-bottom: 20px;
+
+  li {
+    display: inline-block;
+    &.active a {
+      color: #444;
+      border-bottom: 3px solid #4a89dc;
+    }
+  }
+  li a {
+    color: #AAA;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+
+    &:hover,
+    &:focus {
+      color: #444;
+      background-color: transparent;
+    }
+  }
+
+  &.nav-list-sm li a {
+    padding: 10px 8px;
+  }
+
+}
