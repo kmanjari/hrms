@@ -1,0 +1,4 @@
+/vendor
+/public/photos
+.env
+.idea

@@ -96,6 +96,7 @@
                 formData.append('offer_acceptance', offer_acceptance);
                 formData.append('prob_period', probation_period);
                 formData.append('doc', datepicker3);
+                formData.append('father_name', father_name);
                 formData.append('department', department);
                 formData.append('salary', salary);
                 formData.append('account_number', bank_account_number);
@@ -107,40 +108,24 @@
                 formData.append('notice_period', notice_period);
                 formData.append('last_working_day', datepicker5);
                 formData.append('full_final', full_final);
+                formData.append('_token', token);
 
+
+                var url = $('#url').val();
                 $.ajax({
                         type: 'POST',
-                        url: '/add-employee',
+                        url: '/'+ url,
                         data: formData,
                         contentType: false,
                         processData: false,
                         success: function (data) {
                             var parsed = JSON.parse(data);
-                            //var html = 'title '+parsed.title+' desc '+parsed.story+ ' photo '+parsed.photo;
-                            var html = '<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button><i class="fa fa-info-sign"></i><strong>Your blog titled ' + parsed.title + ' has been published successully you can view it <a href="/blog/' + parsed.id + '/' + parsed.slug + '.html">here</a>.  Want to write more blogs? Click <a href="/writeblog">here</a></strong></div>';
-                            console.log(html);
-                            $('#extraComments').append(html);
-                            $('#newform').hide();
+                            $('.modal-title').append(parsed.title);
+                            $('.modal-body').append(parsed.message);
+                            $('#notification-modal').modal('show');
                         }
                 });
 
-                /*$.post('/add-employee', {
-                    'emp_code' : emp_code,
-                    'emp_name' : emp_name,
-                    'emp_something' : emp_something
-                }, function(data)
-                {
-                    var parsed = JSON.parse(data);
-
-                    if(parsed == 'success')
-                    {
-                        //do something
-                    }
-                    else
-                    {
-                        //do something else
-                    }
-                });*/
             }
         });
 

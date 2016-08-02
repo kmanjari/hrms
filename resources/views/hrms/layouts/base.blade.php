@@ -609,7 +609,7 @@
 <script src="/assets/js/pages/dashboard1.js"></script>
 <!-- -------------- /Scripts -------------- -->
 
-<script src="/js/form-wizard.js"></script>
+<script src="/assets/js/custom_form_wizard.js"></script>
 
 </body>
 
