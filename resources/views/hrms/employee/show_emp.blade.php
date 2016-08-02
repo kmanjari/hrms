@@ -38,6 +38,11 @@
                             <span class="panel-title hidden-xs">Employee Lists</span>
                         </div>
                         <div class="panel-body pn">
+                            @if(Session::has('flash_message'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('flash_message') }}
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
@@ -82,10 +87,10 @@
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>
-                                                        <a href="#">Edit</a>
+                                                        <a href="/edit-emp/{{$emp->id}}">Edit</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">Delete</a>
+                                                        <a href="/delete-emp/{{$emp->id}}">Delete</a>
                                                     </li>
                                                 </ul>
                                             </div>

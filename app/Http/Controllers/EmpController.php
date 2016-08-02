@@ -23,7 +23,6 @@ class EmpController extends Controller
 
     public function processEmployee(Requests\EmployeeRequest $request)
     {
-
         $filename = public_path('photos/a.png');
         if ($request->file('photo')) {
             $file = $request->file('photo');
@@ -38,6 +37,12 @@ class EmpController extends Controller
             $file->move($destinationPath, $filename);
 
         }
+
+        $user = new User;
+        $user->name = $request->emp_name;
+        $user->email = str_replace(' ', '_', $request->emp_name).'@dipi-ip.com';
+        $user->password = bcrypt('123456');
+        $user->save();
 
         $emp = new Employee;
         $emp->photo = $filename;
@@ -69,29 +74,26 @@ class EmpController extends Controller
         $emp->notice_period = $request->notice_period;
         $emp->last_working_day = $request->last_working_day;
         $emp->full_final = $request->full_final;
-
+        $emp->user_id = $user->id;
         $emp->save();
 
         $emp->userrole()->create(['role_id' => $request->role]);
         $emp->save();
-        \Session::flash('flash_message', 'Employee successfully added!');
-        return redirect()->back();
+
+        return json_encode(['title' => 'Success', 'message' => 'Employee added successfully']);
 
     }
 
     public function showEmployee()
     {
-
         $emps = Employee::with('userrole.role')->paginate(40);
         return view('hrms.employee.show_emp', compact('emps'));
-
     }
 
     public function showEdit($id)
     {
         $emps = Employee::whereid($id)->with('userrole.role')->first();
         $roles = Role::get();
-
         return view('hrms.employee.add', compact('emps', 'roles'));
     }
 
@@ -233,8 +235,7 @@ class EmpController extends Controller
 
         $edit->save();
 
-        \Session::flash('flash_message', 'Details successfully updated!');
-        return redirect('/employeelist');
+        return json_encode(['title' => 'Success', 'message' => 'Employee details successfully updated']);
     }
 
     public function doDelete($id)

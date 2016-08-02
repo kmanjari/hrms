@@ -111,12 +111,6 @@ class AddAndChangeColumnsOfEmployeeTable extends Migration
             {
                 $table->string('pf_status')->after('pf_account_number');
             }
-
-
-
-
-
-
         });
     }
 
