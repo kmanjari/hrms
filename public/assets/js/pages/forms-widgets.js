@@ -30,6 +30,17 @@
             }
         });
 
+        $('#timepicker4').timepicker({
+            beforeShow: function(input, inst) {
+                var newclass = 'allcp-form';
+                var themeClass = $(this).parents('.allcp-form').attr('class');
+                var smartpikr = inst.dpDiv.parent();
+                if (!smartpikr.hasClass(themeClass)) {
+                    inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+                }
+            }
+        });
+
         $('#timepicker2').timepicker({
             showOn: 'both',
             buttonText: '<i class="imoon imoon-clock"></i>',
@@ -111,6 +122,62 @@
         /* @date picker
          ------------------------------------------------------------------ */
         $("#datepicker1").datepicker({
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            showButtonPanel: false,
+            beforeShow: function(input, inst) {
+                var newclass = 'allcp-form';
+                var themeClass = $(this).parents('.allcp-form').attr('class');
+                var smartpikr = inst.dpDiv.parent();
+                if (!smartpikr.hasClass(themeClass)) {
+                    inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+                }
+            }
+        });
+
+        $("#datepicker4").datepicker({
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            showButtonPanel: false,
+            beforeShow: function(input, inst) {
+                var newclass = 'allcp-form';
+                var themeClass = $(this).parents('.allcp-form').attr('class');
+                var smartpikr = inst.dpDiv.parent();
+                if (!smartpikr.hasClass(themeClass)) {
+                    inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+                }
+            }
+        });
+
+        $("#datepicker5").datepicker({
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            showButtonPanel: false,
+            beforeShow: function(input, inst) {
+                var newclass = 'allcp-form';
+                var themeClass = $(this).parents('.allcp-form').attr('class');
+                var smartpikr = inst.dpDiv.parent();
+                if (!smartpikr.hasClass(themeClass)) {
+                    inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+                }
+            }
+        });
+
+        $("#datepicker6").datepicker({
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            showButtonPanel: false,
+            beforeShow: function(input, inst) {
+                var newclass = 'allcp-form';
+                var themeClass = $(this).parents('.allcp-form').attr('class');
+                var smartpikr = inst.dpDiv.parent();
+                if (!smartpikr.hasClass(themeClass)) {
+                    inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+                }
+            }
+        });
+
+        $("#datepicker7").datepicker({
             prevText: '<i class="fa fa-chevron-left"></i>',
             nextText: '<i class="fa fa-chevron-right"></i>',
             showButtonPanel: false,

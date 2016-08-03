@@ -103,20 +103,30 @@
                                     <div class="form-group">
                                         <label for="datepicker1" class="col-md-3 control-label"> Date of Assignment </label>
                                         <div class="col-md-6">
-                                            <input type="date" id="datepicker1" class="form-control"
-                                                   name="doa"
-                                                   value="@if($assigns){{$assigns->doa}}@endif"/>
+
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" id="datepicker1" class=" select2-single form-control" name="doa"
+                                                       value="@if($assigns){{$assigns->doa}}@endif"/>
+                                            </div>
                                         </div>
                                     </div>
 
 
 
                                     <div class="form-group">
-                                        <label for="datepicker1" class="col-md-3 control-label"> Date of Release </label>
+                                        <label for="datepicker4" class="col-md-3 control-label"> Date of Release </label>
                                         <div class="col-md-6">
-                                            <input type="date" id="datepicker1" class="form-control"
-                                                   name="dor"
-                                                   value="@if($assigns){{$assigns->dor}}@endif"/>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="date" id="datepicker4" class="form-control"
+                                                       name="dor"
+                                                       value="@if($assigns){{$assigns->dor}}@endif"/>
+                                            </div>
                                         </div>
                                     </div>
 

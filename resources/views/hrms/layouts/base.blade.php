@@ -34,6 +34,9 @@
     <!-- -------------- Favicon -------------- -->
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
+    <!--  Custom css -->
+    <link rel="stylesheet" type="text/css" href="/assets/custom.css">
+
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -569,6 +572,10 @@
 </div>
 <!-- -------------- /Body Wrap  -------------- -->
 
+
+
+
+
 <!-- -------------- Scripts -------------- -->
 
 <!-- -------------- jQuery -------------- -->
@@ -607,9 +614,24 @@
 <script src="/assets/js/demo/widgets.js"></script>
 <script src="/assets/js/demo/widgets_sidebar.js"></script>
 <script src="/assets/js/pages/dashboard1.js"></script>
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'assign-asset')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+@endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
+    <script src="/assets/js/custom.js"></script>
+{{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
+
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
+    <script src="/assets/js/function.js"></script>
+    @endif
 <!-- -------------- /Scripts -------------- -->
 
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-employee')
 <script src="/assets/js/custom_form_wizard.js"></script>
+    @endif
 
 </body>
 

@@ -97,14 +97,22 @@
                                         <div class="form-group">
                                         <label for="datepicker1" class="col-md-3 control-label"> Date of Assignment </label>
                                             <div class="col-md-6">
-                                                @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
+                                                {{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
                                                 <input type="date" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->doa){{$emps->doa}}@endif"/>
-
-                                            @else
+                                                @else
                                                 <input type="date" id="datepicker1" class="select2-single form-control" name="doa"/>
-
-                                            @endif
-                                        </div>
+                                                @endif--}}
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
+                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->doa){{$emps->doa}}@endif"/>
+                                                        @else
+                                                            <input type="text" id="datepicker1" class="select2-single form-control" name="doa"/>
+                                                            @endif
+                                                    </div>
+                                            </div>
                                             </div>
 
 
@@ -112,7 +120,7 @@
                                         <div class="form-group">
                                             <label for="datepicker1" class="col-md-3 control-label"> Date of Release </label>
                                             <div class="col-md-6">
-                                                @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
+                                                {{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
 
                                                     <input type="date" id="datepicker1" class="select2-single form-control" name="dor" value="@if($emps && $emps->dor){{$emps->dor}}@endif"/>
 
@@ -120,7 +128,17 @@
 
                                                     <input type="date" id="datepicker1" class="select2-single form-control" name="dor"/>
 
-                                                @endif
+                                                @endif--}}
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
+                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor" value="@if($emps && $emps->dor){{$emps->dor}}@endif"/>
+                                                    @else
+                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor"/>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
 

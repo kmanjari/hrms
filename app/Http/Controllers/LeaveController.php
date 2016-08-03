@@ -179,11 +179,11 @@ class LeaveController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showLeaveRequest()
+    public function showMyLeave()
     {
-        $emps= Employee::get();
-        $leaves= LeaveApply::with('leavetypeapply.leavetype')->paginate(5);
-        return view('hrms.leave.show_leave_request',compact('emps','leaves'));
+
+        $leaves=EmployeeLeaves::where('employee_id', \Auth::user()->id)->paginate(10);
+        return view('hrms.leave.show_leave_request', compact('leaves'));
     }
 
     /**

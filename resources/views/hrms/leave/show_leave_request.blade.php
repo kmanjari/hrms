@@ -4,68 +4,82 @@
         <!-- START CONTENT -->
 <div class="content">
 
-    <!-- Start Page Header -->
-    <div class="page-header">
-        <h1 class="title"></h1>
-        <ol class="breadcrumb">
-            <li><a href="/dashboard">DASHBOARD</a></li>
-            <li>Leave</li>
-            <li class="active">Leave Request Listing</li>
-        </ol>
-    </div>
+    <header id="topbar" class="alt">
+        <div class="topbar-left">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-icon">
+                    <a href="/dashboard">
+                        <span class="fa fa-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-active">
+                    <a href="/dashboard"> Dashboard </a>
+                </li>
+                <li class="breadcrumb-link">
+                    <a href=""> Leaves </a>
+                </li>
+                <li class="breadcrumb-current-item"> My Leave List</li>
+            </ol>
+        </div>
+    </header>
 
-    <!-- START CONTAINER -->
-    <div class="container-padding">
-        <div class="container-padding">
-            @if(Session::has('flash_message'))
-                <div class="alert alert-success">
-                    {{ Session::get('flash_message') }}
-                </div>
-            @endif
-            {{  Form::open(['files' => 'true'],['method' =>'PATCH']) }}
+
+    <!-- -------------- Content -------------- -->
+    <section id="content" class="table-layout animated fadeIn">
+
+        <!-- -------------- Column Center -------------- -->
+        <div class="chute chute-center">
+
+            <!-- -------------- Products Status Table -------------- -->
             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-widget">
-                    <div class="panel panel-default">
-                        <div class="panel-title text-center">
-                            <blockquote>Total Leave Request</blockquote>
+                <div class="col-xs-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <span class="panel-title hidden-xs"> My Leave Lists </span>
                         </div>
-                        <div class="form-horizontal">
-
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                   <th>Leave Type</th>
-                                    <th>Date From</th>
-                                    <th>Date To</th>
-                                    <th>Reason</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($leaves as $leave)
-                                    <tr>
-                                        <td>{{$leave->id}}</td>
-                                        <td>{{$leave->leavetypeapply->leavetype->leave_type}}</td>
-                                        <td>{{$leave->dateFrom}}</td>
-                                        <td>{{$leave->dateTo}}</td>
-                                        <td>{{$leave->reason}}</td>
-                                        <td>
-                                            <a href="/approveRequest/{{$leave->id}}" class="btn btn-rounded btn-primary">Approve</a> <a href="/rejectrequest/{{$leave->id}}" class="btn btn-rounded btn-danger">Reject</a>
-                                        </td>
+                        <div class="panel-body pn">
+                            @if(Session::has('flash_message'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('flash_message') }}
+                                </div>
+                            @endif
+                            {!! Form::open(['class' => 'form-horizontal']) !!}
+                            <div class="table-responsive">
+                                <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                    <thead>
+                                    <tr class="bg-light">
+                                        <th>Id</th>
+                                        <th>Leave Type</th>
+                                        <th>Date From</th>
+                                        <th>Date To</th>
+                                        <th>Days</th>
+                                        <th>Status</th>
                                     </tr>
-                                 </tbody>
-                                @endforeach
-                              </table>
-                            {!! $leaves->render() !!}
+                                    </thead>
+                                    <tbody>
+                                    @foreach($leaves as $leave)
+                                        <tr>
+                                            <td>{{$leave->id}}</td>
+                                            <td>{{getLeaveType($leave->leave_type_id)}}</td>
+                                            <td>{{getFormattedDate($leave->date_from)}}</td>
+                                            <td>{{getFormattedDate($leave->date_to)}}</td>
+                                            <td>{{$leave->days}}</td>
+                                            <td>{{($leave->status == '0') ? 'Unapproved' : 'Approved'}}</td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        {!! $leaves->render() !!}
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
             </div>
-                </div>
-            {{ Form::close() }}
         </div>
-    </div>
+    </section>
+
 </div>
 @endsection

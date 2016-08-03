@@ -73,12 +73,12 @@
                                 <div class="panel-body pn mv12">
 
                                     <div class="section">
-                                        <label for="input002"><h6 > Upload File </h6></label>
+                                        <label for="file1"><h6 > Upload File </h6></label>
                                         <label class="field prepend-icon append-button file">
                                             <span class="button">Choose File</span>
                                             <input type="file" class="gui-file" name="upload_file[]" id="file1"
                                                    onChange="document.getElementById('uploader1').value = this.value;">
-                                            <input type="text" class="gui-input" id="upload_file[]"
+                                            <input type="text" class="gui-input" id="uploader1"
                                                    placeholder="Select File">
                                         </label>
                                     </div>
@@ -108,5 +108,5 @@
     </section>
     <!-- -------------- /Content -------------- -->
 </div>
-
+{!!  Html::script ('/assets/js/pages/forms-widgets.js')!!}
 @endsection

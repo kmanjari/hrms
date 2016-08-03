@@ -25,6 +25,8 @@
             <!-- -------------- CSS - allcp forms -------------- -->
     {!! Html::style('/assets/allcp/forms/css/forms.css') !!}
 
+    {!! Html::style('/assets/custom.css') !!}
+
             <!-- -------------- Favicon -------------- -->
     <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
@@ -485,13 +487,13 @@
 
                                         <div class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="date" id="datepicker1" class="gui-input fs13" name="dob"
+                                                <input type="text" id="datepicker1" class="gui-input fs13" name="dob"
                                                        value="@if($emps && $emps->dob){{$emps->dob}}@endif"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
                                             @else
-                                                <input type="date" id="datepicker1" class="gui-input fs13" name="dob"/>
+                                                <input type="text" id="datepicker1" class="gui-input fs13" name="dob"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
@@ -501,18 +503,18 @@
 
 
                                     <div class="section">
-                                        <label for="datepicker2" class="field prepend-icon mb5"><h6 class="mb20 mt40">
+                                        <label for="datepicker4" class="field prepend-icon mb5"><h6 class="mb20 mt40">
                                                 Date of Joining </h6></label>
 
                                         <div class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="date" id="datepicker2" class="gui-input fs13" name="doj"
+                                                <input type="text" id="datepicker4" class="gui-input fs13" name="doj"
                                                        value="@if($emps && $emps->doj){{$emps->doj}}@endif"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
                                             @else
-                                                <input type="date" id="datepicker2" class="gui-input fs13" name="doj"/>
+                                                <input type="text" id="datepicker4" class="gui-input fs13" name="doj"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
@@ -730,18 +732,18 @@
 
 
                                     <div class="section">
-                                        <label for="datepicker3" class="field prepend-icon mb5"><h6 class="mb20 mt40">
+                                        <label for="datepicker5" class="field prepend-icon mb5"><h6 class="mb20 mt40">
                                                 Date of Confirmation </h6></label>
 
                                         <div class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="date" id="datepicker3" class="gui-input fs13" name="doc"
+                                                <input type="text" id="datepicker5" class="gui-input fs13" name="doc"
                                                        value="@if($emps && $emps->doc){{$emps->doc}}@endif"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
                                             @else
-                                                <input type="date" id="datepicker3" class="gui-input fs13" name="doc"/>
+                                                <input type="text" id="datepicker5" class="gui-input fs13" name="doc"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
@@ -920,18 +922,18 @@
 
 
                                     <div class="section">
-                                        <label for="datepicker4" class="field prepend-icon mb5"><h6 class="mb20 mt40">
+                                        <label for="datepicker6" class="field prepend-icon mb5"><h6 class="mb20 mt40">
                                                 Date of Resignation </h6></label>
 
                                         <div class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="date" id="datepicker4" class="gui-input fs13" name="dor"
+                                                <input type="text" id="datepicker6" class="gui-input fs13" name="dor"
                                                        value="@if($emps && $emps->dor){{$emps->dor}}@endif"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
                                             @else
-                                                <input type="date" id="datepicker4" class="gui-input fs13" name="dor"/>
+                                                <input type="text" id="datepicker6" class="gui-input fs13" name="dor"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
@@ -963,19 +965,19 @@
 
 
                                     <div class="section">
-                                        <label for="datepicker5" class="field prepend-icon mb5"><h6 class="mb20 mt40">
+                                        <label for="datepicker7" class="field prepend-icon mb5"><h6 class="mb20 mt40">
                                                 Last Working Day </h6></label>
 
                                         <div class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="date" id="datepicker5" class="gui-input fs13"
+                                                <input type="text" id="datepicker7" class="gui-input fs13"
                                                        name="last_working_day"
                                                        value="@if($emps && $emps->last_working_day){{$emps->last_working_day}}@endif"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
                                             @else
-                                                <input type="date" id="datepicker5" class="gui-input fs13"
+                                                <input type="text" id="datepicker7" class="gui-input fs13"
                                                        name="last_working_day"/>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
@@ -1105,7 +1107,7 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="notification-modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div id="modal-header" class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"></h4>
             </div>
@@ -1156,6 +1158,8 @@
 {!! Html::script('/assets/js/demo/widgets_sidebar.js') !!}
 
 {!! Html::script('/assets/js/custom_form_wizard.js') !!}
+
+{!!  Html::script ('/assets/js/pages/forms-widgets.js')!!}
 
         <!-- -------------- /Scripts -------------- -->
 

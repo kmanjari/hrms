@@ -47,3 +47,17 @@ function getLeaveType($leave_id)
     $result = \App\Models\LeaveType::where('id', $leave_id)->first();
     return $result->leave_type;
 }
+
+function covertDateToDay($date)
+{
+    $day = strtotime($date);
+    $day = date("l", $day);
+    return strtoupper($day);
+}
+
+function getFormattedDate($date)
+{
+    $date = new DateTime($date);
+    return date_format($date,'l jS \\of F Y');
+
+}

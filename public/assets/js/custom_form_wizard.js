@@ -50,7 +50,7 @@
                 var role = $('#role').val();
                 var gender = $('#gender').val();
                 var datepicker1 = $('#datepicker1').val();
-                var datepicker2 = $('#datepicker2').val();
+                var datepicker4 = $('#datepicker4').val();
                 var mobile_phone = $('#mobile_phone').val();
                 var qualification = $('#qualification').val();
                 var emergency_number = $('#emergency_number').val();
@@ -61,7 +61,7 @@
                 var formalities = $('#formalities').val();
                 var offer_acceptance = $('#offer_acceptance').val();
                 var probation_period = $('#probation_period').val();
-                var datepicker3 = $('#datepicker3').val();
+                var datepicker5 = $('#datepicker5').val();
                 var department = $('#department').val();
                 var salary = $('#salary').val();
                 var bank_account_number = $('#bank_account_number').val();
@@ -69,9 +69,9 @@
                 var ifsc_code = $('#ifsc_code').val();
                 var pf_account_number = $('#pf_account_number').val();
                 var pf_status = $('#pf_status').val();
-                var datepicker4 = $('#datepicker4').val();
+                var datepicker6 = $('#datepicker6').val();
                 var notice_period = $('#notice_period').val();
-                var datepicker5 = $('#datepicker5').val();
+                var datepicker7 = $('#datepicker7').val();
                 var full_final = $('#full_final').val();
                 var token = $('#token').val();
 
@@ -85,7 +85,7 @@
                 formData.append('role', role);
                 formData.append('gender', gender);
                 formData.append('dob', datepicker1);
-                formData.append('doj', datepicker2);
+                formData.append('doj', datepicker4);
                 formData.append('mob_number', mobile_phone);
                 formData.append('qualification', qualification);
                 formData.append('emer_number', emergency_number);
@@ -95,7 +95,7 @@
                 formData.append('formalities', formalities);
                 formData.append('offer_acceptance', offer_acceptance);
                 formData.append('prob_period', probation_period);
-                formData.append('doc', datepicker3);
+                formData.append('doc', datepicker5);
                 formData.append('father_name', father_name);
                 formData.append('department', department);
                 formData.append('salary', salary);
@@ -104,9 +104,9 @@
                 formData.append('ifsc_code', ifsc_code);
                 formData.append('pf_account_number', pf_account_number);
                 formData.append('pf_status', pf_status);
-                formData.append('dor', datepicker4);
+                formData.append('dor', datepicker6);
                 formData.append('notice_period', notice_period);
-                formData.append('last_working_day', datepicker5);
+                formData.append('last_working_day', datepicker7);
                 formData.append('full_final', full_final);
                 formData.append('_token', token);
 
@@ -120,6 +120,7 @@
                         processData: false,
                         success: function (data) {
                             var parsed = JSON.parse(data);
+                            $('#modal-header').attr('class', 'modal-header '+parsed.class);
                             $('.modal-title').append(parsed.title);
                             $('.modal-body').append(parsed.message);
                             $('#notification-modal').modal('show');

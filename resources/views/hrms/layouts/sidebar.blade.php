@@ -23,7 +23,7 @@
     </li>
     <li>
         <a class="accordion-toggle" href="#">
-            <span class="fa fa-share-square-o"></span>
+            <span class="fa fa-user"></span>
             <span class="sidebar-title">Employees</span>
             <span class="caret"></span>
         </a>
@@ -45,7 +45,7 @@
 
     <li>
         <a class="accordion-toggle" href="#">
-            <span class="fa fa-wrench"></span>
+            <span class="fa fa-group"></span>
             <span class="sidebar-title">Teams</span>
             <span class="caret"></span>
         </a>
@@ -63,7 +63,7 @@
 
     <li>
         <a class="accordion-toggle" href="#">
-            <span class="fa fa-wrench"></span>
+            <span class="fa fa-graduation-cap"></span>
             <span class="sidebar-title">Roles</span>
             <span class="caret"></span>
         </a>
@@ -80,7 +80,7 @@
     </li>
     <li>
         <a class="accordion-toggle" href="#">
-            <span class="fa fa-check-square-o"></span>
+            <span class="fa fa fa-laptop"></span>
             <span class="sidebar-title">Assets</span>
             <span class="caret"></span>
         </a>
@@ -106,7 +106,7 @@
 
     <li>
         <a class="accordion-toggle" href="#">
-            <span class="fa fa-check-square-o"></span>
+            <span class="fa fa-envelope"></span>
             <span class="sidebar-title">Leaves</span>
             <span class="caret"></span>
         </a>
@@ -116,7 +116,7 @@
                     <span class="glyphicon glyphicon-shopping-cart"></span> Apply Leave </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('my-leave-list')}}">
                     <span class="glyphicon glyphicon-calendar"></span> My Leave List </a>
             </li>
             <li>
@@ -128,7 +128,7 @@
                     <span class="fa fa-clipboard"></span> Leave Type Listings </a>
             </li>
             <li>
-                <a href="{{route('leave-listing')}}">
+                <a href="#">
                     <span class="fa fa-clipboard"></span> Total Leave Listings </a>
             </li>
         </ul>
@@ -138,7 +138,7 @@
 
     <li>
         <a href="#">
-            <span class="fa fa-envelope-o"></span>
+            <span class="fa fa-calendar-o"></span>
             <span class="sidebar-title"> Calendar </span>
         </a>
     </li>

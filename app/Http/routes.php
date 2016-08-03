@@ -99,7 +99,7 @@
 
         Route::post('apply-leave' ,['as' => 'apply-leave', 'uses'=>'LeaveController@processApply']);
 
-        Route::get('leave-listing' ,['as' => 'leave-listing', 'uses'=>'LeaveController@showLeaveRequest']);
+        Route::get('my-leave-list' ,['as' => 'my-leave-list', 'uses'=>'LeaveController@showMyLeave']);
 
         Route::get('leave-drafting', ['as' => 'leave-drafting', 'uses'=>'LeaveController@showLeaveDraft']);
 
@@ -150,7 +150,7 @@
 
 Route::get('checkBase', function()
 {
-    return view('hrms.layouts.base');
+    return \Auth::user()->employee->id;
 }
 );
 //});
