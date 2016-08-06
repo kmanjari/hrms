@@ -92,7 +92,9 @@
     {
       $emps = User::with('employee', 'role.role')->paginate(40);
 
-      return view('hrms.employee.show_emp', compact('emps'));
+      $column = '';
+      $string = '';
+      return view('hrms.employee.show_emp', compact('emps', 'column', 'string'));
     }
 
     public function showEdit($id)
@@ -524,7 +526,7 @@
           })->with('employee')->paginate(20);
         }
 
-        return view('hrms.employee.show_emp', compact('emps'));
+        return view('hrms.employee.show_emp', compact('emps', 'column', 'string'));
       } else
       {
         if($column == '')
@@ -540,8 +542,6 @@
             $q->whereRaw($column . " like '%" . $string . "%'");
           })->with('employee')->get();
         }
-
-        $results = [];
 
         $fileName = 'Employee_Listing_'. rand(1,1000). '.xlsx';
         $filePath = storage_path('exports/'). $fileName;
