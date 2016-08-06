@@ -2,7 +2,12 @@
 <div class="sidebar-widget author-widget">
     <div class="media">
         <a class="media-left">
+            @if(Auth::user()->employee->photo)
+                <img src="/photos/{{Auth::user()->employee->photo}}" class="img-responsive">
+                @else
             <img src="/assets/img/avatars/profile_pic.png" class="img-responsive">
+                @endif
+
         </a>
 
         <div class="media-body">
