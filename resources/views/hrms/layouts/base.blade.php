@@ -235,18 +235,6 @@
             <header class="sidebar-header">
 
                 <!-- -------------- Sidebar - Author -------------- -->
-               {{-- <div class="sidebar-widget author-widget">
-                    <div class="media">
-                        <a class="media-left" href="#">
-                            <img src="assets/img/avatars/profile_avatar.jpg" class="img-responsive">
-                        </a>
-                        <div class="media-body">
-                            <div class="media-author">{{\Auth::user()->name}}</div>
-                        </div>
-                    </div>
-                </div>
---}}
-
             @include('hrms.layouts.sidebar')
 
             <!-- -------------- Sidebar Hide Button -------------- -->

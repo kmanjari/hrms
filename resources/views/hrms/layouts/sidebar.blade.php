@@ -2,7 +2,7 @@
 <div class="sidebar-widget author-widget">
     <div class="media">
         <a class="media-left">
-            <img src="assets/img/avatars/profile_pic.png" class="img-responsive">
+            <img src="/assets/img/avatars/profile_pic.png" class="img-responsive">
         </a>
 
         <div class="media-body">
