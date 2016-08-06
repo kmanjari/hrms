@@ -618,9 +618,15 @@
 <script src="/assets/js/pages/dashboard1.js"></script>
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'assign-asset')
-    <script src="/assets/js/pagels/forms-widgets.js"></script>
+    <script src="/assets/js/pages/forms-widgets.js"></script>
     <script src="/assets/js/custom.js"></script>
 @endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-asset-assignment/{id}')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
     <script src="/assets/js/custom.js"></script>

@@ -110,10 +110,13 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-2">
-                                                <div class="mb20">
-                                                    <br/>
+
                                                     <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
-                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a href="/edit-team/{id}" >
+
+                                                    <input type="button" value="Reset" class="btn btn-bordered btn-info btn-block"></a>
                                             </div>
                                         </div>
                                         {!! Form::close() !!}

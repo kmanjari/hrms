@@ -72,9 +72,9 @@
                                                     name="emp_id">
                                                 @foreach($emps as $emp)
                                                     @if($emp->id == $assigns->emp_id)
-                                                        <option value="{{$emp->id}}" selected>{{$emp->emp_name}}</option>
+                                                        <option value="{{$emp->id}}" selected>{{$emp->name}}</option>
                                                     @else
-                                                        <option value="{{$emp->id}}">{{$emp->emp_name}}</option>
+                                                        <option value="{{$emp->id}}">{{$emp->name}}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
@@ -106,10 +106,10 @@
 
                                             <div class="input-group">
                                                 <div class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
+                                                    <i class="fa fa-calendar text-alert pr11"></i>
                                                 </div>
                                                 <input type="text" id="datepicker1" class=" select2-single form-control" name="doa"
-                                                       value="@if($assigns){{$assigns->doa}}@endif"/>
+                                                       value="@if($assigns){{$assigns->date_of_assignment}}@endif"/>
                                             </div>
                                         </div>
                                     </div>
@@ -121,11 +121,11 @@
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <div class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
+                                                    <i class="fa fa-calendar text-alert pr11"></i>
                                                 </div>
-                                                <input type="date" id="datepicker4" class="form-control"
+                                                <input type="text" id="datepicker4" class="form-control"
                                                        name="dor"
-                                                       value="@if($assigns){{$assigns->dor}}@endif"/>
+                                                       value="@if($assigns){{$assigns->date_of_release}}@endif"/>
                                             </div>
                                         </div>
                                     </div>
@@ -135,10 +135,12 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label"></label>
                                         <div class="col-md-2">
-                                            <div class="mb20">
-                                                <br /> <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
-                                            </div>
+
+                                            <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
+
                                         </div>
+                                        <div class="col-md-2"><a href="/edit-asset-assignment/{id}" >
+                                                <input type="button" class="btn btn-bordered btn-info btn-block" value="Reset"></a></div>
                                     </div>
 
                                     {!! Form::close() !!}

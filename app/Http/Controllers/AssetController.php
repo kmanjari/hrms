@@ -149,10 +149,10 @@ class AssetController extends Controller
 
     {
         $assignment = AssignAsset::with(['employee', 'asset'])->where('id', $id)->first();
-        $assignment->emp_id = $request->emp_id;
+        $assignment->user_id = $request->emp_id;
         $assignment->asset_id = $request->asset_id;
-        $assignment->doa = date_format(date_create($request->doa), 'Y-m-d');
-        $assignment->dor = date_format(date_create($request->dor), 'Y-m-d');
+        $assignment->date_of_assignment = date_format(date_create($request->doa), 'Y-m-d');
+        $assignment->date_of_release = date_format(date_create($request->dor), 'Y-m-d');
         $assignment->save();
 
 

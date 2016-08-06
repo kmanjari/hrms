@@ -92,10 +92,13 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-2">
-                                                <div class="mb20">
-                                                    <br />  <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
-                                                </div>
+
+                                                      <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
+
                                             </div>
+                                            <div class="col-md-2"><a href="/add-leave-type" >
+                                                    <input type="button" class="btn btn-bordered btn-info btn-block" value="Reset"></a></div>
+                                        </div>
                                         </div>
                                     {!! Form::close() !!}
                                 </div>

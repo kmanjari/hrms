@@ -49,7 +49,7 @@
                 <div class="col-xs-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            @if(\Route::getFacadeRoot()->current()->uri() == 'editassetassignment/{id}')
+                            @if(\Route::getFacadeRoot()->current()->uri() == 'edit-asset-assignment/{id}')
                                 <span class="panel-title hidden-xs"> Edit Asset Assignment </span>
                             @else
                                 <span class="panel-title hidden-xs"> Assign Asset</span>
@@ -107,7 +107,7 @@
                                                             <i class="fa fa-calendar text-alert pr11"></i>
                                                         </div>
                                                         @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
-                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->doa){{$emps->doa}}@endif"/>
+                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->date_of_assignment){{$emps->date_of_assignment}}@endif"/>
                                                         @else
                                                             <input type="text" id="datepicker1" class="select2-single form-control" name="doa"/>
                                                             @endif
@@ -118,7 +118,7 @@
 
 
                                         <div class="form-group">
-                                            <label for="datepicker1" class="col-md-3 control-label"> Date of Release </label>
+                                            <label for="datepicker4" class="col-md-3 control-label"> Date of Release </label>
                                             <div class="col-md-6">
                                                 {{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
 
@@ -134,7 +134,7 @@
                                                         <i class="fa fa-calendar text-alert pr11"></i>
                                                     </div>
                                                     @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
-                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor" value="@if($emps && $emps->dor){{$emps->dor}}@endif"/>
+                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor" value="@if($emps && $emps->date_of_assignment){{$emps->date_of_assignment}}@endif"/>
                                                     @else
                                                         <input type="text" id="datepicker4" class="select2-single form-control" name="dor"/>
                                                     @endif
@@ -147,10 +147,12 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-2">
-                                                <div class="mb20">
-                                                    <br /> <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
-                                                </div>
+
+                                                     <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
                                             </div>
+                                            <div class="col-md-2"><a href="/assign-asset" >
+                                                    <input type="button" class="btn btn-bordered btn-info btn-block" value="Reset"></a></div>
+                                        </div>
                                         </div>
 
                                     {!! Form::close() !!}
