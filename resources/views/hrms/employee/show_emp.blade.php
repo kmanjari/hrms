@@ -41,18 +41,11 @@
                         <div class="row">
                             {!! Form::open() !!}
                             <div class="col-md-3">
-                                <input type="text" class="field form-control" placeholder="query string" style="height:40px" name="string">
+                                <input type="text" class="field form-control" placeholder="query string" style="height:40px" value="{{$string}}" name="string">
                             </div>
                             <div class="col-md-3">
                                 <label class="field select">
-                                    <select id="column" name="column">
-                                        <option value="">Filter by</option>
-                                        <option value="name">Name</option>
-                                        <option value="code">Code</option>
-                                        <option value="department">Department</option>
-                                        <option value="email">Email</option>
-                                        <option value="number">Number</option>
-                                    </select>
+                                    {!! Form::select('column', getEmployeeDropDown(),$column) !!}
                                     <i class="arrow double"></i>
                                 </label>
                             </div>
