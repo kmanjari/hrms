@@ -14,12 +14,12 @@ class CreateAssignAssetsTable extends Migration
     {
         Schema::create('assign_assets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('emp_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('asset_id')->unsigned();
-            $table->foreign('emp_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('asset_id')->references('id')->on('assets')->onDelete('cascade');
-            $table->date('doa');
-            $table->date('dor');
+            $table->date('date_of_assignment');
+            $table->date('date_of_release');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Models\Employee;
 use App\Models\Team;
 use App\Models\Role;
@@ -12,14 +13,12 @@ class TeamController extends Controller
 {
     public function addTeam()
     {
-        $emps = Employee::get();
-        $managers = Employee::whereHas('userrole', function($q)
-        {
+        $emps = User::get();
+        $managers = User::whereHas('role', function ($q) {
             $q->where('role_id', '16');
         })->get();
 
-        $leaders = Employee::whereHas('userrole', function($q)
-        {
+        $leaders = User::whereHas('role', function ($q) {
             $q->where('role_id', '5');
         })->get();
 
@@ -29,14 +28,12 @@ class TeamController extends Controller
     public function processTeam(Request $request)
     {
         $team_id = Team::max('team_id');
-        if(!$team_id) {
+        if (!$team_id) {
             $team_id = 1;
+        } else {
+            $team_id = $team_id + 1;
         }
-        else{
-            $team_id = $team_id+1;
-        }
-        foreach($request->member_id as $memberId)
-        {
+        foreach ($request->member_id as $memberId) {
             $addTeam = new Team();
             $addTeam->name = $request->team_name;
             $addTeam->team_id = $team_id;
@@ -53,57 +50,66 @@ class TeamController extends Controller
     public function showTeam()
     {
         $teams = Team::with(['employee', 'leader', 'manager'])->paginate(5);
-        return view('hrms.team.show_team',compact('teams'));
+        return view('hrms.team.show_team', compact('teams'));
     }
 
     public function showEdit($id)
     {
-        $managers = Employee::whereHas('userrole', function($q)
-        {
+        $managers = User::whereHas('role', function ($q) {
             $q->where('role_id', '16');
         })->get();
 
-        $leaders = Employee::whereHas('userrole', function($q)
-        {
+        $leaders = User::whereHas('role', function ($q) {
             $q->where('role_id', '5');
         })->get();
 
-        $emps = Employee::get();
+        $emps = User::get();
 
-        $edit = Team::with(['manager','leader','employee'])->where('team_id', $id)->get();
+        $edit = Team::with(['manager', 'leader', 'employee'])->where('team_id', $id)->get();
 
         $team_member = [];
-        foreach($edit as $ed)
-        {
+        foreach ($edit as $ed) {
             $team_member[] = $ed->employee->id;
         }
         return view('hrms.team.edit_team', compact('edit', 'managers', 'leaders', 'emps', 'team_member'));
     }
 
-    public function doEdit(Request $request,$id)
+    public function doEdit(Request $request, $id)
     {
+        $name = $request->team_name;
+        $team_id = $request->team_id;
+        $manager_id = $request->manager_id;
+        $leader_id = $request->leader_id;
+        $members = $request->member_id;
 
-            $name = $request->team_name;
-            $team_id = $request-> team_id;
-            $manager_id = $request->manager_id;
-            $leader_id = $request->leader_id;
+        $edit = Team::where('team_id', $id)->first();
+        
+        if ($edit) {
+            foreach ($members as $member) {
+                $team = new Team();
+                $checkIfTeamHasThisMember = Team::where(['team_id' => $id, 'member_id' => $member])->first();
+                if (!$checkIfTeamHasThisMember) {
+                    if (!empty($name)) {
+                        $team->name = $name;
+                    }
+                    if (!empty($team_id)) {
+                        $team->team_id = $team_id;
+                    }
+                    if (!empty($manager_id)) {
+                        $team->manager_id = $manager_id;
+                    }
+                    if (!empty($leader_id)) {
+                        $team->leader_id = $leader_id;
+                    }
+                    $team->member_id = $member;
+                    $team->save();
 
-            $edit= Team::findOrFail($id);
-        if (!empty($name)) {
-            $edit->name = $name;
+                }
+            }
+            \Session::flash('flash_message', 'Team successfully updated!');
+        } else {
+            \Session::flash('flash_message', 'Team not found!');
         }
-        if (!empty($team_id)) {
-            $edit->team_id = $team_id;
-        }
-        if (!empty($manager_id)) {
-            $edit->manager_id = $manager_id;
-        }
-        if (!empty($leader_id)) {
-            $edit->leader_id = $leader_id;
-        }
-        $edit->save();
-
-        \Session::flash('flash_message', 'Team successfully updated!');
         return redirect('team-listing');
 
 
@@ -121,7 +127,7 @@ class TeamController extends Controller
     public function test()
     {
         $team_id = Team::max('team_id');
-        $team_id = $team_id+1;
+        $team_id = $team_id + 1;
 
 
     }

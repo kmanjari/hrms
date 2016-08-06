@@ -53,7 +53,7 @@
                             <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart0.png"
                                                             class="img-responsive mauto" alt=""/></div>
                             <div class="col-xs-7 pl5">
-                                <h3 class="text-muted"> LEAVE <br /> MANAGER</h3>
+                                <h3 class="text-muted"> <a href="{{route('total-leave-list')}}"> LEAVE <br /> MANAGER </a></h3>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                             <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart6.png"
                                                             class="img-responsive mauto" alt=""/></div>
                             <div class="col-xs-7 pl5">
-                                <h3 class="text-muted">HR POLICY</h3>
+                                <h3 class="text-muted"><a href="{{route('hr-policy')}}"> HR POLICY </a></h3>
                             </div>
                         </div>
                     </div>

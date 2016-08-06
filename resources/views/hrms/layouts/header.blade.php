@@ -6,18 +6,6 @@
         <span id="sidebar_left_toggle" class="ad ad-lines"></span>
     </div>
     <ul class="nav navbar-nav navbar-left">
-        {{--<li class="dropdown dropdown-fuse hidden-xs">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-                <span class="fa fa-chevron-down"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">One more action</a></li>
-                <li><a href="#">More actions if needed</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated action</a></li>
-            </ul>
-            </li>--}}
         <li class="hidden-xs">
             <a class="navbar-fullscreen toggle-active" href="#">
                 <span class="glyphicon glyphicon-fullscreen"></span>
@@ -45,7 +33,7 @@
             <a href="#" class="dropdown-toggle fw600" data-toggle="dropdown">
                 <span class="hidden-xs"><name>{{Auth::user()->name}}</name> </span>
                 <span class="fa fa-caret-down hidden-xs mr15"></span>
-                <img src="assets/img/avatars/profile_pic.png" alt="avatar" class="mw55">
+                <img src="/assets/img/avatars/profile_pic.png" alt="avatar" class="mw55">
             </a>
             </a>
             <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">

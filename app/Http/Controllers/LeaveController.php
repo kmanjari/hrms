@@ -126,7 +126,7 @@ class LeaveController extends Controller
         }
         $number_of_days = $this->wordsToNumber($days[0]);
 
-        $team = Team::where('member_id', \Auth::user()->id)->first();
+        $team = Team::where('member_id', \Auth::user()->employee->id)->first();
         $tl_id = $team->leader_id;
         $manager_id = $team->manager_id;
 
@@ -134,7 +134,7 @@ class LeaveController extends Controller
         $teamLead = Employee::where('id', $tl_id)->with('user')->first();
 
         $leave  = new EmployeeLeaves;
-        $leave->employee_id = \Auth::user()->id;
+        $leave->user_id = \Auth::user()->id;
         $leave->tl_id = $tl_id;
         $leave->manager_id = $manager_id;
         $leave->date_from= date_format(date_create($request->dateFrom),'Y-m-d');
@@ -182,9 +182,17 @@ class LeaveController extends Controller
     public function showMyLeave()
     {
 
-        $leaves=EmployeeLeaves::where('employee_id', \Auth::user()->id)->paginate(10);
-        return view('hrms.leave.show_leave_request', compact('leaves'));
+        $leaves=EmployeeLeaves::where('user_id', \Auth::user()->id)->paginate(10);
+        return view('hrms.leave.show_my_leaves', compact('leaves'));
     }
+
+
+    public function showAllLeave()
+   {
+       $leaves = EmployeeLeaves::with('user.employee')->paginate(10);
+       return view('hrms.leave.total_leave_request', compact('leaves'));
+
+   }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -302,6 +310,69 @@ class LeaveController extends Controller
         }
 
         return $sum + $stack->pop();
+    }
+
+    public function searchLeave(Request $request)
+    {
+        $string = $request->string;
+        $column = $request->column;
+        if ($request->button == 'Search')
+        {
+
+            $data = [
+                'name' => 'users.name',
+                'code' => 'employees.code',
+                'days' => 'employee_leaves.days',
+                'leave_type' => 'leave_types.leave_type',
+                'status' => 'employee_leaves.status'
+            ];
+
+            $leaves = \DB::table('users')->select('users.id','users.name','employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status','leave_types.leave_type')
+                ->join('employees','employees.user_id','=','users.id')
+                ->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')
+                ->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id')
+                ->whereRaw($data[$column]." like '%".$string."%'")
+                ->paginate(20);
+
+            $post = 'post';
+            return view('hrms.leave.total_leave_request', compact('leaves', 'post'));
+        }
+        else{
+            if($column==''){
+                $emps=User::with('employee')->get();
+            }
+            elseif($column == 'email')
+            {
+                $emps = User::with('employee')->where($request->column, $request->string)->paginate(20);
+            }
+            else
+            {
+                $emps = User::whereHas('employee', function ($q) use ($column, $string)
+                {
+                    $q->whereRaw($column . " like '%" . $string . "%'");
+                })->with('employee')
+                    ->get();
+            }
+
+            $results=[];
+            foreach($emps as $emp)
+            {
+                $results[]['id'] = $emp->id;
+                $results[]['name'] = $emp->name;
+                $results[]['code'] = $emp->employee->code;
+            }
+            Excel::create('Employee_Details', function ($excel) use ($results) {
+
+                $excel->sheet('Employees', function ($sheet) use ($results) {
+
+                    $sheet->fromArray($results);
+
+                });
+
+            })->export('xls');
+            /*$job = (new ExportData($request->all(), \Auth::user(), 'employees'))->onQueue('export-employees');
+            $this->dispatch($job);*/
+        }
     }
 
 }

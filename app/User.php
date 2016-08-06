@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Employee::class, 'user_id', 'id');
     }
+
+    public function role()
+    {
+        return $this->hasOne('App\Models\UserRole', 'user_id', 'id');
+    }
 }

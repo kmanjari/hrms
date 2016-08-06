@@ -2,7 +2,7 @@
 <div class="sidebar-widget author-widget">
     <div class="media">
         <a class="media-left">
-            <img src="assets/img/avatars/profile_pic.png" class="img-responsive">
+            <img src="/assets/img/avatars/profile_pic.png" class="img-responsive">
         </a>
 
         <div class="media-body">
@@ -128,13 +128,26 @@
                     <span class="fa fa-clipboard"></span> Leave Type Listings </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('total-leave-list')}}">
                     <span class="fa fa-clipboard"></span> Total Leave Listings </a>
             </li>
         </ul>
     </li>
 
+
+
+
+
     <li class="sidebar-label pt30"> Extras </li>
+
+    <li>
+
+        <a href="download-forms">
+            <span class="fa fa-book"></span>
+            <span class="sidebar-title">Download Forms</span>
+
+        </a>
+    </li>
 
     <li>
         <a href="#">
@@ -142,12 +155,7 @@
             <span class="sidebar-title"> Calendar </span>
         </a>
     </li>
-    <li>
-        <a href="#">
-            <span class="fa fa-book"></span>
-            <span class="sidebar-title"> Forms </span>
-        </a>
-    </li>
+
     <li>
         <a href="#">
             <span class="fa fa-book"></span>

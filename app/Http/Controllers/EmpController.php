@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ExportData;
 use App\Models\Employee;
 use App\Models\EmployeeUpload;
 use App\Models\Role;
@@ -21,7 +22,7 @@ class EmpController extends Controller
         return view('hrms.employee.add', compact('roles'));
     }
 
-    public function processEmployee(Requests\EmployeeRequest $request)
+    public function processEmployee(Request $request)
     {
         $filename = public_path('photos/a.png');
         if ($request->file('photo')) {
@@ -40,29 +41,29 @@ class EmpController extends Controller
 
         $user = new User;
         $user->name = $request->emp_name;
-        $user->email = str_replace(' ', '_', $request->emp_name).'@dipi-ip.com';
+        $user->email = str_replace(' ', '_', $request->emp_name) . '@dipi-ip.com';
         $user->password = bcrypt('123456');
         $user->save();
 
         $emp = new Employee;
         $emp->photo = $filename;
-        $emp->emp_name = $request->emp_name;
-        $emp->emp_code = $request->emp_code;
-        $emp->emp_status = $request->emp_status;
+        $emp->name = $request->emp_name;
+        $emp->code = $request->emp_code;
+        $emp->status = $request->emp_status;
         $emp->gender = $request->gender;
-        $emp->dob = date_format(date_create($request->dob), 'Y-m-d');
-        $emp->doj = date_format(date_create($request->doj), 'Y-m-d');
-        $emp->mob_number = $request->mob_number;
+        $emp->date_of_birth = date_format(date_create($request->dob), 'Y-m-d');
+        $emp->date_of_joining = date_format(date_create($request->doj), 'Y-m-d');
+        $emp->number = $request->mob_number;
         $emp->qualification = $request->qualification;
-        $emp->emer_number = $request->emer_number;
+        $emp->emergency_number = $request->emer_number;
         $emp->pan_number = $request->pan_number;
         $emp->father_name = $request->father_name;
-        $emp->address = $request->address;
+        $emp->current_address = $request->address;
         $emp->permanent_address = $request->permanent_address;
         $emp->formalities = $request->formalities;
         $emp->offer_acceptance = $request->offer_acceptance;
-        $emp->prob_period = $request->prob_period;
-        $emp->doc = date_format(date_create($request->doc), 'Y-m-d');
+        $emp->probation_period = $request->prob_period;
+        $emp->date_of_confirmation = date_format(date_create($request->doc), 'Y-m-d');
         $emp->department = $request->department;
         $emp->salary = $request->salary;
         $emp->account_number = $request->account_number;
@@ -70,7 +71,7 @@ class EmpController extends Controller
         $emp->ifsc_code = $request->ifsc_code;
         $emp->pf_account_number = $request->pf_account_number;
         $emp->pf_status = $request->pf_status;
-        $emp->dor = $request->dor;
+        $emp->date_of_resignation = $request->dor;
         $emp->notice_period = $request->notice_period;
         $emp->last_working_day = $request->last_working_day;
         $emp->full_final = $request->full_final;
@@ -86,7 +87,7 @@ class EmpController extends Controller
 
     public function showEmployee()
     {
-        $emps = Employee::with('userrole.role')->paginate(40);
+        $emps = User::with('employee', 'role.role')->paginate(40);
         return view('hrms.employee.show_emp', compact('emps'));
     }
 
@@ -268,15 +269,15 @@ class EmpController extends Controller
 
                     $user = new User;
                     $user->name = $row->emp_name;
-                    $user->email = str_replace(' ', '_', $row->emp_name).'@dipi-ip.com';
+                    $user->email = str_replace(' ', '_', $row->emp_name) . '@dipi-ip.com';
                     $user->password = bcrypt('123456');
                     $user->save();
 
                     $attachment = new Employee();
                     $attachment->photo = '/img/Emp.jpg';
-                    $attachment->emp_name = $row->emp_name;
-                    $attachment->emp_code = $row->emp_code;
-                    $attachment->emp_status = convertStatus($row->emp_status);
+                    $attachment->name = $row->emp_name;
+                    $attachment->code = $row->emp_code;
+                    $attachment->status = convertStatus($row->emp_status);
 
                     if (empty($row->gender)) {
                         $attachment->gender = 'Not Exist';
@@ -284,19 +285,19 @@ class EmpController extends Controller
                         $attachment->gender = $row->gender;
                     }
                     if (empty($row->dob)) {
-                        $attachment->dob = '0000-00-00';
+                        $attachment->date_of_birth = '0000-00-00';
                     } else {
-                        $attachment->dob = $row->dob;
+                        $attachment->date_of_birth = $row->dob;
                     }
                     if (empty($row->doj)) {
-                        $attachment->doj = '0000-00-00';
+                        $attachment->date_of_joining = '0000-00-00';
                     } else {
-                        $attachment->doj = $row->doj;
+                        $attachment->date_of_joining = $row->doj;
                     }
                     if (empty($row->mob_number)) {
-                        $attachment->mob_number = '1234567890';
+                        $attachment->number = '1234567890';
                     } else {
-                        $attachment->mob_number = $row->mob_number;
+                        $attachment->number = $row->mob_number;
                     }
                     if (empty($row->qualification)) {
                         $attachment->qualification = 'Not Exist';
@@ -304,9 +305,9 @@ class EmpController extends Controller
                         $attachment->qualification = $row->qualification;
                     }
                     if (empty($row->emer_number)) {
-                        $attachment->emer_number = '1234567890';
+                        $attachment->emergency_number = '1234567890';
                     } else {
-                        $attachment->emer_number = $row->emer_number;
+                        $attachment->emergency_number = $row->emer_number;
                     }
                     if (empty($row->pan_number)) {
                         $attachment->pan_number = 'Not Exist';
@@ -319,9 +320,9 @@ class EmpController extends Controller
                         $attachment->father_name = $row->father_name;
                     }
                     if (empty($row->address)) {
-                        $attachment->address = 'Not Exist';
+                        $attachment->current_address = 'Not Exist';
                     } else {
-                        $attachment->address = $row->address;
+                        $attachment->current_address = $row->address;
                     }
                     if (empty($row->permanent_address)) {
                         $attachment->permanent_address = 'Not Exist';
@@ -329,24 +330,24 @@ class EmpController extends Controller
                         $attachment->permanent_address = $row->permanent_address;
                     }
                     if (empty($row->formalities)) {
-                        $attachment->formalities = 'Not exist';
+                        $attachment->formalities = '1';
                     } else {
                         $attachment->formalities = $row->formalities;
                     }
                     if (empty($row->offer_acceptance)) {
-                        $attachment->offer_acceptance = 'Not exist';
+                        $attachment->offer_acceptance = '1';
                     } else {
                         $attachment->offer_acceptance = $row->offer_acceptance;
                     }
                     if (empty($row->prob_period)) {
-                        $attachment->prob_period = 'Not Exist';
+                        $attachment->probation_period = 'Not Exist';
                     } else {
-                        $attachment->prob_period = $row->prob_period;
+                        $attachment->probation_period = $row->prob_period;
                     }
                     if (empty($row->doc)) {
-                        $attachment->doc = '0000-00-00';
+                        $attachment->date_of_confirmation = '0000-00-00';
                     } else {
-                        $attachment->doc = $row->doc;
+                        $attachment->date_of_confirmation = $row->doc;
                     }
                     if (empty($row->department)) {
                         $attachment->department = 'Not Exist';
@@ -379,14 +380,14 @@ class EmpController extends Controller
                         $attachment->pf_account_number = $row->pf_account_number;
                     }
                     if (empty($row->pf_status)) {
-                        $attachment->pf_status = 'Not Exist';
+                        $attachment->pf_status = '1';
                     } else {
                         $attachment->pf_status = $row->pf_status;
                     }
                     if (empty($row->dor)) {
-                        $attachment->dor = '0000-00-00';
+                        $attachment->date_of_resignation = '0000-00-00';
                     } else {
-                        $attachment->dor = $row->dor;
+                        $attachment->date_of_resignation = $row->dor;
                     }
                     if (empty($row->notice_period)) {
                         $attachment->notice_period = 'Not exist';
@@ -416,5 +417,70 @@ class EmpController extends Controller
 
         \Session::flash('success', ' Employee details uploaded successfully.');
         return redirect()->back();
+    }
+
+    public function searchEmployee(Request $request)
+    {
+        $string = $request->string;
+        $column = $request->column;
+        if ($request->button == 'Search')
+        {
+            if($column == 'email')
+            {
+                $emps = User::with('employee')->where($column, $string)->paginate(20);
+            }
+            else
+            {
+                $emps = User::whereHas('employee', function ($q) use ($column, $string)
+                {
+                    $q->whereRaw($column . " like '%" . $string . "%'");
+                })->with('employee')
+                  ->paginate(20);
+            }
+            return view('hrms.employee.show_emp', compact('emps'));
+        }
+        else{
+            if($column==''){
+                $emps=User::with('employee')->get();
+            }
+            elseif($column == 'email')
+            {
+                $emps = User::with('employee')->where($request->column, $request->string)->paginate(20);
+            }
+            else
+            {
+                $emps = User::whereHas('employee', function ($q) use ($column, $string)
+                {
+                    $q->whereRaw($column . " like '%" . $string . "%'");
+                })->with('employee')
+                  ->get();
+            }
+
+            $results=[];
+            foreach($emps as $emp)
+            {
+                $results['id'] = $emp->id;
+                $results['name'] = $emp->name;
+                $results['code'] = $emp->employee->code;
+                $results['status'] = $emp->employee->status;
+                $results['gender'] = ($emp->employee->gender == '0') ? 'Female' : 'Male';
+
+            }
+            Excel::create('Employee_Details', function ($excel) use ($results) {
+
+                $excel->sheet('Employees', function ($sheet) use ($results) {
+
+                    $sheet->fromArray($results);
+
+                });
+
+            })->export('xls');
+            /*$job = (new ExportData($request->all(), \Auth::user(), 'employees'))->onQueue('export-employees');
+            $this->dispatch($job);*/
+        }
+    }
+
+    public function exportData($request)
+    {
     }
 }

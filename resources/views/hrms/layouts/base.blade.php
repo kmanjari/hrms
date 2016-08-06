@@ -469,6 +469,7 @@
         </section>
         <!-- -------------- /Content -------------- -->
 
+        @if(\Route::getFacadeRoot()->current()->uri() == 'dashboard' || \Route::getFacadeRoot()->current()->uri() == 'welcome')
         <!-- -------------- Page Footer -------------- -->
         <footer id="content-footer" class="affix">
             <div class="row">
@@ -485,6 +486,7 @@
             </div>
         </footer>
         <!-- -------------- /Page Footer -------------- -->
+        @endif
 
     </section>
     <!-- -------------- /Main Wrapper -------------- -->
@@ -616,23 +618,25 @@
 <script src="/assets/js/pages/dashboard1.js"></script>
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'assign-asset')
-    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/pagels/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
 @endif
+
 @if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
     <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/function.js"></script>
 {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-
 @endif
 
-@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
-    <script src="/assets/js/function.js"></script>
-    @endif
 <!-- -------------- /Scripts -------------- -->
 
-@if(\Route::getFacadeRoot()->current()->uri() == 'add-employee')
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-employee' )
 <script src="/assets/js/custom_form_wizard.js"></script>
     @endif
 
-</body>
+    @if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager' )
+        <script src="/assets/js/pages/forms-widgets.js"></script>
+    @endif
 
+</body>
 </html>

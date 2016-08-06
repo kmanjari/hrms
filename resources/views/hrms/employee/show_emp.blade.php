@@ -35,8 +35,42 @@
                 <div class="col-xs-12">
                     <div class="panel">
                         <div class="panel-heading">
-                            <span class="panel-title hidden-xs">Employee Lists</span>
+                            <span class="panel-title hidden-xs">Employee Lists</span><br />
+                        </div><br />
+                        <div class="panel-menu allcp-form theme-primary mtn">
+                        <div class="row">
+                            {!! Form::open() !!}
+                            <div class="col-md-3">
+                                <input type="text" class="field form-control" placeholder="query string" style="height:40px" name="string">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="field select">
+                                    <select id="column" name="column">
+                                        <option value="">Filter by</option>
+                                        <option value="name">Name</option>
+                                        <option value="code">Code</option>
+                                        <option value="department">Department</option>
+                                        <option value="email">Email</option>
+                                        <option value="number">Number</option>
+                                    </select>
+                                    <i class="arrow double"></i>
+                                </label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="submit" value="Search" name="button" class="btn btn-primary">
+                            </div>
+
+                            <div class="col-md-2">
+                                <input type="submit" value="Export" name="button" class="btn btn-primary">
+                            </div>
+                            {!! Form::close() !!}
+                            <div class="col-md-2">
+                                <a href="/employee-manager" >
+                                    <input type="submit" value="Reset" class="btn btn-primary"></a>
+                            </div>
                         </div>
+                            </div>
+
                         <div class="panel-body pn">
                             @if(Session::has('flash_message'))
                                 <div class="alert alert-success">
@@ -48,10 +82,9 @@
                                     <thead>
                                     <tr class="bg-light">
                                         <th>Id</th>
-                                        <th>Select</th>
-                                        <th>Emp Code</th>
-                                        <th>Emp Name</th>
-                                        <th>Emp Status</th>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
                                         <th>Role</th>
                                         <th>Joining Date</th>
                                         <th>Address</th>
@@ -64,20 +97,14 @@
                                     @foreach($emps as $emp)
                                     <tr>
                                         <td>{{$emp->id}}</td>
-                                        <td class="text-center">
-                                            <label class="option block mn">
-                                                <input type="checkbox" name="inputname" value="FR">
-                                                <span class="checkbox mn"></span>
-                                            </label>
-                                        </td>
-                                        <td>{{$emp->emp_code}}</td>
-                                        <td>{{$emp->emp_name}}</td>
-                                        <td>{{convertStatusBack($emp->emp_status)}}</td>
-                                        <td>{{$emp->userrole->role['name']}}</td>
-                                        <td>{{$emp->doj}}</td>
-                                        <td>{{$emp->address}}</td>
-                                        <td>{{$emp->mob_number}}</td>
-                                        <td>{{$emp->department}}</td>
+                                        <td>{{$emp->employee->code}}</td>
+                                        <td>{{$emp->employee->name}}</td>
+                                        <td>{{convertStatusBack($emp->employee->status)}}</td>
+                                        <td>{{$emp->role->role->name}}</td>
+                                        <td>{{$emp->employee->date_of_joining}}</td>
+                                        <td>{{$emp->employee->current_address}}</td>
+                                        <td>{{$emp->employee->number}}</td>
+                                        <td>{{$emp->employee->department}}</td>
                                         <td class="text-right">
                                             <div class="btn-group text-right">
                                                 <button type="button"
@@ -97,8 +124,9 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                    <tr>
+                                    <tr><td colspan="10">
                                             {!! $emps->render() !!}
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

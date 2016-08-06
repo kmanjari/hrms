@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
 
-            $userRole= \Auth::user()->employee->userrole->role_id;
+            $userRole= \Auth::user()->role->role_id;
 
             if($userRole == '8')
             {
