@@ -60,5 +60,16 @@ function getFormattedDate($date)
 {
     $date = new DateTime($date);
     return date_format($date,'l jS \\of F Y');
-
 }
+
+    function getEmployeeDropDown()
+    {
+        $data = [
+            'name' => 'Name',
+            'code' => 'Code',
+            'department' => 'Department',
+            'email' => 'Email',
+            'number' => 'Number'
+        ];
+        return $data;
+    }
