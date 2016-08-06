@@ -67,10 +67,10 @@
                                                 <span class="checkbox mn"></span>
                                             </label>
                                         </td>
-                                        <td>{{$asset->employee->emp_name}}</td>
+                                        <td>{{$asset->employee->name}}</td>
                                         <td>{{$asset->asset->name}}</td>
-                                        <td>{{$asset->doa}}</td>
-                                        <td>{{$asset->dor}}</td>
+                                        <td>{{getFormattedDate($asset->date_of_assignment)}}</td>
+                                        <td>{{getFormattedDate($asset->date_of_release)}}</td>
                                         <td class="text-right">
                                             <div class="btn-group text-right">
                                                 <button type="button"

@@ -10,7 +10,7 @@ function convertRole($role)
         'Team Lead' => '5',
         'IT Executive' => '6',
         'HR Manager' => '7',
-        'Associate- Enforcement' => '8',
+        'Associate-Enforcement' => '8',
         'Enforcement Head' => '9',
         'Finance Controller' => '10',
         'Consultant' => '11',
@@ -19,6 +19,7 @@ function convertRole($role)
         'Senior Software Developer' => '14',
         'Accounts Executive' => '15',
         'Manager' => '16'
+        //bharo baki
     ];
     return $data[$role];
 }

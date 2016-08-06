@@ -68,9 +68,9 @@
                                                 </label>
                                             </td>
                                             <td>{{$team->name}}</td>
-                                            <td>{{$team->manager->emp_name}}</td>
-                                            <td>{{$team->leader->emp_name}}</td>
-                                            <td>{{$team->employee->emp_name}}</td>
+                                            <td>{{$team->manager->name}}</td>
+                                            <td>{{$team->leader->name}}</td>
+                                            <td>{{$team->employee->name}}</td>
 
                                              <td class="text-right">
                                                 <div class="btn-group text-right">
@@ -81,10 +81,10 @@
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li>
-                                                            <a href="/edit-team/{{$team->id}}">Edit</a>
+                                                            <a href="/edit-team/{{$team->team_id}}">Edit</a>
                                                         </li>
                                                         <li>
-                                                            <a href="/delete-team/{{$team->id}}">Delete</a>
+                                                            <a href="/delete-team/{{$team->team_id}}">Delete</a>
                                                         </li>
                                                     </ul>
                                                 </div>

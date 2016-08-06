@@ -72,7 +72,7 @@
                                                         name="emp_id">
                                                     <option value="" selected>Select One</option>
                                                     @foreach($emps as $emp)
-                                                        <option value="{{$emp->id}}">{{$emp->emp_name}}</option>
+                                                        <option value="{{$emp->id}}">{{$emp->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -104,7 +104,7 @@
                                                 @endif--}}
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
+                                                            <i class="fa fa-calendar text-alert pr11"></i>
                                                         </div>
                                                         @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
                                                         <input type="text" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->doa){{$emps->doa}}@endif"/>
@@ -131,7 +131,7 @@
                                                 @endif--}}
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+                                                        <i class="fa fa-calendar text-alert pr11"></i>
                                                     </div>
                                                     @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
                                                         <input type="text" id="datepicker4" class="select2-single form-control" name="dor" value="@if($emps && $emps->dor){{$emps->dor}}@endif"/>

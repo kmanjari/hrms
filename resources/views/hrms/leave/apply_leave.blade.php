@@ -66,7 +66,7 @@
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <div class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
+                                                    <i class="fa fa-calendar text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="datepicker1" class="select2-single form-control"
                                                        name="dateFrom"/>
@@ -76,7 +76,7 @@
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <div class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
+                                                    <i class="fa fa-calendar text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="datepicker4" class="select2-single form-control"
                                                        name="dateTo"/>
@@ -91,7 +91,7 @@
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <div class="input-group-addon">
-                                                    <i class="imoon imoon-clock"></i>
+                                                    <i class="imoon imoon-clock text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="timepicker1" class="select2-single form-control "
                                                        name="time_from"/>
@@ -101,7 +101,7 @@
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <div class="input-group-addon">
-                                                    <i class="imoon imoon-clock"></i>
+                                                    <i class="imoon imoon-clock text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="timepicker4" class="select2-single form-control"
                                                        name="time_to"/>

@@ -42,11 +42,7 @@
                                             {{ Session::get('flash_message') }}
                                         </div>
                                     @endif
-                                    {{--<form class="form-horizontal" role="form">--}}
                                     {!! Form::open(['class' => 'form-horizontal']) !!}
-
-
-
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"> Team Name </label>
                                             <div class="col-md-6">
@@ -64,9 +60,9 @@
                                                     <option value="" selected>Select One</option>
                                                     @foreach($managers as $manager)
                                                         @if($edit[0]->manager->id == $manager->id)
-                                                            <option value="{{$manager->id}}" selected>{{$manager->emp_name}}</option>
+                                                            <option value="{{$manager->id}}" selected>{{$manager->name}}</option>
                                                         @else
-                                                            <option value="{{$manager->id}}">{{$manager->emp_name}}</option>
+                                                            <option value="{{$manager->id}}">{{$manager->name}}</option>
                                                         @endif
                                                     @endforeach
                                                 </select>
@@ -83,9 +79,9 @@
                                                     <option value="" selected>Select One</option>
                                                     @foreach($leaders as $leader)
                                                         @if($edit[0]->leader->id == $leader->id)
-                                                            <option value="{{$leader->id}}" selected>{{$leader->emp_name}}</option>
+                                                            <option value="{{$leader->id}}" selected>{{$leader->name}}</option>
                                                         @else
-                                                            <option value="{{$leader->id}}">{{$leader->emp_name}}</option>
+                                                            <option value="{{$leader->id}}">{{$leader->name}}</option>
                                                         @endif
                                                     @endforeach
                                                 </select>
@@ -101,9 +97,9 @@
                                                     <option value="" selected>Select One</option>
                                                     @foreach($emps as $emp)
                                                         @if(in_array($emp->id,$team_member))
-                                                            <option value="{{$emp->id}}" selected>{{$emp->emp_name}}</option>
+                                                            <option value="{{$emp->id}}" selected>{{$emp->name}}</option>
                                                         @else
-                                                            <option value="{{$emp->id}}">{{$emp->emp_name}}</option>
+                                                            <option value="{{$emp->id}}">{{$emp->name}}</option>
                                                         @endif
                                                     @endforeach
                                                 </select>

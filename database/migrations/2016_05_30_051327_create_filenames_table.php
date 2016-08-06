@@ -14,7 +14,9 @@ class CreateFilenamesTable extends Migration
     {
         Schema::create('filenames', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('nme');
+            $table->string('description');
+            $table->date('date');
             $table->timestamps();
         });
     }

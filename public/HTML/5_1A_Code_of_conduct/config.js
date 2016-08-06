@@ -1,0 +1,1 @@
+IDRViewer.config = {"pagecount":12,"title":"","author":"Arun Pasricha","fileName":"5_1A_Code_of_conduct.pdf","bounds":[[909,1286],[909,1286],[909,1286],[909,1286],[909,1286],[909,1286],[909,1286],[909,1286],[909,1286],[909,1286],[909,1286],[909,1286]],"bookmarks":[],"thumbnailType":"jpg","pageType":"html","pageLabels":[]};

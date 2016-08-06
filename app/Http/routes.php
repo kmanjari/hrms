@@ -19,22 +19,14 @@
         Route::get('/', 'AuthController@showLogin');
 
         Route::post('/', 'AuthController@doLogin');
+
+        Route::get('register','AuthController@doRegister');
     });
 
 
     Route::group(['middleware' => ['auth']], function()
     {
-        Route::get('check',function(){
-            return 'cngjg';
-        });
-
-        Route::get('login','AuthController@showLogin');
-
-        Route::post('login','AuthController@doLogin');
-
         Route::get('logout', 'AuthController@doLogout');
-
-        Route::get('register','AuthController@doRegister');
 
         Route::get('welcome','AuthController@welcome');
 
@@ -47,6 +39,8 @@
         Route::post('add-employee',['as' => 'add-employee', 'uses' =>'EmpController@processEmployee']);
 
         Route::get('employee-manager',['as' => 'employee-manager', 'uses' => 'EmpController@showEmployee']);
+
+        Route::post('employee-manager', 'EmpController@searchEmployee');
 
         Route::get('upload-emp',['as' => 'upload-emp', 'uses' => 'EmpController@importFile']);
 
@@ -101,6 +95,10 @@
 
         Route::get('my-leave-list' ,['as' => 'my-leave-list', 'uses'=>'LeaveController@showMyLeave']);
 
+        Route::get('total-leave-list' ,['as' => 'total-leave-list', 'uses'=>'LeaveController@showAllLeave']);
+
+        Route::post('total-leave-list', 'LeaveController@searchLeave');
+
         Route::get('leave-drafting', ['as' => 'leave-drafting', 'uses'=>'LeaveController@showLeaveDraft']);
 
         Route::post('leave-drafting',  ['as' => 'leave-drafting', 'uses'=>'LeaveController@createLeaveDraft']);
@@ -134,6 +132,12 @@
         Route::post('edit-asset-assignment/{id}',['as' => 'edit-asset-assignment', 'uses' =>'AssetController@doEditAssign']);
 
         Route::get('delete-asset-assignment/{id}',['as' => 'delete-asset-assignment', 'uses' =>'AssetController@doDeleteAssign']);
+
+        Route::get('hr-policy', ['as' => 'hr-policy', 'uses' =>'IndexController@showPolicy']);
+
+        Route::get('download-forms', ['as' => 'download-forms', 'uses' =>'IndexController@showForms']);
+
+        Route::get('download/{name}','DownloadController@downloadForms');
 
         Route::get('calendar','AuthController@calendar');
     });

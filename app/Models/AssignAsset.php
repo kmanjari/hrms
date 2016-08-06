@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class AssignAsset extends Model
 {
     public function employee()
     {
-        return $this->hasOne('\App\Models\Employee', 'id', 'emp_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     public function asset()

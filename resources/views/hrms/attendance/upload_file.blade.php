@@ -88,10 +88,28 @@
                                        </div>
                                     <!-- -------------- /section -------------- -->
 
+
+                                   {{-- <label for="date_to" class="col-md-2 control-label"> Date To </label>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar text-alert pr10"></i>
+                                            </div>
+                                            <input type="text" id="datepicker4" class="select2-single form-control"
+                                                   name="dateTo"/>
+                                        </div>
+
+                                    </div>--}}
+
+
+
                                     <div class="section">
-                                    <label for="datepicker1" class="field prepend-icon"> <h6> Select Date </h6></label>
-                                    <input type="date" id="datepicker1" class="gui-input fs13" name="date"/>
-                                    </div>
+                                        <div class="input-group">
+                                            <label for="date" class="field prepend-icon "> <h6> Select Date </h6></label>
+                                            <input type="text" id="datepicker1" class="gui-input fs13 select2-single form-control" name="date"/>
+                                        </div>
+                                        </div>
+
                                     <!-- -------------- /section -------------- -->
 
                                     <div class="section">

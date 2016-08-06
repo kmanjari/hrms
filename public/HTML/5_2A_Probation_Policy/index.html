@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- v1.1.0 -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="assets/idrviewer.css">
+<script src="assets/idrviewer.js" type="text/javascript"></script>
+<script src="assets/idrviewer.querystring-navigation.js"></script>
+<script src="assets/idrviewer.fullscreen.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+(function() {
+    "use strict";
+    var Button = {},
+        pgCount,
+        curPg;
+
+    /**
+     * Shorthand helper function to getElementById
+     * @param id
+     * @returns {Element}
+     */
+    var d = function (id) {
+        return document.getElementById(id);
+    };
+
+    var ClassHelper = (function() {
+        return {
+            addClass: function(ele, name) {
+                var classes = ele.className.length !== 0 ? ele.className.split(" ") : [];
+                var index = classes.indexOf(name);
+                if (index === -1) {
+                    classes.push(name);
+                    ele.className = classes.join(" ");
+                }
+            },
+
+            removeClass: function(ele, name) {
+                var classes = ele.className.length !== 0 ? ele.className.split(" ") : [];
+                var index = classes.indexOf(name);
+                if (index !== -1) {
+                    classes.splice(index, 1);
+                }
+                ele.className = classes.join(" ");
+            },
+
+            toggleClass: function(ele, name) {
+                var classes = ele.className.length !== 0 ? ele.className.split(" ") : [];
+                var index = classes.indexOf(name);
+                var wasClassAdded;
+                if (index === -1) {
+                    classes.push(name);
+                    wasClassAdded = true;
+                } else {
+                    classes.splice(index, 1);
+                    wasClassAdded = false
+                }
+                ele.className = classes.join(" ");
+                return wasClassAdded;
+            }
+        };
+    })();
+
+    /**
+     * Encapsulation of sidebar functionality
+     */
+    var Sidebar = (function () {
+
+        var Sidebar = {},
+            loadedThumbsArray = [],
+            lastScroll = 0,
+            sidebar,
+            thumbnailBar,
+            imageType,
+            scrollSidebar = true,
+            thumbnailPanel,
+            bookmarkPanel;
+
+        /**
+         * Performs the setup for the sidebar
+         * @param bounds Page bounds array
+         * @param thumbnailType Image type used for thumbnails
+         * @param bookmarks Object containing any bookmarks
+         */
+        Sidebar.setup = function (bounds, thumbnailType, bookmarks) {
+
+            Button.outlines = d('btnOutlines');
+            Button.thumbnails = d('btnThumbnails');
+            d('btnSideToggle').onclick = function () {
+                Sidebar.toggleSidebar();
+            };
+            Button.outlines.onclick = function () {
+                Sidebar.switchToBookmarks();
+            };
+            Button.thumbnails.onclick = function () {
+                Sidebar.switchToThumbnails();
+            };
+
+            thumbnailBar = d('leftContent');
+            sidebar = d('left');
+            thumbnailPanel = d('thumbnailPanel');
+            bookmarkPanel = d('outlinePanel');
+            imageType = thumbnailType;
+
+            loadThumbnailFrames(bounds);
+            // Initialise loaded array
+            for (var i = 0; i < pgCount; i++) {
+                loadedThumbsArray[i] = false;
+            }
+
+            Sidebar.switchToThumbnails();
+
+            thumbnailBar.addEventListener("scroll", handleThumbnailBarScroll);
+
+            if (bookmarks.length > 0) {
+                Sidebar.setBookmarks(bookmarks);
+            }
+        };
+
+        /**
+         * Toggle the sidebar open and closed
+         */
+        Sidebar.toggleSidebar = function () {
+            if (ClassHelper.toggleClass(sidebar, "open")) {
+                loadVisibleThumbnails();
+            }
+        };
+
+        /**
+         * Display the thumbnail panel in the sidebar
+         */
+        Sidebar.switchToThumbnails = function () {
+            thumbnailPanel.className = "visible";
+            bookmarkPanel.className = "hidden";
+            Sidebar.scrollToPage(curPg);
+            Button.thumbnails.className = 'disabled btn';
+            Button.outlines.className = 'btn';
+        };
+
+        /**
+         * Display the bookmarks panel in the sidebar
+         */
+        Sidebar.switchToBookmarks = function () {
+            thumbnailPanel.className = "hidden";
+            bookmarkPanel.className = "visible";
+            Button.thumbnails.className = 'btn';
+            Button.outlines.className = 'disabled btn';
+        };
+
+        /**
+         * Load the frames for all the thumbnails
+         * @param bounds Page bound array
+         */
+        var loadThumbnailFrames = function (bounds) {
+            var heights = [];
+            var MAXWIDTH = 160;
+            var MAXHEIGHT = 200;
+            // Calculate height for max width of 160px and max height of 200px
+            for (var i = 0; i < bounds.length; i++) {
+                var height = Math.floor(bounds[i][1] * (MAXWIDTH / bounds[i][0]));
+                heights[i] = (bounds[i][0] > bounds[i][1] || height <= MAXHEIGHT) ? height : MAXHEIGHT;
+            }
+
+            function makeThumbnailClickHandler(pg) {
+                return function() {
+                    scrollSidebar = false;
+                    IDRViewer.goToPage(pg);
+                    return false;
+                };
+            }
+
+            for (var page = 1; page <= bounds.length; page++) {
+                var ele = document.createElement("a");
+                ele.style.height = heights[page - 1] + "px";
+                ele.className = "thumbnail";
+                ele.href = "?page=" + page;
+                ele.id = "thumb" + page;
+                ele.onclick = makeThumbnailClickHandler(page);
+                ele.setAttribute('title', 'Page ' + page);
+                ele.innerHTML = '<img src="assets/loading.gif"/>';
+                thumbnailPanel.appendChild(ele);
+            }
+        };
+
+        var handleThumbnailBarScroll = function () {
+            var scrollTop = thumbnailBar.scrollTop;
+            lastScroll = scrollTop;
+            setTimeout(function () {
+                loadVisibleThumbnails(scrollTop);
+            }, 500);
+        };
+
+        var loadVisibleThumbnails = function (scrollTop) {
+            if (typeof scrollTop !== 'undefined' && scrollTop != lastScroll)
+                return;
+
+            // load thumbs in view
+            for (var thumbIndex = 0; thumbIndex < pgCount; thumbIndex++) {
+                if (!loadedThumbsArray[thumbIndex]) {
+                    var curThumb = thumbnailPanel.children[thumbIndex];
+                    // Bails out of the loop when the next thumbnail is below the viewable area
+                    if (curThumb.offsetTop > thumbnailBar.scrollTop + thumbnailBar.clientHeight) {
+                        break;
+                    }
+                    if (curThumb.offsetTop + curThumb.clientHeight > thumbnailBar.scrollTop) {
+                        curThumb.children[0].setAttribute("src", "thumbnails/" + (thumbIndex + 1) + '.' + imageType);
+                        loadedThumbsArray[thumbIndex] = true;
+                    }
+                }
+            }
+        };
+
+        /**
+         * Scrolls the thumbnail bar to a specific page and adds currentPageThumbnail class.
+         * @param page Page to scroll to
+         * @param page2 Optional second page
+         */
+        Sidebar.scrollToPage = function (page, page2) {
+            var curThumb = thumbnailPanel.children[page - 1];
+            if (curThumb.className != "thumbnail currentPageThumbnail") {
+
+                for (var i = 0; i < pgCount; i++) {
+                    thumbnailPanel.children[i].className = "thumbnail";
+                }
+
+                curThumb.className = "thumbnail currentPageThumbnail";
+
+                if (scrollSidebar) {
+                    thumbnailBar.scrollTop = thumbnailBar.scrollTop + curThumb.getBoundingClientRect().top - d('leftContent').getBoundingClientRect().top;
+                }
+            }
+            if (typeof page2 != 'undefined') {
+                thumbnailPanel.children[page2 - 1].className = "thumbnail currentPageThumbnail";
+            }
+            scrollSidebar = true;
+        };
+
+        Sidebar.setBookmarks = function (bookmarks) {
+            ClassHelper.addClass(sidebar, 'hasBookmarks');
+            addBookmark(bookmarkPanel, bookmarks);
+        };
+
+        var addBookmark = function (container, bookmarks) {
+            var outer = document.createElement('ul');
+
+            var makeBookmarkClickHandler = function(pg) {
+                return function() {
+                    IDRViewer.goToPage(parseInt(pg));
+                };
+            };
+            for (var i = 0; i < bookmarks.length; i++) {
+                var bookmark = bookmarks[i];
+                var li = document.createElement('li');
+                li.setAttribute('title', 'Page ' + bookmark.page);
+                li.innerHTML = bookmark.title;
+                li.onclick = makeBookmarkClickHandler(bookmark.page);
+                outer.appendChild(li);
+                if (typeof(bookmark.children) != 'undefined') {
+                    addBookmark(outer, bookmark.children);
+                }
+            }
+            container.appendChild(outer);
+        };
+
+        return Sidebar;
+    })();
+
+    var populateGoBtn = function () {
+        Button.go.className = "";
+        Button.go.innerHTML = "";
+        for (var i = 1; i <= pgCount; i++) {
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = String(i);
+            Button.go.appendChild(opt);
+        }
+        Button.go.selectedIndex = curPg - 1;
+    };
+
+    var handleGoBtn = function () {
+        IDRViewer.goToPage(parseInt(Button.go.options[Button.go.selectedIndex].value));
+    };
+
+    var updateSelectionButtons = function (mode) {
+        switch (mode) {
+            case IDRViewer.SELECT_PAN:
+                Button.select.className = 'btn';
+                Button.move.className = 'disabled btn';
+                break;
+            case IDRViewer.SELECT_SELECT:
+                Button.select.className = 'disabled btn';
+                Button.move.className = 'btn';
+                break;
+        }
+    };
+
+    var handlePageChange = function (data) {
+        Sidebar.scrollToPage(data.page);
+        Button.go.selectedIndex = data.page - 1;
+
+        Button.prev.className = data.isFirstPage ? 'disabled btn' : 'btn';
+        Button.next.className = data.isLastPage ? 'disabled btn' : 'btn';
+    };
+
+    var handleZoomUpdate = function (data) {
+        Button.zoom.value = data.zoomType;
+        Button.zoom.options[0].innerHTML = Math.floor(data.zoomValue * 100) + "%";
+
+        Button.zoomOut.className = data.isMinZoom ? 'disabled btn' : 'btn';
+        Button.zoomIn.className = data.isMaxZoom ? 'disabled btn' : 'btn';
+    };
+
+    var handleSelectionChange = function (data) {
+        updateSelectionButtons(data.type);
+    };
+
+    var handleZoomBtn = function () {
+        var zoomType = Button.zoom.value;
+        if (zoomType != IDRViewer.ZOOM_SPECIFIC) {
+            IDRViewer.setZoom(zoomType);
+        }
+    };
+
+    var handleViewBtn = function () {
+        IDRViewer.setLayout(Button.View.value);
+    };
+
+    var setupLayoutSwitching = function (layout, availableLayouts, isMobile) {
+
+        if (!isMobile) {
+
+            if (availableLayouts.length > 1 && pgCount > 1) {
+                Button.View = document.createElement('select');
+                Button.View.id = 'viewBtn';
+
+                var temp = document.createElement('option');
+                temp.innerHTML = "Presentation";
+                temp.value = IDRViewer.LAYOUT_PRESENTATION;
+                Button.View.appendChild(temp);
+
+                if (availableLayouts.indexOf(IDRViewer.LAYOUT_MAGAZINE) != -1) {
+                    temp = document.createElement('option');
+                    temp.innerHTML = "Magazine";
+                    temp.value = IDRViewer.LAYOUT_MAGAZINE;
+                    Button.View.appendChild(temp);
+                }
+                if (availableLayouts.indexOf(IDRViewer.LAYOUT_CONTINUOUS) != -1) {
+                    temp = document.createElement('option');
+                    temp.innerHTML = "Continuous";
+                    temp.value = IDRViewer.LAYOUT_CONTINUOUS;
+                    Button.View.appendChild(temp);
+                }
+                Button.View.onchange = handleViewBtn;
+                d('controls-center').appendChild(Button.View);
+                Button.View.value = layout;
+            }
+
+        } else {
+            Button.zoom.parentNode.removeChild(Button.zoom);
+            Button.move.parentNode.removeChild(Button.move);
+            Button.select.parentNode.removeChild(Button.select);
+            Button.zoomIn.parentNode.removeChild(Button.zoomIn);
+            Button.zoomOut.parentNode.removeChild(Button.zoomOut);
+        }
+    };
+
+    var handleFullscreenChange = function (data) {
+        if (data.isFullscreen) {
+            Button.fullscreen.className = "btn open";
+        } else {
+            Button.fullscreen.className = "btn closed";
+        }
+    };
+    
+    /**
+     * Main setup function that runs on load
+     */
+    IDRViewer.on('ready', function (data) {
+
+        // Grab buttons
+        Button.go = d('goBtn');
+        Button.zoom = d('zoomBtn');
+        Button.fullscreen = d('btnFullScreen');
+        Button.prev = d('btnPrev');
+        Button.next = d('btnNext');
+        Button.move = d('btnMove');
+        Button.select = d('btnSelect');
+        Button.zoomIn = d('btnZoomIn');
+        Button.zoomOut = d('btnZoomOut');
+
+        Button.prev.className = data.isFirstPage ? 'disabled btn' : 'btn';
+        Button.next.className = data.isLastPage ? 'disabled btn' : 'btn';
+
+        // Set button actions
+        Button.go.onchange = function () { handleGoBtn(); };
+        Button.zoom.onchange = function () { handleZoomBtn(); };
+        Button.prev.onclick = function (e) { IDRViewer.prev(); e.preventDefault(); };
+        Button.next.onclick = function (e) { IDRViewer.next(); e.preventDefault(); };
+        Button.move.onclick = function (e) { IDRViewer.setSelectMode(IDRViewer.SELECT_PAN); e.preventDefault(); };
+        Button.select.onclick = function (e) { IDRViewer.setSelectMode(IDRViewer.SELECT_SELECT); e.preventDefault(); };
+        Button.zoomIn.onclick = function (e) { IDRViewer.zoomIn(); e.preventDefault(); };
+        Button.zoomOut.onclick = function (e) { IDRViewer.zoomOut(); e.preventDefault(); };
+
+        // Misc setup
+        document.title = data.title ? data.title : data.fileName;
+        curPg = data.page;
+        updateSelectionButtons(data.selectMode);
+        pgCount = data.pagecount;
+
+        populateGoBtn();
+
+        Sidebar.setup(data.bounds, data.thumbnailType, data.bookmarks);
+        d('pgCount').innerHTML = "/" + data.pagecount;
+
+        if (IDRViewer.isFullscreenEnabled()) {
+            Button.fullscreen.onclick = function () {
+                IDRViewer.toggleFullScreen();
+            };
+            IDRViewer.on('fullscreenchange', handleFullscreenChange);
+        } else {
+            Button.fullscreen.parentNode.removeChild(Button.fullscreen);
+        }
+
+        setupLayoutSwitching(data.layout, data.availableLayouts, data.isMobile);
+        Button.zoom.value = IDRViewer.ZOOM_AUTO;
+
+        // Add event listeners
+        IDRViewer.on('selectchange', handleSelectionChange);
+        IDRViewer.on('pagechange', handlePageChange);
+        IDRViewer.on('zoomchange', handleZoomUpdate);
+
+        var themeToggle = false;
+        d('btnThemeToggle').addEventListener('click', function() {
+            ClassHelper.removeClass(document.body, "light-theme");
+            ClassHelper.removeClass(document.body, "dark-theme");
+            ClassHelper.addClass(document.body, themeToggle ? "light-theme" : "dark-theme");
+            themeToggle = !themeToggle;
+        });
+    });
+})();
+</script>
+<style type="text/css">
+    #left {
+        transition-timing-function: ease;
+        transition-duration: 200ms;
+        top: 45px;
+        bottom: 0;
+        position: absolute;
+        overflow: hidden;
+        z-index: 999;
+        left: -200px;
+        width: 200px;
+    }
+    .light-theme #left {
+        border-right: 1px solid #7b8793;
+    }
+    .dark-theme #left {
+        border-right: 1px solid #000;
+    }
+    #left.open {
+        left: 0;
+    }
+    #left-controls {
+        display: none;
+        height: 44px;
+    }
+    #leftContent {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        overflow-y: scroll;
+        background-color: rgba(0,0,0,0.5);
+        -webkit-overflow-scrolling: touch;
+    }
+    #left.hasBookmarks #leftContent {
+        top: 45px;
+    }
+    #left.hasBookmarks #left-controls {
+        display: block;
+    }
+    #outlinePanel {
+        display: none;
+    }
+
+    #pgCount {
+        font-family: Arial,serif;
+        vertical-align: middle;
+        font-size: 14px;
+    }
+    #btnSelect, #btnZoomOut, #viewBtn {
+        margin-left: 20px;
+    }
+
+    #goBtn {
+        width: 55px;
+        height: 23px;
+        vertical-align: middle;
+        background-color: #B0B0B0;
+        color: white;
+    }
+
+    #zoomBtn, #viewBtn {
+        width: 95px;
+        height: 25px;
+        background-color: #B0B0B0;
+        color: white;
+    }
+    #viewBtn {
+        width: 105px;
+    }
+    .thumbnail {
+        cursor: pointer;
+        display: block;
+        padding: 5px 0;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .thumbnail img{
+        max-width: 160px;
+    }
+    .currentPageThumbnail {
+        background-color: #777777;
+    }
+    .thumbnail:hover {
+        background-color: #CCCCCC;
+    }
+    #thumbnailPanel.visible, #outlinePanel.visible {
+        display: inline;
+    }
+    #thumbnailPanel.hidden, #outlinePanel.hidden {
+        display: none;
+    }
+    #outlinePanel ul {
+        list-style-type: none;
+        padding: 0 5px;
+    }
+    #outlinePanel ul ul {
+        padding-left: 15px;
+        padding-right: 0;
+    }
+    #outlinePanel li {
+        color: white;
+        padding: 2px;
+        font-family: Arial,serif;
+        font-size: 15px;
+    }
+    #outlinePanel li:hover {
+        background-color: rgba(0,0,0,0.3);
+        cursor: pointer;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn {
+        border: 0 none;
+        height: 30px;
+        padding: 0;
+        width: 30px;
+        background-color: transparent;
+        display: inline-block;
+        margin: 7px 5px 0;
+        vertical-align: top;
+        cursor: pointer;
+    }
+
+    .page {
+        box-shadow: 1px 1px 4px rgba(120, 120, 120, 0.5);
+    }
+
+    #controls {
+        height: 44px;
+        line-height: 44px;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        transition: 0.3s ease 0s;
+    }
+    #controls-left {
+        display: inline-block;
+        left: 0;
+        position: absolute;
+    }
+    #controls-center {
+        display: inline-block;
+    }
+    #controls-right {
+        display: inline-block;
+        right: 0;
+        position: absolute;
+    }
+
+    .light-theme #idrviewer {
+        background: #fafafa none repeat scroll 0 0;
+    }
+    .light-theme #controls,
+    .light-theme #left-controls {
+        background: #9eacba none repeat scroll 0 0;
+        border-bottom: 1px solid #7b8793;
+    }
+
+    .light-theme #pgCount,
+    .light-theme .btn {
+        color: white;
+        text-shadow: 0 0 1px #595959;
+    }
+    .light-theme .btn:hover {
+        opacity: 0.6;
+    }
+    .light-theme .btn.disabled {
+        opacity: 0.4;
+    }
+
+    .dark-theme #idrviewer {
+        background: #666 none repeat scroll 0 0;
+    }
+    .dark-theme #controls,
+    .dark-theme #left-controls {
+        background: #444 none repeat scroll 0 0;
+        border-bottom: 1px solid #000;
+    }
+    .dark-theme #pgCount {
+        color: white;
+        opacity: 0.8;
+    }
+    .dark-theme .btn {
+        opacity: 0.7;
+        color: white;
+    }
+    .dark-theme .btn:hover {
+        opacity: 0.95;
+    }
+
+    .dark-theme .btn.disabled {
+        opacity: 0.2;
+    }
+    #idrviewer {
+        top: 45px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+    }
+
+</style>
+</head>
+<body class="light-theme">
+    <div id="left">
+        <div id="left-controls">
+            <button id="btnThumbnails" title="Thumbnails" class="btn"><i class="fa fa-picture-o fa-lg" aria-hidden="true"></i></button>
+            <button id="btnOutlines" title="Bookmarks" class="btn"><i class="fa fa-list-ul fa-lg" aria-hidden="true"></i></button>
+        </div>
+        <div id="leftContent">
+            <div id="thumbnailPanel"></div>
+            <div id="outlinePanel"></div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="controls">
+            <div id="controls-left">
+                <button id="btnSideToggle" title="Sidebar" class="btn"><i class="fa fa-th fa-lg" aria-hidden="true"></i></button>
+                <button id="btnThemeToggle" title="Theme Toggle" class="btn"><i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i></button>
+            </div>
+
+            <div id="controls-center">
+                <button id="btnPrev" title="Previous Page" class="btn"><i class="fa fa-caret-left fa-2x" aria-hidden="true"></i></button>
+                <select id="goBtn">
+
+                </select>
+                <span id="pgCount"></span>
+                <button id="btnNext" title="Next Page" class="btn"><i class="fa fa-caret-right fa-2x" aria-hidden="true"></i></button>
+
+                <button id="btnSelect" title="Select" class="btn"><i class="fa fa-i-cursor fa-lg" aria-hidden="true"></i></button>
+                <button id="btnMove" title="Pan" class="btn"><i class="fa fa-arrows fa-lg" aria-hidden="true"></i></button>
+
+                <button id="btnZoomOut" title="Zoom Out" class="btn"><i class="fa fa-minus fa-lg" aria-hidden="true"></i></button>
+                <select id="zoomBtn">
+                    <option value="specific">100%</option>
+                    <option value="actualsize">Actual Size</option>
+                    <option value="fitwidth">Fit Width</option>
+                    <option value="fitheight">Fit Height</option>
+                    <option value="fitpage">Fit Page</option>
+                    <option value="auto">Automatic</option>
+
+                </select>
+                <button id="btnZoomIn" title="Zoom In" class="btn"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></button>
+            </div>
+            <div id="controls-right">
+                <button id="btnFullScreen" title="Fullscreen" class="btn"><i class="fa fa-arrows-alt fa-lg" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <div id="idrviewer">
+
+        </div>
+    </div>
+    <script src="config.js" type="text/javascript"></script>
+    <script type="text/javascript">IDRViewer.setup();</script>
+</body>
+</html>
