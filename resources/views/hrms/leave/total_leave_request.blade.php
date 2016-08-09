@@ -41,18 +41,11 @@
                              <div class="row">
                                 {!! Form::open() !!}
                                   <div class="col-md-3">
-                                    <input type="text" class="field form-control" placeholder="query string" style="height:40px" name="string">
+                                    <input type="text" class="field form-control" placeholder="query string" style="height:40px" name="string" value="{{$string}}">
                                   </div>
                                    <div class="col-md-3">
                                      <label class="field select">
-                                         <select id="column" name="column">
-                                            <option value="">Filter by</option>
-                                            <option value="name">Name</option>
-                                            <option value="code">Code</option>
-                                            <option value="days">Days</option>
-                                            <option value="leave_type">Leave type</option>
-                                            <option value="status">Status</option>
-                                        </select>
+                                         {!! Form::select('column', getLeaveColumns(),$column) !!}
                                         <i class="arrow double"></i>
                                     </label>
                                 </div>
@@ -61,12 +54,12 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <input type="submit" value="Export" name="button" class="btn btn-primary">
+                                    <input type="submit" value="Export" name="button" class="btn btn-success">
                                 </div>
                                 {!! Form::close() !!}
                                 <div class="col-md-2">
                                     <a href="/total-leave-list" >
-                                        <input type="submit" value="Reset" class="btn btn-primary"></a>
+                                        <input type="submit" value="Reset" class="btn btn-warning"></a>
                                 </div>
                                     </div>
                                     </div>
@@ -88,7 +81,7 @@
                                         <th>Date From</th>
                                         <th>Date To</th>
                                         <th>Days</th>
-                                        <th>Status</th>
+                                        <th class="text-center">Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -101,7 +94,39 @@
                                             <td>{{getFormattedDate($leave->date_from)}}</td>
                                             <td>{{getFormattedDate($leave->date_to)}}</td>
                                             <td>{{$leave->days}}</td>
-                                            <td>{{($leave->status == '0') ? 'Unapproved' : 'Approved'}}</td>
+                                            <input type="hidden" value="{!! csrf_token() !!}" id="token">
+                                            <td class="text-center">
+                                                <div class="btn-group text-right">
+                                                    @if($leave->status==0)
+                                                    <button type="button"
+                                                            class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
+                                                            data-toggle="dropdown" aria-expanded="false"> Pending
+                                                        <span class="caret ml5"></span>
+                                                    </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li>
+                                                                <a id="approveClick" data-id="{{$leave->id}}">Approve</a>
+                                                            </li>
+                                                            <li>
+                                                                <a id="disapproveClick" data-id="{{$leave->id}}">Disapprove</a>
+                                                            </li>
+                                                        </ul>
+                                                    @elseif($leave->status==1)
+                                                        <button type="button"
+                                                                class="btn btn-success br2 btn-xs fs12"
+                                                                 aria-expanded="false"><i class="fa fa-check"> Approved </i>
+
+                                                        </button>
+                                                    @else
+                                                        <button type="button"
+                                                                class="btn btn-danger br2 btn-xs fs12"
+                                                                aria-expanded="false"> <i class="fa fa-times"> Disapproved </i>
+
+                                                        </button>
+                                                    @endif
+
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     <tr><td colspan="8">
@@ -117,6 +142,26 @@
             </div>
         </div>
     </section>
+    <!-- Notification modal -->
 
+    <div class="modal fade" tabindex="-1" role="dialog" id="notification-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="modal-header" class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- /Notification Modal -->
 </div>
 @endsection

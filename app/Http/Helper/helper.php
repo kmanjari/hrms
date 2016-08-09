@@ -1,5 +1,25 @@
 <?php
 
+function totalLeaves($leaveType)
+{
+    $result = [
+        '1' => '24',//casual leave
+        '2' => '6',//sick leave
+        '3' => '15',//marriage leave
+        '4' => '10',//bereavement leave
+        '6' => '15',//paternity leave
+        '12' => '90',//maternity leave
+        '7' => '0',
+        '8' => '0',
+        '9' => '0',
+        '10' => '0',
+        '11' => '0'
+    ];
+
+    return $result[$leaveType];
+}
+
+
 function convertRole($role)
 {
     $data = [
@@ -65,6 +85,8 @@ function getFormattedDate($date)
     function getEmployeeDropDown()
     {
         $data = [
+
+            "" => "Select",
             'name' => 'Name',
             'code' => 'Code',
             'department' => 'Department',
@@ -73,3 +95,17 @@ function getFormattedDate($date)
         ];
         return $data;
     }
+
+function getLeaveColumns()
+{
+    $data = [
+        "" => "Select",
+        'name' => 'Name',
+        'code' => 'Code',
+        'days' => 'Days',
+        'leave_type' => 'Leave type',
+        'status' => 'Status'
+     ];
+
+    return $data;
+}

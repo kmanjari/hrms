@@ -116,7 +116,7 @@
                                             <div class="col-md-2">
                                                 <a href="/edit-team/{id}" >
 
-                                                    <input type="button" value="Reset" class="btn btn-bordered btn-info btn-block"></a>
+                                                    <input type="button" value="Reset" class="btn btn-bordered btn-success btn-block"></a>
                                             </div>
                                         </div>
                                         {!! Form::close() !!}

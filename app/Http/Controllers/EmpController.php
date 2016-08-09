@@ -1,5 +1,4 @@
 <?php
-
   namespace App\Http\Controllers;
 
   use App\Jobs\ExportData;
@@ -90,8 +89,7 @@
 
     public function showEmployee()
     {
-      $emps = User::with('employee', 'role.role')->paginate(40);
-
+      $emps = User::with('employee', 'role.role')->paginate(5);
       $column = '';
       $string = '';
       return view('hrms.employee.show_emp', compact('emps', 'column', 'string'));
@@ -125,23 +123,23 @@
       }
 
       $photo = $request->$filename;
-      $emp_name = $request->emp_name;
-      $emp_code = $request->emp_code;
-      $emp_status = $request->emp_status;
+      $emp_name = $request->name;
+      $emp_code = $request->code;
+      $emp_status = $request->status;
       $gender = $request->gender;
-      $dob = date_format(date_create($request->dob), 'Y-m-d');
-      $doj = date_format(date_create($request->doj), 'Y-m-d');
-      $mob_number = $request->mob_number;
+      $dob = date_format(date_create($request->date_of_birth), 'Y-m-d');
+      $doj = date_format(date_create($request->date_of_joining), 'Y-m-d');
+      $mob_number = $request->number;
       $qualification = $request->qualification;
-      $emer_number = $request->emer_number;
+      $emer_number = $request->emergency_number;
       $pan_number = $request->pan_number;
       $father_name = $request->father_name;
-      $address = $request->address;
+      $address = $request->current_address;
       $permanent_address = $request->permanent_address;
       $formalities = $request->formalities;
       $offer_acceptance = $request->offer_acceptance;
-      $prob_period = $request->prob_period;
-      $doc = date_format(date_create($request->doc), 'Y-m-d');
+      $prob_period = $request->probation_period;
+      $doc = date_format(date_create($request->date_of_confirmation), 'Y-m-d');
       $department = $request->department;
       $salary = $request->salary;
       $account_number = $request->account_number;
@@ -149,7 +147,7 @@
       $ifsc_code = $request->ifsc_code;
       $pf_account_number = $request->pf_account_number;
       $pf_status = $request->pf_status;
-      $dor = $request->dor;
+      $dor = $request->date_of_resignation;
       $notice_period = $request->notice_period;
       $last_working_day = $request->last_working_day;
       $full_final = $request->full_final;
@@ -161,15 +159,15 @@
       }
       if(!empty($emp_name))
       {
-        $edit->emp_name = $emp_name;
+        $edit->name = $emp_name;
       }
       if(!empty($emp_code))
       {
-        $edit->emp_code = $emp_code;
+        $edit->code = $emp_code;
       }
       if(!empty($emp_status))
       {
-        $edit->emp_status = $emp_status;
+        $edit->status = $emp_status;
       }
       if(!empty($gender))
       {
@@ -177,15 +175,15 @@
       }
       if(!empty($dob))
       {
-        $edit->dob = $dob;
+        $edit->date_of_birth = $dob;
       }
       if(!empty($doj))
       {
-        $edit->doj = $doj;
+        $edit->date_of_joining = $doj;
       }
       if(!empty($mob_number))
       {
-        $edit->mob_number = $mob_number;
+        $edit->number = $mob_number;
       }
       if(!empty($qualification))
       {
@@ -193,7 +191,7 @@
       }
       if(!empty($emer_number))
       {
-        $edit->emer_number = $emer_number;
+        $edit->emergency_number = $emer_number;
       }
       if(!empty($pan_number))
       {
@@ -205,7 +203,7 @@
       }
       if(!empty($address))
       {
-        $edit->address = $address;
+        $edit->current_address = $address;
       }
       if(!empty($permanent_address))
       {
@@ -221,11 +219,11 @@
       }
       if(!empty($prob_period))
       {
-        $edit->prob_period = $prob_period;
+        $edit->probation_period = $prob_period;
       }
       if(!empty($doc))
       {
-        $edit->doc = $doc;
+        $edit->date_of_confirmation = $doc;
       }
       if(!empty($department))
       {
@@ -257,7 +255,7 @@
       }
       if(!empty($dor))
       {
-        $edit->dor = $dor;
+        $edit->date_of_resignation = $dor;
       }
       if(!empty($notice_period))
       {
@@ -551,7 +549,11 @@
         $file->fputcsv($headers);
         foreach($emps as $emp)
         {
-          $file->fputcsv([$emp->id, $emp->employee->photo, $emp->employee->code, $emp->employee->name, $emp->employee->status, $emp->employee->gender, $emp->employee->date_of_birth, $emp->employee->date_of_joining, $emp->employee->number, $emp->employee->qualification, $emp->employee->emergency_number, $emp->employee->pan_number, $emp->employee->father_name, $emp->employee->current_address, $emp->employee->permanent_address, $emp->employee->formalities, $emp->employee->offer_acceptance, $emp->employee->probation_period, $emp->employee->date_of_confirmation, $emp->employee->department, $emp->employee->salary, $emp->employee->account_number, $emp->employee->bank_name, $emp->employee->ifsc_code, $emp->employee->pf_account_number, $emp->employee->pf_status, $emp->employee->date_of_resignation, $emp->employee->notice_period, $emp->employee->last_working_day, $emp->employee->full_final]);
+          $file->fputcsv([
+              $emp->id,
+              ($emp->employee->photo)? $emp->employee->photo : 'Not available',
+              $emp->employee->code,
+              $emp->employee->name, $emp->employee->status, $emp->employee->gender, $emp->employee->date_of_birth, $emp->employee->date_of_joining, $emp->employee->number, $emp->employee->qualification, $emp->employee->emergency_number, $emp->employee->pan_number, $emp->employee->father_name, $emp->employee->current_address, $emp->employee->permanent_address, $emp->employee->formalities, $emp->employee->offer_acceptance, $emp->employee->probation_period, $emp->employee->date_of_confirmation, $emp->employee->department, $emp->employee->salary, $emp->employee->account_number, $emp->employee->bank_name, $emp->employee->ifsc_code, $emp->employee->pf_account_number, $emp->employee->pf_status, $emp->employee->date_of_resignation, $emp->employee->notice_period, $emp->employee->last_working_day, $emp->employee->full_final]);
         }
 
         return response()->download(storage_path('exports/'). $fileName);

@@ -53,7 +53,7 @@
                                         <th>Date From</th>
                                         <th>Date To</th>
                                         <th>Days</th>
-                                        <th>Status</th>
+                                        <th class="text-center">Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -64,7 +64,30 @@
                                             <td>{{getFormattedDate($leave->date_from)}}</td>
                                             <td>{{getFormattedDate($leave->date_to)}}</td>
                                             <td>{{$leave->days}}</td>
-                                            <td>{{($leave->status == '0') ? 'Unapproved' : 'Approved'}}</td>
+                                            <td class="text-center">
+                                                <div class="btn-group text-right">
+                                                    @if($leave->status==0)
+                                                        <button type="button"
+                                                                class="btn btn-info br2 btn-xs fs12"
+                                                                aria-expanded="false"> <i class="fa fa-external-link"> Pending </i>
+
+                                                        </button>
+                                                    @elseif($leave->status==1)
+                                                        <button type="button"
+                                                                class="btn btn-success br2 btn-xs fs12"
+                                                                aria-expanded="false"> <i class="fa fa-check"> Approved </i>
+
+                                                        </button>
+                                                    @else
+                                                        <button type="button"
+                                                                class="btn btn-danger br2 btn-xs fs12"
+                                                                aria-expanded="false"> <i class="fa fa-times"> Disapproved </i>
+
+                                                        </button>
+                                                    @endif
+
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     <tr>

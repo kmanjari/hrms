@@ -56,7 +56,7 @@
                                                 <label class="col-md-3 control-label"> Select Team Manager</label>
                                                 <div class="col-md-6">
                                                     <select class="select2-single form-control" data-live-search="true"
-                                                            name="manager_id">
+                                                             name="manager_id">
                                                         <option value="" selected>Select One</option>
                                                         @foreach($managers as $manager)
                                                             <option value="{{$manager->id}}">{{$manager->name}}</option>
@@ -79,10 +79,9 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label"> Select Team Members </label>
+                                                <label for="multiselect5" class="col-md-3 control-label"> Select Team Members </label>
                                                 <div class="col-md-6">
-                                                    <select class="select2-multiple form-control select-primary"
-                                                            multiple="multiple" name="member_id[]">
+                                                    <select id="multiselect5" multiple="multiple" name="member_id[]">
                                                         <option value="" selected>Select One</option>
                                                         @foreach($emps as $emp)
                                                             <option value="{{$emp->id}}">{{$emp->name}}</option>
@@ -100,7 +99,7 @@
 
                                                 </div>
                                                 <div class="col-md-2"><a href="/add-team" >
-                                                        <input type="button" class="btn btn-bordered btn-info btn-block" value="Reset"></a></div>
+                                                        <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
                                             </div>
                                         {!! Form::close() !!}
                                         {{--</form>--}}
@@ -116,3 +115,4 @@
 
 </div>
 @endsection
+

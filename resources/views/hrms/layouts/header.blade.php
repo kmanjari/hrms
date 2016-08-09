@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top bg-dark">
+<header class="navbar navbar-fixed-top bg-system">
     <div class="navbar-logo-wrapper">
         <a class="navbar-logo-text" href="#">
             <b> Digital IP Insights </b>
@@ -12,7 +12,7 @@
             </a>
         </li>
     </ul>
-    <form class="navbar-form navbar-left search-form square" role="search">
+    {{--<form class="navbar-form navbar-left search-form square" role="search">
         <div class="input-group add-on">
 
             <input type="text" class="form-control" placeholder="Search..." onfocus="this.placeholder=''"
@@ -23,7 +23,7 @@
             </div>
 
         </div>
-    </form>
+    </form>--}}
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown dropdown-fuse">
             <div class="navbar-btn btn-group">

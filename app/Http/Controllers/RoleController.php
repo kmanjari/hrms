@@ -31,7 +31,7 @@ class RoleController extends Controller
 
     public function showRole()
     {
-        $roles = Role::paginate(5);
+        $roles = Role::paginate(10);
         return view('hrms.role.show_role', compact('roles'));
     }
 

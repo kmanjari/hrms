@@ -49,33 +49,26 @@
                                     <thead>
                                     <tr class="bg-light">
                                         <th>Id</th>
-                                        <th>Select</th>
                                         <th>Team Name</th>
                                         <th>Manager</th>
                                         <th>Team Leader</th>
                                         <th>Member</th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($teams as $team)
                                         <tr>
                                             <td>{{$team->id}}</td>
-                                            <td class="text-center">
-                                                <label class="option block mn">
-                                                    <input type="checkbox" name="inputname" value="FR">
-                                                    <span class="checkbox mn"></span>
-                                                </label>
-                                            </td>
                                             <td>{{$team->name}}</td>
                                             <td>{{$team->manager->name}}</td>
                                             <td>{{$team->leader->name}}</td>
                                             <td>{{$team->employee->name}}</td>
 
-                                             <td class="text-right">
+                                             <td class="text-center">
                                                 <div class="btn-group text-right">
                                                     <button type="button"
-                                                            class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
+                                                            class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
                                                             data-toggle="dropdown" aria-expanded="false"> Action
                                                         <span class="caret ml5"></span>
                                                     </button>

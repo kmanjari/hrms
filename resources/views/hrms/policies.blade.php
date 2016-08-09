@@ -14,6 +14,7 @@
                     <div class="mt40">
                         <h2 class="text-muted mb20 mtn"> Policies </h2>
 
+                       {{-- {!! Form::open(['class' => 'form-horizontal','readonly']) !!}--}}
                         <div class="panel-group accordion" id="accordion1">
                             <div class="panel">
                                 <div class="panel-heading">
@@ -217,6 +218,7 @@
                             </div>
 
                         </div>
+                        {{--{!! Form::close() !!}--}}
                     </div>
 
 

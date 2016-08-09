@@ -609,15 +609,14 @@
     <script src="/assets/js/pages/forms-widgets.js"></script>
     <script src="/assets/js/custom.js"></script>
 @endif
-<<<<<<< HEAD
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
     <script src="/assets/js/function.js"></script>
     <script src="/assets/js/custom.js"></script>
     {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
     @endif
-=======
 
+<script src="/assets/js/function.js"></script>
 @if(\Route::getFacadeRoot()->current()->uri() == 'edit-asset-assignment/{id}')
     <script src="/assets/js/pages/forms-widgets.js"></script>
     <script src="/assets/js/custom.js"></script>
@@ -630,7 +629,6 @@
 {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
 @endif
 
->>>>>>> 8c30b4c2516d0d6ec3008307adc801f26691015c
 <!-- -------------- /Scripts -------------- -->
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'add-employee' )

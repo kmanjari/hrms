@@ -54,12 +54,12 @@
                             </div>
 
                             <div class="col-md-2">
-                                <input type="submit" value="Export" name="button" class="btn btn-primary">
+                                <input type="submit" value="Export" name="button" class="btn btn-success">
                             </div>
                             {!! Form::close() !!}
                             <div class="col-md-2">
                                 <a href="/employee-manager" >
-                                    <input type="submit" value="Reset" class="btn btn-primary"></a>
+                                    <input type="submit" value="Reset" class="btn btn-warning"></a>
                             </div>
                         </div>
                             </div>
@@ -68,7 +68,7 @@
                             @if(Session::has('flash_message'))
                                 <div class="alert alert-success">
                                     {{ Session::get('flash_message') }}
-                                </div>
+                                    </div>
                             @endif
                             <div class="table-responsive">
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">

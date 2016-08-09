@@ -1,0 +1,14 @@
+id,name,code,leave_type,date_from,date_to,days,status,created_at,updated_at
+1,"Kanak Manjari",Kanak001,"Casual Leave",2016-08-08,2016-08-09,1,Approved
+1,"Kanak Manjari",Kanak001,"Casual Leave",2016-08-08,2016-08-09,1,Disapproved
+1,"Kanak Manjari",Kanak001,"Casual Leave",2016-08-08,2016-08-16,8,Approved
+1,"Kanak Manjari",Kanak001,"Compensatory Leave ",2016-08-29,2016-08-31,2,Approved
+1,"Kanak Manjari",Kanak001,"Casual Leave",2016-08-08,2016-08-10,2,Approved
+1,"Kanak Manjari",Kanak001,"Casual Leave",2016-08-08,2016-08-10,2,Approved
+1,"Kanak Manjari",Kanak001,"Paternity Leave",2016-08-29,2016-08-31,2,Approved
+1,"Kanak Manjari",Kanak001,"Sick Leave",2016-08-08,2016-08-10,2,Disapproved
+1,"Kanak Manjari",Kanak001,"Marriage Leave",2016-08-23,2016-08-24,1,Disapproved
+1,"Kanak Manjari",Kanak001,"Marriage Leave",2016-08-21,2016-08-24,3,Disapproved
+1,"Kanak Manjari",Kanak001,"Early Leaving",2016-08-21,2016-08-23,2,Approved
+1,"Kanak Manjari",Kanak001,"Sick Leave",2016-08-15,2016-08-17,2,Approved
+1,"Kanak Manjari",Kanak001,"Marriage Leave",2016-08-22,2016-08-24,2,Disapproved

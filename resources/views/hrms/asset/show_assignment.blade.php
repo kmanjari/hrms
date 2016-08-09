@@ -49,32 +49,25 @@
                                     <thead>
                                     <tr class="bg-light">
                                         <th>Id</th>
-                                        <th>Select</th>
                                     <th>Employee</th>
                                     <th>Asset</th>
                                     <th>Date of Assignment</th>
                                     <th>Date of Release</th>
-                                    <th>Actions</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($assets as $asset)
                                     <tr>
                                         <td>{{$asset->id}}</td>
-                                        <td class="text-center">
-                                            <label class="option block mn">
-                                                <input type="checkbox" name="inputname" value="FR">
-                                                <span class="checkbox mn"></span>
-                                            </label>
-                                        </td>
                                         <td>{{$asset->employee->name}}</td>
                                         <td>{{$asset->asset->name}}</td>
                                         <td>{{getFormattedDate($asset->date_of_assignment)}}</td>
                                         <td>{{getFormattedDate($asset->date_of_release)}}</td>
-                                        <td class="text-right">
+                                        <td class="text-center">
                                             <div class="btn-group text-right">
                                                 <button type="button"
-                                                        class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
+                                                        class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
                                                         data-toggle="dropdown" aria-expanded="false"> Action
                                                     <span class="caret ml5"></span>
                                                 </button>

@@ -5,7 +5,7 @@
             @if(Auth::user()->employee->photo)
                 <img src="/photos/{{Auth::user()->employee->photo}}" class="img-responsive">
                 @else
-            <img src="/assets/img/avatars/profile_pic.png" class="img-responsive">
+            <img src="/photos/profile_pic.png" class="img-responsive">
                 @endif
 
         </a>

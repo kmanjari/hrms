@@ -297,7 +297,7 @@
                 <div class="topbar-left">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-icon">
-                            <a href="dashboard1.html">
+                            <a href="dashboard">
                                 <span class="fa fa-home"></span>
                             </a>
                         </li>
@@ -305,7 +305,7 @@
                              <a href="#"> Edit Details</a>
                          </li>--}}
                         <li class="breadcrumb-link">
-                            <a href="index.html"> Employees </a>
+                            <a href="dashboard"> Employees </a>
                         </li>
                         <li class="breadcrumb-current-item"> Edit details of {{$emps->name}} </li>
                     </ol>
@@ -316,15 +316,15 @@
                 <div class="topbar-left">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-icon">
-                            <a href="dashboard1.html">
+                            <a href="dashboard">
                                 <span class="fa fa-home"></span>
                             </a>
                         </li>
                         <li class="breadcrumb-active">
-                            <a href="dashboard1.html">Dashboard</a>
+                            <a href="dashboard">Dashboard</a>
                         </li>
                         <li class="breadcrumb-link">
-                            <a href="index.html"> Employees </a>
+                            <a href="add-employee"> Employees </a>
                         </li>
                         <li class="breadcrumb-current-item"> Add Details</li>
                     </ol>

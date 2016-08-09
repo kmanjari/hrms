@@ -50,28 +50,22 @@
                                     <thead>
                                     <tr class="bg-light">
                                         <th>Id</th>
-                                        <th>Select</th>
                                         <th>Asset</th>
                                         <th>Description</th>
-                                        <th>Actions</th>
+                                        <th class="text-center">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($assets as $asset)
                                     <tr>
                                         <td>{{$asset->id}}</td>
-                                        <td class="text-center">
-                                            <label class="option block mn">
-                                                <input type="checkbox" name="inputname" value="FR">
-                                                <span class="checkbox mn"></span>
-                                            </label>
-                                        </td>
+
                                         <td>{{$asset->name}}</td>
                                         <td>{{$asset->description}}</td>
-                                        <td class="text-right">
+                                        <td class="text-center">
                                             <div class="btn-group text-right">
                                                 <button type="button"
-                                                        class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
+                                                        class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
                                                         data-toggle="dropdown" aria-expanded="false"> Action
                                                     <span class="caret ml5"></span>
                                                 </button>

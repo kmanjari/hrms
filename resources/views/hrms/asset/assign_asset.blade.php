@@ -151,7 +151,7 @@
                                                      <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
                                             </div>
                                             <div class="col-md-2"><a href="/assign-asset" >
-                                                    <input type="button" class="btn btn-bordered btn-info btn-block" value="Reset"></a></div>
+                                                    <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
                                         </div>
                                         </div>
 

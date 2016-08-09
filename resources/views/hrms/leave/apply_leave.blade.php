@@ -32,7 +32,7 @@
                         <div class="panel-heading">
                             <span class="panel-title hidden-xs"> Apply for Leave</span>
                         </div>
-
+                    <div class="text-center" id="show-leave-count"></div>
                         <div class="panel-body pn">
                             <div class="table-responsive">
                                 <div class="panel-body p25 pb10">
@@ -46,11 +46,12 @@
                                     @endif
                                     {!! Form::open(['class' => 'form-horizontal']) !!}
 
-
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"> Leave Type </label>
                                         <div class="col-md-10">
-                                            <select class="select2-multiple form-control select-primary"
+                                            <input type="hidden" value="{!! csrf_token() !!}" id="token">
+                                            <input type="hidden" value="{{\Auth::user()->id}}" id="user_id">
+                                            <select class="select2-multiple form-control select-primary leave_type"
                                                     name="leave_type">
                                                 <option value="" selected>Select One</option>
                                                 @foreach($leaves as $leave)
@@ -132,7 +133,7 @@
                                                              value="Submit">
                                         </div>
                                         <div class="col-md-2"><a href="/apply-leave" >
-                                                <input type="button" class="btn btn-bordered btn-info btn-block" value="Reset"></a></div>
+                                                <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
 
                                     </div>
 

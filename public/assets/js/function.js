@@ -162,3 +162,68 @@ function toWords(s) {
     }
     return str.replace(/\s+/g, ' ');
 }
+
+
+$(document).on('change', '.leave_type', function()
+{
+    var leaveTypeId = $('.leave_type').val();
+    var token = $('#token').val();
+    var userId = $('#user_id').val();
+        $.post('/get-leave-count', {'leaveTypeId': leaveTypeId, '_token' : token, 'userId': userId}, function(data)
+        {
+            parsed = JSON.parse(data);
+            $('#show-leave-count').empty();
+            var html = "<div class=' col-md-5 alert alert-dark center-block '>Leaves &nbsp Remaining : "+parsed+"</div>";
+            $('#show-leave-count').append(html);
+
+        });
+
+});
+
+$('#approveClick').click(function()
+{
+    var leaveId = $(this).data('id');
+    console.log(leaveId);
+    var token = $('#token').val();
+
+    $.post('/approve-leave', {'leaveId': leaveId, '_token' : token}, function(data)
+    {
+        parsed = JSON.parse(data);
+        if(parsed === 'success')
+        {
+            $('#modal-header').attr('class', 'modal-header modal-header-success');
+            $('.modal-title').append('Success');
+            $('.modal-body').append('Leave approved');
+            $('#notification-modal').modal('show');
+        }
+    });
+
+});
+
+$('#disapproveClick').click(function()
+{
+
+    var leaveId = $(this).data('id');
+    console.log(leaveId);
+    var token =$('#token').val();
+
+    $.post('/disapprove-leave', {'leaveId': leaveId, '_token' : token}, function(data)
+    {
+
+        parsed =JSON.parse(data);
+        if(parsed === 'success')
+        {
+            $('#modal-header').attr('class', 'modal-header modal-header-success');
+            $('.modal-title').append('Success');
+            $('.modal-body').append('Leave disapproved');
+            $('#notification-modal').modal('show');
+        }
+    });
+
+});
+
+/*
+$('#approve').on('click', function ()
+{
+  console.log('click');
+});*/

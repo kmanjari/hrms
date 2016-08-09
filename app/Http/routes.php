@@ -140,6 +140,12 @@
         Route::get('download/{name}','DownloadController@downloadForms');
 
         Route::get('calendar','AuthController@calendar');
+
+        Route::post('get-leave-count', 'LeaveController@getLeaveCount');
+
+        Route::post('approve-leave', 'LeaveController@approveLeave');
+
+        Route::post('disapprove-leave', 'LeaveController@disapproveLeave');
     });
 
     Route::get('textig', 'TeamController@test');
