@@ -81,8 +81,7 @@
                                             <div class="form-group">
                                                 <label for="multiselect5" class="col-md-3 control-label"> Select Team Members </label>
                                                 <div class="col-md-6">
-                                                    <select id="multiselect5" multiple="multiple" name="member_id[]">
-                                                        <option value="" selected>Select One</option>
+                                                    <select id="done" class="selectpicker" multiple data-done-button="true">
                                                         @foreach($emps as $emp)
                                                             <option value="{{$emp->id}}">{{$emp->name}}</option>
                                                         @endforeach
@@ -93,10 +92,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
-
-
                                                         <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
-
                                                 </div>
                                                 <div class="col-md-2"><a href="/add-team" >
                                                         <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
