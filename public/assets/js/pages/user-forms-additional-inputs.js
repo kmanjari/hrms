@@ -9,13 +9,6 @@
 
         "use strict";
 
-        // Init Theme Core
-        Core.init();
-
-        // Init Demo JS
-        Demo.init();
-
-
         // Init Select2
         $(".select2-single").select2();
 

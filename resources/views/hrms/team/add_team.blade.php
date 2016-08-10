@@ -52,6 +52,7 @@
                                                 </div>
                                             </div>
 
+
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"> Select Team Manager</label>
                                                 <div class="col-md-6">
@@ -79,9 +80,9 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="multiselect5" class="col-md-3 control-label"> Select Team Members </label>
+                                                <label for="multiselect2" class="col-md-3 control-label"> Select Team Members </label>
                                                 <div class="col-md-6">
-                                                    <select id="multiselect5" multiple="multiple" name="member_id[]">
+                                                    <select id="multiselect2" multiple="multiple" name="member_id[]">
                                                         <option value="" selected>Select One</option>
                                                         @foreach($emps as $emp)
                                                             <option value="{{$emp->id}}">{{$emp->name}}</option>
@@ -89,6 +90,7 @@
                                                     </select>
                                                 </div>
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
@@ -115,4 +117,3 @@
 
 </div>
 @endsection
-
