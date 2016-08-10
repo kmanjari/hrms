@@ -37,6 +37,10 @@
     <!--  Custom css -->
     <link rel="stylesheet" type="text/css" href="/assets/custom.css">
 
+    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team')
+        <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
+        @endif
+
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -639,5 +643,8 @@
         <script src="/assets/js/pages/forms-widgets.js"></script>
     @endif
 
+    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team')
+        <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
+    @endif
 </body>
 </html>
