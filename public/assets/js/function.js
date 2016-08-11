@@ -227,3 +227,18 @@ $('#approve').on('click', function ()
 {
   console.log('click');
 });*/
+$('#passwordForm').submit(function(event)
+{
+    event.preventDefault();
+    var old_password = $('#old_password').val();
+    var new_password = $('#new_password').val();
+    var confirm_password = $('#confirm_password').val();
+
+    if(new_password != confirm_password)
+    {
+        alert('New password and confirm password does not match');
+        return false;
+    }
+    document.getElementById("passwordForm").submit();
+
+});

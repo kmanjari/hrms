@@ -28,7 +28,7 @@
     {!! Html::style('/assets/custom.css') !!}
 
             <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>

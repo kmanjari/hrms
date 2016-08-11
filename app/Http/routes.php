@@ -15,20 +15,33 @@
 
 
 Route::group(['middleware' => ['guest']], function () {
+
     Route::get('/', 'AuthController@showLogin');
 
     Route::post('/', 'AuthController@doLogin');
 
+    Route::get('reset-password','AuthController@resetPassword');
+
+    Route::post('reset-password','AuthController@processPasswordReset');
+
     Route::get('register', 'AuthController@doRegister');
+
+
 });
 
 
 Route::group(['middleware' => ['auth']], function () {
+
+
+    Route::get('change-password','AuthController@changePassword');
+
+    Route::post('change-password','AuthController@processPasswordChange');
+
     Route::get('logout', 'AuthController@doLogout');
 
     Route::get('welcome', 'AuthController@welcome');
 
-    Route::get('error', 'AuthController@error');
+    Route::get('not-found', 'AuthController@notFound');
 
     Route::get('dashboard', 'AuthController@dashboard');
 
@@ -61,7 +74,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('edit-team/{id}', ['as' => 'edit-team', 'uses' => 'TeamController@doEdit']);
 
     Route::get('delete-team/{id}', ['as' => 'delete-team', 'uses' => 'TeamController@doDelete']);
-
 
     Route::get('add-role', ['as' => 'add-role', 'uses' => 'RoleController@addRole']);
 

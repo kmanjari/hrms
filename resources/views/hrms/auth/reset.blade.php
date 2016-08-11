@@ -4,7 +4,7 @@
 <head>
     <!-- -------------- Meta and Title -------------- -->
     <meta charset="utf-8">
-    <title> HRMS </title>
+    <title>Alliance - A Responsive Bootstrap 3 Admin Dashboard Template</title>
     <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme"/>
     <meta name="description" content="Alliance - A Responsive HTML5 Admin UI Framework">
     <meta name="author" content="ThemeREX">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="assets/allcp/forms/css/forms.css">
 
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
@@ -44,29 +44,51 @@
         </div>
 
         <!-- -------------- Content -------------- -->
-        <section id="content">
+        <section id="content" class="animated fadeIn">
 
-            <!-- -------------- Login Form -------------- -->
+            <div class="allcp-form theme-warning mw500" style="margin-top: 10%;" id="login">
 
-                <section id="content" class="pn animated fadeIn">
-
-                    <div class="center-block mt100 mw800 text-center p20">
-                        <img src="assets/img/pages/404.png" alt="" class="img-responsive mauto"/>
-                       <br/> <h4 >  Something Wrong! </h4>
-
-                        <h2 class="mt40 mb20"><a href="login"> Try Again </a>  </h2>
-
-                        {{--<h6>
-                            Can't find what you need?<br/>
-                            Go to <br/>
-                             <a href="dashboard">our dashboard</a>.
-                        </h6>--}}
+                <div class="bg-alert text-center mb20 br3 pv15">
+                    <img src="/assets/img/Logo.png" alt=""/>
+                </div>
+                <div class="panel panel-alert">
+                    <div class="panel-heading pn">
+                        <div class="panel-title">Reset Password</div>
                     </div>
-                </section>
+                    {!! Form::open(['class' => 'form-horizontal']) !!}
 
+                        <div class="panel-body pn pb10 pt25 mtn">
+                            <p>Please enter the registered e-mail. Once completed, you will receive an email with
+                                with password.</p>
 
+                            <div class="section mn">
 
-            <!-- -------------- /Spec Form -------------- -->
+                                <div class="smart-widget sm-right smr-80">
+                                    <label for="email" class="field prepend-icon">
+                                        <input type="text" name="email" id="email" class="gui-input"
+                                               placeholder="Your Email Address">
+                                        <label for="email" class="field-icon text-alert">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </label>
+                                    </label>
+
+                                    <label for="email" class="button">
+                                        <a href="/reset-password" >
+                                            <input type="submit" class="button" value="Reset"></a>
+                                    </label>
+                                </div>
+                                <!-- -------------- /Block Widget -------------- -->
+
+                            </div>
+                            <!-- -------------- /section -------------- -->
+                        </div>
+                        <!-- -------------- /Form -------------- -->
+
+                    {!! Form::close() !!}
+
+                </div>
+
+            </div>
 
         </section>
         <!-- -------------- /Content -------------- -->
@@ -106,9 +128,9 @@
         // Init CanvasBG
         CanvasBG.init({
             Loc: {
-                x: window.innerWidth / 5,
-                y: window.innerHeight / 10
-            }
+                x: window.innerWidth / 2.1,
+                y: window.innerHeight / 2.2
+            },
         });
 
     });

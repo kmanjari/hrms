@@ -18,7 +18,7 @@
                 <li class="breadcrumb-link">
                     <a href=""> Teams </a>
                 </li>
-                <li class="breadcrumb-current-item"> Add Team </li>
+                <li class="breadcrumb-current-item"> Edit Team </li>
             </ol>
         </div>
     </header>
@@ -55,7 +55,7 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"> Select Team Manager</label>
                                             <div class="col-md-6">
-                                                <select class="select2-single form-control" data-live-search="true"
+                                                <select class="selectpicker form-control" data-done-button="true"
                                                         name="manager_id">
                                                     <option value="" selected>Select One</option>
                                                     @foreach($managers as $manager)
@@ -74,7 +74,7 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"> Select Team Leader</label>
                                             <div class="col-md-6">
-                                                <select class="select2-single form-control" data-live-search="true"
+                                                <select class="selectpicker form-control" data-done-button="true"
                                                         name="leader_id">
                                                     <option value="" selected>Select One</option>
                                                     @foreach($leaders as $leader)
@@ -92,9 +92,8 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"> Select Team Members </label>
                                             <div class="col-md-6">
-                                                <select class="select2-multiple form-control select-primary"
-                                                        multiple="multiple" name="member_id[]">
-                                                    <option value="" selected>Select One</option>
+                                                <select id="done" class="selectpicker form-control"
+                                                        multiple data-done-button="true" name="member_id[]">
                                                     @foreach($emps as $emp)
                                                         @if(in_array($emp->id,$team_member))
                                                             <option value="{{$emp->id}}" selected>{{$emp->name}}</option>

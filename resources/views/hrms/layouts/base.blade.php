@@ -36,10 +36,14 @@
 
     <link rel="stylesheet" type="text/css" href="assets/js/plugins/select2/css/core.css">
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
     <!--  Custom css -->
     <link rel="stylesheet" type="text/css" href="/assets/custom.css">
+
+    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team' || \Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
+        <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
+        @endif
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
@@ -461,7 +465,8 @@
         </section>
         <!-- -------------- /Content -------------- -->
 
-        @if(\Route::getFacadeRoot()->current()->uri() == 'dashboard' || \Route::getFacadeRoot()->current()->uri() == 'welcome')
+        @if(\Route::getFacadeRoot()->current()->uri() == 'dashboard' || \Route::getFacadeRoot()->current()->uri() == 'welcome' || \Route::getFacadeRoot()->current()->uri() == 'change-password' ||
+        \Route::getFacadeRoot()->current()->uri() == 'not-found' )
         <!-- -------------- Page Footer -------------- -->
         <footer id="content-footer" class="affix">
             <div class="row">
@@ -643,6 +648,11 @@
         <script src="/assets/js/pages/forms-widgets.js"></script>
     @endif
 
-
+    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team')
+        <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
+    @endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
+    <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
+@endif
 </body>
 </html>

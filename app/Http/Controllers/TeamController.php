@@ -77,50 +77,72 @@ class TeamController extends Controller
     public function doEdit(Request $request, $id)
     {
         $name = $request->team_name;
-        $team_id = $request->team_id;
+        $team_id = $request->id;
         $manager_id = $request->manager_id;
         $leader_id = $request->leader_id;
         $members = $request->member_id;
 
         $edit = Team::where('team_id', $id)->first();
-        
-        if ($edit) {
-            foreach ($members as $member) {
-                $team = new Team();
-                $checkIfTeamHasThisMember = Team::where(['team_id' => $id, 'member_id' => $member])->first();
-                if (!$checkIfTeamHasThisMember) {
-                    if (!empty($name)) {
-                        $team->name = $name;
-                    }
-                    if (!empty($team_id)) {
-                        $team->team_id = $team_id;
-                    }
-                    if (!empty($manager_id)) {
-                        $team->manager_id = $manager_id;
-                    }
-                    if (!empty($leader_id)) {
-                        $team->leader_id = $leader_id;
-                    }
-                    $team->member_id = $member;
-                    $team->save();
 
-                }
+        if($edit) {
+            $oldMembers = Team::where('team_id', $team_id)->get(['member_id']);
+            /*$oldLeader = Team::where('team_id', $team_id)->get('leader_id');
+            if($oldLeader->leader_id == $leader_id)
+            {
+                //true condition
+            }*/
+
+            foreach ($oldMembers as $oldMember) {
+                $oldmembers[] = $oldMember->member_id;
             }
-            \Session::flash('flash_message', 'Team successfully updated!');
-        } else {
+            $oldSize = count($oldmembers);
+            $newSize = count($members);
+
+            if ($oldSize < $newSize) {
+                //add the remainder
+                $idsToAdd = array_diff($members, $oldmembers);
+
+                foreach ($idsToAdd as $add) {
+                    $team = new Team();
+                    $team->name = $name;
+                    $team->team_id = $team_id;
+                    $team->manager_id = $manager_id;
+                    $team->leader_id = $leader_id;
+                    $team->member_id = $add;
+                    $team->save();
+                }
+                \Session::flash('flash_message', 'Team member successfully added!');
+            } elseif($oldSize > $newSize) {
+                //delete the remainder
+                $idsToDelete = array_diff($oldmembers, $members);
+                \DB::table('teams')->where('team_id', $team_id)->whereIn('member_id', $idsToDelete)->delete();
+                \Session::flash('flash_message', 'Team member successfully deleted !');
+            }else
+            {
+                $team = Team::where('team_id', $team_id)->first();
+                $team->name = $name;
+                $team->team_id = $team_id;
+                $team->leader_id = $leader_id;
+                $team->save();
+            }
+
+
+        }
+        else
+        {
             \Session::flash('flash_message', 'Team not found!');
         }
-        return redirect('team-listing');
 
+        return redirect('team-listing');
 
     }
 
     public function doDelete($id)
     {
-        $team = Team::find($id);
+        $team = Team::where('member_id',$id);
         $team->delete();
 
-        \Session::flash('flash_message', 'Team successfully Deleted!');
+        \Session::flash('flash_message', 'Team member successfully removed!');
         return redirect('team-listing');
     }
 
