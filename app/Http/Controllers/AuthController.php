@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Contracts\Mail\Mailer;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function __construct(Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
     public function showLogin()
     {
         return view('hrms.auth.login');
@@ -19,13 +26,18 @@ class AuthController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        if(\Auth::attempt(['email' => $email, 'password' => $password]))
-        {
-            return redirect()->to('welcome');
+        $user = User::where('email', $email)->first();
+        if($user) {
+
+            if (\Auth::attempt(['email' => $email, 'password' => $password])) {
+                return redirect()->to('welcome');
+            } else {
+                return redirect()->to('/')->with('message', 'User id or password does not match!');
+            }
         }
         else
-        {
-            return redirect()->to('error');
+            {
+                return redirect()->to('/')->with('message', 'Your email is not registered');
         }
     }
 
@@ -45,9 +57,9 @@ class AuthController extends Controller
         return view('hrms.auth.welcome');
     }
 
-    public function error()
+    public function notFound()
     {
-        return view('hrms.auth.error');
+        return view('hrms.auth.not_found');
     }
 
     public function doRegister()
@@ -58,5 +70,61 @@ class AuthController extends Controller
     public function calendar()
     {
         return view('hrms.auth.calendar');
+    }
+
+    public function changePassword()
+    {
+      return view('hrms.auth.change');
+    }
+
+    public function processPasswordChange(Request $request)
+    {
+        $password = $request->old;
+        $user = User::where('id', \Auth::user()->id)->first();
+
+
+        if (Hash::check($password, $user->password))
+        {
+            $user->password = bcrypt($request->new);
+            $user->save();
+            \Auth::logout();
+            return redirect()->to('/')->with('message', 'Password updated! LOGIN again with updated password.');
+        }
+        else
+        {
+            \Session::flash('flash_message', 'The supplied password does not matches with the one we have in records');
+            return redirect()->back();
+        }
+    }
+
+    public function resetPassword()
+    {
+        return view('hrms.auth.reset');
+    }
+
+    public function processPasswordReset(Request $request)
+    {
+        $email = $request->email;
+        $user = User::where('email', $email)->first();
+
+        if($user) {
+            $string = strtolower(str_random(6));
+
+
+            $this->mailer->send('hrms.auth.reset_password', ['user' => $user, 'string' => $string], function ($message) use ($user) {
+                $message->from('no-reply@dipi-ip.com', 'Digital IP Insights');
+                $message->to($user->email, $user->name)->subject('Your new password');
+            });
+
+            \DB::table('users')->where('email', $email)->update(['password' => bcrypt($string)]);
+
+            return redirect()->to('/')->with('message', 'Login with your new password received on your email');
+        }
+
+        else
+            {
+                return redirect()->to('/')->with('message', 'Your email is not registered');
+        }
+
     }
 }

@@ -10,10 +10,13 @@
     <meta name="author" content="ThemeREX">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+
     <!-- -------------- Fonts -------------- -->
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet'
           type='text/css'>
+
 
     <!-- -------------- Icomoon -------------- -->
     <link rel="stylesheet" type="text/css" href="/assets/fonts/icomoon/icomoon.css">
@@ -31,13 +34,14 @@
     <!-- -------------- CSS - allcp forms -------------- -->
     <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/forms.css">
 
+    <link rel="stylesheet" type="text/css" href="assets/js/plugins/select2/css/core.css">
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
     <!--  Custom css -->
     <link rel="stylesheet" type="text/css" href="/assets/custom.css">
 
-    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team')
+    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team' || \Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
         <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
         @endif
 
@@ -461,7 +465,8 @@
         </section>
         <!-- -------------- /Content -------------- -->
 
-        @if(\Route::getFacadeRoot()->current()->uri() == 'dashboard' || \Route::getFacadeRoot()->current()->uri() == 'welcome')
+        @if(\Route::getFacadeRoot()->current()->uri() == 'dashboard' || \Route::getFacadeRoot()->current()->uri() == 'welcome' || \Route::getFacadeRoot()->current()->uri() == 'change-password' ||
+        \Route::getFacadeRoot()->current()->uri() == 'not-found' )
         <!-- -------------- Page Footer -------------- -->
         <footer id="content-footer" class="affix">
             <div class="row">
@@ -646,5 +651,8 @@
     @if(\Route::getFacadeRoot()->current()->uri() == 'add-team')
         <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
     @endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
+    <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
+@endif
 </body>
 </html>

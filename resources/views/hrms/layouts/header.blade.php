@@ -1,8 +1,9 @@
 <header class="navbar navbar-fixed-top bg-system">
     <div class="navbar-logo-wrapper bg-system">
         <a class="navbar-logo-text" href="#">
-            <b> Digital IP Insights </b>
+            <b> <img src="/assets/img/Logo.png" style="width: 250px"> </b>
         </a>
+
         <span id="sidebar_left_toggle" class="ad ad-lines"></span>
     </div>
     <ul class="nav navbar-nav navbar-left">
@@ -26,17 +27,18 @@
                     @endif
             </a>
             </a>
-            <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
-
-                <li class="list-group-item">
-                    <a href="#" class="animated animated-short fadeInUp">
-                        <span class="fa fa-cogs"></span> Settings </a>
-                </li>
-                <li class="dropdown-footer text-center">
-                    <a href="/logout" class="btn btn-primary btn-sm btn-bordered">
-                        <span class="fa fa-power-off pr5"></span> Logout </a>
-                </li>
-            </ul>
+                <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
+                    @if(\Route::getFacadeRoot()->current()->uri() != 'change-password')
+                    <li class="dropdown-footer text-center">
+                        <a href="/change-password" class="btn btn-primary btn-sm btn-bordered">
+                            <span class="fa fa-lock pr5"></span> Change Password </a>
+                    </li>
+                    @endif
+                    <li class="dropdown-footer text-center">
+                        <a href="/logout" class="btn btn-primary btn-sm btn-bordered">
+                            <span class="fa fa-power-off pr5"></span> Logout </a>
+                    </li>
+                </ul>
         </li>
     </ul>
 </header>

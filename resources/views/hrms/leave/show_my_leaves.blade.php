@@ -57,9 +57,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i =0;?>
                                     @foreach($leaves as $leave)
                                         <tr>
-                                            <td>{{$leave->id}}</td>
+                                            <td>{{$i+=1}}</td>
                                             <td>{{getLeaveType($leave->leave_type_id)}}</td>
                                             <td>{{getFormattedDate($leave->date_from)}}</td>
                                             <td>{{getFormattedDate($leave->date_to)}}</td>

@@ -147,7 +147,7 @@
 
     <li>
 
-        <a href="download-forms">
+        <a href="/download-forms">
             <span class="fa fa-book"></span>
             <span class="sidebar-title">Download Forms</span>
 

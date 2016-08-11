@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="assets/allcp/forms/css/forms.css">
 
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
@@ -52,8 +52,17 @@
                                                    alt="Logo"/></div>
                 <div class="panel mw320">
 
+
                     <form method="post" action="/" id="form-login">
                         <div class="panel-body pn mv10">
+                            <div class="section">
+                                <label for="username" class="field prepend-icon">
+                                    <input type="text" name="email" id="email" class="gui-input" placeholder="Email">
+                                    <label for="email" class="field-icon">
+                                        <i class="fa fa-user"></i>
+                                    </label>
+                                </label>
+                            </div>
 
                             <div class="section">
                                 <label for="username" class="field prepend-icon">

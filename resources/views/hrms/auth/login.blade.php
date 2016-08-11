@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="assets/allcp/forms/css/forms.css">
 
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
@@ -48,12 +48,26 @@
 
             <!-- -------------- Login Form -------------- -->
             <div class="allcp-form theme-primary mw320" id="login">
-                <div class="text-center mb20"><img src="assets/img/logo_login_form.png" class="img-responsive"
+                <div class="bg-primary text-center mb20 br3 pv15">
+                <img src="/assets/img/Logo.png" class="img-responsive"
                                                    alt="Logo"/></div>
                 <div class="panel mw320">
 
                     {!! Form::open() !!}
                         <div class="panel-body pn mv10">
+
+                            {{--@if(Session::has('message'))
+                                <div class="alert alert-success">
+                                    {{Session::get('message')}}
+                                </div>
+                            @endif--}}
+                                @if (session('message'))
+                                    <div class="alert alert-primary">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+
+
 
                             <div class="section">
                                 <label for="username" class="field prepend-icon">
@@ -77,7 +91,7 @@
 
                             <div class="section">
                                 <div class="pull-left pt5">
-                                        <a href="/reset">Reset Password</a>
+                                        <a href="/reset-password">Reset Password</a>
                                 </div>
                                 <button type="submit" class="btn btn-bordered btn-primary pull-right">Log in</button>
                             </div>

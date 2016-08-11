@@ -52,6 +52,7 @@
                                                 </div>
                                             </div>
 
+
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"> Select Team Manager</label>
                                                 <div class="col-md-6">
@@ -78,15 +79,21 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="multiselect5" class="col-md-3 control-label"> Select Team Members </label>
+                                                <label for="multiselect2" class="col-md-3 control-label"> Select Team Members </label>
                                                 <div class="col-md-6">
+<<<<<<< HEAD
                                                     <select id="done" class="selectpicker form-control" multiple data-done-button="true">
+=======
+                                                    <select id="done" class="selectpicker form-control" multiple data-done-button="true"
+                                                      name="member_id[]">
+>>>>>>> 157c63225ff21aee8ec1c5318776847562d41277
                                                         @foreach($emps as $emp)
                                                             <option value="{{$emp->id}}">{{$emp->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
@@ -110,4 +117,3 @@
 
 </div>
 @endsection
-

@@ -77,7 +77,7 @@
                                                             <a href="/edit-team/{{$team->team_id}}">Edit</a>
                                                         </li>
                                                         <li>
-                                                            <a href="/delete-team/{{$team->team_id}}">Delete</a>
+                                                            <a href="/delete-team/{{$team->member_id}}">Delete</a>
                                                         </li>
                                                     </ul>
                                                 </div>
