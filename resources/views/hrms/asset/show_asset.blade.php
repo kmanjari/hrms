@@ -49,19 +49,19 @@
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                        <th>Id</th>
-                                        <th>Asset</th>
-                                        <th>Description</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Asset</th>
+                                        <th class="text-center">Description</th>
                                         <th class="text-center">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($assets as $asset)
                                     <tr>
-                                        <td>{{$asset->id}}</td>
+                                        <td class="text-center">{{$asset->id}}</td>
 
-                                        <td>{{$asset->name}}</td>
-                                        <td>{{$asset->description}}</td>
+                                        <td class="text-center">{{$asset->name}}</td>
+                                        <td class="text-center">{{$asset->description}}</td>
                                         <td class="text-center">
                                             <div class="btn-group text-right">
                                                 <button type="button"

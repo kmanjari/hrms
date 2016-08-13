@@ -48,9 +48,9 @@
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                    <th>Id</th>
-                                    <th>Role</th>
-                                    <th>Description</th>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Role</th>
+                                    <th class="text-center">Description</th>
                                     <th class="text-center">Actions</th>
                                     </tr>
                                    </thead>
@@ -58,9 +58,9 @@
                                     <tbody>
                             @foreach($roles as $role)
                                 <tr>
-                                    <td>{{$role->id}}</td>
-                                    <td>{{$role->name}}</td>
-                                    <td>{{$role->description}}</td>
+                                    <td class="text-center">{{$role->id}}</td>
+                                    <td class="text-center">{{$role->name}}</td>
+                                    <td class="text-center">{{$role->description}}</td>
                                     <td class="text-center">
                                         <div class="btn-group text-right">
                                             <button type="button"

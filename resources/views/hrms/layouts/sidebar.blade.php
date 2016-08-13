@@ -140,6 +140,21 @@
     </li>
 
 
+    <li>
+        <a class="accordion-toggle" href="#">
+            <span class="fa fa-clock-o"></span>
+            <span class="sidebar-title"> Attendance </span>
+            <span class="caret"></span>
+        </a>
+        <ul class="nav sub-nav">
+            <li>
+                <a href="{{route('attendance-upload')}}">
+                    <span class="glyphicon glyphicon-book"></span> Upload Sheets</a>
+            </li>
+
+        </ul>
+    </li>
+
 
 
 

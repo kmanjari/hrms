@@ -74,31 +74,31 @@
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                        <th>Id</th>
-                                        <th>Code</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Role</th>
-                                        <th>Joining Date</th>
-                                        <th>Address</th>
-                                        <th>Mobile Number</th>
-                                        <th>Department</th>
-                                        <th>Actions</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Code</th>
+                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Role</th>
+                                        <th class="text-center">Joining Date</th>
+                                        <th class="text-center">Address</th>
+                                        <th class="text-center">Mobile Number</th>
+                                        <th class="text-center">Department</th>
+                                        <th class="text-center">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($emps as $emp)
                                     <tr>
-                                        <td>{{$emp->id}}</td>
-                                        <td>{{$emp->employee->code}}</td>
-                                        <td>{{$emp->employee->name}}</td>
-                                        <td>{{convertStatusBack($emp->employee->status)}}</td>
-                                        <td>{{$emp->role->role->name}}</td>
-                                        <td>{{$emp->employee->date_of_joining}}</td>
-                                        <td>{{$emp->employee->current_address}}</td>
-                                        <td>{{$emp->employee->number}}</td>
-                                        <td>{{$emp->employee->department}}</td>
-                                        <td class="text-right">
+                                        <td class="text-center">{{$emp->id}}</td>
+                                        <td class="text-center">{{$emp->employee->code}}</td>
+                                        <td class="text-center">{{$emp->employee->name}}</td>
+                                        <td class="text-center">{{convertStatusBack($emp->employee->status)}}</td>
+                                        <td class="text-center">{{$emp->role->role->name}}</td>
+                                        <td class="text-center">{{getFormattedDate($emp->employee->date_of_joining)}}</td>
+                                        <td class="text-center">{{$emp->employee->current_address}}</td>
+                                        <td class="text-center">{{$emp->employee->number}}</td>
+                                        <td class="text-center">{{$emp->employee->department}}</td>
+                                        <td class="text-center">
                                             <div class="btn-group text-right">
                                                 <button type="button"
                                                         class="btn btn-info br2 btn-xs fs12 dropdown-toggle"

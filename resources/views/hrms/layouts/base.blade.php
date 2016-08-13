@@ -619,6 +619,11 @@
     <script src="/assets/js/custom.js"></script>
 @endif
 
+@if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
 @if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
     <script src="/assets/js/function.js"></script>
     <script src="/assets/js/custom.js"></script>
@@ -644,7 +649,7 @@
 <script src="/assets/js/custom_form_wizard.js"></script>
     @endif
 
-    @if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager' )
+    @if(\Route::getFacadeRoot()->current()->uri() == 'attendance-upload' )
         <script src="/assets/js/pages/forms-widgets.js"></script>
     @endif
 

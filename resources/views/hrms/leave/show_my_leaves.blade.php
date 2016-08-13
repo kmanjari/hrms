@@ -48,11 +48,11 @@
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                        <th>Id</th>
-                                        <th>Leave Type</th>
-                                        <th>Date From</th>
-                                        <th>Date To</th>
-                                        <th>Days</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Leave Type</th>
+                                        <th class="text-center">Date From</th>
+                                        <th class="text-center">Date To</th>
+                                        <th class="text-center">Days</th>
                                         <th class="text-center">Status</th>
                                     </tr>
                                     </thead>
@@ -60,11 +60,11 @@
                                     <?php $i =0;?>
                                     @foreach($leaves as $leave)
                                         <tr>
-                                            <td>{{$i+=1}}</td>
-                                            <td>{{getLeaveType($leave->leave_type_id)}}</td>
-                                            <td>{{getFormattedDate($leave->date_from)}}</td>
-                                            <td>{{getFormattedDate($leave->date_to)}}</td>
-                                            <td>{{$leave->days}}</td>
+                                            <td class="text-center">{{$i+=1}}</td>
+                                            <td class="text-center">{{getLeaveType($leave->leave_type_id)}}</td>
+                                            <td class="text-center">{{getFormattedDate($leave->date_from)}}</td>
+                                            <td class="text-center">{{getFormattedDate($leave->date_to)}}</td>
+                                            <td class="text-center">{{$leave->days}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group text-right">
                                                     @if($leave->status==0)
