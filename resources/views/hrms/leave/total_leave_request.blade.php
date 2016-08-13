@@ -74,26 +74,26 @@
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                        <th>Id</th>
-                                        <th>Employee</th>
-                                        <th>Code</th>
-                                        <th>Leave Type</th>
-                                        <th>Date From</th>
-                                        <th>Date To</th>
-                                        <th>Days</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Employee</th>
+                                        <th class="text-center">Code</th>
+                                        <th class="text-center">Leave Type</th>
+                                        <th class="text-center">Date From</th>
+                                        <th class="text-center">Date To</th>
+                                        <th class="text-center">Days</th>
                                         <th class="text-center">Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($leaves as $leave)
                                         <tr>
-                                            <td>{{$leave->id}}</td>
-                                            <td>{{(isset($post))? $leave->name : $leave->user->name}}</td>
-                                            <td>{{(isset($post))? $leave->code : $leave->user->employee->code}}</td>
-                                            <td>{{(isset($post))? $leave->leave_type : getLeaveType($leave->leave_type_id)}}</td>
-                                            <td>{{getFormattedDate($leave->date_from)}}</td>
-                                            <td>{{getFormattedDate($leave->date_to)}}</td>
-                                            <td>{{$leave->days}}</td>
+                                            <td class="text-center">{{$leave->id}}</td>
+                                            <td class="text-center">{{(isset($post))? $leave->name : $leave->user->name}}</td>
+                                            <td class="text-center">{{(isset($post))? $leave->code : $leave->user->employee->code}}</td>
+                                            <td class="text-center">{{(isset($post))? $leave->leave_type : getLeaveType($leave->leave_type_id)}}</td>
+                                            <td class="text-center">{{getFormattedDate($leave->date_from)}}</td>
+                                            <td class="text-center">{{getFormattedDate($leave->date_to)}}</td>
+                                            <td class="text-center">{{$leave->days}}</td>
                                             <input type="hidden" value="{!! csrf_token() !!}" id="token">
                                             <td class="text-center">
                                                 <div class="btn-group text-right">

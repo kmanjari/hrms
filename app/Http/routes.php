@@ -113,9 +113,13 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('leave-drafting', ['as' => 'leave-drafting', 'uses' => 'LeaveController@createLeaveDraft']);
 
-    Route::get('attendance-manager', ['as' => 'attendance-manager', 'uses' => 'AttendanceController@importAttendanceFile']);
+    Route::get('attendance-upload', ['as' => 'attendance-upload', 'uses' => 'AttendanceController@importAttendanceFile']);
 
-    Route::post('attendance-manager', ['as' => 'attendance-manager', 'uses' => 'AttendanceController@uploadFile']);
+    Route::post('attendance-upload', ['as' => 'attendance-upload', 'uses' => 'AttendanceController@uploadFile']);
+
+    Route::get('attendance-manager', ['as' => 'attendance-manager', 'uses' => 'AttendanceController@showSheetDetails']);
+
+    Route::post('attendance-manager', ['as' => 'attendance-manager', 'uses' => 'AttendanceController@searchAttendance']);
 
     Route::get('delete-file/{id}', ['as' => 'delete-file', 'uses' => 'AttendanceController@doDelete']);
 
@@ -168,9 +172,8 @@ Route::get('password', function () {
 
 
 Route::get('checkBase', function () {
-    return \Auth::user()->employee->id;
-}
-);
-//});
 
+
+});
+//});
 

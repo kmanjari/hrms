@@ -154,27 +154,20 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr class="bg-light">
-                                    <th>Id</th>
-                                    <th>Select</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Description</th>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($files as $file)
-                                    <td>{{$file->id}}</td>
+                                    <td class="text-center">{{$file->id}}</td>
+                                    <td class="text-center">{{$file->name}}</td>
+                                    <td class="text-center">{{$file->description}}</td>
+                                    <td class="text-center">{{getFormattedDate($file->date)}}</td>
                                     <td class="text-center">
-                                        <label class="option block mn">
-                                            <input type="checkbox" name="inputname" value="FR">
-                                            <span class="checkbox mn"></span>
-                                        </label>
-                                    </td>
-                                    <td>{{$file->name}}</td>
-                                    <td>{{$file->description}}</td>
-                                    <td>{{$file->date}}</td>
-                                    <td class="text-right">
                                         <div class="btn-group text-right">
                                             <button type="button"
                                                     class="btn btn-info br2 btn-xs fs12 dropdown-toggle"

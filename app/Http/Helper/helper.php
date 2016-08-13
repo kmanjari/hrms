@@ -75,26 +75,34 @@ function covertDateToDay($date)
     $day = date("l", $day);
     return strtoupper($day);
 }
-
+/*
 function getFormattedDate($date)
 {
     $date = new DateTime($date);
-    return date_format($date,'l jS \\of F Y');
+    return date_format($date, 'l jS \\of F Y');
+}*/
+
+
+function getFormattedDate($date)
+{
+    $date =  strtotime($date);
+    return date('M j, Y', $date);
 }
 
-    function getEmployeeDropDown()
-    {
-        $data = [
+function getEmployeeDropDown()
+{
+    $data = [
 
-            "" => "Select",
-            'name' => 'Name',
-            'code' => 'Code',
-            'department' => 'Department',
-            'email' => 'Email',
-            'number' => 'Number'
-        ];
-        return $data;
-    }
+        "" => "Select",
+        'name' => 'Name',
+        'code' => 'Code',
+        'department' => 'Department',
+        'email' => 'Email',
+        'number' => 'Number'
+    ];
+    return $data;
+}
+
 
 function getLeaveColumns()
 {
@@ -105,7 +113,61 @@ function getLeaveColumns()
         'days' => 'Days',
         'leave_type' => 'Leave type',
         'status' => 'Status'
-     ];
+    ];
 
     return $data;
+}
+
+function getAttendanceDropDown()
+{
+    $data = [
+
+        "" => "Select",
+        'name' => 'Name',
+        'code' => 'Code',
+        'date' => 'Date',
+        'day' => 'Day',
+        'hours_worked' => 'Hours Worked',
+        'status' => 'Status'
+    ];
+    return $data;
+}
+
+
+function getHoursWorked($inTime, $outTime)
+{
+
+    $result = strtotime($outTime) - strtotime($inTime);
+    $totalMinutes = abs($result) / 60;
+
+    $minutes = $totalMinutes % '60';
+    $hours = $totalMinutes - $minutes;
+    $hours = $hours / 60;
+
+    return $hours . ':' . $minutes . ':00';
+
+}
+
+function convertAttendanceTo($status)
+{
+    $data = [
+        'A' => '0',
+        'P' => '1',
+        'MIS' => '2',
+        'WO' => '3',
+        'HLF' => '4'
+    ];
+    return $data[$status];
+}
+
+function convertAttendanceFrom($status)
+{
+    $data = [
+        '0' => 'A',
+        '1' => 'P',
+        '2' => 'MIS',
+        '3' => 'WO',
+        '4' => 'HLF'
+    ];
+    return $data[$status];
 }

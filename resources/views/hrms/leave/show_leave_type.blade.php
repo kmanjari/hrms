@@ -53,18 +53,18 @@
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                        <th>Id</th>
-                                        <th>Leave Type</th>
-                                    <th>Description</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Leave Type</th>
+                                    <th class="text-center">Description</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($leaves as $leave)
                                     <tr>
-                                        <td>{{$leave->id}}</td>
-                                        <td>{{$leave->leave_type}}</td>
-                                        <td>{{$leave->description}}</td>
+                                        <td class="text-center">{{$leave->id}}</td>
+                                        <td class="text-center">{{$leave->leave_type}}</td>
+                                        <td class="text-center">{{$leave->description}}</td>
                                         <td class="text-center">
                                             <div class="btn-group text-right">
                                                 <button type="button"

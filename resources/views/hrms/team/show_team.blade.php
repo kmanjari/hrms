@@ -48,22 +48,22 @@
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
                                     <tr class="bg-light">
-                                        <th>Id</th>
-                                        <th>Team Name</th>
-                                        <th>Manager</th>
-                                        <th>Team Leader</th>
-                                        <th>Member</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Team Name</th>
+                                        <th class="text-center">Manager</th>
+                                        <th class="text-center">Team Leader</th>
+                                        <th class="text-center">Member</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($teams as $team)
                                         <tr>
-                                            <td>{{$team->id}}</td>
-                                            <td>{{$team->name}}</td>
-                                            <td>{{$team->manager->name}}</td>
-                                            <td>{{$team->leader->name}}</td>
-                                            <td>{{$team->employee->name}}</td>
+                                            <td class="text-center">{{$team->id}}</td>
+                                            <td class="text-center">{{$team->name}}</td>
+                                            <td class="text-center">{{$team->manager->name}}</td>
+                                            <td class="text-center">{{$team->leader->name}}</td>
+                                            <td class="text-center">{{$team->employee->name}}</td>
 
                                              <td class="text-center">
                                                 <div class="btn-group text-right">
