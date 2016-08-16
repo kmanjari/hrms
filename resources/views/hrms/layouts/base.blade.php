@@ -620,7 +620,7 @@
 @endif
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager')
-    <script src="/assets/js/pages/forms-widgets.js"></script>
+    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
     <script src="/assets/js/custom.js"></script>
 @endif
 
