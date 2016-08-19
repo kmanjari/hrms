@@ -19,8 +19,8 @@
 <!-- -------------- Sidebar Menu  -------------- -->
 <ul class="nav sidebar-menu">
     <li class="active">
-        <a class="accordion-toggle menu-open" href="dashboard">
-            <a href="dashboard">
+        <a class="accordion-toggle menu-open" href="/dashboard">
+            <a href="/dashboard">
             <span class="fa fa-dashboard"></span>
             <span class="sidebar-title">Dashboard</span>
         </a>

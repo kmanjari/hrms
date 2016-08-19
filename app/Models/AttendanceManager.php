@@ -10,20 +10,23 @@ class AttendanceManager extends Model
     {
         $string = $request['string'];
         $column = $request['column'];
-
+        if($column == 'status')
+        {
+            $string = convertAttendanceTo($string);
+        }
         $dateTo =  date_format(date_create($request['dateTo']), 'Y-m-d');
         $dateFrom =  date_format(date_create($request['dateFrom']), 'Y-m-d');
 
-        if($column && $string)
+        if(!empty($column) && !empty($string) && empty($dateFrom) && empty($dateTo))
         {
             $attendances = AttendanceManager::whereRaw($column . " like '%" . $string . "%'")->paginate(20);
         }
-        elseif($column && $string && isset($dateFrom) && isset($dateTo)) {
-            $attendances = AttendanceManager::whereRaw($column . " like '%" . $string . "%'")->whereBetween('date', [$dateFrom, $dateTo])->paginate(20);
-        }
-        elseif(isset($dateFrom) && isset($dateTo))
+        elseif(!empty($dateFrom) && !empty($dateTo) && empty($column) && empty($string))
         {
             $attendances = AttendanceManager::whereBetween('date', [$dateFrom, $dateTo])->paginate(20);
+        }
+        elseif(!empty($column) && !empty($string) && !empty($dateFrom) && !empty($dateTo)) {
+            $attendances = AttendanceManager::whereRaw($column . " like '%" . $string . "%'")->whereBetween('date', [$dateFrom, $dateTo])->paginate(20);
         }
         else
         {
@@ -31,5 +34,23 @@ class AttendanceManager extends Model
         }
 
         return $attendances;
+    }
+
+    public static function saveExcelData($row, $hoursWorked, $difference)
+    {
+        $user = Employee::where('code', $row->code)->first();
+        $attendance = new AttendanceManager();
+        $attendance->name = $row->name;
+        $attendance->code = $row->code;
+        $attendance->date = date_format(date_create($row->date), 'Y-m-d');
+        $attendance->day = covertDateToDay($row->date);
+        $attendance->in_time = $row->in_time;
+        $attendance->out_time = $row->out_time;
+        $attendance->status = convertAttendanceTo($row->status);
+        $attendance->leave_status = $row->leave_status;
+        $attendance->user_id = $user->user_id;
+        $attendance->hours_worked = $hoursWorked;
+        $attendance->difference = $difference;
+        $attendance->save();
     }
 }

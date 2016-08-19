@@ -51,11 +51,11 @@
                                     </div>
                                     <div class="col-md-3">
                                         <input type="text" id="datepicker1" class="select2-single form-control"
-                                               name="dateFrom" placeholder="date from"/>
+                                               name="dateFrom" value="{{$dateFrom}}" placeholder="date from"/>
                                     </div>
                                     <div class="col-md-3">
                                         <input type="text" id="datepicker4" class="select2-single form-control"
-                                               name="dateTo" placeholder="date to"/>
+                                               name="dateTo" value="{{$dateTo}}" placeholder="date to"/>
                                     </div>
 
 
@@ -97,10 +97,12 @@
                                             <th class="text-center">Hours Worked</th>
                                             <th class="text-center">Difference</th>
                                             <th class="text-center">Status</th>
+                                            <th class="text-center">Leave Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                         @foreach($attendances as $attendance)
                                             <tr>
                                                 <td class="text-center">{{$attendance->id}}</td>
@@ -113,6 +115,7 @@
                                                 <td class="text-center">{{$attendance->hours_worked}}</td>
                                                 <td class="text-center">{{$attendance->difference}}</td>
                                                 <td class="text-center">{{convertAttendanceFrom($attendance->status)}}</td>
+                                                <td class="text-center">{{$attendance->leave_status}}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group text-right">
                                                         <button type="button"

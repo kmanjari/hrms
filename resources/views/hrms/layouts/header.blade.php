@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top bg-system">
     <div class="navbar-logo-wrapper bg-system">
         <a class="navbar-logo-text" href="#">
-            <b> <img src="/assets/img/Logo.png" style="width: 250px"> </b>
+            <b> <img src="/assets/img/Logo.png" style="width: 205px"> </b>
         </a>
 
         <span id="sidebar_left_toggle" class="ad ad-lines"></span>
