@@ -194,7 +194,9 @@ class LeaveController extends Controller
         $leaves = EmployeeLeaves::with('user.employee')->paginate(15);
         $column = '';
         $string = '';
-        return view('hrms.leave.total_leave_request', compact('leaves', 'column', 'string'));
+        $dateFrom = '';
+        $dateTo = '';
+        return view('hrms.leave.total_leave_request', compact('leaves', 'column', 'string','dateFrom','dateTo'));
     }
 
     /**
