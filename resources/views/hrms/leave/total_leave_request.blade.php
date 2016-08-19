@@ -49,20 +49,31 @@
                                         <i class="arrow double"></i>
                                     </label>
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="submit" value="Search" name="button" class="btn btn-primary">
-                                </div>
 
-                                <div class="col-md-2">
+                                 <div class="col-md-3">
+                                     <input type="text" id="datepicker1" class="select2-single form-control"
+                                            name="dateFrom" value="{{$dateFrom}}" placeholder="date from"/>
+                                 </div>
+                                 <div class="col-md-3">
+                                     <input type="text" id="datepicker4" class="select2-single form-control"
+                                            name="dateTo" value="{{$dateTo}}" placeholder="date to"/>
+                                 </div>
+
+                                 <div class="col-md-2"><br />
+                                     <input type="submit" value="Search" name="button" class="btn btn-primary">
+                                 </div>
+
+                                <div class="col-md-2"><br />
                                     <input type="submit" value="Export" name="button" class="btn btn-success">
                                 </div>
                                 {!! Form::close() !!}
-                                <div class="col-md-2">
+                                <div class="col-md-2"><br />
                                     <a href="/total-leave-list" >
                                         <input type="submit" value="Reset" class="btn btn-warning"></a>
                                 </div>
-                                    </div>
-                                    </div>
+
+                             </div>
+                        </div>
                         <div class="panel-body pn">
                             @if(Session::has('flash_message'))
                                 <div class="alert alert-success">

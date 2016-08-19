@@ -623,6 +623,10 @@
     {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
     <script src="/assets/js/custom.js"></script>
 @endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'total-leave-list')
+    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
+    <script src="/assets/js/custom.js"></script>
+@endif
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
     <script src="/assets/js/function.js"></script>
