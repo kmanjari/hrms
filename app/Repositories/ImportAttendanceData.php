@@ -96,8 +96,10 @@ class ImportAttendanceData
                                     {
                                         $row->leave_status = 'Saturday Without Notice';
                                     }
+
                                 }
                             }
+
                         }
                     }
 
