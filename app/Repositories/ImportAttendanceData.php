@@ -27,7 +27,9 @@ class ImportAttendanceData
             $rows = $reader->get(['name', 'code', 'date', 'in_time', 'out_time', 'status']);
 
             $counter = 0;
+            $saturdays = 0;
             $totalSaturdaysBetweenDates = 0;
+            $saturdayWithoutNotice = 0;
             foreach ($rows as $row)
             {
                 if ($row->status == 'A')
@@ -68,60 +70,34 @@ class ImportAttendanceData
                     }
                     elseif($day == 'SATURDAY')
                     {
-                        /*$saturday +=1;
-                        if($saturday >2)
+                        $saturdays += 1;
+                        if($saturdays < 3)
                         {
-                            $extraSaturday+=1;
-                        }*/
-
-                        if($counter == 0)
+                            $row->leave_status = 'Weekly off';
+                        }
+                        elseif($saturdays > 2)
                         {
                             $lastMonth = date('m', strtotime('-1 month'));
-                            //$presentMonth = date('m', strtotime('month'));
+                            $presentMonth = date('m', strtotime('month'));
                             $year = date('Y');
-                            $month = date('m');
                             $startDate = "$year-$lastMonth-26";
-                            /*$endDate = date('Y-m-d');*/
-                            $endDate = "$year-$month-25";
+                            $endDate = "$year-$presentMonth-25";
 
+                            //check if this saturday falls between the leaves he has taken
                             $query = "SELECT date_from,date_to,status FROM `employee_leaves` WHERE `user_id` = $userId AND `date_from` BETWEEN '$startDate' AND '$endDate' AND `date_to` BETWEEN '$startDate' AND '$endDate'";
                             $results = \DB::select($query);
 
-                            if ($results)
+                            if($results)
                             {
-                                foreach ($results as $result)
+                                foreach($results as $result)
                                 {
-                                    if($result->status == 0)
+                                    $dates = $this->createDateRangeArray($result->date_from, $result->date_to);
+                                    if(!in_array($row->date, $dates))
                                     {
-                                        //pending
-                                        $row->status = 'Unapproved';
-                                    }
-                                    elseif($result->status = 1)
-                                    {
-                                        //approved
-                                        $dates = $this->createDateRangeArray($result->date_from, $result->date_to);
-                                        foreach ($dates as $date)
-                                        {
-                                            $newDate = covertDateToDay($date);
-                                            if ($newDate == 'SATURDAY')
-                                            {
-                                                $totalSaturdaysBetweenDates += 1;
-                                                $row->leave_status = 'Planned';
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        $row->status = 'Unapproved';
+                                        $row->leave_status = 'Saturday Without Notice';
                                     }
                                 }
                             }
-                        }
-                        $counter +=1;
-                        $extra_saturdays = ($totalSaturdaysBetweenDates + $counter) - 2;
-                        if(!isset($row->leave_status))
-                        {
-                        $row->leave_status = 'Unplanned';
                         }
                     }
 
@@ -155,9 +131,6 @@ class ImportAttendanceData
 
                 \Session::flash('success', ' Uploaded successfully.');
             }
-            \Log::info('total saturdays with leave '. $totalSaturdaysBetweenDates);
-            \Log::info('total saturdays without leave'. $counter);
-            \Log::info('extra saturdays(all-2) '. $extra_saturdays);
 
         });
     }
