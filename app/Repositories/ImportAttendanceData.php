@@ -73,10 +73,12 @@ class ImportAttendanceData
                         $saturdays += 1;
                         if($saturdays < 3)
                         {
+                            \Log::info('less than 3 ');
                             $row->leave_status = 'Weekly off';
                         }
                         elseif($saturdays > 2)
                         {
+                            \Log::info('greater than two');
                             $lastMonth = date('m', strtotime('-1 month'));
                             $presentMonth = date('m');
                             $year = date('Y');
@@ -84,7 +86,7 @@ class ImportAttendanceData
                             $endDate = "$year-$presentMonth-25";
 
                             //check if this saturday falls between the leaves he has taken
-                            $query = "SELECT date_from,date_to,status FROM `employee_leaves` WHERE `user_id` = $userId AND `date_from` BETWEEN '$startDate' AND '$endDate' AND `date_to` BETWEEN '$startDate' AND '$endDate'";
+                            $query = "SELECT date_from,date_to,status FROM `employee_leaves` WHERE `user_id` = $userId AND status='1' AND `date_from` BETWEEN '$startDate' AND '$endDate' AND `date_to` BETWEEN '$startDate' AND '$endDate'";
                             $results = \DB::select($query);
 
                             if($results)
@@ -92,9 +94,15 @@ class ImportAttendanceData
                                 foreach($results as $result)
                                 {
                                     $dates = $this->createDateRangeArray($result->date_from, $result->date_to);
-                                    if(!in_array($row->date, $dates))
+                                    \Log::info('date '. date('Y-m-d',strtotime($row->date)). ' dates '. $dates[0]. ' date 1 '. $dates[1]);
+                                    if(!in_array(date('Y-m-d', strtotime($row->date)), $dates))
                                     {
+                                        \Log::info('Not in array');
                                         $row->leave_status = 'Saturday Without Notice';
+                                    }
+                                    else
+                                    {
+                                        $row->leave_status = 'Sanctioned Leave';
                                     }
                                 }
                             }
@@ -158,5 +166,15 @@ class ImportAttendanceData
             }
         }
         return $aryRange;
+    }
+
+    public function changeDateFormat($date)
+    {
+        $dateArray = explode("/",$date); // split the array
+        $varDay = $dateArray[0]; //day seqment
+        $varMonth = $dateArray[1]; //month segment
+        $varYear = $dateArray[2]; //year segment
+        $newDateFormat = "$varYear-$varDay-$varMonth"; // join them together
+        return $newDateFormat;
     }
 }
