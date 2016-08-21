@@ -78,7 +78,7 @@ class ImportAttendanceData
                         elseif($saturdays > 2)
                         {
                             $lastMonth = date('m', strtotime('-1 month'));
-                            $presentMonth = date('m', strtotime('month'));
+                            $presentMonth = date('m');
                             $year = date('Y');
                             $startDate = "$year-$lastMonth-26";
                             $endDate = "$year-$presentMonth-25";
