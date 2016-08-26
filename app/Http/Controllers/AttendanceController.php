@@ -114,7 +114,9 @@
            */
           $attendances = AttendanceManager::getFilterdSearchResults($request->all());
           return view('hrms.attendance.show_attendance_sheet_details', compact('attendances', 'column', 'string', 'dateFrom', 'dateTo'));
-        } else {
+        }
+        else
+        {
           if ($column && $string) {
             if ($column == 'status') {
               $string = convertAttendanceTo($string);

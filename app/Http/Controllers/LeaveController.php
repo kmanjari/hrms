@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\EmployeeLeaves;
 use App\LeaveDraft;
 use App\Models\Employee;
-use App\Models\LeaveApply;
-use App\Models\Role;
 use App\Models\LeaveType;
 use App\Models\Team;
 use App\User;
 use Illuminate\Contracts\Mail\Mailer;
-use Illuminate\Support\Facades\Session;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -320,84 +318,117 @@ class LeaveController extends Controller
 
     public function searchLeave(Request $request)
     {
-        $string = $request->string;
-        $column = $request->column;
-        $data = [
-            'name' => 'users.name',
-            'code' => 'employees.code',
-            'days' => 'employee_leaves.days',
-            'leave_type' => 'leave_types.leave_type',
-            'status' => 'employee_leaves.status'
-        ];
-
-        if ($request->button == 'Search') {
-            /**
-             * First we build a query string which is common in both cases whether we have a condition set or not
-             */
-            $leaves = \DB::table('users')->select('users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type')
-                ->join('employees', 'employees.user_id', '=', 'users.id')
-                ->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')
-                ->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
-
-            if($column && $string) {
-                //we then check if $column and string are defined ? if yes we concatenate the query with where condition
-               $leaves = $leaves->whereRaw($data[$column] . " like '%" . $string . "%'");
-            }
-            //we know that we need to fetch 20 records in either case
-            $leaves = $leaves->paginate(20);
-
-            $post = 'post';
-            return view('hrms.leave.total_leave_request', compact('leaves', 'post', 'column', 'string'));
-            }
-        else
+        try
         {
-            /**
-             * First we build a query string which is common in both cases whether we have a condition set or not
-             */
-            $leaves = \DB::table('users')->select('users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type')
-                ->join('employees', 'employees.user_id', '=', 'users.id')
-                ->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')
-                ->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
-
-            if($column && $string)
+            $string = $request->string;
+            if($string == 'Approved' || $string == 'approved')
             {
-                $leaves = $leaves->whereRaw($data[$column] . " like '%" . $string . "%'");
+               $string = 1;
             }
-            $leaves = $leaves->get();
+            elseif($string == 'Pending' || $string == 'pending')
+            {
+                $string = 0;
 
-            $fileName = 'Leave_Listing_' . rand(1, 1000) . '.xlsx';
-            $filePath = storage_path('exports/') . $fileName;
-            $file = new \SplFileObject($filePath, "a");
-            // Add header to csv file.
-            $headers = ['id', 'name', 'code', 'leave_type', 'date_from', 'date_to', 'days', 'status', 'created_at', 'updated_at'];
-            $file->fputcsv($headers);
-            $status='';
-            foreach ($leaves as $leave) {
-                if($leave->status == 0)
-                {
-                    $status = 'Pending';
-                }
-                elseif($leave->status == 1)
-                {
-                    $status = 'Approved';
-                }
-                else{
-                    $status = 'Disapproved';
-                }
-                $file->fputcsv([
-                    $leave->id,
-                    $leave->name,
-                    $leave->code,
-                    $leave->leave_type,
-                    $leave->date_from,
-                    $leave->date_to,
-                    $leave->days,
-                    $status
-                ]);
+            }
+            elseif($string == 'Disapproved' || $string =='disapproved')
+            {
+                $string = 2;
             }
 
-            return response()->download(storage_path('exports/'). $fileName);
+            $column = $request->column;
+            $dateTo = $request->dateTo;
+            $dateFrom = $request->dateFrom;
 
+            $data = ['name' => 'users.name', 'code' => 'employees.code', 'days' => 'employee_leaves.days', 'leave_type' => 'leave_types.leave_type', 'status' => 'employee_leaves.status'];
+
+            if ($request->button == 'Search')
+            {
+                /**
+                 * First we build a query string which is common in both cases whether we have a condition set or not
+                 */
+                $leaves = \DB::table('users')->select('users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type')->join('employees', 'employees.user_id', '=', 'users.id')->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
+                if (!empty($column) && !empty($string) && empty($dateFrom) && empty($dateTo))
+                {
+                    $leaves = $leaves->whereRaw($data[$column] . " like '%" . $string . "%' ")->paginate(20);
+                }
+                elseif (!empty($dateFrom) && !empty($dateTo) && empty($column) && empty($string))
+                {
+                    $dateTo = date_format(date_create($request->dateTo), 'Y-m-d');
+                    $dateFrom = date_format(date_create($request->dateFrom), 'Y-m-d');
+                    $leaves = $leaves->whereBetween('date_from', [$dateFrom, $dateTo])->paginate(20);
+                }
+                elseif (!empty($column) && !empty($string) && !empty($dateFrom) && !empty($dateTo))
+                {
+                    $dateTo = date_format(date_create($request->dateTo), 'Y-m-d');
+                    $dateFrom = date_format(date_create($request->dateFrom), 'Y-m-d');
+                    $leaves = $leaves->whereRaw($data[$column] . " like '%" . $string . "%'")->whereBetween('date_from', [$dateFrom, $dateTo])->paginate(20);
+                }
+                else
+                {
+                    $leaves = $leaves->paginate(20);
+                }
+                $post = 'post';
+                return view('hrms.leave.total_leave_request', compact('leaves', 'post', 'column', 'string','dateFrom','dateTo'));
+            }
+            else
+            {
+                /**
+                 * First we build a query string which is common in both cases whether we have a condition set or not
+                 */
+                $leaves = \DB::table('users')->select('users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type')->join('employees', 'employees.user_id', '=', 'users.id')->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
+
+                if (!empty($column) && !empty($string) && empty($dateFrom) && empty($dateTo))
+                {
+                    $leaves = $leaves->whereRaw($data[$column] . " like '%" . $string . "%' ")->get();
+                }
+                elseif (!empty($dateFrom) && !empty($dateTo) && empty($column) && empty($string))
+                {
+                    $dateTo = date_format(date_create($request->dateTo), 'Y-m-d');
+                    $dateFrom = date_format(date_create($request->dateFrom), 'Y-m-d');
+                    $leaves = $leaves->whereBetween('date_from', [$dateFrom, $dateTo])->get();
+                }
+                elseif (!empty($column) && !empty($string) && !empty($dateFrom) && !empty($dateTo))
+                {
+                    $dateTo = date_format(date_create($request->dateTo), 'Y-m-d');
+                    $dateFrom = date_format(date_create($request->dateFrom), 'Y-m-d');
+                    $leaves = $leaves->whereRaw($data[$column] . " like '%" . $string . "%'")->whereBetween('date_from', [$dateFrom, $dateTo])->get();
+                }
+                else
+                {
+                    $leaves = $leaves->get();
+                }
+                /*$leaves = $leaves->get();*/
+
+                $fileName = 'Leave_Listing_' . rand(1, 1000) . '.xlsx';
+                $filePath = storage_path('exports/') . $fileName;
+                $file = new \SplFileObject($filePath, "a");
+                // Add header to csv file.
+                $headers = ['id', 'name', 'code', 'leave_type', 'date_from', 'date_to', 'days', 'status', 'created_at', 'updated_at'];
+                $file->fputcsv($headers);
+                $status = '';
+                foreach ($leaves as $leave)
+                {
+                    if ($leave->status == 0)
+                    {
+                        $status = 'Pending';
+                    }
+                    elseif ($leave->status == 1)
+                    {
+                        $status = 'Approved';
+                    }
+                    elseif ($leave->status == 2)
+                    {
+                        $status = 'Disapproved';
+                    }
+                    $file->fputcsv([$leave->id, $leave->name, $leave->code, $leave->leave_type, $leave->date_from, $leave->date_to, $leave->days, $status]);
+                }
+
+                return response()->download(storage_path('exports/') . $fileName);
+
+            }
+        } catch (\Exception $e)
+        {
+            return redirect()->back()->with('message', $e->getMessage());
         }
     }
 
@@ -432,7 +463,7 @@ class LeaveController extends Controller
             $message->from('no-reply@dipi-ip.com', 'Digital IP Insights');
             $message->to($user->email,$user->name)->subject('Your leave has been approved');
         });
-        
+
 
         \DB::table('employee_leaves')->where('id', $leaveId)->update(['status' => '1']);
         return json_encode('success');
@@ -445,7 +476,7 @@ class LeaveController extends Controller
         $user = User::where('id', $employeeLeave->user_id)->first();
         $this->mailer->send('emails.leave_status', ['user' => $user, 'status' => 'disapproved', 'leave' => $employeeLeave], function($message) use($user)
         {
-           $message->from('no-reply@dipi-ip.com', 'Digital IP Insights');
+            $message->from('no-reply@dipi-ip.com', 'Digital IP Insights');
             $message->to($user->email,$user->name)->subject('Your leave has been disapproved');
         });
         \DB::table('employee_leaves')->where('id', $leaveId)->update(['status'=> '2']);
