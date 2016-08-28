@@ -85,7 +85,7 @@
             padding: 20px 0 30px;
         }
         .content-top {
-            background: #67d3e0 url('img/top-bg.jpg') center center no-repeat;
+            background: #67d3e0 url('{{env('APP_URL')}}/img/top-bg.jpg') center center no-repeat;
             -webkit-border-radius: 3px 3px 0 0;
             border-radius: 3px 3px 0 0;
             color: #fff;
@@ -173,7 +173,7 @@
             display: block;
             height: 57px;
             width: 57px;
-            background: #67d3e0 url('img/btn-bg.png') center center no-repeat;
+            background: #67d3e0 url('{{env('APP_URL')}}/img/btn-bg.png') center center no-repeat;
             color: #67d3e0;
             margin: -29px auto 0;
             z-index: 15;
@@ -304,7 +304,7 @@
                 <table cellspacing="0" cellpadding="0" width="600" class="w320">
                     <tr>
                         <td class="footer-content">
-                            <img src="img/footer-1.png" alt="" style="vertical-align: middle;"/>Digital IP Insights, C-7, Sector 3, Noida 201301<img src="img/footer-2.png" alt="" style="vertical-align: middle;"/>+91-120-428-2484
+                            <img src="{{env('APP_URL')}}/img/footer-1.png" alt="" style="vertical-align: middle;"/>Digital IP Insights, C-7, Sector 3, Noida 201301<img src="{{env('APP_URL')}}/img/footer-2.png" alt="" style="vertical-align: middle;"/>+91-120-428-2484
                         </td>
                     </tr>
                 </table>

@@ -62,10 +62,10 @@
 
         $data = ['name' => $name, 'coordinator' => $coordinator->name, 'date' => $date, 'attendee_name' => $user->name];
 
-        Mail::send('emails.event', ['data' => $data], function($messgae) use($user, $coordinator)
+        Mail::send('emails.event', ['data' => $data], function($message) use($user, $coordinator)
         {
-          $messgae->from($coordinator->email, $coordinator->name);
-          $messgae->to($user->email, $user->name)->subject($coordinator->name .' has invited you to an event');
+          $message->from($coordinator->email, $coordinator->name);
+          $message->to($user->email, $user->name)->subject($coordinator->name .' has invited you to an event');
         });
       }
 
