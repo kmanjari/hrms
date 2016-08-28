@@ -241,11 +241,10 @@
                 <div class="section row">
                     <div class="col-md-12">
                         <label for="event_name" class="field prepend-icon">
-                            <input type="text" class="form-control" id="name">
+                            <input type="text" class="form-control" id="event_name">
                         </label>
                     </div>
                 </div>
-
                 <!-- -------------- /Event Name-------------- -->
 
 
