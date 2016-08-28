@@ -32,7 +32,6 @@ Route::group(['middleware' => ['guest']], function () {
 
 Route::group(['middleware' => ['auth']], function () {
 
-
     Route::get('change-password','AuthController@changePassword');
 
     Route::post('change-password','AuthController@processPasswordChange');
@@ -160,6 +159,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('approve-leave', 'LeaveController@approveLeave');
 
     Route::post('disapprove-leave', 'LeaveController@disapproveLeave');
+
+    Route::get('add-holidays', 'LeaveController@showHolidays');
+
+    Route::post('add-holidays', 'LeaveController@processHolidays');
+
+    Route::get('create-event', 'EventController@index');
+
+    Route::post('create-event', 'EventController@createEvent');
 });
 
 

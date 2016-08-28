@@ -50,15 +50,14 @@
         $file = Input::file('upload_file');
         $filename = $this->upload->File($file, $request->description, $request->date);
 
-        //try {
+        try {
           if($filename) {
             $this->attendanceData->Import($filename);
           }
-        /*} catch
-        (\Exception $e) {
+        } catch(\Exception $e) {
           \Session::flash('flash_message1', $e->getMessage());
           return redirect()->back();
-        }*/
+        }
       }
       else{
         return redirect()->back()->with('flash_message', 'Please choose a file to upload');
@@ -114,7 +113,9 @@
            */
           $attendances = AttendanceManager::getFilterdSearchResults($request->all());
           return view('hrms.attendance.show_attendance_sheet_details', compact('attendances', 'column', 'string', 'dateFrom', 'dateTo'));
-        } else {
+        }
+        else
+        {
           if ($column && $string) {
             if ($column == 'status') {
               $string = convertAttendanceTo($string);
@@ -126,11 +127,13 @@
 
           $file = 'Attendance_Listing_';
           $headers = ['id', 'code', 'name', 'date', 'day', 'in_time', 'out_time', 'hours_worked', 'difference', 'status', 'created_at', 'updated_at'];
+
           /**
            * sending the results fetched in above query to exportData
            * function of ExportRepository class located in
            * app\Repositories folder
            */
+
           $fileName = $this->export->exportData($attendances, $file, $headers);
 
           return response()->download(storage_path('exports/') . $fileName);

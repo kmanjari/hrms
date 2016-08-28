@@ -222,11 +222,6 @@ $('#disapproveClick').click(function()
 
 });
 
-/*
-$('#approve').on('click', function ()
-{
-  console.log('click');
-});*/
 $('#passwordForm').submit(function(event)
 {
     event.preventDefault();
@@ -242,3 +237,34 @@ $('#passwordForm').submit(function(event)
     document.getElementById("passwordForm").submit();
 
 });
+
+$('#create-event').click(function()
+{
+    $('#status-section').removeClass('hidden');
+    var coordinator = $('#event_cordinater').val();
+    var attendees = $('#event_attendees').val();
+    var date = $('#date_time').val();
+    var message = $('#event_description').val();
+    var token = $('#token').val();
+
+    $.post('create-event', {'coordinator' : coordinator, 'attendees' : attendees, 'date' : date, 'message' : message, '_token' : token}, function(data)
+    {
+        $('#status-section').addClass('hidden');
+        $('#message-section').removeClass('hidden');
+        var parsed = JSON.parse(data);
+
+        if(parsed === 'success')
+        {
+            alert(parsed);
+        }
+    });
+
+});
+
+/*
+var number = 10;
+
+function doStuff() {
+    number = number +10;
+    $('.progress-bar').attr('aria-valuenow', number).css('width',number);
+}*/
