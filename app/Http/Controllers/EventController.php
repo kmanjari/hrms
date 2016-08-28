@@ -45,7 +45,7 @@
       $event->name = $name;
       $event->coordinator_id = $coordinator;
       $event->date = $date;
-      $event->messge = $message;
+      $event->message = $message;
       $event->save();
 
       $coordinator = User::where('id', $coordinator)->first();
