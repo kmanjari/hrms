@@ -43,7 +43,7 @@
 
       $event = new Event();
       $event->name = $name;
-      $event->coordinator = $coordinator;
+      $event->coordinator_id = $coordinator;
       $event->date = $date;
       $event->messge = $message;
       $event->save();
