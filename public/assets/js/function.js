@@ -241,13 +241,14 @@ $('#passwordForm').submit(function(event)
 $('#create-event').click(function()
 {
     $('#status-section').removeClass('hidden');
+    var name = $('#event_name').val();
     var coordinator = $('#event_cordinater').val();
     var attendees = $('#event_attendees').val();
     var date = $('#date_time').val();
     var message = $('#event_description').val();
     var token = $('#token').val();
 
-    $.post('create-event', {'coordinator' : coordinator, 'attendees' : attendees, 'date' : date, 'message' : message, '_token' : token}, function(data)
+    $.post('create-event', {'name' : name, 'coordinator' : coordinator, 'attendees' : attendees, 'date' : date, 'message' : message, '_token' : token}, function(data)
     {
         $('#status-section').addClass('hidden');
         $('#message-section').removeClass('hidden');
