@@ -291,7 +291,7 @@
                     </tr>
                     <tr>
                         <td class="free-text">
-                            Dear {{$attendee_name}} {{$data['coordinator']}} has invited you to {{$data['name']}} on {{$data['date']}}
+                            Dear {{$data['attendee_name']}} {{$data['coordinator']}} has invited you to {{$data['name']}} on {{$data['date']}}
                         </td>
                     </tr>
                 </table>
