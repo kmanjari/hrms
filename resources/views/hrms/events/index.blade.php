@@ -236,6 +236,19 @@
                 <div class="section-divider mt10 mb40">
                     <span>Event Details</span>
                 </div>
+
+                <!---------------------- Coordinator -------------------->
+                <div class="section row">
+                    <div class="col-md-12">
+                        <label for="event_name" class="field prepend-icon">
+                            <input type="text" class="form-control" id="name">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- -------------- /Event Name-------------- -->
+
+
                <!---------------------- Coordinator -------------------->
                 <div class="section row">
                     <div class="col-md-12">
