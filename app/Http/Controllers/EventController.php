@@ -54,7 +54,7 @@
       {
         $eventAttendee = new EventAttendee();
         $eventAttendee->event_id = $event->id;
-        $eventAttendee->attendee_if = $attendee;
+        $eventAttendee->attendee_id = $attendee;
         $eventAttendee->save();
 
         //now we will send an email to each attendee about this event
