@@ -620,18 +620,15 @@
 @endif
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager')
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
     <script src="/assets/js/custom.js"></script>
 @endif
 @if(\Route::getFacadeRoot()->current()->uri() == 'total-leave-list')
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
     <script src="/assets/js/custom.js"></script>
 @endif
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
     <script src="/assets/js/function.js"></script>
     <script src="/assets/js/custom.js"></script>
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
     @endif
 
 <script src="/assets/js/function.js"></script>
@@ -644,7 +641,6 @@
 @if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/function.js"></script>
-{{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
 @endif
 
 <!-- -------------- /Scripts -------------- -->
@@ -663,5 +659,11 @@
 @if(\Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
     <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
 @endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'create-event')
+        <!-- -------------- DateTime JS -------------- -->
+    <script src="/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+@endif
+
+    <script>$('#datetimepicker2').datetimepicker();</script>
 </body>
 </html>

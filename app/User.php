@@ -2,7 +2,9 @@
 
 namespace App;
 use App\Models\Employee;
+use App\Models\UserRole;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -35,5 +37,16 @@ class User extends Authenticatable
     public function role()
     {
         return $this->hasOne('App\Models\UserRole', 'user_id', 'id');
+    }
+
+    public function isHR()
+    {
+        $userId = Auth::user()->id;
+        $userRole = UserRole::where('user_id', $userId)->first();
+        if($userRole->role_id == 7)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -12,6 +12,7 @@ namespace App\Repositories;
 use App\EmployeeLeaves;
 use App\Models\AttendanceManager;
 use App\Models\Employee;
+use App\Models\Holiday;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ImportAttendanceData
@@ -34,17 +35,21 @@ class ImportAttendanceData
             {
                 if ($row->status == 'A')
                 {
+                  \Log::info(date_format(date_create($row->date), 'Y-m-d'));
+                    \Log::info('absent');
                     $employee = Employee::where('code', $row->code)->first();
                     $userId = $employee->user_id;
 
                     $day = covertDateToDay($row->date);
                     if ($day != 'SUNDAY' && $day != 'SATURDAY')
                     {
+                      \Log::info('day not saturday and sunday');
                         $employeeLeave = EmployeeLeaves::where('user_id', $userId)->where('date_from', '<=', $row->date)->where('date_to', '>=', $row->date)->first();
 
                         //we now check if we got result from the above query
                         if ($employeeLeave)
                         {
+                          \Log::info('found this date in employee leaves');
                             if ($employeeLeave->status == '1')
                             {
                                 $row->leave_status = 'Approved';
@@ -61,15 +66,18 @@ class ImportAttendanceData
                         }
                         else
                         {
+                          \Log::info('not found in employee leaves');
                             $row->leave_status = 'Unplanned';
                         }
                     }
                     elseif ($day == 'SUNDAY')
                     {
+                      \Log::info('days is sunday');
                         $row->leave_status = 'It was Sunday ';
                     }
                     elseif($day == 'SATURDAY')
                     {
+                      \Log::info('day is saturday');
                         $saturdays += 1;
                         if($saturdays < 3)
                         {
@@ -140,6 +148,17 @@ class ImportAttendanceData
 
                         }
                     }
+
+                  $holidays = Holiday::get();
+                  foreach($holidays as $holiday)
+                  {
+                    $dates = $this->createDateRangeArray($holiday->date_from, $holiday->date_to);
+
+                    if(in_array(date_format(date_create($row->date), 'Y-m-d'), $dates))
+                    {
+                      $row->leave_status = $holiday->occasion. ' holiday';
+                    }
+                  }
 
                 }
                 $hoursWorked = '';

@@ -32,6 +32,7 @@
 
         <!-- -------------- Quick Links -------------- -->
         <div class="row">
+            @if(Auth::user()->isHR())
             <div class="col-sm-6 col-xl-3">
                 <div class="panel panel-tile">
                     <div class="panel-body">
@@ -72,6 +73,23 @@
                     </div>
                 </div>
             </div>
+            @endif
+@if(!Auth::user()->isHR())
+                <div class="col-sm-6 col-xl-3">
+                    <div class="panel panel-tile">
+                        <div class="panel-body">
+                            <div class="row pv10">
+                                <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart0.png"
+                                                                class="img-responsive mauto" alt=""/></div>
+                                <div class="col-xs-7 pl5">
+                                    <h3 class="text-muted"><a href="{{route('my-leave-list')}}"> LEAVES </a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
             <div class="col-sm-6 col-xl-3">
                 <div class="panel panel-tile">
                     <div class="panel-body">
@@ -85,54 +103,9 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
         </div>
     </section>
-
-
-
-    {{--<div class="content">
-        <div class="row">
-                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                    <a href="/employeelist">
-                        <div class="info-box blue-bg">
-                          <i class="fa fa-users fa-4x " ></i>
-                           <div class="count">Employee Manager</div></br>
-                        --}}{{--<div class="title">Employee Manager</div>--}}{{--
-                        </div><!--/.info-box-->
-                    </a>
-                </div><!--/.col-->
-
-                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                    <a href="/leavelisting">
-                         <div class="info-box green-bg">
-                           <i class="fa fa-envelope-o fa-4x"></i>
-                             <div class="count">Leave Manager</div></br>
-                        --}}{{--<div class="title">Leave manager</div>--}}{{--
-                         </div><!--/.info-box-->
-                    </a>
-                </div><!--/.col-->
-
-                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                    <a href="/attendancelisting">
-                       <div class="info-box purple-bg">
-                          <i class="fa fa-clock-o fa-4x"></i>
-                            <div class="count">Attendance Manager</div></br>
-                        --}}{{--<div class="title">Order</div>--}}{{--
-                       </div><!--/.info-box-->
-                    </a>
-                </div><!--/.col-->
-
-                <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
-                    <a href="/#">
-                    <div class="info-box coral-bg">
-                        <i class="fa fa-gavel fa-4x"></i>
-                        <div class="count">HR Policy</div></br>
-                    </div><!--/.info-box-->
-                   </a>
-                </div><!--/.col-->
-
-            </div><!--/.row-->
-
-        </div>--}}
     @endsection
