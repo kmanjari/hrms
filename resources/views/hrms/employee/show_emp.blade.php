@@ -87,9 +87,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i =0;?>
                                     @foreach($emps as $emp)
                                     <tr>
-                                        <td class="text-center">{{$emp->id}}</td>
+                                        <td class="text-center">{{$i+=1}}</td>
                                         <td class="text-center">{{$emp->employee->code}}</td>
                                         <td class="text-center">{{$emp->employee->name}}</td>
                                         <td class="text-center">{{convertStatusBack($emp->employee->status)}}</td>

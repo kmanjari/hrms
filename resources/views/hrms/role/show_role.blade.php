@@ -56,9 +56,10 @@
                                    </thead>
 
                                     <tbody>
+                                    <?php $i =0;?>
                             @foreach($roles as $role)
                                 <tr>
-                                    <td class="text-center">{{$role->id}}</td>
+                                    <td class="text-center">{{$i+=1}}</td>
                                     <td class="text-center">{{$role->name}}</td>
                                     <td class="text-center">{{$role->description}}</td>
                                     <td class="text-center">

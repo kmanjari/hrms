@@ -162,8 +162,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i =0;?>
                                 @foreach($files as $file)
-                                    <td class="text-center">{{$file->id}}</td>
+                                    <td class="text-center">{{$i+=1}}</td>
                                     <td class="text-center">{{$file->name}}</td>
                                     <td class="text-center">{{$file->description}}</td>
                                     <td class="text-center">{{getFormattedDate($file->date)}}</td>

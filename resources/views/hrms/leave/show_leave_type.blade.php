@@ -60,9 +60,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i =0;?>
                                 @foreach($leaves as $leave)
                                     <tr>
-                                        <td class="text-center">{{$leave->id}}</td>
+                                        <td class="text-center">{{$i+=1}}</td>
                                         <td class="text-center">{{$leave->leave_type}}</td>
                                         <td class="text-center">{{$leave->description}}</td>
                                         <td class="text-center">

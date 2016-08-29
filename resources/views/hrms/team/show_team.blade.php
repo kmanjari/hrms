@@ -57,9 +57,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i =0;?>
                                     @foreach($teams as $team)
                                         <tr>
-                                            <td class="text-center">{{$team->id}}</td>
+                                            <td class="text-center">{{$i+=1}}</td>
                                             <td class="text-center">{{$team->name}}</td>
                                             <td class="text-center">{{$team->manager->name}}</td>
                                             <td class="text-center">{{$team->leader->name}}</td>

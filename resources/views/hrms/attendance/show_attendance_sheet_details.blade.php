@@ -102,10 +102,10 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
+                                        <?php $i =0;?>
                                         @foreach($attendances as $attendance)
                                             <tr>
-                                                <td class="text-center">{{$attendance->id}}</td>
+                                                <td class="text-center">{{$i+=1}}</td>
                                                 <td class="text-center">{{$attendance->code}}</td>
                                                 <td class="text-center">{{$attendance->name}}</td>
                                                 <td class="text-center">{{getFormattedDate($attendance->date)}}</td>

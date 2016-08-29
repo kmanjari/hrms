@@ -96,9 +96,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i =0;?>
                                     @foreach($leaves as $leave)
                                         <tr>
-                                            <td class="text-center">{{$leave->id}}</td>
+                                            <td class="text-center">{{$i+=1}}</td>
                                             <td class="text-center">{{(isset($post))? $leave->name : $leave->user->name}}</td>
                                             <td class="text-center">{{(isset($post))? $leave->code : $leave->user->employee->code}}</td>
                                             <td class="text-center">{{(isset($post))? $leave->leave_type : getLeaveType($leave->leave_type_id)}}</td>

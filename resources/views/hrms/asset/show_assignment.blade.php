@@ -57,9 +57,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i =0;?>
                                 @foreach($assets as $asset)
                                     <tr>
-                                        <td class="text-center">{{$asset->id}}</td>
+                                        <td class="text-center">{{$i+=1}}</td>
                                         <td class="text-center">{{$asset->employee->name}}</td>
                                         <td class="text-center">{{$asset->asset->name}}</td>
                                         <td class="text-center">{{getFormattedDate($asset->date_of_assignment)}}</td>
