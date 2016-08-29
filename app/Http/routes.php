@@ -32,7 +32,6 @@ Route::group(['middleware' => ['guest']], function () {
 
 Route::group(['middleware' => ['auth']], function () {
 
-
     Route::get('change-password','AuthController@changePassword');
 
     Route::post('change-password','AuthController@processPasswordChange');
@@ -160,67 +159,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('approve-leave', 'LeaveController@approveLeave');
 
     Route::post('disapprove-leave', 'LeaveController@disapproveLeave');
+
+    Route::get('add-holidays', 'LeaveController@showHolidays');
+
+    Route::post('add-holidays', 'LeaveController@processHolidays');
+
+    Route::get('create-event', 'EventController@index');
+
+    Route::post('create-event', 'EventController@createEvent');
 });
 
-Route::get('textig', 'TeamController@test');
-
-Route::get('password', function () {
-    $dateToday = date('Y-m-d');
-    $users = \App\Models\Employee::whereRaw("DATE_FORMAT(`dob`, '%m-%d') = DATE_FORMAT('$dateToday', '%m-%d')")->with('user')->get();
-    return $users;
-});
-
-
-Route::get('checkBase', function (\App\Repositories\ImportAttendanceData $importer) {
-    $lastMonth = date('m', strtotime('-1 month'));
-    $year = date('Y');
-    $startDate = "$year-$lastMonth-26";
-    $endDate = date('Y-m-d');
-    //$query = "Select date_from,date_to from employee_leaves where user_id='1' and date_from between '$startDate' and '$endDate' or date_to between '$startDate' and '$endDate' and `status` in(0,  2)" ;
-    $query = "SELECT * FROM `employee_leaves` WHERE `user_id` = 1 AND `date_from` BETWEEN '$startDate' AND '$endDate' AND `date_to` BETWEEN '$startDate' AND '$endDate' AND `status` IN (0,2)";
-
-    $results = \DB::select($query);
-    $total = 0;
-    $counter = 0;
-    if($results)
-    {
-        foreach ($results as $result)
-        {
-            $dates[] = $importer->createDateRangeArray($result->date_from, $result->date_to);
-        }
-        foreach ($dates as $date)
-        {
-            foreach ($date as $dt)
-            {
-                $newDate = covertDateToDay($dt);
-                if ($newDate == 'SATURDAY')
-                {
-                    $counter += 1;
-                    \Log::info('value of counter '. $counter);
-                }
-            }
-        }
-    }
-
-    \Log::info('now value of counter '. $counter);
-    $counter +=1;
-    \Log::info('and now value of counter '. $counter);
-    $total = $counter - 2;
-    return $total;
-});
-//});
-
-
-/*Route::get('newBase', function()
-{
-
-    \Maatwebsite\Excel\Excel::load(storage_path('attendance/' . $filename), function ($reader)
-    {
-        $rows = $reader->get(['name', 'code', 'date', 'in_time', 'out_time', 'status']);
-
-        foreach ($rows as $row)
-        {
-
-        }
-});*/
 
