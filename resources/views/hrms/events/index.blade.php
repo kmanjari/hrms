@@ -11,38 +11,18 @@
         <div class="topbar-left">
             <ol class="breadcrumb">
                 <li class="breadcrumb-icon">
-                    <a href="dashboard1.html">
+                    <a href="/dashboard">
                         <span class="fa fa-home"></span>
                     </a>
                 </li>
                 <li class="breadcrumb-active">
-                    <a href="dashboard1.html">Dashboard</a>
+                    <a href="/dashboard">Dashboard</a>
                 </li>
                 <li class="breadcrumb-link">
-                    <a href="index.html">Home</a>
+                    <a href=""> Home </a>
                 </li>
-                <li class="breadcrumb-current-item">Basic Calendar</li>
+                <li class="breadcrumb-current-item">Events</li>
             </ol>
-        </div>
-        <div class="topbar-right">
-            <div class="ib topbar-dropdown">
-                <label for="topbar-multiple" class="control-label">Reporting Period</label>
-                <select id="topbar-multiple" class="hidden">
-                    <optgroup label="Filter By:">
-                        <option value="1-1">Last 30 Days</option>
-                        <option value="1-2" selected="selected">Last 60 Days</option>
-                        <option value="1-3">Last Year</option>
-                    </optgroup>
-                </select>
-            </div>
-            <div class="ml15 ib va-m" id="sidebar_right_toggle">
-                <div class="navbar-btn btn-group btn-group-number mv0">
-                    <button class="btn btn-sm btn-default btn-bordered prn pln">
-                        <i class="fa fa-bar-chart fs22 text-default"></i>
-                    </button>
-                    <button class="btn btn-primary btn-sm btn-bordered hidden-xs"> 3</button>
-                </div>
-            </div>
         </div>
     </header>
     <!-- -------------- /Topbar -------------- -->
@@ -68,7 +48,7 @@
                 <div class="inline-mp minimal-mp center-block"></div>
             </div>
 
-            <h5 class="mt25 ml5"> Events
+            <h5 class="mt25 ml5"> Add Events
                 <a id="compose-event-btn" href="#calendarManagment" data-effect="mfp-flipInY">
                     <span class="fa fa-plus-square"></span>
                 </a>
@@ -100,34 +80,6 @@
                         <b>5:00pm </b>Meeting With John Doe
                     </div>
                 </div>
-                <div class='fc-event fc-event-info' data-event="info">
-                    <div class="fc-event-icon">
-                        <span class="fa fa-info"></span>
-                    </div>
-                    <div class="fc-event-desc">
-                        <b>6:00pm </b>Meeting With Jane Doe
-                    </div>
-                </div>
-
-                <h6 class="mt30 ml10 text-muted"> Reoccuring Events: </h6>
-
-                <div class='fc-event fc-event-alert event-recurring' data-event="alert">
-                    <div class="fc-event-icon">
-                        <span class="fa fa-bell"></span>
-                    </div>
-                    <div class="fc-event-desc">
-                        <b>1:00pm </b>Take medicine
-                    </div>
-                </div>
-                <div class='fc-event fc-event-system event-recurring' data-event="system">
-                    <div class="fc-event-icon">
-                        <span class="fa fa-bell"></span>
-                    </div>
-                    <div class="fc-event-desc">
-                        <b>8:00pm </b>Security Check
-                    </div>
-                </div>
-
             </div>
 
         </aside>
@@ -135,12 +87,13 @@
 
 
     </section>
+
     <!-- -------------- /Content -------------- -->
 
-    </section>
+
 
     <!-- -------------- Sidebar Right -------------- -->
-    <aside id="sidebar_right" class="nano affix">
+    {{--<aside id="sidebar_right" class="nano affix">
 
         <!-- -------------- Sidebar Right Content -------------- -->
         <div class="sidebar-right-wrapper nano-content">
@@ -216,7 +169,7 @@
                 </h6>
             </div>
         </div>
-    </aside>
+    </aside>--}}
     <!-- -------------- /Sidebar Right -------------- -->
 
 </div>
@@ -253,7 +206,7 @@
                     <div class="col-md-12">
                         <label for="firstname" class="field prepend-icon">
                             <select id="event_cordinater" class="form-control">
-                                <option value="">Event Coordinator</option>
+                                <option value=""> Event Coordinator </option>
                                 @foreach($coordinators as $coordinator)
                                 <option value="{{$coordinator['id']}}">{{$coordinator['name']}}</option>
                                 @endforeach
@@ -295,7 +248,7 @@
                 </div>
                 <!-- -------------- /section -------------- -->
 
-                <div class="section row">
+               {{-- <div class="section row">
                     <div class="col-xs-12">
                         <label class="field prepend-icon">
                         <textarea class="gui-textarea" id="event_description"
@@ -307,12 +260,12 @@
                             <strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span>
                         </label>
                     </div>
-                </div>
+                </div>--}}
                 <!-- -------------- /section -------------- -->
 
                 <!----------- progress bar ---------->
 
-                <div class="section row hidden" id="status-section">
+                {{--<div class="section row hidden" id="status-section">
                     Working
                 <div class="progress mt10 mbn">
                     <div class="progress-bar progress-bar-primary progress-bar-striped active mnw100"
@@ -322,7 +275,7 @@
                         <span class="sr-only">40% Complete (success)</span>
                     </div>
                 </div>
-                </div>
+                </div>--}}
 
                 <div class="section row hidden" id="message-section">
                     <div class="alert alert-info light alert-dismissable" id="alert-demo-1">

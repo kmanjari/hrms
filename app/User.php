@@ -49,4 +49,16 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function isCoordinator()
+    {
+        $userId = Auth::user()->id;
+        $userRole = UserRole::where('user_id', $userId)->first();
+        $roleIds = [1,2,5,7,8,9,10,14,16];
+        if(in_array($userRole->role_id, $roleIds) )
+        {
+            return true;
+        }
+        return false;
+    }
 }

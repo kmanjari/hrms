@@ -16,7 +16,7 @@
                     <a href="/dashboard"> Dashboard </a>
                 </li>
 
-                <li class="breadcrumb-current-item"> Attendance Manager</li>
+                <li class="breadcrumb-current-item"> Add Holiday</li>
             </ol>
         </div>
     </header>
@@ -36,7 +36,7 @@
                         <li>
                             <a class="btn btn-primary btn-gradient btn-alt btn-block item-active br-n" href="#login"
                                role="tab"
-                               data-toggle="tab"> Upload Attendance Sheet </a>
+                               data-toggle="tab"> Upload Holiday Sheet </a>
                         </li>
 
                         <li>
@@ -63,19 +63,27 @@
                         <div class="panel fluid-width">
 
                             @if(Session::has('flash_message'))
-                                <div class="alert alert-danger">
-                                    {{ Session::get('flash_message') }}
-                                </div>
-                            @endif
-                            @if(Session::has('flash_message1'))
                                 <div class="alert alert-success">
-                                    {{ Session::get('flash_message1') }}
+                                    {{ Session::get('flash_message') }}
                                 </div>
                             @endif
 
                             {!! Form::open(['class' => 'form-horizontal', 'files' => true]) !!}
                             <div class="panel-body pn mv12">
                                 <!-- -------------- /section -------------- -->
+
+                                <div class="section">
+                                    <label for="username" class="field prepend-icon"> <h6 > Description </h6> </label>
+                                    <input type="text" class="gui-input" name="description"
+                                           placeholder="Description">
+                                </div>
+
+                                <div class="section">
+                                    <div class="input-group">
+                                        <label for="date" class="field prepend-icon "> <h6> Select Date </h6></label>
+                                        <input type="text" id="datepicker1" class="gui-input fs13 select2-single form-control" name="date"/>
+                                    </div>
+                                </div>
 
                                 <div class="section">
                                     <label for="input002"><h6 > Upload File </h6></label>
@@ -127,10 +135,12 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">Name</td>
-                                            <td class="text-center">Description</td>
-                                            <td class="text-center">12/01/2016</td>
+                                        <?php $i =0;?>
+                                        @foreach($filenames as $holiday)
+                                            <td class="text-center">{{$i+=1}}</td>
+                                            <td class="text-center">{{$holiday->name}}</td>
+                                            <td class="text-center">{{$holiday->description}}</td>
+                                            <td class="text-center">{{$holiday->date}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group text-right">
                                                     <button type="button"
@@ -149,6 +159,7 @@
                                                 </div>
                                             </td>
                                         </tbody>
+                                        @endforeach
                                     </table>
                                 </div>
                             </div>

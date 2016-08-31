@@ -17,7 +17,7 @@
 </div>
 
 <!-- -------------- Sidebar Menu  -------------- -->
-<ul class="nav sidebar-menu">
+<ul class="nav sidebar-menu scrollable">
     <li class="active">
         <a class="accordion-toggle menu-open" href="/dashboard">
             <a href="/dashboard">
@@ -158,13 +158,22 @@
 
     <li>
         <a href="/add-holidays">
-            <span class="fa fa-dashboard"></span>
+            <span class="fa fa-bank"></span>
             <span class="sidebar-title">Add Holidays</span>
         </a>
     </li>
 @endif
 
     <li class="sidebar-label pt30"> Extras</li>
+
+    @if(Auth::user()->isCoordinator())
+    <li>
+        <a href="/create-event">
+            <span class="fa fa-calendar-o"></span>
+            <span class="sidebar-title"> Create  &nbsp Events </span>
+        </a>
+    </li>
+    @endif
     <li>
 
         <a href="/download-forms">
@@ -176,16 +185,10 @@
 
     <li>
         <a href="#">
-            <span class="fa fa-calendar-o"></span>
-            <span class="sidebar-title"> Calendar </span>
-        </a>
-    </li>
-
-    <li>
-        <a href="#">
             <span class="fa fa-book"></span>
             <span class="sidebar-title"> Documentation </span>
         </a>
     </li>
+    <p> &nbsp; </p>
 </ul>
 <!-- -------------- /Sidebar Menu  -------------- -->

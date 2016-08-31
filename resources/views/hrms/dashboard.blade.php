@@ -105,6 +105,80 @@
             </div>
 
 
+                <div class="col-md-12">
+                <h3 class="btn btn-primary mb10 mr5 notification" data-note-style="primary"> Upcoming Events </h3>
+                    {{--<h5 class="mt25 ml5"> Upcoming Events
+                        <a id="compose-event-btn" href="#" data-effect="mfp-flipInY">
+                            <span class="fa fa-plus-square"></span>
+                        </a>
+                    </h5>--}}
+
+                    <table class="table">
+                        <tr>
+                            <td width="33%">
+                                <div class='fc-event fc-event-primary' data-event="primary">
+                                <div class="fc-event-icon">
+                                    <span class="fa fa-exclamation"></span>
+                                </div>
+                                <div class="fc-event-desc blink" id="blink">
+                                    <b>12:00 pm </b> IT Meeting
+                                </div>
+                                    </div>
+                            </td>
+                            <td width="33%">
+                                <div class='fc-event fc-event-primary' data-event="primary">
+                                <div class="fc-event-icon">
+                                    <span class="fa fa-exclamation"></span>
+                                </div>
+                                <div class="fc-event-desc blink" id="blink">
+                                    <b>1:25 pm </b> Crawler Meeting
+                                </div>
+                                    </div>
+                            </td>
+                            <td width="33%">
+                                <div class='fc-event fc-event-primary' data-event="primary">
+                                <div class="fc-event-icon">
+                                    <span class="fa fa-exclamation"></span>
+                                </div>
+                                <div class="fc-event-desc blink" id="blink">
+                                    <b>4:00 pm </b> Meeting
+                                </div>
+                                    </div>
+                            </td>
+                        </tr>
+                    </table>
+                    {{--<div id="external-events" class="bg-dotted">
+                        <div class='fc-event fc-event-primary' data-event="primary">
+                            <div class="fc-event-icon">
+                                <span class="fa fa-exclamation"></span>
+                            </div>
+                            <div class="fc-event-desc">
+                                <b>1:25pm </b>Go to San Park
+                            </div>
+                        </div>
+                        <div class='fc-event fc-event-info' data-event="info">
+                            <div class="fc-event-icon">
+                                <span class="fa fa-info"></span>
+                            </div>
+                            <div class="fc-event-desc">
+                                <b>4:30pm </b>Meeting With Boss
+                            </div>
+                        </div>
+                        <div class='fc-event fc-event-info' data-event="info">
+                            <div class="fc-event-icon">
+                                <span class="fa fa-info"></span>
+                            </div>
+                            <div class="fc-event-desc">
+                                <b>5:00pm </b>Meeting With John Doe
+                            </div>
+                        </div>
+
+                    </div>--}}
+                    </div>
+
+
+
+
         </div>
         </div>
     </section>

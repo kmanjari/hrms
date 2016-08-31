@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttendanceFilenamesTable extends Migration
+class CreateHolidayFilenames extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateAttendanceFilenamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendance_filenames', function (Blueprint $table) {
+        Schema::create('holiday_filenames', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('description');
@@ -24,10 +24,10 @@ class CreateAttendanceFilenamesTable extends Migration
     /**
      * Reverse the migrations.
      *
-      * @return void
+     * @return void
      */
     public function down()
     {
-        Schema::drop('attendance_filenames');
+        //
     }
 }

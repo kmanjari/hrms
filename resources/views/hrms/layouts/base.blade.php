@@ -44,13 +44,25 @@
     @if(\Route::getFacadeRoot()->current()->uri() == 'add-team' || \Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
         <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
         @endif
-
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style type="text/css">
+        .blink {
+            color:mediumblue;
+        }
+
+        .blink_second {
+            color:red;
+        }
+
+        .blink_third {
+            color:yellow;
+        }
+    </style>
 </head>
 
 <body class="dashboard-page">
@@ -664,6 +676,45 @@
     <script src="/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 @endif
 
-    <script>$('#datetimepicker2').datetimepicker();</script>
+    <script>
+        $('#datetimepicker2').datetimepicker();
+
+
+        (function($) {
+            $.fn.blink = function(options) {
+                var defaults = {
+                    delay: 500
+                };
+                var options = $.extend(defaults, options);
+
+                return this.each(function() {
+                    var obj = $(this);
+                    setInterval(function() {
+                        if ($(obj).css("visibility") == "visible") {
+                            $(obj).css('visibility', 'hidden');
+                        }
+                        else {
+                            $(obj).css('visibility', 'visible');
+                        }
+                    }, options.delay);
+                });
+            }
+        }(jQuery))
+
+        /////////////////////////////////////////////
+
+        $(document).ready(function() {
+            $('.blink').blink(); // default is 500ms blink interval.
+            $('.blink_second').blink({
+                delay: 100
+            }); // causes a 100ms blink interval.
+            $('.blink_third').blink({
+                delay: 1500
+            }); // causes a 1500ms blink interval.
+        });
+
+        /////////////////////////////////////////////
+
+</script>
 </body>
 </html>

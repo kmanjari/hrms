@@ -6,6 +6,7 @@
   use App\LeaveDraft;
   use App\Models\Employee;
   use App\Models\Holiday;
+  use App\Models\HolidayFilenames;
   use App\Models\LeaveType;
   use App\Models\Team;
   use App\User;
@@ -489,10 +490,12 @@
 
     public function showHolidays()
     {
-      return view('hrms.leave.holiday');
+        $holidays = Holiday::paginate(10);
+        $filenames = HolidayFilenames::get();
+        return view('hrms.leave.holiday',compact('holidays', 'filenames'));
     }
 
-    public function processHolidays()
+    public function processHolidays(Request $request)
     {
       try
       {
@@ -502,11 +505,18 @@
           $allowedext = ["xlsx", "xls"];
           $extension = $file->getClientOriginalExtension();
           $filename = $file->getClientOriginalName();
+
+
           if(in_array($extension, $allowedext))
           {
 
             //move this file to storage path
             $file->move(storage_path('holidays/'), $filename);
+              $holiday = new HolidayFilenames();
+              $holiday->name = $filename;
+              $holiday->description = $request->description;
+              $holiday->date = date_format(date_create($request->date), 'Y-m-d');
+              $holiday->save();
 
           } else
           {
@@ -527,7 +537,7 @@
               $holiday->date_to = $row->date_to;
               $holiday->save();
             }
-
+              return redirect()->back()->with('flash_message', 'Holidays successfully added');
           });
         }
       }
@@ -535,6 +545,7 @@
       {
         \Log::info($e->getMessage());
         \Log::info($e->getLine());
+          return redirect()->back()->with('flash_message', $e->getMessage());
       }
     }
   }
