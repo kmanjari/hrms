@@ -35,7 +35,7 @@ class ImportAttendanceData
             {
                 if ($row->status == 'A')
                 {
-                  \Log::info(date_format(date_create($row->date), 'Y-m-d'));
+                    \Log::info(date_format(date_create($row->date), 'Y-m-d'));
                     \Log::info('absent');
                     $employee = Employee::where('code', $row->code)->first();
                     $userId = $employee->user_id;
@@ -43,13 +43,13 @@ class ImportAttendanceData
                     $day = covertDateToDay($row->date);
                     if ($day != 'SUNDAY' && $day != 'SATURDAY')
                     {
-                      \Log::info('day not saturday and sunday');
+                        \Log::info('day not saturday and sunday');
                         $employeeLeave = EmployeeLeaves::where('user_id', $userId)->where('date_from', '<=', $row->date)->where('date_to', '>=', $row->date)->first();
 
                         //we now check if we got result from the above query
                         if ($employeeLeave)
                         {
-                          \Log::info('found this date in employee leaves');
+                            \Log::info('found this date in employee leaves');
                             if ($employeeLeave->status == '1')
                             {
                                 $row->leave_status = 'Approved';
@@ -66,27 +66,30 @@ class ImportAttendanceData
                         }
                         else
                         {
-                          \Log::info('not found in employee leaves');
+                            \Log::info('not found in employee leaves');
                             $row->leave_status = 'Unplanned';
                         }
                     }
                     elseif ($day == 'SUNDAY')
                     {
-                      \Log::info('days is sunday');
+                        \Log::info('days is sunday');
                         $row->leave_status = 'It was Sunday ';
                     }
                     elseif($day == 'SATURDAY')
                     {
-                      \Log::info('day is saturday');
-                        $saturdays += 1;
+                        \Log::info('day is saturday');
+
                         if($saturdays < 3)
                         {
-                            \Log::info('greater than two');
+                            $saturdays +=1;
+                            \Log::info('less than three');
                             $lastMonth = date('m', strtotime('-1 month'));
                             $presentMonth = date('m');
                             $year = date('Y');
-                            $startDate = "$year-$lastMonth-26";
-                            $endDate = "$year-$presentMonth-25";
+                            $startDate = '2016-07-26';
+                            $endDate = '2016-08-25';
+                            /*$startDate = "$year-$lastMonth-26";
+                            $endDate = "$year-$presentMonth-25";*/
 
                             //check if this saturday falls between the leaves he has taken
                             $query = "SELECT date_from,date_to,status FROM `employee_leaves` WHERE `user_id` = $userId AND status='1' AND `date_from` BETWEEN '$startDate' AND '$endDate' AND `date_to` BETWEEN '$startDate' AND '$endDate'";
@@ -102,7 +105,7 @@ class ImportAttendanceData
                                 if(!in_array(date('Y-m-d', strtotime($row->date)), $dates))
                                 {
                                     \Log::info('Not in array');
-                                    $row->leave_status = 'Saturday Without Notice';
+                                    $row->leave_status = 'Weekly off';
                                 }
                                 else
                                 {
@@ -121,7 +124,7 @@ class ImportAttendanceData
                             $year = date('Y');
                             $startDate = "$year-$lastMonth-26";
                             $endDate = "$year-$presentMonth-25";
-
+                            \Log::info('before check entries ');
                             //check if this saturday falls between the leaves he has taken
                             $query = "SELECT date_from,date_to,status FROM `employee_leaves` WHERE `user_id` = $userId AND status='1' AND `date_from` BETWEEN '$startDate' AND '$endDate' AND `date_to` BETWEEN '$startDate' AND '$endDate'";
                             $results = \DB::select($query);
@@ -135,17 +138,23 @@ class ImportAttendanceData
                                     $dates[] = $this->createDateRangeArray($result->date_from, $result->date_to);
                                 }
                                 \Log::info('date '. date('Y-m-d',strtotime($row->date)));
-                                if(!in_array(date('Y-m-d', strtotime($row->date)), $dates))
+                                if(in_array(date('Y-m-d', strtotime($row->date)), $dates))
+                                {
+                                    $saturdays += 1;
+                                $row->leave_status = 'Sanctioned Leave';
+                                }
+                                elseif(!in_array(date('Y-m-d', strtotime($row->date)), $dates))
                                 {
                                     \Log::info('Not in array');
-                                    $row->leave_status = 'Saturday Without Notice';
+                                    $saturdays += 1;
+                                    $row->leave_status = 'Weekly off';
                                 }
                                 else
                                 {
-                                    $row->leave_status = 'Sanctioned Leave';
+                                    $saturdays += 1;
+                                    $row->leave_status = 'Unplanned';
                                 }
                             }
-
                         }
                     }
 
