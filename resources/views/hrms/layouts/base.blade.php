@@ -591,6 +591,7 @@
 
 <!-- -------------- jQuery -------------- -->
 <script src="/assets/js/jquery/jquery-1.11.3.min.js"></script>
+{{--<script src="/assets/js/jquery/jquery-2.2.4.min.js"></script>--}}
 <script src="/assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
 
 <!-- -------------- HighCharts Plugin -------------- -->
