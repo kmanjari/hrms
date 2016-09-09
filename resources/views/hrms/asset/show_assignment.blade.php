@@ -51,6 +51,7 @@
                                         <th class="text-center">Id</th>
                                     <th class="text-center">Employee</th>
                                     <th class="text-center">Asset</th>
+                                        <th class="text-center">Issuing Authority</th>
                                     <th class="text-center">Date of Assignment</th>
                                     <th class="text-center">Date of Release</th>
                                     <th class="text-center">Actions</th>
@@ -63,6 +64,7 @@
                                         <td class="text-center">{{$i+=1}}</td>
                                         <td class="text-center">{{$asset->employee->name}}</td>
                                         <td class="text-center">{{$asset->asset->name}}</td>
+                                        <td class="text-center">{{$asset->authority->name}}</td>
                                         <td class="text-center">{{getFormattedDate($asset->date_of_assignment)}}</td>
                                         <td class="text-center">{{getFormattedDate($asset->date_of_release)}}</td>
                                         <td class="text-center">

@@ -53,6 +53,7 @@
                                         <th class="text-center">Date From</th>
                                         <th class="text-center">Date To</th>
                                         <th class="text-center">Days</th>
+                                        <th class="text-center">Remarks</th>
                                         <th class="text-center">Status</th>
                                     </tr>
                                     </thead>
@@ -65,6 +66,7 @@
                                             <td class="text-center">{{getFormattedDate($leave->date_from)}}</td>
                                             <td class="text-center">{{getFormattedDate($leave->date_to)}}</td>
                                             <td class="text-center">{{$leave->days}}</td>
+                                            <td class="text-center"></td>
                                             <td class="text-center">
                                                 <div class="btn-group text-right">
                                                     @if($leave->status==0)

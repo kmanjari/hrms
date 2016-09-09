@@ -412,7 +412,7 @@
                                         <label for="input002"><h6 class="mb20 mt40">Employee Name </h6></label>
                                         <label for="input002" class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="text" name="emp_name" id="emp_name" class="gui-input"
+                                                <input type="text" name="emp_name" id`="emp_name" class="gui-input"
                                                        value="@if($emps && $emps->name){{$emps->name}}@endif">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-user"></i>
@@ -552,28 +552,25 @@
                                         </label>
                                     </div>
 
-
-                                    <div class="section">
+                                    <div class="section" id="qualification_select">
                                         <label for="input002"><h6 class="mb20 mt40"> Qualification </h6></label>
-                                        <label for="input002" class="field prepend-icon">
-                                            @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="text" name="qualification" id="qualification"
-                                                       class="gui-input"
-                                                       value="@if($emps && $emps->qualification){{$emps->qualification}}@endif">
-                                                <label for="input002" class="field-icon">
-                                                    <i class="fa fa-book"></i>
-                                                </label>
+                                        @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
+                                        {!! Form::select('qualification',qualification(), $emps->qualification,['class' => 'select2-single form-control', 'id' => 'qualification']) !!}
                                             @else
-                                                <input type="text" name="qualification" id="qualification"
-                                                       class="gui-input"
-                                                       placeholder="qualification">
-                                                <label for="input002" class="field-icon">
-                                                    <i class="fa fa-book"></i>
-                                                </label>
+                                            {!! Form::select('qualification', qualification(),'',['class' => 'select2-single form-control', 'id' => 'qualification']) !!}
                                             @endif
-                                        </label>
                                     </div>
 
+
+                                    <div id="qualification_text" class="section hidden">
+                                        <label for="input002"><h6 class="mb20 mt40"> Qualification </h6></label>
+                                        <label for="input002" class="field prepend-icon">
+                                              <input type="text" name="qualification" id="qualification_1">
+                                                <label for="input002" class="field-icon">
+                                                    <i class="fa fa-book"></i>
+                                                </label>
+                                        </label>
+                                    </div>
 
                                     <div class="section">
                                         <label for="input002"><h6 class="mb20 mt40"> Emergency Number </h6></label>
@@ -719,22 +716,34 @@
                                                         <option value="0" selected>0 days</option>
                                                         <option value="90">90 days</option>
                                                         <option value="180">180 days</option>
+                                                        <option value="Other">Other</option>
                                                     @elseif($emps->probation_period == '90')
                                                         <option value="0">0 days</option>
                                                         <option value="90" selected>90 days</option>
                                                         <option value="180">180 days</option>
-                                                    @else
+                                                        <option value="Other">Other</option>
+                                                    @elseif($emps->probation_period == '180')
                                                         <option value="0">0 days</option>
                                                         <option value="90">90 days</option>
                                                         <option value="180" selected>180 days</option>
+                                                        <option value="Other">Other</option>
+                                                     @else
+                                                        <option value="0">0 days</option>
+                                                        <option value="90">90 days</option>
+                                                        <option value="180">180 days</option>
+                                                        <option value="Other" selected>Other</option>
+
                                                     @endif
                                                 @else
                                                     <option value="0">0 days</option>
                                                     <option value="90">90 days</option>
                                                     <option value="180">180 days</option>
+                                                    <option value="Other">Other</option>
                                                 @endif
                                             </select>
+
                                     </div>
+
 
 
                                     <div class="section">
@@ -899,6 +908,24 @@
                                             @endif
                                         </label>
                                     </div>
+
+                                   <div class="section">
+                                       <label for="input002"><h6 class="mb20 mt40"> UN Number</h6></label>
+                                       <label for="input002" class="field prepend-icon">
+                                           @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
+                                              <input type="text" name="un_number" id="un_number" class="gui-input"
+                                              value="@if($emps && $emps->un_number){{$emps->un_number}}@endif">
+                                               <label for="input002" class="field-icon">
+                                                   <i class="fa fa-list"></i>
+                                               </label>
+                                           @else
+                                             <input type="text" placeholder="UN Number" name="un_number" id="un_number" class="gui-input">
+                                              <label for="input002" class="field-icon">
+                                                  <i class="fa fa-list"></i>
+                                              </label>
+                                           @endif
+                                       </label>
+                                   </div>
 
 
                                     <div class="section">
@@ -1167,6 +1194,7 @@
 
         <!-- -------------- Select2 JS -------------- -->
 <script src="assets/js/plugins/select2/select2.min.js"></script>
+<script src="assets/js/function.js"></script>
 
 
 <!-- -------------- /Scripts -------------- -->

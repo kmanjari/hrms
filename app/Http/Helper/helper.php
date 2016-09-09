@@ -171,3 +171,21 @@ function convertAttendanceFrom($status)
     ];
     return $data[$status];
 }
+
+function qualification()
+{
+    $data = [
+        'B.Com' => 'B.Com',
+        'B.Sc' => 'B.Sc',
+        'BCA' => 'BCA',
+        'MCA' => 'MCA',
+        'BCA+MCA' => 'BCA+MCA',
+        'BBA' => 'BBA',
+        'MBA' => 'MBA',
+        'BBA+MBA' => 'BBA+MBA',
+        'Engineering(B.Tech)' => 'Engineering(B.Tech)',
+        'Engineering(B.Tech+M.Tech)' => 'Engineering(B.Tech+M.Tech)',
+        'Other' => 'Other',
+        ];
+    return $data;
+}

@@ -183,10 +183,10 @@ $(document).on('change', '.leave_type', function()
 $('#approveClick').click(function()
 {
     var leaveId = $(this).data('id');
-    console.log(leaveId);
     var token = $('#token').val();
-
-    $.post('/approve-leave', {'leaveId': leaveId, '_token' : token}, function(data)
+    $('#leaveId').val(leaveId);
+    $('#remarkModal').modal('show');
+    /*$.post('/approve-leave', {'leaveId': leaveId, '_token' : token}, function(data)
     {
         parsed = JSON.parse(data);
         if(parsed === 'success')
@@ -196,8 +196,28 @@ $('#approveClick').click(function()
             $('.modal-body').append('Leave approved');
             $('#notification-modal').modal('show');
         }
-    });
+    });*/
 
+});
+
+$('#proceed-button').click(function(){
+    console.log('please wait processing...');
+    var remarks = $('#remark-text').val();
+    console.log('remarks ' + remarks);
+    var leaveId = $('#leaveId').val();
+
+    $.post('/approve-leave', {'leaveId': leaveId, 'remarks' : remarks, '_token' : token}, function(data)
+     {
+     parsed = JSON.parse(data);
+     if(parsed === 'success')
+     {
+     $('#modal-header').attr('class', 'modal-header modal-header-success');
+     $('.modal-title').append('Success');
+     $('.modal-body').append('Leave approved');
+     $('#notification-modal').modal('show');
+     }
+     });
+    console.log('processed');
 });
 
 $('#disapproveClick').click(function()
@@ -261,6 +281,44 @@ $('#create-event').click(function()
     });
 
 });
+
+$('#create-meeting').click(function()
+{
+    $('#status-section').removeClass('hidden');
+    var name = $('#meeting_name').val();
+    var coordinator = $('#meeting_cordinater').val();
+    var attendees = $('#meeting_attendees').val();
+    var date = $('#date_time').val();
+    var message = $('#meeting_description').val();
+    var token = $('#token').val();
+
+    $.post('create-meeting', {'name' : name, 'coordinator' : coordinator, 'attendees' : attendees, 'date' : date, 'message' : message, '_token' : token}, function(data)
+    {
+        $('#status-section').addClass('hidden');
+        $('#message-section').removeClass('hidden');
+        var parsed = JSON.parse(data);
+
+        if(parsed === 'success')
+        {
+            alert(parsed);
+        }
+    });
+
+});
+
+$('#qualification').change(function()
+{
+    console.log('changed');
+    var qualification = $('qualification').val();
+
+    if(qualification == 'Other')
+    {
+        $('#qualification_select').addClass('hidden');
+        $('#qualification_text').removeClass('hidden');
+    }
+    /*else $('#qualification').show();*/
+});
+
 
 /*
 var number = 10;

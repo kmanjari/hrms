@@ -58,7 +58,7 @@ class Wish extends Command
             <br /> <br />
             <img src='http://shetakesontheworld.com/wp-content/uploads/2012/01/shutterstock_59781901.jpg'>
             <br /><br />
-            Regards, <br /><br /> Digital IP Insights Pvt. Ltd. ";
+            Best Wishes, <br /><br /> Digital IP Insights Pvt. Ltd. ";
             $this->mailer->send('hrms.wishes.birthday', ['body' => $body], function($message) use($user, $subject)
             {
                 $message->from('hr@dipi-ip.com', 'Digital IP Insights Pvt Ltd');
@@ -75,7 +75,7 @@ class Wish extends Command
             <br /> <br />
             <img src='http://ak.imgag.com/imgag/product/postcards/3397536/550x400xgraphic1.jpg.pagespeed.ic.G_VtKZOtwJ.jpg'>
             <br /><br />
-            Regards, <br /><br /> Digital IP Insights Pvt. Ltd. ";
+            Best Wishes, <br /><br /> Digital IP Insights Pvt. Ltd. ";
             $this->mailer->send('hrms.wishes.anniversary', ['body' => $body], function($message) use($emp, $subject)
             {
                 $message->from('hr@dipi-ip.com', 'Digital IP Insights Pvt Ltd');

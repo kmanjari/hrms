@@ -109,6 +109,7 @@ class AssetController extends Controller
         $assignment = new AssignAsset();
         $assignment->user_id = $request->emp_id;
         $assignment->asset_id = $request->asset_id;
+        $assignment->authority_id = $request->authority_id;
         $assignment->date_of_assignment = date_format(date_create($request->doa), 'Y-m-d');
         $assignment->date_of_release = date_format(date_create($request->dor), 'Y-m-d');
         $assignment->save();
@@ -122,7 +123,7 @@ class AssetController extends Controller
      */
     public function showAssignment()
     {
-        $assets = AssignAsset::with(['employee', 'asset'])->paginate(5);
+        $assets = AssignAsset::with(['employee','authority', 'asset'])->paginate(5);
         return view('hrms.asset.show_assignment', compact('assets'));
     }
 
@@ -151,6 +152,7 @@ class AssetController extends Controller
         $assignment = AssignAsset::with(['employee', 'asset'])->where('id', $id)->first();
         $assignment->user_id = $request->emp_id;
         $assignment->asset_id = $request->asset_id;
+        $assignment->authority_id = $request->authority_id;
         $assignment->date_of_assignment = date_format(date_create($request->doa), 'Y-m-d');
         $assignment->date_of_release = date_format(date_create($request->dor), 'Y-m-d');
         $assignment->save();

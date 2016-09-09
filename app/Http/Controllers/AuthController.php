@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -49,7 +50,8 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        return view('hrms.dashboard');
+        $events = $this->convertToArray(Event::get());
+        return view('hrms.dashboard', compact('events'));
     }
 
     public function welcome()
@@ -127,4 +129,15 @@ class AuthController extends Controller
         }
 
     }
+
+    public function convertToArray($values)
+    {
+        $result = [];
+        foreach($values as $key => $value)
+        {
+            $result[$key] = $value;
+        }
+        return $result;
+    }
+
 }

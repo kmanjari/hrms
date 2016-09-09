@@ -165,12 +165,18 @@
 @endif
 
     <li class="sidebar-label pt30"> Extras</li>
+    <li>
+        <a href="/create-meeting">
+            <span class="fa fa-calendar-o"></span>
+            <span class="sidebar-title"> Meeting  &nbsp Invitation </span>
+        </a>
+    </li>
 
     @if(Auth::user()->isCoordinator())
     <li>
         <a href="/create-event">
             <span class="fa fa-calendar-o"></span>
-            <span class="sidebar-title"> Create  &nbsp Events </span>
+            <span class="sidebar-title"> Event  &nbsp Invitation </span>
         </a>
     </li>
     @endif

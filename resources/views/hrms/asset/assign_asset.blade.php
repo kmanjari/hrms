@@ -93,15 +93,23 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label"> Select Issuing Authority </label>
+                                            <div class="col-md-6">
+                                                <select class="select2-multiple form-control select-primary"
+                                                        name="authority_id">
+                                                    <option value="" selected>Select One</option>
+                                                    @foreach($emps as $emp)
+                                                        <option value="{{$emp->id}}">{{$emp->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
 
                                         <div class="form-group">
                                         <label for="datepicker1" class="col-md-3 control-label"> Date of Assignment </label>
                                             <div class="col-md-6">
-                                                {{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
-                                                <input type="date" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->doa){{$emps->doa}}@endif"/>
-                                                @else
-                                                <input type="date" id="datepicker1" class="select2-single form-control" name="doa"/>
-                                                @endif--}}
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar text-alert pr11"></i>

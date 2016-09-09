@@ -92,6 +92,7 @@
                                         <th class="text-center">Date From</th>
                                         <th class="text-center">Date To</th>
                                         <th class="text-center">Days</th>
+                                        <th class="text-center">Remarks</th>
                                         <th class="text-center">Status</th>
                                     </tr>
                                     </thead>
@@ -106,6 +107,7 @@
                                             <td class="text-center">{{getFormattedDate($leave->date_from)}}</td>
                                             <td class="text-center">{{getFormattedDate($leave->date_to)}}</td>
                                             <td class="text-center">{{$leave->days}}</td>
+                                            <td class="text-center"></td>
                                             <input type="hidden" value="{!! csrf_token() !!}" id="token">
                                             <td class="text-center">
                                                 <div class="btn-group text-right">
@@ -173,6 +175,30 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <!-- Modal -->
+    <div id="remarkModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Remark</h4>
+                </div>
+                <div class="modal-body">
+                   <p>
+                       <textarea id="remark-text" class="form-control" placeholder="Remarks"></textarea>
+                       <input type="hidden" id="leaveId" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="proceed-button">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- /Notification Modal -->
 </div>

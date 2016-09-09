@@ -72,6 +72,7 @@
       $emp->bank_name = $request->bank_name;
       $emp->ifsc_code = $request->ifsc_code;
       $emp->pf_account_number = $request->pf_account_number;
+        $emp->un_number = $request->un_number;
       $emp->pf_status = $request->pf_status;
       $emp->date_of_resignation = $request->dor;
       $emp->notice_period = $request->notice_period;
@@ -146,6 +147,7 @@
       $bank_name = $request->bank_name;
       $ifsc_code = $request->ifsc_code;
       $pf_account_number = $request->pf_account_number;
+        $un_number = $request->un_number;
       $pf_status = $request->pf_status;
       $dor = $request->date_of_resignation;
       $notice_period = $request->notice_period;
@@ -249,6 +251,10 @@
       {
         $edit->pf_account_number = $pf_account_number;
       }
+        if(!empty($un_number))
+        {
+            $edit->un_number = $un_number;
+        }
       if(!empty($pf_status))
       {
         $edit->pf_status = $pf_status;
@@ -299,7 +305,7 @@
       {
         Excel::load($file, function ($reader)
         {
-          $rows = $reader->get(['emp_name', 'emp_code', 'emp_status', 'role', 'gender', 'dob', 'doj', 'mob_number', 'qualification', 'emer_number', 'pan_number', 'father_name', 'address', 'permanent_address', 'formalities', 'offer_acceptance', 'prob_period', 'doc', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number', 'pf_status', 'dor', 'notice_period', 'last_working_day', 'full_final']);
+          $rows = $reader->get(['emp_name', 'emp_code', 'emp_status', 'role', 'gender', 'dob', 'doj', 'mob_number', 'qualification', 'emer_number', 'pan_number', 'father_name', 'address', 'permanent_address', 'formalities', 'offer_acceptance', 'prob_period', 'doc', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number','un_number', 'pf_status', 'dor', 'notice_period', 'last_working_day', 'full_final']);
 
           foreach($rows as $row)
           {
@@ -456,6 +462,13 @@
             {
               $attachment->pf_account_number = $row->pf_account_number;
             }
+              if(empty($row->un_number))
+              {
+                  $attachment->un_number = 'Not Exist';
+              } else
+              {
+                  $attachment->un_number = $row->un_number;
+              }
             if(empty($row->pf_status))
             {
               $attachment->pf_status = '1';
@@ -545,7 +558,7 @@
         $filePath = storage_path('exports/'). $fileName;
         $file = new \SplFileObject($filePath, "a");
         // Add header to csv file.
-        $headers = ['id', 'photo', 'code', 'name', 'status', 'gender', 'date_of_birth', 'date_of_joining', 'number', 'qualification', 'emergency_number', 'pan_number', 'father_name', 'current_address', 'permanent_address', 'formalities', 'offer_acceptance', 'probation_period', 'date_of_confirmation', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number', 'pf_status', 'date_of_resignation', 'notice_period', 'last_working_day', 'full_final', 'user_id', 'created_at', 'updated_at'];
+        $headers = ['id', 'photo', 'code', 'name', 'status', 'gender', 'date_of_birth', 'date_of_joining', 'number', 'qualification', 'emergency_number', 'pan_number', 'father_name', 'current_address', 'permanent_address', 'formalities', 'offer_acceptance', 'probation_period', 'date_of_confirmation', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number','un_number', 'pf_status', 'date_of_resignation', 'notice_period', 'last_working_day', 'full_final', 'user_id', 'created_at', 'updated_at'];
         $file->fputcsv($headers);
         foreach($emps as $emp)
         {
@@ -553,7 +566,7 @@
               $emp->id,
               ($emp->employee->photo)? $emp->employee->photo : 'Not available',
               $emp->employee->code,
-              $emp->employee->name, $emp->employee->status, $emp->employee->gender, $emp->employee->date_of_birth, $emp->employee->date_of_joining, $emp->employee->number, $emp->employee->qualification, $emp->employee->emergency_number, $emp->employee->pan_number, $emp->employee->father_name, $emp->employee->current_address, $emp->employee->permanent_address, $emp->employee->formalities, $emp->employee->offer_acceptance, $emp->employee->probation_period, $emp->employee->date_of_confirmation, $emp->employee->department, $emp->employee->salary, $emp->employee->account_number, $emp->employee->bank_name, $emp->employee->ifsc_code, $emp->employee->pf_account_number, $emp->employee->pf_status, $emp->employee->date_of_resignation, $emp->employee->notice_period, $emp->employee->last_working_day, $emp->employee->full_final]);
+              $emp->employee->name, $emp->employee->status, $emp->employee->gender, $emp->employee->date_of_birth, $emp->employee->date_of_joining, $emp->employee->number, $emp->employee->qualification, $emp->employee->emergency_number, $emp->employee->pan_number, $emp->employee->father_name, $emp->employee->current_address, $emp->employee->permanent_address, $emp->employee->formalities, $emp->employee->offer_acceptance, $emp->employee->probation_period, $emp->employee->date_of_confirmation, $emp->employee->department, $emp->employee->salary, $emp->employee->account_number, $emp->employee->bank_name, $emp->employee->ifsc_code, $emp->employee->pf_account_number,$emp->employee->un_number, $emp->employee->pf_status, $emp->employee->date_of_resignation, $emp->employee->notice_period, $emp->employee->last_working_day, $emp->employee->full_final]);
         }
 
         return response()->download(storage_path('exports/'). $fileName);

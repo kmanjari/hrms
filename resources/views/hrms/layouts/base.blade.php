@@ -650,7 +650,7 @@
 @endif
 
 
-@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
+@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave' )
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/function.js"></script>
 @endif
@@ -675,7 +675,10 @@
         <!-- -------------- DateTime JS -------------- -->
     <script src="/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 @endif
-
+@if(\Route::getFacadeRoot()->current()->uri() == 'create-meeting')
+    <!-- -------------- DateTime JS -------------- -->
+    <script src="/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+@endif
     <script>
         $('#datetimepicker2').datetimepicker();
 

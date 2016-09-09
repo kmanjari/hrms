@@ -63,6 +63,7 @@
                 var bank_name = $('#bank_name').val();
                 var ifsc_code = $('#ifsc_code').val();
                 var pf_account_number = $('#pf_account_number').val();
+                var un_number = $('#un_number').val();
                 var pf_status = $('#pf_status').val();
                 var datepicker6 = $('#datepicker6').val();
                 var notice_period = $('#notice_period').val();
@@ -74,9 +75,9 @@
                 var formData = new FormData();
 
                 formData.append('photo', photo.files[0], photo.value);
-                formData.append('name', emp_name);
-                formData.append('code', emp_code);
-                formData.append('status', emp_status);
+                formData.append('emp_name', emp_name);
+                formData.append('emp_code', emp_code);
+                formData.append('emp_status', emp_status);
                 formData.append('role', role);
                 formData.append('gender', gender);
                 formData.append('date_of_birth', datepicker1);
@@ -98,6 +99,7 @@
                 formData.append('bank_name', bank_name);
                 formData.append('ifsc_code', ifsc_code);
                 formData.append('pf_account_number', pf_account_number);
+                formData.append('un_number', un_number);
                 formData.append('pf_status', pf_status);
                 formData.append('date_of_resignation', datepicker6);
                 formData.append('notice_period', notice_period);

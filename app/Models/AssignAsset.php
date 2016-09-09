@@ -12,6 +12,11 @@ class AssignAsset extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function authority()
+    {
+        return $this->hasOne(User::class, 'id', 'authority_id');
+    }
+
     public function asset()
     {
         return $this->hasOne('\App\Models\Asset', 'id', 'asset_id');

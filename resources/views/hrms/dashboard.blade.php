@@ -74,7 +74,7 @@
                 </div>
             </div>
             @endif
-@if(!Auth::user()->isHR())
+                @if(!Auth::user()->isHR())
                 <div class="col-sm-6 col-xl-3">
                     <div class="panel panel-tile">
                         <div class="panel-body">
@@ -97,89 +97,35 @@
                             <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart6.png"
                                                             class="img-responsive mauto" alt=""/></div>
                             <div class="col-xs-7 pl5">
-                                <h3 class="text-muted"><a href="{{route('hr-policy')}}"> HR POLICY </a></h3>
+                                <h3 class="text-muted"><a href="{{route('hr-policy')}}"> HR POLICIES </a></h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
                 <div class="col-md-12">
                 <h3 class="btn btn-primary mb10 mr5 notification" data-note-style="primary"> Upcoming Events </h3>
-                    {{--<h5 class="mt25 ml5"> Upcoming Events
-                        <a id="compose-event-btn" href="#" data-effect="mfp-flipInY">
-                            <span class="fa fa-plus-square"></span>
-                        </a>
-                    </h5>--}}
-
+                @foreach (array_chunk($events, 3, true) as $results)
                     <table class="table">
                         <tr>
-                            <td width="33%">
+                            @foreach($results as $event)
+                            <td>
                                 <div class='fc-event fc-event-primary' data-event="primary">
                                 <div class="fc-event-icon">
                                     <span class="fa fa-exclamation"></span>
                                 </div>
                                 <div class="fc-event-desc blink" id="blink">
-                                    <b>12:00 pm </b> IT Meeting
+                                    <b>{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))->diffForHumans()}} </b> {{$event->name}}
                                 </div>
                                     </div>
                             </td>
-                            <td width="33%">
-                                <div class='fc-event fc-event-primary' data-event="primary">
-                                <div class="fc-event-icon">
-                                    <span class="fa fa-exclamation"></span>
-                                </div>
-                                <div class="fc-event-desc blink" id="blink">
-                                    <b>1:25 pm </b> Crawler Meeting
-                                </div>
-                                    </div>
-                            </td>
-                            <td width="33%">
-                                <div class='fc-event fc-event-primary' data-event="primary">
-                                <div class="fc-event-icon">
-                                    <span class="fa fa-exclamation"></span>
-                                </div>
-                                <div class="fc-event-desc blink" id="blink">
-                                    <b>4:00 pm </b> Meeting
-                                </div>
-                                    </div>
-                            </td>
+                            @endforeach
                         </tr>
                     </table>
-                    {{--<div id="external-events" class="bg-dotted">
-                        <div class='fc-event fc-event-primary' data-event="primary">
-                            <div class="fc-event-icon">
-                                <span class="fa fa-exclamation"></span>
-                            </div>
-                            <div class="fc-event-desc">
-                                <b>1:25pm </b>Go to San Park
-                            </div>
-                        </div>
-                        <div class='fc-event fc-event-info' data-event="info">
-                            <div class="fc-event-icon">
-                                <span class="fa fa-info"></span>
-                            </div>
-                            <div class="fc-event-desc">
-                                <b>4:30pm </b>Meeting With Boss
-                            </div>
-                        </div>
-                        <div class='fc-event fc-event-info' data-event="info">
-                            <div class="fc-event-icon">
-                                <span class="fa fa-info"></span>
-                            </div>
-                            <div class="fc-event-desc">
-                                <b>5:00pm </b>Meeting With John Doe
-                            </div>
-                        </div>
-
-                    </div>--}}
-                    </div>
-
-
-
-
-        </div>
-        </div>
-    </section>
+                    @endforeach
+               </div>
+             </div>
+           </div>
+         </section>
     @endsection

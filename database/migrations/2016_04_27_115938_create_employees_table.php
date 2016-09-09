@@ -38,6 +38,7 @@ class CreateEmployeesTable extends Migration
             $table->string('bank_name');
             $table->string('ifsc_code');
             $table->string('pf_account_number');
+            $table->string('un_number');
             $table->tinyInteger('pf_status');
             $table->date('date_of_resignation');
             $table->string('notice_period');

@@ -154,7 +154,8 @@
       $leave->leave_type_id = $request->leave_type;
       $leave->save();
 
-      $leaveType = LeaveType::where('id', $request->leave_type)->first();
+      $leaveType = LeaveType::where('id', $request
+          ->leave_type)->first();
 
 
       $emails[] = ['email' => env('HR_EMAIL'), 'name' => env('HR_NAME')];
@@ -226,13 +227,6 @@
       return redirect()->back();
     }
 
-    /**
-     * Convert a string such as "one hundred thousand" to 100000.00.
-     *
-     * @param string $data The numeric string.
-     *
-     * @return float or false on error
-     */
     function wordsToNumber($data)
     {
       // Replace all number words with an equivalent numeric value
@@ -460,16 +454,17 @@
     public function approveLeave(Request $request)
     {
       $leaveId = $request->leaveId;
+      $remarks = $request->remarks;
       $employeeLeave = EmployeeLeaves::where('id', $leaveId)->first();
       $user = User::where('id', $employeeLeave->user_id)->first();
-      $this->mailer->send('emails.leave_status', ['user' => $user, 'status' => 'approved', 'leave' => $employeeLeave], function($message) use($user)
+      $this->mailer->send('emails.leave_status', ['user' => $user, 'status' => 'approved', 'remarks' => $remarks ,'leave' => $employeeLeave], function($message) use($user)
       {
         $message->from('no-reply@dipi-ip.com', 'Digital IP Insights');
         $message->to($user->email,$user->name)->subject('Your leave has been approved');
       });
 
 
-      \DB::table('employee_leaves')->where('id', $leaveId)->update(['status' => '1']);
+      \DB::table('employee_leaves')->where('id', $leaveId)->update(['status' => '1', 'remarks' => $remarks]);
       return json_encode('success');
     }
 

@@ -167,6 +167,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('create-event', 'EventController@index');
 
     Route::post('create-event', 'EventController@createEvent');
+
+    Route::get('create-meeting','EventController@meeting');
+
+    Route::post('create-meeting','EventController@createMeeting');
 });
 
 

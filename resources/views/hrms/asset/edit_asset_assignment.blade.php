@@ -65,13 +65,14 @@
                                         </div>
                                     @endif
                                     {!! Form::open(['class' => 'form-horizontal']) !!}
-                                    <div class="form-group">
+
+                                        <div class="form-group">
                                         <label class="col-md-3 control-label"> Select Employee </label>
                                         <div class="col-md-6">
                                             <select class="select2-multiple form-control select-primary"
                                                     name="emp_id">
                                                 @foreach($emps as $emp)
-                                                    @if($emp->id == $assigns->emp_id)
+                                                    @if($emp->id == $assigns->user_id)
                                                         <option value="{{$emp->id}}" selected>{{$emp->name}}</option>
                                                     @else
                                                         <option value="{{$emp->id}}">{{$emp->name}}</option>
@@ -98,6 +99,23 @@
                                             </select>
                                         </div>
                                     </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label"> Select Issuing Authority </label>
+                                            <div class="col-md-6">
+                                                <select class="select2-multiple form-control select-primary"
+                                                        name="authority_id">
+                                                    @foreach($emps as $emp)
+                                                        @if($emp->id == $assigns->authority_id)
+                                                            <option value="{{$emp->id}}" selected>{{$emp->name}}</option>
+                                                        @else
+                                                            <option value="{{$emp->id}}">{{$emp->name}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
 
 
                                     <div class="form-group">

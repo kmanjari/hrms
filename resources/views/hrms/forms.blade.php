@@ -10,55 +10,76 @@
             <div class="col-md-12">
 
                 <div class="panel bg-gradient">
-
+                      <h2 class="text-muted" style="text-align:center"> DOWNLOAD FORMS </h2>
                     <div class="mt40">
-                        <h2 class="text-muted mb20 mtn "> Download Forms </h2>
-
                         <div class="table-layout br-t">
                         <div class="row">
-                            <div class="col-md-6 fa-align-center">
-                                <h5 class="text-muted pl5 mt40 mb20">  </h5>
+                            <div class="col-md-4 fa-align-center">
+                                <h3> PF Forms  </h3><br />
                                 <ul class="fs15 list-splitter mb30">
                                     <li>
 
-                                        <h3><a class="link-unstyled" href="/download/Form10C.pdf" title="">
-                                            <i class="fa fa-cloud-download text-alert pr10"></i> PF Withdrawl Form </a></h3>
+                                        <h4><a class="link-unstyled" href="/download/Form10C.pdf" title="">
+                                            <i class="fa fa-cloud-download text-alert pr10"></i> Form1 </a></h4>
                                     </li>
                                     <li>
-                                        <h3><a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-cloud-download text-alert pr10"></i> Form2 </a></h3>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                            <i class="fa fa-cloud-download text-alert pr10"></i> Form2 </a></h4>
                                     </li>
                                     <li>
-                                        <h3><a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-cloud-download text-alert pr10"></i> Form3 </a></h3>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                            <i class="fa fa-cloud-download text-alert pr10"></i> Form3 </a></h4>
                                     </li>
                                     <li>
-                                        <h3><a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-cloud-download text-alert pr10"></i> Form4 </a></h3>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                            <i class="fa fa-cloud-download text-alert pr10"></i> Form4 </a></h4>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-md-6 fa-align-center">
-                                <h5 class="text-muted pl5 mt40 mb20">  </h5>
+                            <div class="col-md-4 fa-align-center">
+                                <h3> IT Declaration  </h3><br />
+                                <ul class="fs15 list-splitter mb30" >
+                                    <li>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                            <i class="fa fa-cloud-download text-success pr10"></i> Form5 </a></h4>
+                                    </li>
+                                    <li>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                            <i class="fa fa-cloud-download text-success pr10"></i> Form6 </a></h4>
+                                    </li>
+                                    <li>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                            <i class="fa fa-cloud-download text-success pr10"></i> Form7 </a></h4>
+                                    </li>
+                                    <li>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                            <i class="fa fa-cloud-download text-success pr10"></i> Form8 </a></h4>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 fa-align-center">
+                                <h3> Asset Declaration </h3><br />
                                 <ul class="fs15 list-splitter mb30">
                                     <li>
-                                        <h3><a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-cloud-download text-success pr10"></i> Form5 </a></h3>
+
+                                        <h4><a class="link-unstyled" href="/download/Form10C.pdf" title="">
+                                                <i class="fa fa-cloud-download text-alert pr10"></i> Form1 </a></h4>
                                     </li>
                                     <li>
-                                        <h3><a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-cloud-download text-success pr10"></i> Form6 </a></h3>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                                <i class="fa fa-cloud-download text-alert pr10"></i> Form2 </a></h4>
                                     </li>
                                     <li>
-                                        <h3><a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-cloud-download text-success pr10"></i> Form7 </a></h3>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                                <i class="fa fa-cloud-download text-alert pr10"></i> Form3 </a></h4>
                                     </li>
                                     <li>
-                                        <h3><a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-cloud-download text-success pr10"></i> Form8 </a></h3>
+                                        <h4><a class="link-unstyled" href="#" title="">
+                                                <i class="fa fa-cloud-download text-alert pr10"></i> Form4 </a></h4>
                                     </li>
                                 </ul>
                             </div>
+
                         </div>
                         </div>
                     </div>
