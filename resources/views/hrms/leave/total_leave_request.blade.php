@@ -107,10 +107,10 @@
                                             <td class="text-center">{{getFormattedDate($leave->date_from)}}</td>
                                             <td class="text-center">{{getFormattedDate($leave->date_to)}}</td>
                                             <td class="text-center">{{$leave->days}}</td>
-                                            <td class="text-center"></td>
+                                            <td class="text-center" id="remark-{{$leave->id}}">{{$leave->remarks}}</td>
                                             <input type="hidden" value="{!! csrf_token() !!}" id="token">
                                             <td class="text-center">
-                                                <div class="btn-group text-right">
+                                                <div class="btn-group text-right" id="button-{{$leave->id}}">
                                                     @if($leave->status==0)
                                                     <button type="button"
                                                             class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
@@ -119,10 +119,10 @@
                                                     </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
-                                                                <a id="approveClick" data-id="{{$leave->id}}">Approve</a>
+                                                                <a class="approveClick" data-id="{{$leave->id}}" data-name="approve">Approve</a>
                                                             </li>
                                                             <li>
-                                                                <a id="disapproveClick" data-id="{{$leave->id}}">Disapprove</a>
+                                                                <a class="disapproveClick" data-id="{{$leave->id}}" data-name="disapprove">Disapprove</a>
                                                             </li>
                                                         </ul>
                                                     @elseif($leave->status==1)
@@ -179,7 +179,6 @@
     <!-- Modal -->
     <div id="remarkModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -189,7 +188,15 @@
                 <div class="modal-body">
                    <p>
                        <textarea id="remark-text" class="form-control" placeholder="Remarks"></textarea>
-                       <input type="text" id="leave_id">
+                       <input type="hidden" id="leave_id">
+                        <input type="hidden" id="type">
+
+                       <div id="loader" class="hidden text-center">
+                         <img src="/photos/76.gif" />
+                       </div>
+                    <div id="status-message" class="hidden">
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="proceed-button">Proceed</button>
@@ -199,6 +206,7 @@
 
         </div>
     </div>
+
 
     <!-- /Notification Modal -->
 </div>

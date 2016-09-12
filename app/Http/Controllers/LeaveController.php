@@ -471,14 +471,15 @@
     public function disapproveLeave(Request $request)
     {
       $leaveId = $request->leaveId;
+      $remarks = $request->remarks;
       $employeeLeave = EmployeeLeaves::where('id', $leaveId)->first();
       $user = User::where('id', $employeeLeave->user_id)->first();
-      $this->mailer->send('emails.leave_status', ['user' => $user, 'status' => 'disapproved', 'leave' => $employeeLeave], function($message) use($user)
+      $this->mailer->send('emails.leave_status', ['user' => $user, 'status' => 'disapproved', 'remarks' => $remarks,'leave' => $employeeLeave], function($message) use($user)
       {
         $message->from('no-reply@dipi-ip.com', 'Digital IP Insights');
         $message->to($user->email,$user->name)->subject('Your leave has been disapproved');
       });
-      \DB::table('employee_leaves')->where('id', $leaveId)->update(['status'=> '2']);
+      \DB::table('employee_leaves')->where('id', $leaveId)->update(['status'=> '2', 'remarks' => $remarks]);
       return json_encode('success');
     }
 

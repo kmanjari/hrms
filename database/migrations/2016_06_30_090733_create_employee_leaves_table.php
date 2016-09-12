@@ -18,6 +18,7 @@ class CreateEmployeeLeavesTable extends Migration
             $table->integer('tl_id')->unsigned();
             $table->integer('manager_id')->unsigned();
             $table->integer('leave_type_id')->unsigned();
+            $table->intger('remarks');
             $table->date('date_from');
             $table->date('date_to');
             $table->time('from_time');
