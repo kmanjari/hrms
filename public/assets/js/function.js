@@ -183,37 +183,20 @@ $(document).on('change', '.leave_type', function()
 $('#approveClick').click(function()
 {
     var leaveId = $(this).data('id');
-    var token = $('#token').val();
     $('#leave_id').val(leaveId);
     $('#remarkModal').modal('show');
-    /*$.post('/approve-leave', {'leaveId': leaveId, '_token' : token}, function(data)
-    {
-        parsed = JSON.parse(data);
-        if(parsed === 'success')
-        {
-            $('#modal-header').attr('class', 'modal-header modal-header-success');
-            $('.modal-title').append('Success');
-            $('.modal-body').append('Leave approved');
-            $('#notification-modal').modal('show');
-        }
-    });*/
-
 });
 
 $('#proceed-button').click(function(){
-    console.log('please wait processing...');
     var remarks = $('#remark-text').val();
-    console.log('remarks ' + remarks);
     var leave_id = $('#leave_id').val();
     var token = $('#token').val();
 
-    console.log('leave id ' + leave_id);
     $.post('/approve-leave', {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
      {
      var parsed = JSON.parse(data);
      if(parsed === 'success')
      {
-         alert ('success');
 
      }
      });

@@ -189,7 +189,7 @@
                 <div class="modal-body">
                    <p>
                        <textarea id="remark-text" class="form-control" placeholder="Remarks"></textarea>
-                       <input type="text" id="leave_id">
+                       <input type="hidden" id="leave_id">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="proceed-button">Proceed</button>
