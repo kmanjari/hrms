@@ -687,7 +687,7 @@
         (function($) {
             $.fn.blink = function(options) {
                 var defaults = {
-                    delay: 500
+                    delay: 3000
                 };
                 var options = $.extend(defaults, options);
 
