@@ -154,9 +154,7 @@
       $leave->leave_type_id = $request->leave_type;
       $leave->save();
 
-      $leaveType = LeaveType::where('id', $request
-          ->leave_type)->first();
-
+      $leaveType = LeaveType::where('id', $request->leave_type)->first();
 
       $emails[] = ['email' => env('HR_EMAIL'), 'name' => env('HR_NAME')];
 
@@ -192,9 +190,20 @@
     }
 
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showAllLeave()
     {
-      $leaves = EmployeeLeaves::with('user.employee')->where('tl_id', \Auth::user()->id)->orWhere('manager_id', \Auth::user()->id)->paginate(15);
+      if(!\Auth::user()->isHR())
+      {
+        $leaves = EmployeeLeaves::with('user.employee')->where('tl_id', \Auth::user()->id)->orWhere('manager_id', \Auth::user()->id)->paginate(15);
+      }
+      else
+      {
+        $leaves = EmployeeLeaves::with('user.employee')->paginate(15);
+      }
+
       $column = '';
       $string = '';
       $dateFrom = '';
@@ -451,6 +460,11 @@
 
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
     public function approveLeave(Request $request)
     {
       $leaveId = $request->leaveId;
@@ -468,6 +482,11 @@
       return json_encode('success');
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return string
+     */
     public function disapproveLeave(Request $request)
     {
       $leaveId = $request->leaveId;
@@ -484,6 +503,9 @@
     }
 
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showHolidays()
     {
         $holidays = Holiday::paginate(10);
@@ -491,6 +513,11 @@
         return view('hrms.leave.holiday',compact('holidays', 'filenames'));
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function processHolidays(Request $request)
     {
       try
