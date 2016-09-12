@@ -92,8 +92,12 @@ $('#timepicker4').on('change', function () {
 
         var diff = moment.duration(moment(time_to).diff(moment(time_from)));
         diff = diff / 3600 / 1000;
-        if (diff <= 5) {
-            $('#total_days').val('Half day leave');
+        if (diff <= 3.5) {
+            $('#total_days').val('First half leave');
+        }
+        else if(diff > 3.5 && diff <5)
+        {
+            $('#total_days').val('Second half leave');
         }
         else if (diff > 5) {
             $('#total_days').val('Full day leave');
