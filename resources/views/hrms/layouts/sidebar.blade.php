@@ -133,6 +133,8 @@
                 <a href="{{route('leave-type-listing')}}">
                     <span class="fa fa-clipboard"></span> Leave Type Listings </a>
             </li>
+            @endif
+            @if(Auth::user()->isHR() || Auth::user()->isCoordinator())
             <li>
                 <a href="{{route('total-leave-list')}}">
                     <span class="fa fa-clipboard"></span> Total Leave Listings </a>
