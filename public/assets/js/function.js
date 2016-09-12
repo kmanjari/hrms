@@ -16,17 +16,16 @@ $('#datepicker4').on('change', function () {
         var timeDiff = Math.abs(new_date_to.getTime() - new_date_from.getTime());
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-
         if (diffDays == 0) {
             var time_from = date_from + ' ' + $('#timepicker1').val() + ':00';
             var time_to = date_to + ' ' + $('#timepicker4').val() + ':00';
 
             var diff = moment.duration(moment(time_to).diff(moment(time_from)));
             diff = diff / 3600 / 1000;
-            if (diff <= 5) {
+            if (diff <= 4) {
                 $('#total_days').val('Half day leave');
             }
-            else if (diff > 5) {
+            else if (diff > 4) {
                 $('#total_days').val('Full day leave');
             }
         }

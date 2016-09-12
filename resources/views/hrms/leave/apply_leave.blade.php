@@ -94,7 +94,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="imoon imoon-clock text-alert pr10"></i>
                                                 </div>
-                                                <input type="text" id="timepicker1" class="select2-single form-control "
+                                                <input type="text" id="timepicker1" class="select2-single form-control" value="9:30"
                                                        name="time_from"/>
                                             </div>
                                         </div>
@@ -104,7 +104,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="imoon imoon-clock text-alert pr10"></i>
                                                 </div>
-                                                <input type="text" id="timepicker4" class="select2-single form-control"
+                                                <input type="text" id="timepicker4" class="select2-single form-control" value="18:00"
                                                        name="time_to"/>
                                             </div>
                                         </div>
