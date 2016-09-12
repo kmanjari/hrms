@@ -169,14 +169,14 @@ $(document).on('change', '.leave_type', function()
     var leaveTypeId = $('.leave_type').val();
     var token = $('#token').val();
     var userId = $('#user_id').val();
-        $.post('/get-leave-count', {'leaveTypeId': leaveTypeId, '_token' : token, 'userId': userId}, function(data)
-        {
-            parsed = JSON.parse(data);
-            $('#show-leave-count').empty();
-            var html = "<div class=' col-md-5 alert alert-dark center-block '>Leaves &nbsp Remaining : "+parsed+"</div>";
-            $('#show-leave-count').append(html);
+    $.post('/get-leave-count', {'leaveTypeId': leaveTypeId, '_token' : token, 'userId': userId}, function(data)
+    {
+        parsed = JSON.parse(data);
+        $('#show-leave-count').empty();
+        var html = "<div class=' col-md-5 alert alert-dark center-block '>Leaves &nbsp Remaining : "+parsed+"</div>";
+        $('#show-leave-count').append(html);
 
-        });
+    });
 
 });
 
@@ -222,26 +222,26 @@ $('#proceed-button').click(function(){
 
     console.log('leave id ' + leave_id);
     $.post(url, {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
-     {
-     var parsed = JSON.parse(data);
-     if(parsed === 'success')
-     {
-         $('#loader').addClass('hidden');
-         var statusmessage = $('#status-message');
-         statusmessage.append("<div class='alert " + divClass+"'>" +message+ "</div>");
-         statusmessage.removeClass('hidden');
-         var remarks_div = $('#remark-'+leave_id);
-         remarks_div.append(remarks);
-         var leavebutton = $('#button-'+leave_id);
-         leavebutton.empty();
-         leavebutton.append("<button type='button' class='btn "+ buttonClass+" br2 btn-xs fs12' aria-expanded='false'><i class='fa "+ buttonIcon +"'>"+ buttonText +"</i> </button>");
-         setTimeout(function() {
-             $('#remarkModal').modal('hide');
-         },4000);
+    {
+        var parsed = JSON.parse(data);
+        if(parsed === 'success')
+        {
+            $('#loader').addClass('hidden');
+            var statusmessage = $('#status-message');
+            statusmessage.append("<div class='alert " + divClass+"'>" +message+ "</div>");
+            statusmessage.removeClass('hidden');
+            var remarks_div = $('#remark-'+leave_id);
+            remarks_div.append(remarks);
+            var leavebutton = $('#button-'+leave_id);
+            leavebutton.empty();
+            leavebutton.append("<button type='button' class='btn "+ buttonClass+" br2 btn-xs fs12' aria-expanded='false'><i class='fa "+ buttonIcon +"'>"+ buttonText +"</i> </button>");
+            setTimeout(function() {
+                $('#remarkModal').modal('hide');
+            },4000);
 
 
-     }
-     });
+        }
+    });
     console.log('processed');
 });
 
@@ -256,35 +256,35 @@ $('.disapproveClick').click(function()
 
 
 /*$('#proceed-button').click(function(){
-    $('#loader').removeClass('hidden');
-    console.log('please wait processing...');
-    var remarks = $('#remark-text').val();
-    console.log('remarks ' + remarks);
-    var leave_id = $('#leave_id').val();
-    var token = $('#token').val();
+ $('#loader').removeClass('hidden');
+ console.log('please wait processing...');
+ var remarks = $('#remark-text').val();
+ console.log('remarks ' + remarks);
+ var leave_id = $('#leave_id').val();
+ var token = $('#token').val();
 
-    console.log('leave id ' + leave_id);
-    $.post('/disapprove-leave', {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
-    {
-        var parsed = JSON.parse(data);
-        if(parsed === 'success')
-        {
-            $('#loader').addClass('hidden');
-            $('#status-message2').removeClass('hidden');
-            var remarks_div = $('#remark-'+leave_id);
-            remarks_div.append(remarks);
-            var leave_button = $('#button-'+leave_id);
-            leave_button.empty();
-            leave_button.append("<button type='button' class='btn btn-success br2 btn-xs fs12' aria-expanded='false'><i class='fa fa-check'> Disapproved </i> </button>");
-            setTimeout(function() {
-                $('#remarkModal2').modal('hide');
-            },4000);
+ console.log('leave id ' + leave_id);
+ $.post('/disapprove-leave', {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
+ {
+ var parsed = JSON.parse(data);
+ if(parsed === 'success')
+ {
+ $('#loader').addClass('hidden');
+ $('#status-message2').removeClass('hidden');
+ var remarks_div = $('#remark-'+leave_id);
+ remarks_div.append(remarks);
+ var leave_button = $('#button-'+leave_id);
+ leave_button.empty();
+ leave_button.append("<button type='button' class='btn btn-success br2 btn-xs fs12' aria-expanded='false'><i class='fa fa-check'> Disapproved </i> </button>");
+ setTimeout(function() {
+ $('#remarkModal2').modal('hide');
+ },4000);
 
 
-        }
-    });
-    console.log('processed');
-});*/
+ }
+ });
+ console.log('processed');
+ });*/
 
 
 $('#passwordForm').submit(function(event)
@@ -370,9 +370,9 @@ function FormSubmit(oForm) {
 
 
 /*
-var number = 10;
+ var number = 10;
 
-function doStuff() {
-    number = number +10;
-    $('.progress-bar').attr('aria-valuenow', number).css('width',number);
-}*/
+ function doStuff() {
+ number = number +10;
+ $('.progress-bar').attr('aria-valuenow', number).css('width',number);
+ }*/

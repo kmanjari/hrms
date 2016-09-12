@@ -38,30 +38,30 @@
                             <span class="panel-title hidden-xs"> Total Leave Lists </span><br />
                         </div><br />
                         <div class="panel-menu allcp-form theme-primary mtn">
-                             <div class="row">
+                            <div class="row">
                                 {!! Form::open() !!}
-                                  <div class="col-md-3">
+                                <div class="col-md-3">
                                     <input type="text" class="field form-control" placeholder="query string" style="height:40px" name="string" value="{{$string}}">
-                                  </div>
-                                   <div class="col-md-3">
-                                     <label class="field select">
-                                         {!! Form::select('column', getLeaveColumns(),$column) !!}
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="field select">
+                                        {!! Form::select('column', getLeaveColumns(),$column) !!}
                                         <i class="arrow double"></i>
                                     </label>
                                 </div>
 
-                                 <div class="col-md-3">
-                                     <input type="text" id="datepicker1" class="select2-single form-control"
-                                            name="dateFrom" value="{{$dateFrom}}" placeholder="date from"/>
-                                 </div>
-                                 <div class="col-md-3">
-                                     <input type="text" id="datepicker4" class="select2-single form-control"
-                                            name="dateTo" value="{{$dateTo}}" placeholder="date to"/>
-                                 </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="datepicker1" class="select2-single form-control"
+                                           name="dateFrom" value="{{$dateFrom}}" placeholder="date from"/>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" id="datepicker4" class="select2-single form-control"
+                                           name="dateTo" value="{{$dateTo}}" placeholder="date to"/>
+                                </div>
 
-                                 <div class="col-md-2"><br />
-                                     <input type="submit" value="Search" name="button" class="btn btn-primary">
-                                 </div>
+                                <div class="col-md-2"><br />
+                                    <input type="submit" value="Search" name="button" class="btn btn-primary">
+                                </div>
 
                                 <div class="col-md-2"><br />
                                     <input type="submit" value="Export" name="button" class="btn btn-success">
@@ -72,7 +72,7 @@
                                         <input type="submit" value="Reset" class="btn btn-warning"></a>
                                 </div>
 
-                             </div>
+                            </div>
                         </div>
                         <div class="panel-body pn">
                             @if(Session::has('flash_message'))
@@ -81,6 +81,7 @@
                                 </div>
                             @endif
 
+                            @if(count($leaves))
                             <div class="table-responsive">
                                 <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                     <thead>
@@ -112,11 +113,11 @@
                                             <td class="text-center">
                                                 <div class="btn-group text-right" id="button-{{$leave->id}}">
                                                     @if($leave->status==0)
-                                                    <button type="button"
-                                                            class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
-                                                            data-toggle="dropdown" aria-expanded="false"> Pending
-                                                        <span class="caret ml5"></span>
-                                                    </button>
+                                                        <button type="button"
+                                                                class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
+                                                                data-toggle="dropdown" aria-expanded="false"> Pending
+                                                            <span class="caret ml5"></span>
+                                                        </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
                                                                 <a class="approveClick" data-id="{{$leave->id}}" data-name="approve">Approve</a>
@@ -128,7 +129,7 @@
                                                     @elseif($leave->status==1)
                                                         <button type="button"
                                                                 class="btn btn-success br2 btn-xs fs12"
-                                                                 aria-expanded="false"><i class="fa fa-check"> Approved </i>
+                                                                aria-expanded="false"><i class="fa fa-check"> Approved </i>
 
                                                         </button>
                                                     @else
@@ -144,12 +145,17 @@
                                         </tr>
                                     @endforeach
                                     <tr><td colspan="8">
-                                        {!! $leaves->render() !!}
+                                            {!! $leaves->render() !!}
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
+                                @else
+                                <div class="row text-center">
+                                    <h2>No leaves to show</h2>
+                                </div>
+                                @endif
                         </div>
                     </div>
                 </div>
@@ -186,14 +192,14 @@
                     <h4 class="modal-title">Remark</h4>
                 </div>
                 <div class="modal-body">
-                   <p>
-                       <textarea id="remark-text" class="form-control" placeholder="Remarks"></textarea>
-                       <input type="hidden" id="leave_id">
+                    <p>
+                        <textarea id="remark-text" class="form-control" placeholder="Remarks"></textarea>
+                        <input type="hidden" id="leave_id">
                         <input type="hidden" id="type">
 
-                       <div id="loader" class="hidden text-center">
-                         <img src="/photos/76.gif" />
-                       </div>
+                    <div id="loader" class="hidden text-center">
+                        <img src="/photos/76.gif" />
+                    </div>
                     <div id="status-message" class="hidden">
 
                     </div>

@@ -194,7 +194,7 @@
 
     public function showAllLeave()
     {
-      $leaves = EmployeeLeaves::with('user.employee')->paginate(15);
+      $leaves = EmployeeLeaves::with('user.employee')->where('tl_id', \Auth::user()->id)->orWhere('manager_id', \Auth::user()->id)->paginate(15);
       $column = '';
       $string = '';
       $dateFrom = '';
