@@ -169,61 +169,123 @@ $(document).on('change', '.leave_type', function()
     var leaveTypeId = $('.leave_type').val();
     var token = $('#token').val();
     var userId = $('#user_id').val();
-        $.post('/get-leave-count', {'leaveTypeId': leaveTypeId, '_token' : token, 'userId': userId}, function(data)
-        {
-            parsed = JSON.parse(data);
-            $('#show-leave-count').empty();
-            var html = "<div class=' col-md-5 alert alert-dark center-block '>Leaves &nbsp Remaining : "+parsed+"</div>";
-            $('#show-leave-count').append(html);
-
-        });
-
-});
-
-$('#approveClick').click(function()
-{
-    var leaveId = $(this).data('id');
-    $('#leave_id').val(leaveId);
-    $('#remarkModal').modal('show');
-});
-
-$('#proceed-button').click(function(){
-    var remarks = $('#remark-text').val();
-    var leave_id = $('#leave_id').val();
-    var token = $('#token').val();
-
-    $.post('/approve-leave', {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
-     {
-     var parsed = JSON.parse(data);
-     if(parsed === 'success')
-     {
-
-     }
-     });
-    console.log('processed');
-});
-
-$('#disapproveClick').click(function()
-{
-
-    var leaveId = $(this).data('id');
-    console.log(leaveId);
-    var token =$('#token').val();
-
-    $.post('/disapprove-leave', {'leaveId': leaveId, '_token' : token}, function(data)
+    $.post('/get-leave-count', {'leaveTypeId': leaveTypeId, '_token' : token, 'userId': userId}, function(data)
     {
+        parsed = JSON.parse(data);
+        $('#show-leave-count').empty();
+        var html = "<div class=' col-md-5 alert alert-dark center-block '>Leaves &nbsp Remaining : "+parsed+"</div>";
+        $('#show-leave-count').append(html);
 
-        parsed =JSON.parse(data);
-        if(parsed === 'success')
-        {
-            $('#modal-header').attr('class', 'modal-header modal-header-success');
-            $('.modal-title').append('Success');
-            $('.modal-body').append('Leave disapproved');
-            $('#notification-modal').modal('show');
-        }
     });
 
 });
+
+$('.approveClick').click(function()
+{
+    var leaveId = $(this).data('id');
+    var type = $(this).data('name');
+    var token = $('#token').val();
+    $('#leave_id').val(leaveId);
+    $('#type').val(type);
+    $('#remarkModal').modal('show');
+
+});
+
+$('#proceed-button').click(function(){
+    $('#loader').removeClass('hidden');
+    console.log('please wait processing...');
+    var remarks = $('#remark-text').val();
+    var type = $('#type').val();
+    console.log('remarks ' + remarks);
+    var leave_id = $('#leave_id').val();
+    var token = $('#token').val();
+    var message = '';
+    var divClass = 'alert-success';
+    var url = '/approve-leave';
+    var buttonText = 'Approved';
+    var buttonClass = 'btn-success';
+    var buttonIcon = 'fa-check';
+
+    if(type == 'approve')
+    {
+        message = 'Successfully Approved';
+    }
+    else
+    {
+        message = 'Leave Rejected';
+        divClass = 'alert-danger';
+        url = '/disapprove-leave';
+        buttonText = 'Disapproved';
+        buttonClass = 'btn-danger';
+        buttonIcon = 'fa-times';
+    }
+
+    console.log('leave id ' + leave_id);
+    $.post(url, {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
+    {
+        var parsed = JSON.parse(data);
+        if(parsed === 'success')
+        {
+            $('#loader').addClass('hidden');
+            var statusmessage = $('#status-message');
+            statusmessage.append("<div class='alert " + divClass+"'>" +message+ "</div>");
+            statusmessage.removeClass('hidden');
+            var remarks_div = $('#remark-'+leave_id);
+            remarks_div.append(remarks);
+            var leavebutton = $('#button-'+leave_id);
+            leavebutton.empty();
+            leavebutton.append("<button type='button' class='btn "+ buttonClass+" br2 btn-xs fs12' aria-expanded='false'><i class='fa "+ buttonIcon +"'>"+ buttonText +"</i> </button>");
+            setTimeout(function() {
+                $('#remarkModal').modal('hide');
+            },4000);
+
+
+        }
+    });
+    console.log('processed');
+});
+
+$('.disapproveClick').click(function()
+{
+    var leaveId = $(this).data('id');
+    var token = $('#token').val();
+    $('#leave_id').val(leaveId);
+    $('#remarkModal').modal('show');
+
+});
+
+
+/*$('#proceed-button').click(function(){
+ $('#loader').removeClass('hidden');
+ console.log('please wait processing...');
+ var remarks = $('#remark-text').val();
+ console.log('remarks ' + remarks);
+ var leave_id = $('#leave_id').val();
+ var token = $('#token').val();
+
+ console.log('leave id ' + leave_id);
+ $.post('/disapprove-leave', {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
+ {
+ var parsed = JSON.parse(data);
+ if(parsed === 'success')
+ {
+ $('#loader').addClass('hidden');
+ $('#status-message2').removeClass('hidden');
+ var remarks_div = $('#remark-'+leave_id);
+ remarks_div.append(remarks);
+ var leave_button = $('#button-'+leave_id);
+ leave_button.empty();
+ leave_button.append("<button type='button' class='btn btn-success br2 btn-xs fs12' aria-expanded='false'><i class='fa fa-check'> Disapproved </i> </button>");
+ setTimeout(function() {
+ $('#remarkModal2').modal('hide');
+ },4000);
+
+
+ }
+ });
+ console.log('processed');
+ });*/
+
 
 $('#passwordForm').submit(function(event)
 {
@@ -289,24 +351,28 @@ $('#create-meeting').click(function()
 
 });
 
-$('#qualification').change(function()
-{
-    console.log('changed');
-    var qualification = $('qualification').val();
-
-    if(qualification == 'Other')
-    {
-        $('#qualification_select').addClass('hidden');
-        $('#qualification_text').removeClass('hidden');
+function DropDownChanged(oDDL) {
+    var oTextbox = oDDL.form.elements["qualification_text"];
+    if (oTextbox) {
+        oTextbox.style.display = (oDDL.value == "") ? "" : "none";
+        if (oDDL.value == "")
+            oTextbox.focus();
     }
-    /*else $('#qualification').show();*/
-});
+}
+
+function FormSubmit(oForm) {
+    var oHidden = oForm.elements["qualification"];
+    var oDDL = oForm.elements["qualification_list"];
+    var oTextbox = oForm.elements["qualification_text"];
+    if (oHidden && oDDL && oTextbox)
+        oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
+}
 
 
 /*
-var number = 10;
+ var number = 10;
 
-function doStuff() {
-    number = number +10;
-    $('.progress-bar').attr('aria-valuenow', number).css('width',number);
-}*/
+ function doStuff() {
+ number = number +10;
+ $('.progress-bar').attr('aria-valuenow', number).css('width',number);
+ }*/

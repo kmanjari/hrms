@@ -552,25 +552,34 @@
                                         </label>
                                     </div>
 
-                                    <div class="section" id="qualification_select">
+                                    {{--<div class="section" id="qualification_select">
                                         <label for="input002"><h6 class="mb20 mt40"> Qualification </h6></label>
                                         @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
                                         {!! Form::select('qualification',qualification(), $emps->qualification,['class' => 'select2-single form-control', 'id' => 'qualification']) !!}
                                             @else
                                             {!! Form::select('qualification', qualification(),'',['class' => 'select2-single form-control', 'id' => 'qualification']) !!}
                                             @endif
-                                    </div>
+                                    </div>--}}
 
 
-                                    <div id="qualification_text" class="section hidden">
+                                    <div class="section">
                                         <label for="input002"><h6 class="mb20 mt40"> Qualification </h6></label>
                                         <label for="input002" class="field prepend-icon">
-                                              <input type="text" name="qualification" id="qualification_1">
-                                                <label for="input002" class="field-icon">
-                                                    <i class="fa fa-book"></i>
-                                                </label>
-                                        </label>
+                                        <form onsubmit="FormSubmit(this);">
+                                        <input type="hidden" name="qualification" />
+                                        <select class="select2-single form-control" name="qualification_list" onchange="DropDownChanged(this);">
+                                            <option value="">Select</option>
+                                            <option value="apple">Edu1</option>
+                                            <option value="orange">Edu2</option>
+                                            <option value="melon">Edu3</option>
+                                            <option value="">Other</option>
+                                        </select>
+                                            <input type="text" name="qualification_text" class="gui-input phone-group" placeholder="enter other qualification"
+                                                   style="display: none;" />
+                                    </form>
+                                            </label>
                                     </div>
+
 
                                     <div class="section">
                                         <label for="input002"><h6 class="mb20 mt40"> Emergency Number </h6></label>
