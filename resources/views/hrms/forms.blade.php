@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section id="content" class="animated fadeIn ">
+    <section id="content" class="animated fadeIn">
 
         <div class="row">
 

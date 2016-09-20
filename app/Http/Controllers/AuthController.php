@@ -50,7 +50,7 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        $events = $this->convertToArray(Event::get());
+        $events = $this->convertToArray(Event::orderBy('date','desc')->take(3)->get());
         return view('hrms.dashboard', compact('events'));
     }
 

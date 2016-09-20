@@ -25,7 +25,7 @@ class ImportAttendanceData
     {
         Excel::load(storage_path('attendance/' . $filename), function ($reader)
         {
-            $rows = $reader->get(['name', 'code', 'date', 'in_time', 'out_time', 'status']);
+            $rows = $reader->get(['name', 'code', 'date', 'day','in_time', 'out_time', 'status']);
 
             $counter = 0;
             $saturdays = 0;
@@ -40,8 +40,8 @@ class ImportAttendanceData
                     $employee = Employee::where('code', $row->code)->first();
                     $userId = $employee->user_id;
 
-                    $day = covertDateToDay($row->date);
-                    if ($day != 'SUNDAY' && $day != 'SATURDAY')
+                    /*$day = covertDateToDay($row->date);*/
+                    if ($row->day != 'Sun' && $row->day != 'Sat')
                     {
                         \Log::info('day not saturday and sunday');
                         $employeeLeave = EmployeeLeaves::where('user_id', $userId)->where('date_from', '<=', $row->date)->where('date_to', '>=', $row->date)->first();
@@ -70,12 +70,12 @@ class ImportAttendanceData
                             $row->leave_status = 'Unplanned';
                         }
                     }
-                    elseif ($day == 'SUNDAY')
+                    elseif ($row->day == 'Sun')
                     {
                         \Log::info('days is sunday');
                         $row->leave_status = 'It was Sunday ';
                     }
-                    elseif($day == 'SATURDAY')
+                    elseif($row->day == 'Sat')
                     {
                         \Log::info('day is saturday');
 

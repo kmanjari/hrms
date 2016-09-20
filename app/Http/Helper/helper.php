@@ -175,6 +175,7 @@ function convertAttendanceFrom($status)
 function qualification()
 {
     $data = [
+        '' => 'Select one',
         'B.Com' => 'B.Com',
         'B.Sc' => 'B.Sc',
         'BCA' => 'BCA',

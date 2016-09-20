@@ -47,7 +47,12 @@
                 var datepicker1 = $('#datepicker1').val();
                 var datepicker4 = $('#datepicker4').val();
                 var mobile_phone = $('#mobile_phone').val();
-                var qualification = $('#qualification').val();
+                var qualification = $('.qualification_select').val();
+                if(qualification == 'Other')
+                {
+                    qualification = $('.qualification_text').val();
+                    console.log('my qualification' +qualification);
+                }
                 var emergency_number = $('#emergency_number').val();
                 var pan_number = $('#pan_number').val();
                 var father_name = $('#father_name').val();
@@ -56,6 +61,10 @@
                 var formalities = $('#formalities').val();
                 var offer_acceptance = $('#offer_acceptance').val();
                 var probation_period = $('#probation_period').val();
+                if(probation_period == 'Other')
+                {
+                    probation_period = $('.probation_text').val();
+                }
                 var datepicker5 = $('#datepicker5').val();
                 var department = $('#department').val();
                 var salary = $('#salary').val();

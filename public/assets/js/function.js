@@ -367,6 +367,31 @@ $('#create-meeting').click(function()
 
 });
 
+$(document).on('change', '#qualification', function()
+{
+    var value = $('.qualification_select').val();
+    if(value == 'Other') {
+        $('.qualification_text').removeClass('hidden');
+    }
+    else if(value != 'Other')
+    {
+        $('.qualification_text').addClass('hidden');
+    }
+});
+
+$(document).on('change', '#probation_period', function()
+{
+    var value = $('.probation_select').val();
+    if(value == 'Other') {
+        $('.probation_text').removeClass('hidden');
+    }
+    else if(value != 'Other')
+    {
+        $('.probation_text').addClass('hidden');
+    }
+});
+
+
 function DropDownChanged(oDDL) {
     var oTextbox = oDDL.form.elements["qualification_text"];
     if (oTextbox) {

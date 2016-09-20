@@ -8,8 +8,6 @@
   use App\Models\MeetingAttendee;
   use App\User;
   use Illuminate\Http\Request;
-
-  use App\Http\Requests;
   use Illuminate\Support\Facades\Mail;
 
   class EventController extends Controller {
@@ -31,7 +29,9 @@
 
       $users = User::get(['id', 'name']);
 
-      return view('hrms.events.index', compact('coordinators', 'users'));
+        $events = $this->convertToArray(Event::orderBy('date','desc')->take(9)->get());
+
+      return view('hrms.events.index', compact('coordinators', 'users', 'events'));
     }
 
     public function createEvent(Request $request)
@@ -90,8 +90,9 @@
         }
 
         $users = User::get(['id', 'name']);
+        $events = $this->convertToArray(Event::orderBy('date','desc')->take(9)->get());
 
-        return view('hrms.meeting.meeting_index', compact('coordinators', 'users'));
+        return view('hrms.meeting.meeting_index', compact('coordinators', 'users', 'events'));
     }
 
     public function createMeeting(Request $request)
@@ -138,5 +139,15 @@
       /**
        * @return string
        */
+
+      public function convertToArray($values)
+      {
+          $result = [];
+          foreach($values as $key => $value)
+          {
+              $result[$key] = $value;
+          }
+          return $result;
+      }
 
   }

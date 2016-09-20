@@ -105,7 +105,7 @@
             </div>
 
                 <div class="col-md-12">
-                <h3 class="btn btn-primary mb10 mr5 notification" data-note-style="primary"> Upcoming Events </h3>
+                <h3 class="btn btn-primary mb10 mr5 notification" data-note-style="primary"> Latest &nbsp; Events </h3>
                 @foreach (array_chunk($events, 3, true) as $results)
                     <table class="table">
                         <tr>

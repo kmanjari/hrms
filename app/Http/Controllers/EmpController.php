@@ -5,6 +5,7 @@
   use App\Models\Employee;
   use App\Models\EmployeeUpload;
   use App\Models\Role;
+  use App\Models\UserRole;
   use App\User;
   use Carbon\Carbon;
   use Illuminate\Support\Facades\Session;
@@ -55,34 +56,37 @@
       $emp->gender = $request->gender;
       $emp->date_of_birth = date_format(date_create($request->dob), 'Y-m-d');
       $emp->date_of_joining = date_format(date_create($request->doj), 'Y-m-d');
-      $emp->number = $request->mob_number;
+      $emp->number = $request->number;
       $emp->qualification = $request->qualification;
-      $emp->emergency_number = $request->emer_number;
+      $emp->emergency_number = $request->emergency_number;
       $emp->pan_number = $request->pan_number;
       $emp->father_name = $request->father_name;
-      $emp->current_address = $request->address;
+      $emp->current_address = $request->current_address;
       $emp->permanent_address = $request->permanent_address;
       $emp->formalities = $request->formalities;
       $emp->offer_acceptance = $request->offer_acceptance;
-      $emp->probation_period = $request->prob_period;
-      $emp->date_of_confirmation = date_format(date_create($request->doc), 'Y-m-d');
+      $emp->probation_period = $request->probation_period;
+      $emp->date_of_confirmation = date_format(date_create($request->date_of_confirmation), 'Y-m-d');
       $emp->department = $request->department;
       $emp->salary = $request->salary;
       $emp->account_number = $request->account_number;
       $emp->bank_name = $request->bank_name;
       $emp->ifsc_code = $request->ifsc_code;
       $emp->pf_account_number = $request->pf_account_number;
-        $emp->un_number = $request->un_number;
+      $emp->un_number = $request->un_number;
       $emp->pf_status = $request->pf_status;
-      $emp->date_of_resignation = $request->dor;
+      $emp->date_of_resignation = $request->date_of_resignation;
       $emp->notice_period = $request->notice_period;
       $emp->last_working_day = $request->last_working_day;
       $emp->full_final = $request->full_final;
       $emp->user_id = $user->id;
       $emp->save();
 
-      $emp->userrole()->create(['role_id' => $request->role]);
-      $emp->save();
+        $userRole = new UserRole();
+        $userRole->role_id = $request->role;
+        $userRole->user_id = $user->id;
+        $userRole->save();
+      //$emp->userrole()->create(['role_id' => $request->role]);
 
       return json_encode(['title' => 'Success', 'message' => 'Employee added successfully', 'class' => 'modal-header-success']);
 
@@ -90,7 +94,7 @@
 
     public function showEmployee()
     {
-      $emps = User::with('employee', 'role.role')->paginate(5);
+      $emps = User::with('employee', 'role.role')->paginate(15);
       $column = '';
       $string = '';
       return view('hrms.employee.show_emp', compact('emps', 'column', 'string'));
@@ -98,9 +102,10 @@
 
     public function showEdit($id)
     {
-      $emps = Employee::whereid($id)->with('userrole.role')->first();
-      $roles = Role::get();
+      //$emps = Employee::whereid($id)->with('userrole.role')->first();
+      $emps = User::where('id',$id)->with('employee', 'role.role')->first();
 
+      $roles = Role::get();
       return view('hrms.employee.add', compact('emps', 'roles'));
     }
 
@@ -154,7 +159,9 @@
       $last_working_day = $request->last_working_day;
       $full_final = $request->full_final;
 
-      $edit = Employee::findOrFail($id);
+      //$edit = Employee::findOrFail($id);
+        $edit = Employee::where('user_id', $id)->first();
+
       if(!empty($photo))
       {
         $edit->photo = $photo;
