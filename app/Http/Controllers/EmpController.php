@@ -75,9 +75,9 @@
       $emp->pf_account_number = $request->pf_account_number;
       $emp->un_number = $request->un_number;
       $emp->pf_status = $request->pf_status;
-      $emp->date_of_resignation = $request->date_of_resignation;
+      $emp->date_of_resignation = date_format(date_create($request->date_of_resignation), 'Y-m-d');
       $emp->notice_period = $request->notice_period;
-      $emp->last_working_day = $request->last_working_day;
+      $emp->last_working_day = date_format(date_create($request->last_working_day), 'Y-m-d');
       $emp->full_final = $request->full_final;
       $emp->user_id = $user->id;
       $emp->save();
@@ -154,9 +154,9 @@
       $pf_account_number = $request->pf_account_number;
         $un_number = $request->un_number;
       $pf_status = $request->pf_status;
-      $dor = $request->date_of_resignation;
+      $dor = date_format(date_create($request->date_of_resignation), 'Y-m-d');
       $notice_period = $request->notice_period;
-      $last_working_day = $request->last_working_day;
+      $last_working_day = date_format(date_create($request->last_working_day ), 'Y-m-d');
       $full_final = $request->full_final;
 
       //$edit = Employee::findOrFail($id);
