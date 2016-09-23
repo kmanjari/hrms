@@ -430,16 +430,15 @@
 
                                     <div class="section">
                                         <label for="input002"><h6 class="mb20 mt40">Employment Status </h6></label>
-
                                         <div class="option-group field">
                                             <label class="field option mb5">
                                                 @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
                                                 <input type="radio" name="emp_status" id="emp_status" value="1"
-                                                       @if(isset($emps))@if($emps->employee->status == '1')checked @endif @endif>
+                                                       @if(isset($emps))@if($emps->employee->status == '1') checked @endif @endif>
                                                 <span class="radio"></span>Present</label>
                                             <label class="field option mb5">
                                                 <input type="radio" name="emp_status" id="emp_status" value="0"
-                                                       @if(isset($emps))@if($emps->employee->status == '0')checked @endif @endif>
+                                                       @if(isset($emps))@if($emps->employee->status == '0') checked @endif @endif>
                                                 <span class="radio"></span>Ex</label>
                                             @else
                                                 <input type="radio" name="emp_status" id="emp_status" value="1">
@@ -447,7 +446,7 @@
                                                 <label class="field option mb5">
                                                     <input type="radio" name="emp_status" id="emp_status" value="0" checked>
                                                     <span class="radio"></span>Ex</label>
-                                                @endif
+                                            @endif
                                         </div>
                                     </div>
 
@@ -475,7 +474,6 @@
 
                                     <div class="section">
                                         <label for="input002"><h6 class="mb20 mt40"> Gender </h6></label>
-
                                         <div class="option-group field">
                                             <label class="field option mb5">
                                                 <input type="radio" value="0" name="gender" id="gender"
