@@ -25,7 +25,20 @@ class ImportAttendanceData
     {
         Excel::load(storage_path('attendance/' . $filename), function ($reader)
         {
-            $rows = $reader->get(['name', 'code', 'date', 'day','in_time', 'out_time', 'status']);
+            /**
+             * 'days', 3 letter day name
+             * 'date', DD/MM/YYYY
+             * 'shift', irrelevant
+             * 'in',  in time 09:29
+             * 'out', out time 18:00
+             * 'shift_late', 1.32 hours
+             * 'shift_early', 0.41 for 41 minutes
+             * 'hours_worked', 6.50 hours
+             * 'over_time', 1.20 hours
+             * 'status' A, MIS, P, WO
+             */
+
+            $rows = $reader->get(['name', 'code', 'date', 'days','in', 'out', 'hours_worked', 'over_time','status']);
 
             $counter = 0;
             $saturdays = 0;
