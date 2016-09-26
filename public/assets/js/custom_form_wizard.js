@@ -43,7 +43,7 @@
                 var emp_code = $('#emp_code').val();
                 var emp_status = $('#emp_status').val();
                 var role = $('#role').val();
-                var gender = $('#gender').val();
+                var gender = $('#gender:checked').val();
                 var datepicker1 = $('#datepicker1').val();
                 var datepicker4 = $('#datepicker4').val();
                 var mobile_phone = $('#mobile_phone').val();
@@ -53,6 +53,7 @@
                     qualification = $('.qualification_text').val();
                     console.log('my qualification' +qualification);
                 }
+                console.log('gender '+ gender);
                 var emergency_number = $('#emergency_number').val();
                 var pan_number = $('#pan_number').val();
                 var father_name = $('#father_name').val();
