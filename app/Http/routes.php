@@ -13,7 +13,6 @@
 
 //Route::group(['middleware' => ['web']], function () {
 
-
 Route::group(['middleware' => ['guest']], function () {
 
     Route::get('/', 'AuthController@showLogin');
@@ -173,5 +172,3 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('create-meeting','EventController@createMeeting');
 
 });
-
-
