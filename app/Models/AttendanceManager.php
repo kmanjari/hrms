@@ -42,11 +42,11 @@ class AttendanceManager extends Model
         $attendance = new AttendanceManager();
         $attendance->name = $row->name;
         $attendance->code = $row->code;
-        $attendance->date = date_format(date_create($row->date), 'Y-m-d');
+        $attendance->date = $row->date;//date_format(date_create($row->date), 'd/m/Y');
         $attendance->day = covertDateToDay($row->date);
-        $attendance->in_time = $row->in_time;
-        $attendance->out_time = $row->out_time;
-        $attendance->status = convertAttendanceTo($row->status);
+        $attendance->in_time = $row->in;
+        $attendance->out_time = $row->out;
+        $attendance->status = convertAttendanceTo(preg_replace('/\s+/', '', $row->status));
         $attendance->leave_status = $row->leave_status;
         $attendance->user_id = $user->user_id;
         $attendance->hours_worked = $hoursWorked;

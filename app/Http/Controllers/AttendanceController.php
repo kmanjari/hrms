@@ -50,14 +50,15 @@
         $file = Input::file('upload_file');
         $filename = $this->upload->File($file, $request->description, $request->date);
 
-        try {
+        //try {
           if($filename) {
             $this->attendanceData->Import($filename);
           }
-        } catch(\Exception $e) {
+        /*} catch(\Exception $e) {
           \Session::flash('flash_message1', $e->getMessage());
+          \Log::info($e->getLine(). ' '. $e->getFile());
           return redirect()->back();
-        }
+        }*/
       }
       else{
         return redirect()->back()->with('flash_message', 'Please choose a file to upload');
