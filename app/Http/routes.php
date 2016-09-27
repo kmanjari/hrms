@@ -172,33 +172,3 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('create-meeting','EventController@createMeeting');
 
 });
-
-
-Route::get('check-file', function()
-{
-    $location = storage_path('login.xlsx');
-    \Maatwebsite\Excel\Facades\Excel::load($location, function ($reader)
-    {
-
-        $reader->dump();
-        /*$results = $reader->select(array('date','days'))->get();
-        print_r('<pre>'. $results.'</pre>');*/
-        //$rows = $reader->get(['days', 'date', 'shift', 'in', 'out', 'shift_late', 'shift_early', 'hours_worked', 'over_time', 'status']);
-
-
-        /*foreach($rows as $row)
-        {
-            echo 'days '.$row->days. '<br />';
-            echo 'date '. $row->date. '<br />';
-            echo 'shift '. $row->shift. '<br />';
-            echo 'in '.$row->in. '<br />';
-            echo 'out '. $row->out. '<br />';
-            echo 'shift_late '. $row->shift_late. '<br />';
-            echo 'shift_early '. $row->shift_early. '<br />';
-            echo 'hours worked '.$row->hours_worked. '<br />';
-            echo 'over time '. $row->over_time. '<br />';
-            echo 'status '. $row->status. '<br />';
-
-        }*/
-    });
-});
