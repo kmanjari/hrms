@@ -18,13 +18,13 @@ class CreateEmployeeLeavesTable extends Migration
             $table->integer('tl_id')->unsigned();
             $table->integer('manager_id')->unsigned();
             $table->integer('leave_type_id')->unsigned();
-            $table->intger('remarks');
             $table->date('date_from');
             $table->date('date_to');
             $table->time('from_time');
             $table->time('to_time');
             $table->string('days');
             $table->tinyInteger('status')->default(0)->comment('0 = Unapproved, 1 = Approved');
+            $table->string('remarks');
             $table->string('reason');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('leave_type_id')->references('id')->on('leave_types')->onDelete('cascade');
