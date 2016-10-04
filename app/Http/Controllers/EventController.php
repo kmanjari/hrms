@@ -90,9 +90,9 @@
         }
 
         $users = User::get(['id', 'name']);
-        $events = $this->convertToArray(Event::orderBy('date','desc')->take(9)->get());
+        $meetings = $this->convertToArray(Meeting::orderBy('date','desc')->take(9)->get());
 
-        return view('hrms.meeting.meeting_index', compact('coordinators', 'users', 'events'));
+        return view('hrms.meeting.meeting_index', compact('coordinators', 'users', 'meetings'));
     }
 
     public function createMeeting(Request $request)

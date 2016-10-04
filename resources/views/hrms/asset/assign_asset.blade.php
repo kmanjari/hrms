@@ -69,7 +69,7 @@
                                             <label class="col-md-3 control-label"> Select Employee </label>
                                             <div class="col-md-6">
                                                 <select class="select2-multiple form-control select-primary"
-                                                        name="emp_id">
+                                                        name="emp_id" required>
                                                     <option value="" selected>Select One</option>
                                                     @foreach($emps as $emp)
                                                         <option value="{{$emp->id}}">{{$emp->name}}</option>
@@ -84,7 +84,7 @@
                                             <label class="col-md-3 control-label"> Select Asset </label>
                                             <div class="col-md-6">
                                                 <select class="select2-multiple form-control select-primary"
-                                                        name="asset_id">
+                                                        name="asset_id" required>
                                                     <option value="" selected>Select One</option>
                                                     @foreach($assets as $asset)
                                                         <option value="{{$asset->id}}">{{$asset->name}}</option>
@@ -97,7 +97,7 @@
                                             <label class="col-md-3 control-label"> Select Issuing Authority </label>
                                             <div class="col-md-6">
                                                 <select class="select2-multiple form-control select-primary"
-                                                        name="authority_id">
+                                                        name="authority_id" required>
                                                     <option value="" selected>Select One</option>
                                                     @foreach($emps as $emp)
                                                         <option value="{{$emp->id}}">{{$emp->name}}</option>
@@ -115,9 +115,9 @@
                                                             <i class="fa fa-calendar text-alert pr11"></i>
                                                         </div>
                                                         @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
-                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->date_of_assignment){{$emps->date_of_assignment}}@endif"/>
+                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->date_of_assignment){{$emps->date_of_assignment}}@endif" required>
                                                         @else
-                                                            <input type="text" id="datepicker1" class="select2-single form-control" name="doa"/>
+                                                            <input type="text" id="datepicker1" class="select2-single form-control" name="doa" required>
                                                             @endif
                                                     </div>
                                             </div>
@@ -142,9 +142,9 @@
                                                         <i class="fa fa-calendar text-alert pr11"></i>
                                                     </div>
                                                     @if(\Route::getFacadeRoot()->current()->uri() == 'edit-assignment/{id}')
-                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor" value="@if($emps && $emps->date_of_assignment){{$emps->date_of_assignment}}@endif"/>
+                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor" value="@if($emps && $emps->date_of_assignment){{$emps->date_of_assignment}}@endif" required>
                                                     @else
-                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor"/>
+                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="dor" required>
                                                     @endif
                                                 </div>
                                             </div>

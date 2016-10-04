@@ -42,12 +42,8 @@ class ImportAttendanceData
 
             $counter = 0;
             $saturdays = 0;
-            $totalSaturdaysBetweenDates = 0;
-            $saturdayWithoutNotice = 0;
             foreach($rows as $row)
             {
-                $myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
-                $row->date = $myDateTime->format('Y-m-d');
                 if($row->status == 'A')
                 {
                     //check if user has applied for leave on this day
@@ -82,7 +78,7 @@ class ImportAttendanceData
                     {
                         if($row->days == 'Sat')
                         {
-                            if($saturdays < 2)
+                            if($saturdays < 2 )
                             {
                                 \Log::info('less than 2 saturdays');
                                 $saturdays++;
@@ -93,12 +89,15 @@ class ImportAttendanceData
 
                     if(!$row->leave_status)
                     {
+                        \Log::info(' holiday in');
                         $holidays = Holiday::get();
 
                         foreach($holidays as $holiday)
                         {
+                            \Log::info(' holiday out');
                             $dates = $this->createDateRangeArray($holiday->date_from, $holiday->date_to);
-                            if(in_array($row->date, $dates))
+                            \Log::info(json_encode($dates));
+                            if(in_array(str_replace('00:00:00', '',$row->date), $dates))
                             {
                                 $row->leave_status = $holiday->occasion. ' holiday';
                             }

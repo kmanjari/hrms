@@ -28,58 +28,44 @@
     <!-- -------------- /Topbar -------------- -->
 
     <!-- -------------- Content -------------- -->
-    <section id="content" class="table-layout animated fadeIn">
+    <section id="content" class="animated fadeIn">
+        <div class="panel bg-gradient">
 
-        <!-- -------------- Column Center -------------- -->
-        <div class="chute chute-center ph45">
+            <!-- -------------- Column Center -------------- -->
+            <div class="chute chute-center ph45">
 
-            <!-- -------------- Calendar -------------- -->
-            <div id="calendar" class="events-calendar"></div>
+                <!-- -------------- Calendar -------------- -->
+                {{--<div id="calendar" class="events-calendar"></div>--}}
+                <h2 class="text-muted" style="text-align:center"> SCHEDULE EVENTS
+                    <a id="compose-event-btn" href="#calendarManagment" data-effect="mfp-flipInY">
+                        <span class="fa fa-plus-square"></span>
+                    </a>
+                </h2>
 
-        </div>
-        <!-- -------------- /Column Center -------------- -->
 
-        <aside class="chute chute-right chute350" data-chute-mobile="#content > .chute-center"
-               data-chute-height="match">
-
-            <div class="fc-title-clone"></div>
-
-            <div class="section allcp-form theme-primary">
-                <div class="inline-mp minimal-mp center-block"></div>
+                <div id="external-events" class="bg-dotted">
+                <div class="mt40">
+                    @foreach (array_chunk($events, 3, true) as $results)
+                        <table class="table">
+                            <tr>
+                                @foreach($results as $event)
+                                    <td>
+                                        <div class='fc-event fc-event-primary' data-event="primary">
+                                            <div class="fc-event-icon">
+                                                <span class="fa fa-exclamation"></span>
+                                            </div>
+                                            <div class="fc-event-desc blink" id="blink">
+                                                <b>{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))->diffForHumans()}} </b> {{$event->name}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                @endforeach
+                            </tr>
+                        </table>
+                    @endforeach
+                  </div>
             </div>
-
-            <h5 class="mt25 ml5"> Schedule Events
-                <a id="compose-event-btn" href="#calendarManagment" data-effect="mfp-flipInY">
-                    <span class="fa fa-plus-square"></span>
-                </a>
-            </h5>
-
-            <div id="external-events" class="bg-dotted">
-
-                <div class='fc-event fc-event-primary' data-event="primary">
-                    <div class="fc-event-icon">
-                        <span class="fa fa-exclamation"></span>
-                    </div>
-                    <div class="fc-event-desc">
-                        <b>1:25pm </b>Go to San Park
-                    </div>
-                </div>
-                <div class='fc-event fc-event-info' data-event="info">
-                    <div class="fc-event-icon">
-                        <span class="fa fa-info"></span>
-                    </div>
-                    <div class="fc-event-desc">
-                        <b>4:30pm </b>Meeting With Boss
-                    </div>
-                </div>
-                <div class='fc-event fc-event-info' data-event="info">
-                    <div class="fc-event-icon">
-                        <span class="fa fa-info"></span>
-                    </div>
-                    <div class="fc-event-desc">
-                        <b>5:00pm </b>Meeting With John Doe
-                    </div>
-                </div>
+            </div>
             </div>
 
         </aside>

@@ -117,7 +117,7 @@
                                                 <td class="text-center">{{convertAttendanceFrom($attendance->status)}}</td>
                                                 <td class="text-center">{{$attendance->leave_status}}</td>
                                                 <td class="text-center">
-                                                    <div class="btn-group text-right">
+                                                    <div class="btn-group text-center">
                                                         <button type="button"
                                                                 class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
                                                                 data-toggle="dropdown" aria-expanded="false"> Action

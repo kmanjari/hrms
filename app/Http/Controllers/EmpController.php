@@ -533,10 +533,15 @@
       $column = $request->column;
       if($request->button == 'Search')
       {
-        if($column == 'email')
+        if($string == '' && $column == '')
+        {
+            return redirect()->to('employee-manager');
+        }
+        elseif($column == 'email')
         {
           $emps = User::with('employee')->where($column, $string)->paginate(20);
-        } else
+        }
+        else
         {
           $emps = User::whereHas('employee', function ($q) use ($column, $string)
           {
@@ -545,7 +550,8 @@
         }
 
         return view('hrms.employee.show_emp', compact('emps', 'column', 'string'));
-      } else
+      }
+      else
       {
         if($column == '')
         {
