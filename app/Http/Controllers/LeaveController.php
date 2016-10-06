@@ -353,7 +353,12 @@
           /**
            * First we build a query string which is common in both cases whether we have a condition set or not
            */
-          $leaves = \DB::table('users')->select('users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type')->join('employees', 'employees.user_id', '=', 'users.id')->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
+          $leaves = \DB::table('users')->select(
+              'users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from',
+              'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type','employee_leaves.remarks')
+              ->join('employees', 'employees.user_id', '=', 'users.id')
+              ->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')
+              ->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
           if (!empty($column) && !empty($string) && empty($dateFrom) && empty($dateTo))
           {
             $leaves = $leaves->whereRaw($data[$column] . " like '%" . $string . "%' ")->paginate(20);
@@ -375,6 +380,7 @@
             $leaves = $leaves->paginate(20);
           }
           $post = 'post';
+
           return view('hrms.leave.total_leave_request', compact('leaves', 'post', 'column', 'string','dateFrom','dateTo'));
         }
         else
@@ -382,7 +388,7 @@
           /**
            * First we build a query string which is common in both cases whether we have a condition set or not
            */
-          $leaves = \DB::table('users')->select('users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type')->join('employees', 'employees.user_id', '=', 'users.id')->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
+          $leaves = \DB::table('users')->select('users.id', 'users.name', 'employees.code', 'employee_leaves.days', 'employee_leaves.date_from', 'employee_leaves.date_to', 'employee_leaves.status', 'leave_types.leave_type','employee_leaves.remarks')->join('employees', 'employees.user_id', '=', 'users.id')->join('employee_leaves', 'employee_leaves.user_id', '=', 'users.id')->join('leave_types', 'leave_types.id', '=', 'employee_leaves.leave_type_id');
 
           if (!empty($column) && !empty($string) && empty($dateFrom) && empty($dateTo))
           {
@@ -410,7 +416,7 @@
           $filePath = storage_path('exports/') . $fileName;
           $file = new \SplFileObject($filePath, "a");
           // Add header to csv file.
-          $headers = ['id', 'name', 'code', 'leave_type', 'date_from', 'date_to', 'days', 'status', 'created_at', 'updated_at'];
+          $headers = ['id', 'name', 'code', 'leave_type', 'date_from', 'date_to', 'days', 'status','remarks', 'created_at', 'updated_at'];
           $file->fputcsv($headers);
           $status = '';
           foreach ($leaves as $leave)
@@ -427,7 +433,7 @@
             {
               $status = 'Disapproved';
             }
-            $file->fputcsv([$leave->id, $leave->name, $leave->code, $leave->leave_type, $leave->date_from, $leave->date_to, $leave->days, $status]);
+            $file->fputcsv([$leave->id, $leave->name, $leave->code, $leave->leave_type, $leave->date_from, $leave->date_to, $leave->days, $status, $leave->remarks]);
           }
 
           return response()->download(storage_path('exports/') . $fileName);

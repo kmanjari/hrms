@@ -70,9 +70,9 @@
                                             <label class="col-md-3 control-label"> Leave Type </label>
                                             <div class="col-md-6">
                                                 @if(\Route::getFacadeRoot()->current()->uri() == 'edit-leave-type/{id}')
-                                                    <input type="text" name="leave_type" id="input002" class="select2-single form-control" value="@if($result && $result->leave_type){{$result->leave_type}}@endif">
+                                                    <input type="text" name="leave_type" id="input002" class="select2-single form-control" value="@if($result && $result->leave_type){{$result->leave_type}}@endif" required>
                                                 @else
-                                                    <input type="text" name="leave_type" id="input002" class="select2-single form-control" placeholder="Leave Type">
+                                                    <input type="text" name="leave_type" id="input002" class="select2-single form-control" placeholder="Leave Type" required>
                                                 @endif
                                             </div>
                                         </div>
@@ -81,9 +81,9 @@
                                             <label class="col-md-3 control-label"> Description </label>
                                             <div class="col-md-6">
                                                 @if(\Route::getFacadeRoot()->current()->uri() == 'edit-leave-type/{id}')
-                                                    <textarea class="select2-single form-control" rows="3" id="textarea1" placeholder="Leave Description" name="description">@if($result && $result->description){{$result->description}}@endif</textarea>
+                                                    <textarea class="select2-single form-control" rows="3" id="textarea1" placeholder="Leave Description" name="description" required>@if($result && $result->description){{$result->description}}@endif</textarea>
                                                 @else
-                                                    <textarea class="select2-single form-control" rows="3" id="textarea1" placeholder="Leave Description" name="description"></textarea>
+                                                    <textarea class="select2-single form-control" rows="3" id="textarea1" placeholder="Leave Description" name="description" required></textarea>
                                                 @endif
                                             </div>
                                         </div>

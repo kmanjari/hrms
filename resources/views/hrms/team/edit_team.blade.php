@@ -47,7 +47,7 @@
                                             <label class="col-md-3 control-label"> Team Name </label>
                                             <div class="col-md-6">
                                                 <input type="text" placeholder="name of team..." name="team_name"
-                                                       value="{{$edit[0]->name}}" class="select2-single form-control">
+                                                       value="{{$edit[0]->name}}" class="select2-single form-control" required>
                                             </div>
                                         </div>
 
@@ -56,7 +56,7 @@
                                             <label class="col-md-3 control-label"> Select Team Manager</label>
                                             <div class="col-md-6">
                                                 <select class="selectpicker form-control" data-done-button="true"
-                                                        name="manager_id">
+                                                        name="manager_id" required>
                                                     <option value="" selected>Select One</option>
                                                     @foreach($managers as $manager)
                                                         @if($edit[0]->manager->id == $manager->id)
@@ -75,7 +75,7 @@
                                             <label class="col-md-3 control-label"> Select Team Leader</label>
                                             <div class="col-md-6">
                                                 <select class="selectpicker form-control" data-done-button="true"
-                                                        name="leader_id">
+                                                        name="leader_id" required>
                                                     <option value="" selected>Select One</option>
                                                     @foreach($leaders as $leader)
                                                         @if($edit[0]->leader->id == $leader->id)
@@ -93,7 +93,7 @@
                                             <label class="col-md-3 control-label"> Select Team Members </label>
                                             <div class="col-md-6">
                                                 <select id="done" class="selectpicker form-control"
-                                                        multiple data-done-button="true" name="member_id[]">
+                                                        multiple data-done-button="true" name="member_id[]" required>
                                                     @foreach($emps as $emp)
                                                         @if(in_array($emp->id,$team_member))
                                                             <option value="{{$emp->id}}" selected>{{$emp->name}}</option>

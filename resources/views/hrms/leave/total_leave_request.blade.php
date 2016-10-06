@@ -108,7 +108,7 @@
                                             <td class="text-center">{{getFormattedDate($leave->date_from)}}</td>
                                             <td class="text-center">{{getFormattedDate($leave->date_to)}}</td>
                                             <td class="text-center">{{$leave->days}}</td>
-                                            <td class="text-center" id="remark-{{$leave->id}}">{{$leave->remarks}}</td>
+                                            <td class="text-center" id="remark-{{$leave->id}}">{{(isset($leave->remarks)) ? $leave->remarks : 'N/A'}}</td>
                                             <input type="hidden" value="{!! csrf_token() !!}" id="token">
                                             <td class="text-center">
                                                 <div class="btn-group text-right" id="button-{{$leave->id}}">

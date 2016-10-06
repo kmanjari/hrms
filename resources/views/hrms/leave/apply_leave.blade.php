@@ -52,7 +52,7 @@
                                             <input type="hidden" value="{!! csrf_token() !!}" id="token">
                                             <input type="hidden" value="{{\Auth::user()->id}}" id="user_id">
                                             <select class="select2-multiple form-control select-primary leave_type"
-                                                    name="leave_type">
+                                                    name="leave_type" required>
                                                 <option value="" selected>Select One</option>
                                                 @foreach($leaves as $leave)
                                                     <option value="{{$leave->id}}">{{$leave->leave_type}}</option>
@@ -70,7 +70,7 @@
                                                     <i class="fa fa-calendar text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="datepicker1" class="select2-single form-control"
-                                                       name="dateFrom"/>
+                                                       name="dateFrom" required>
                                             </div>
                                         </div>
                                         <label for="date_to" class="col-md-2 control-label"> Date To </label>
@@ -80,7 +80,7 @@
                                                     <i class="fa fa-calendar text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="datepicker4" class="select2-single form-control"
-                                                       name="dateTo"/>
+                                                       name="dateTo" required>
                                             </div>
 
                                         </div>
@@ -95,7 +95,7 @@
                                                     <i class="imoon imoon-clock text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="timepicker1" class="select2-single form-control" value="9:30"
-                                                       name="time_from"/>
+                                                       name="time_from" required>
                                             </div>
                                         </div>
                                         <label for="time_to" class="col-md-2 control-label"> Time To </label>
@@ -105,7 +105,7 @@
                                                     <i class="imoon imoon-clock text-alert pr10"></i>
                                                 </div>
                                                 <input type="text" id="timepicker4" class="select2-single form-control" value="18:00"
-                                                       name="time_to"/>
+                                                       name="time_to" required>
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                         <label for="input002" class="col-md-2 control-label"> Reason </label>
                                         <div class="col-md-10">
                                             <input type="text" id="textarea1" class="select2-single form-control"
-                                                   name="reason"/>
+                                                   name="reason" required>
                                         </div>
                                     </div>
 

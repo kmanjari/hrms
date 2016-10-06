@@ -84,29 +84,15 @@
                                     <div class="section">
                                         <label for="username" class="field prepend-icon"> <h6 > Description </h6> </label>
                                             <input type="text" class="gui-input" name="description"
-                                                   placeholder="Description">
+                                                   placeholder="Description" required>
                                        </div>
                                     <!-- -------------- /section -------------- -->
-
-
-                                   {{-- <label for="date_to" class="col-md-2 control-label"> Date To </label>
-                                    <div class="col-md-3">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar text-alert pr10"></i>
-                                            </div>
-                                            <input type="text" id="datepicker4" class="select2-single form-control"
-                                                   name="dateTo"/>
-                                        </div>
-
-                                    </div>--}}
-
 
 
                                     <div class="section">
                                         <div class="input-group">
                                             <label for="date" class="field prepend-icon "> <h6> Select Date </h6></label>
-                                            <input type="text" id="datepicker1" class="gui-input fs13 select2-single form-control" name="date"/>
+                                            <input type="text" id="datepicker1" class="gui-input fs13 select2-single form-control" name="date" required>
                                         </div>
                                         </div>
 
@@ -119,7 +105,7 @@
                                                 <input type="file" class="gui-file" name="upload_file" id="upload_file"
                                                        onChange="document.getElementById('uploader1').value = this.value;">
                                                 <input type="text" class="gui-input" id="upload_file"
-                                                       placeholder="Select File">
+                                                       placeholder="Select File" required>
                                             </label>
                                     </div>
 
@@ -158,7 +144,7 @@
                                     <th class="text-center">Name</th>
                                     <th class="text-center">Description</th>
                                     <th class="text-center">Date</th>
-                                    <th class="text-center">Action</th>
+                                    {{--<th class="text-center">Action</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -168,7 +154,7 @@
                                     <td class="text-center">{{$file->name}}</td>
                                     <td class="text-center">{{$file->description}}</td>
                                     <td class="text-center">{{getFormattedDate($file->date)}}</td>
-                                    <td class="text-center">
+                                    {{--<td class="text-center">
                                         <div class="btn-group text-right">
                                             <button type="button"
                                                     class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
@@ -184,7 +170,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </td>
+                                    </td>--}}
                                 </tbody>
                                 @endforeach
                             </table>

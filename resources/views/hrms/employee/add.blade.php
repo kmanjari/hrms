@@ -247,48 +247,6 @@
     <!-- -------------- Main Wrapper -------------- -->
     <section id="content_wrapper">
 
-        <!-- -------------- Topbar Menu Wrapper -------------- -->
-        <div id="topbar-dropmenu-wrapper">
-            <div class="topbar-menu row">
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-danger">
-                        <span class="fa fa-music"></span>
-                        <span class="service-title">Audio</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-success">
-                        <span class="fa fa-picture-o"></span>
-                        <span class="service-title">Images</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-primary">
-                        <span class="fa fa-video-camera"></span>
-                        <span class="service-title">Videos</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-alert">
-                        <span class="fa fa-envelope"></span>
-                        <span class="service-title">Messages</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-system">
-                        <span class="fa fa-cog"></span>
-                        <span class="service-title">Settings</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-dark">
-                        <span class="fa fa-user"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- -------------- /Topbar Menu Wrapper -------------- -->
-
         <!-- -------------- Topbar -------------- -->
         <header id="topbar" class="alt">
 
@@ -297,7 +255,7 @@
                 <div class="topbar-left">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-icon">
-                            <a href="dashboard">
+                            <a href="/dashboard">
                                 <span class="fa fa-home"></span>
                             </a>
                         </li>
@@ -305,7 +263,7 @@
                              <a href="#"> Edit Details</a>
                          </li>--}}
                         <li class="breadcrumb-link">
-                            <a href="dashboard"> Employees </a>
+                            <a href="/dashboard"> Employees </a>
                         </li>
                         <li class="breadcrumb-current-item"> Edit details of {{$emps->name}} </li>
                     </ol>
@@ -316,15 +274,15 @@
                 <div class="topbar-left">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-icon">
-                            <a href="dashboard">
+                            <a href="/dashboard">
                                 <span class="fa fa-home"></span>
                             </a>
                         </li>
                         <li class="breadcrumb-active">
-                            <a href="dashboard">Dashboard</a>
+                            <a href="/dashboard">Dashboard</a>
                         </li>
                         <li class="breadcrumb-link">
-                            <a href="add-employee"> Employees </a>
+                            <a href="/add-employee"> Employees </a>
                         </li>
                         <li class="breadcrumb-current-item"> Add Details</li>
                     </ol>
@@ -393,13 +351,13 @@
                                         <label for="input002" class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
                                                 <input type="text" name="emp_code" id="emp_code" class="gui-input"
-                                                       value="@if($emps && $emps->employee->code){{$emps->employee->code}}@endif">
+                                                       value="@if($emps && $emps->employee->code){{$emps->employee->code}}@endif" required>
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-barcode"></i>
                                                 </label>
                                             @else
                                                 <input type="text" name="emp_code" id="emp_code" class="gui-input"
-                                                       placeholder="employee code...">
+                                                       placeholder="employee code..." required>
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-barcode"></i>
                                                 </label>
@@ -413,13 +371,13 @@
                                         <label for="input002" class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
                                                 <input type="text" name="emp_name" id="emp_name" class="gui-input"
-                                                       value="@if($emps && $emps->employee->name){{$emps->employee->name}}@endif">
+                                                       value="@if($emps && $emps->employee->name){{$emps->employee->name}}@endif" required>
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-user"></i>
                                                 </label>
                                             @else
                                                 <input type="text" name="emp_name" id="emp_name" class="gui-input"
-                                                       placeholder="employee name...">
+                                                       placeholder="employee name..." required>
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-user"></i>
                                                 </label>
@@ -453,7 +411,7 @@
                                         <div class="section">
                                             <label for="input002"><h6 class="mb20 mt40"> Role </h6></label>
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <select class="select2-single form-control" name="role" id="role">
+                                                <select class="select2-single form-control" name="role" id="role" required>
                                                     <option value="">Select role</option>
                                                     @foreach($roles as $role)
                                                         @if($emps->role->role->id == $role->id)
@@ -494,12 +452,12 @@
                                         <div class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
                                                 <input type="text" id="datepicker1" class="gui-input fs13" name="dob"
-                                                       value="@if($emps && $emps->employee->date_of_birth){{$emps->employee->date_of_birth}}@endif"/>
+                                                       value="@if($emps && $emps->employee->date_of_birth){{$emps->employee->date_of_birth}}@endif" required>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
                                             @else
-                                                <input type="text" id="datepicker1" class="gui-input fs13" name="dob"/>
+                                                <input type="text" id="datepicker1" class="gui-input fs13" name="dob" required>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
@@ -515,12 +473,12 @@
                                         <div class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
                                                 <input type="text" id="datepicker4" class="gui-input fs13" name="doj"
-                                                       value="@if($emps && $emps->employee->date_of_joining){{$emps->employee->date_of_joining}}@endif"/>
+                                                       value="@if($emps && $emps->employee->date_of_joining){{$emps->employee->date_of_joining}}@endif" required>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
                                             @else
-                                                <input type="text" id="datepicker4" class="gui-input fs13" name="doj"/>
+                                                <input type="text" id="datepicker4" class="gui-input fs13" name="doj" required>
                                                 <label class="field-icon">
                                                     <i class="fa fa-calendar"></i>
                                                 </label>
@@ -533,15 +491,15 @@
                                         <label for="input002"><h6 class="mb20 mt40"> Mobile Number </h6></label>
                                         <label for="input002" class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="tel" name="mob_number" id="mobile_phone"
-                                                       class="gui-input phone-group"
+                                                <input type="number" name="mob_number" id="mobile_phone"
+                                                       class="gui-input phone-group" maxlength="10" minlength="10" required
                                                        value="@if($emps && $emps->employee->number){{$emps->employee->number}}@endif">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-mobile-phone"></i>
                                                 </label>
                                             @else
-                                                <input type="tel" name="mob_number" id="mobile_phone"
-                                                       class="gui-input phone-group"
+                                                <input type="number" name="mob_number" id="mobile_phone"
+                                                       class="gui-input phone-group" maxlength="10" minlength="10" required
                                                        placeholder="mobile number...">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-mobile-phone"></i>
@@ -570,15 +528,15 @@
                                         <label for="input002"><h6 class="mb20 mt40"> Emergency Number </h6></label>
                                         <label for="input002" class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <input type="tel" name="emer_number" id="emergency_number"
-                                                       class="gui-input phone-group"
+                                                <input type="number" name="emer_number" id="emergency_number"
+                                                       class="gui-input phone-group" maxlength="10" minlength="10"
                                                        value="@if($emps && $emps->employee->emergency_number){{$emps->employee->emergency_number}}@endif">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-mobile-phone"></i>
                                                 </label>
                                             @else
-                                                <input type="tel" name="emer_number" id="emergency_number"
-                                                       class="gui-input phone-group"
+                                                <input type="number" name="emer_number" id="emergency_number"
+                                                       class="gui-input phone-group" maxlength="10" minlength="10"
                                                        placeholder="emergency number...">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-mobile-phone"></i>

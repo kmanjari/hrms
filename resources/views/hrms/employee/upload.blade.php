@@ -79,7 +79,7 @@
                                             <input type="file" class="gui-file" name="upload_file[]" id="file1"
                                                    onChange="document.getElementById('uploader1').value = this.value;">
                                             <input type="text" class="gui-input" id="uploader1"
-                                                   placeholder="Select File">
+                                                   placeholder="Select File" required>
                                         </label>
                                     </div>
 

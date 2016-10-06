@@ -48,7 +48,7 @@
                                                 <label class="col-md-3 control-label"> Team Name </label>
                                                 <div class="col-md-6">
                                                     <input type="text" placeholder="name of team..." name="team_name"
-                                                           id="input002" class="select2-single form-control">
+                                                           id="input002" class="select2-single form-control" required>
                                                 </div>
                                             </div>
 
@@ -57,7 +57,7 @@
                                                 <label class="col-md-3 control-label"> Select Team Manager</label>
                                                 <div class="col-md-6">
                                                     <select class="selectpicker form-control" data-done-button="true"
-                                                             name="manager_id">
+                                                             name="manager_id" required>
                                                         <option value="" selected>Select One</option>
                                                         @foreach($managers as $manager)
                                                             <option value="{{$manager->id}}">{{$manager->name}}</option>
@@ -69,7 +69,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"> Select Team Leader</label>
                                                 <div class="col-md-6">
-                                                    <select class="selectpicker form-control" data-done-button="true" name="leader_id">
+                                                    <select class="selectpicker form-control" data-done-button="true" name="leader_id" required>
                                                         <option value="" selected>Select One</option>
                                                         @foreach($leaders as $leader)
                                                             <option value="{{$leader->id}}">{{$leader->name}}</option>
@@ -82,7 +82,7 @@
                                                 <label for="multiselect2" class="col-md-3 control-label"> Select Team Members </label>
                                                 <div class="col-md-6">
                                                     <select id="done" class="selectpicker form-control" multiple data-done-button="true"
-                                                      name="member_id[]">
+                                                      name="member_id[]" required>
                                                         @foreach($emps as $emp)
                                                             <option value="{{$emp->id}}">{{$emp->name}}</option>
                                                         @endforeach

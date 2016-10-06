@@ -42,43 +42,19 @@
                     </a>
                 </h2>
 
-                <div id="external-events" class="bg-dotted" style="text-align: center">
+                <div id="external-events" class="bg-dotted">
                     <div class="mt40">
-                   {{-- <div class='fc-event fc-event-primary' data-event="primary">
-                        <div class="fc-event-icon">
-                            <span class="fa fa-exclamation"></span>
-                        </div>
-                        <div class="fc-event-desc">
-                            <b> 1:25pm </b> Go to San Park
-                        </div>
-                    </div>
-                    <div class='fc-event fc-event-info' data-event="info">
-                        <div class="fc-event-icon">
-                            <span class="fa fa-info"></span>
-                        </div>
-                        <div class="fc-event-desc">
-                            <b> 4:30pm </b> Meeting With Boss
-                        </div>
-                    </div>
-                    <div class='fc-event fc-event-info' data-event="info">
-                        <div class="fc-event-icon">
-                            <span class="fa fa-info"></span>
-                        </div>
-                        <div class="fc-event-desc">
-                            <b> 5:00pm </b> Meeting With John Doe
-                        </div>
-                    </div>--}}
-                        @foreach (array_chunk($events, 3, true) as $results)
+                        @foreach (array_chunk($meetings, 3, true) as $results)
                             <table class="table">
                                 <tr>
-                                    @foreach($results as $event)
+                                    @foreach($results as $meeting)
                                         <td>
                                             <div class='fc-event fc-event-primary' data-event="primary">
                                                 <div class="fc-event-icon">
                                                     <span class="fa fa-exclamation"></span>
                                                 </div>
                                                 <div class="fc-event-desc blink" id="blink">
-                                                    <b>{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))->diffForHumans()}} </b> {{$event->name}}
+                                                    <b>{{ \Carbon\Carbon::createFromTimestamp(strtotime($meeting->date))->diffForHumans()}} </b> {{$meeting->name}}
                                                 </div>
                                             </div>
                                         </td>
@@ -121,7 +97,7 @@
                     <div class="section row">
                         <div class="col-md-12">
                             <label for="event_name" class="field prepend-icon">
-                                <input type="text" class="form-control" id="meeting_name">
+                                <input type="text" class="form-control" id="meeting_name" required>
                             </label>
                         </div>
                     </div>
@@ -131,7 +107,7 @@
                         <div class="col-xs-12">
                             <label class="field prepend-icon">
                         <textarea class="gui-textarea" id="meeting_description"
-                                  placeholder="Meeting Description"></textarea>
+                                  placeholder="Meeting Description" required></textarea>
                                 <label for="comment" class="field-icon">
                                     <i class="fa fa-comments"></i>
                                 </label>
@@ -146,7 +122,7 @@
                     <div class="section row">
                         <div class="col-md-12">
                             <label for="firstname" class="field prepend-icon">
-                                <select id="meeting_cordinater" class="form-control">
+                                <select id="meeting_cordinater" class="form-control" required>
                                     <option value=""> Meeting Coordinator </option>
                                     @foreach($coordinators as $coordinator)
                                         <option value="{{$coordinator['id']}}">{{$coordinator['name']}}</option>
@@ -166,7 +142,7 @@
                                             <span class="input-group-addon cursor">
                                                 <i class="fa fa-calendar"></i>
                                             </span>
-                                <input type="text" class="form-control" id="date_time">
+                                <input type="text" class="form-control" id="date_time" required>
                             </div>
                         </div>
                     </div>
@@ -178,7 +154,7 @@
                     <div class="section row">
                         <div class="col-md-12">
                             <label for="firstname" class="field prepend-icon">
-                                <select id="meeting_attendees" class="form-control" multiple>
+                                <select id="meeting_attendees" class="form-control" multiple required>
                                     <option value="">Meeting Attendees</option>
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -188,35 +164,6 @@
                         </div>
                     </div>
                     <!-- -------------- /section -------------- -->
-
-                {{-- <div class="section row">
-                     <div class="col-xs-12">
-                         <label class="field prepend-icon">
-                         <textarea class="gui-textarea" id="event_description"
-                                   placeholder="Event Description"></textarea>
-                             <label for="comment" class="field-icon">
-                                 <i class="fa fa-comments"></i>
-                             </label>
-                             <span class="input-footer hidden">
-                             <strong>Hint:</strong>Don't be negative or off topic! just be awesome...</span>
-                         </label>
-                     </div>
-                 </div>--}}
-                <!-- -------------- /section -------------- -->
-
-                    <!----------- progress bar ---------->
-
-                    {{--<div class="section row hidden" id="status-section">
-                        Working
-                    <div class="progress mt10 mbn">
-                        <div class="progress-bar progress-bar-primary progress-bar-striped active mnw100"
-                             role="progressbar"
-                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-                             style="width: 32%">
-                            <span class="sr-only">40% Complete (success)</span>
-                        </div>
-                    </div>
-                    </div>--}}
 
                     <div class="section row hidden" id="message-section">
                         <div class="alert alert-info light alert-dismissable" id="alert-demo-1">

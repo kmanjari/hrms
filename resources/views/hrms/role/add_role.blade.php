@@ -68,9 +68,9 @@
                                             <label class="col-md-3 control-label"> Role </label>
                                             <div class="col-md-6">
                                                 @if(\Route::getFacadeRoot()->current()->uri() == 'edit-role/{id}')
-                                                <input type="text" name="name" id="input002" class="select2-single form-control" value="@if($result && $result->name){{$result->name}}@endif">
+                                                <input type="text" name="name" id="input002" class="select2-single form-control" value="@if($result && $result->name){{$result->name}}@endif" required>
                                                 @else
-                                                    <input type="text" name="name" id="input002" class="select2-single form-control" placeholder="Role">
+                                                    <input type="text" name="name" id="input002" class="select2-single form-control" placeholder="Role" required>
                                                 @endif
                                             </div>
                                         </div>
@@ -81,9 +81,9 @@
                                             <div class="col-md-6">
 
                                                     @if(\Route::getFacadeRoot()->current()->uri() == 'edit-role/{id}')
-                                                        <textarea class="select2-single form-control" rows="3" id="textarea1" name="description">@if($result && $result->description){{$result->description}}@endif</textarea>
+                                                        <textarea class="select2-single form-control" rows="3" id="textarea1" name="description" required>@if($result && $result->description){{$result->description}}@endif</textarea>
                                                     @else
-                                                        <textarea class="select2-single form-control" rows="3" id="textarea1" placeholder="Role Description" name="description"></textarea>
+                                                        <textarea class="select2-single form-control" rows="3" id="textarea1" placeholder="Role Description" name="description" required></textarea>
                                                     @endif
                                             </div>
                                         </div>
