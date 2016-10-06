@@ -27,16 +27,18 @@ class ImportAttendanceData
         {
             $rows = $reader->get(['name', 'code', 'date', 'days', 'in', 'out', 'hours_worked', 'over_time', 'status']);
 
-
+            $counter = 0;
             $saturdays = 0;
             $totalSaturdaysBetweenDates = 0;
             $saturdayWithoutNotice = 0;
             foreach($rows as $row)
             {
-                $row->date = str_replace(' 00:00:00','', $row->date);
-                \Log::info('starting '.$row->date);
-                /*$myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
-                $row->date = $myDateTime->format('Y-m-d');*/
+                $date = $this->validateDate($row->date);
+                if(!$date)
+                {
+                    $myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
+                    $row->date = $myDateTime->format('Y-m-d');
+                }
                 if($row->status == 'A')
                 {
                     //check if user has applied for leave on this day
@@ -141,5 +143,15 @@ class ImportAttendanceData
         $varYear = $dateArray[2]; //year segment
         $newDateFormat = "$varYear-$varDay-$varMonth"; // join them together
         return $newDateFormat;
+    }
+
+    public function validateDate($date)
+    {
+        if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$date))
+        {
+            return true;
+        }else{
+            return false;
+        }
     }
 }
