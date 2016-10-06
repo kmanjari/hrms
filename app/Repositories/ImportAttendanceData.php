@@ -33,7 +33,7 @@
                 $saturdayWithoutNotice = 0;
                 foreach($rows as $row)
                 {
-                    $date = $this->validateDate($this->date);
+                    $date = $this->validateDate($row->date);
                     if(!$date)
                     {
                         $myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
