@@ -27,14 +27,16 @@ class ImportAttendanceData
         {
             $rows = $reader->get(['name', 'code', 'date', 'days', 'in', 'out', 'hours_worked', 'over_time', 'status']);
 
-            $counter = 0;
+
             $saturdays = 0;
             $totalSaturdaysBetweenDates = 0;
             $saturdayWithoutNotice = 0;
             foreach($rows as $row)
             {
-                $myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
-                $row->date = $myDateTime->format('Y-m-d');
+                $row->date = str_replace(' 00:00:00','', $row->date);
+                \Log::info('starting '.$row->date);
+                /*$myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
+                $row->date = $myDateTime->format('Y-m-d');*/
                 if($row->status == 'A')
                 {
                     //check if user has applied for leave on this day
