@@ -25,19 +25,6 @@ class ImportAttendanceData
     {
         Excel::load(storage_path('attendance/' . $filename), function ($reader)
         {
-            /**
-             * 'days', 3 letter day name
-             * 'date', DD/MM/YYYY
-             * 'shift', irrelevant
-             * 'in',  in time 09:29
-             * 'out', out time 18:00
-             * 'shift_late', 1.32 hours
-             * 'shift_early', 0.41 for 41 minutes
-             * 'hours_worked', 6.50 hours
-             * 'over_time', 1.20 hours
-             * 'status' A, MIS, P, WO
-             */
-
             $rows = $reader->get(['name', 'code', 'date', 'days', 'in', 'out', 'hours_worked', 'over_time', 'status']);
 
             $counter = 0;
@@ -52,39 +39,32 @@ class ImportAttendanceData
                 {
                     //check if user has applied for leave on this day
                     $user = Employee::where('code', $row->code)->first();
-                    if($user)
+
+                    if(!$row->leave_status)
                     {
-                        \Log::info('logging date before query '. $row->date. ' and user id '. $user->user_id);
-                        $employeeLeave = EmployeeLeaves::where('user_id', $user->user_id)->where('date_from', '<=', $row->date)->where('date_to', '>=', $row->date)->toSql();
-                        \Log::info($employeeLeave);
                         $employeeLeave = EmployeeLeaves::where('user_id', $user->user_id)->where('date_from', '<=', $row->date)->where('date_to', '>=', $row->date)->first();
 
                         if($employeeLeave)
                         {
-                            \Log::info('found this date in employee leaves');
                             if($employeeLeave->status == '1')
                             {
                                 $row->leave_status = 'Approved';
-                            }
-                            elseif ($employeeLeave->status == '2')
+                            } elseif($employeeLeave->status == '2')
                             {
                                 //set the leave_status column of this date as unapproved
                                 $row->leave_status = 'Unapproved';
-                            }
-                            else
+                            } else
                             {
                                 $row->leave_status = 'Pending';
                             }
                         }
                     }
-
                     if(!$row->leave_status)
                     {
                         if($row->days == 'Sat')
                         {
                             if($saturdays < 2)
                             {
-                                \Log::info('less than 2 saturdays');
                                 $saturdays++;
                                 $row->leave_status = 'Weekly Off';
                             }

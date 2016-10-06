@@ -85,6 +85,7 @@
                                 @endif
                                 <div class="table-responsive">
                                     <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        @if(count($attendances))
                                         <thead>
                                         <tr class="bg-light">
                                             <th class="text-center">Id</th>
@@ -101,6 +102,9 @@
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
+                                            @else
+                                            <h2>Nothing to show</h2>
+                                        @endif
                                         <tbody>
                                         <?php $i =0;?>
                                         @foreach($attendances as $attendance)
