@@ -1,4 +1,4 @@
-# Laravel PHP Framework
+# Human Resource Management System
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -6,9 +6,14 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Human Resource Management System is a combination of systems and processes that connect human resource management and information technology through HRMS software.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Each module performs a separate function within the HRMS that helps with information gathering or tracking. HRMS modules can assist with:
+1. Employee Management
+2. Leave Management
+3. Attendance Management
+4. Team Management
+5. Asset/Resource Management 
 
 ## Official Documentation
 
@@ -25,3 +30,23 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## Requirement
+
+1. PHP version 5.6+
+2. PHP Mcrypt
+3. PHP Mysql
+4. Composer
+
+## Installation
+
+It is preferred to have git setup installed on your local system.
+
+If you have git on your local, run git clone https://github.com/kmanjari/hrms.git else you can download the zip https://github.com/kmanjari/hrms/archive/master.zip
+
+Once downloaded/cloned go to the project directory on terminal/command line and run composer install or composer.phar install
+
+Once composer is installed, run migration: php artisan migrate
+
+After migration, run the database seeder: php artisan db:seed   
+  

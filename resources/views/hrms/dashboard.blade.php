@@ -130,7 +130,7 @@
 
                 @if($meetings)
                 <div class="col-md-12">
-                    <h3 class=" mb10 mr5 notification" data-note-style="primary" style="color: darkturquoise"> Latest &nbsp; Meetings </h3>
+                    <h3 class=" mb10 mr5 notification" data-note-style="primary" style="color: darkturquoise"> Latest &nbsp;&nbsp; Meetings </h3>
                     @foreach (array_chunk($meetings, 3, true) as $results)
                         <table class="table">
                             <tr>
