@@ -26,6 +26,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('register', 'AuthController@doRegister');
 
 
+
 });
 
 

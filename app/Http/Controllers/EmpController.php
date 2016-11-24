@@ -8,7 +8,7 @@
   use App\Models\UserRole;
   use App\User;
   use Carbon\Carbon;
-  use Illuminate\Support\Facades\Session;
+  use Illuminate\Http\Response;
   use Illuminate\Http\Request;
 
   use App\Http\Requests;
@@ -589,4 +589,5 @@
     public function exportData($request)
     {
     }
+
   }
