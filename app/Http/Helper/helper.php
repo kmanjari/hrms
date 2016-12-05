@@ -190,3 +190,12 @@ function qualification()
         ];
     return $data;
 }
+
+function getGender($gender)
+{
+    $data = [
+        '0' => 'Male',
+        '1' => 'Female',
+    ];
+    return $data[$gender];
+}

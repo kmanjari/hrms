@@ -31,8 +31,10 @@
     <!-- -------------- CSS - theme -------------- -->
     <link rel="stylesheet" type="text/css" href="/assets/skin/default_skin/css/theme.css">
 
+
     <!-- -------------- CSS - allcp forms -------------- -->
     <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/forms.css">
+    <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/widget.css">
 
     <link rel="stylesheet" type="text/css" href="assets/js/plugins/select2/css/core.css">
     <!-- -------------- Favicon -------------- -->
@@ -63,6 +65,7 @@
             color:yellow;
         }
     </style>
+
 </head>
 
 <body class="dashboard-page">

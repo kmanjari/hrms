@@ -13,28 +13,29 @@
 
 //Route::group(['middleware' => ['web']], function () {
 
-Route::group(['middleware' => ['guest']], function () {
+Route::group(['middleware' => ['guest']], function ()
+{
 
     Route::get('/', 'AuthController@showLogin');
 
     Route::post('/', 'AuthController@doLogin');
 
-    Route::get('reset-password','AuthController@resetPassword');
+    Route::get('reset-password', 'AuthController@resetPassword');
 
-    Route::post('reset-password','AuthController@processPasswordReset');
+    Route::post('reset-password', 'AuthController@processPasswordReset');
 
     Route::get('register', 'AuthController@doRegister');
-
 
 
 });
 
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth']], function ()
+{
 
-    Route::get('change-password','AuthController@changePassword');
+    Route::get('change-password', 'AuthController@changePassword');
 
-    Route::post('change-password','AuthController@processPasswordChange');
+    Route::post('change-password', 'AuthController@processPasswordChange');
 
     Route::get('logout', 'AuthController@doLogout');
 
@@ -43,6 +44,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('not-found', 'AuthController@notFound');
 
     Route::get('dashboard', 'AuthController@dashboard');
+
+    Route::get('profile', 'ProfileController@show');
 
     Route::get('add-employee', ['as' => 'add-employee', 'uses' => 'EmpController@addEmployee']);
 
@@ -168,8 +171,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('create-event', 'EventController@createEvent');
 
-    Route::get('create-meeting','EventController@meeting');
+    Route::get('create-meeting', 'EventController@meeting');
 
-    Route::post('create-meeting','EventController@createMeeting');
+    Route::post('create-meeting', 'EventController@createMeeting');
 
 });

@@ -3,7 +3,7 @@
     <div class="media">
         <a class="media-left">
             @if(Auth::user()->employee->photo)
-                <img src="/photos/{{Auth::user()->employee->photo}}" class="img-responsive">
+                <img src="{{Auth::user()->employee->photo}}" class="img-responsive">
             @else
                 <img src="/photos/profile_pic.png" class="img-responsive">
             @endif
