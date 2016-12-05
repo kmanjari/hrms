@@ -577,4 +577,36 @@
           return redirect()->back()->with('flash_message', $e->getMessage());
       }
     }
+
+      public function showHoliday(){
+
+         $holidays = Holiday::paginate(10);
+         return view('hrms.leave.show_holiday',compact('holidays'));
+      }
+
+      public function showEditHoliday($id){
+          $holidays = Holiday::where('id', $id)->first();
+          return view('hrms.leave.edit_holiday', compact('holidays'));
+      }
+
+      public function doEditHoliday($id, Request $request){
+          $holiday = Holiday::where('id', $id)->first();
+          $holiday->occasion = $request->occasion;
+          $holiday->date_from = date_format(date_create($request->date_from), 'Y-m-d');
+          $holiday->date_from = date_format(date_create($request->date_from), 'Y-m-d');
+          $holiday->save();
+
+          \Session::flash('flash_message', 'Holiday successfully updated!');
+          return redirect('holiday-listing');
+
+      }
+
+      public function deleteHoliday($id){
+          $holiday = Holiday::find($id);
+          $holiday->delete();
+
+          \Session::flash('flash_message', 'Holiday successfully deleted!');
+          return redirect('holiday-listing');
+      }
   }
+

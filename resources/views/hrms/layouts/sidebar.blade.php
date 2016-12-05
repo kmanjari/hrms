@@ -1,7 +1,7 @@
 <!-- -------------- Sidebar - Author -------------- -->
 <div class="sidebar-widget author-widget">
     <div class="media">
-        <a class="media-left">
+        <a href="/profile" class="media-left">
             @if(Auth::user()->employee->photo)
                 <img src="{{Auth::user()->employee->photo}}" class="img-responsive">
             @else
@@ -11,7 +11,7 @@
         </a>
 
         <div class="media-body">
-            <div class="media-author">{{Auth::user()->name}}</div>
+            <div class="media-author"> <a href="/profile">{{Auth::user()->name}}</a></div>
         </div>
     </div>
 </div>
@@ -48,6 +48,16 @@
             </li>
         </ul>
     </li>
+
+        <li>
+
+            <a href="/bank-account-details">
+                <span class="fa fa-bank"></span>
+                <span class="sidebar-title">Bank Account</span>
+
+            </a>
+        </li>
+
     <li>
         <a class="accordion-toggle" href="#">
             <span class="fa fa-group"></span>
@@ -142,6 +152,24 @@
                 @endif
         </ul>
     </li>
+
+    <li>
+        <a class="accordion-toggle" href="#">
+            <span class="fa fa-money"></span>
+            <span class="sidebar-title">Expenses</span>
+            <span class="caret"></span>
+        </a>
+        <ul class="nav sub-nav">
+            <li>
+                <a href="{{route('add-expense')}}">
+                    <span class="glyphicon glyphicon-book"></span> Add Expense </a>
+            </li>
+            <li>
+                <a href="{{route('expense-list')}}">
+                    <span class="glyphicon glyphicon-modal-window"></span> Expense Listings </a>
+            </li>
+        </ul>
+    </li>
 @if(Auth::user()->isHR())
     <li>
         <a class="accordion-toggle" href="#">
@@ -158,12 +186,24 @@
         </ul>
     </li>
 
-    <li>
-        <a href="/add-holidays">
-            <span class="fa fa-bank"></span>
-            <span class="sidebar-title">Add Holidays</span>
-        </a>
-    </li>
+        <li>
+            <a class="accordion-toggle" href="#">
+                <span class="fa fa-tree"></span>
+                <span class="sidebar-title">Holiday</span>
+                <span class="caret"></span>
+            </a>
+            <ul class="nav sub-nav">
+                <li>
+                    <a href="/add-holidays">
+                        <span class="glyphicon glyphicon-book"></span> Add Holiday </a>
+                </li>
+                <li>
+                    <a href="/holiday-listing">
+                        <span class="glyphicon glyphicon-modal-window"></span> Holiday Listings </a>
+                </li>
+            </ul>
+        </li>
+
 @endif
 
     <li class="sidebar-label pt30"> Extras</li>

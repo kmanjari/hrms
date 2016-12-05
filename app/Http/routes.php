@@ -65,6 +65,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('delete-emp/{id}', ['as' => 'delete-emp', 'uses' => 'EmpController@doDelete']);
 
+    Route::get('bank-account-details', ['uses' => 'EmpController@showDetails']);
+
     Route::get('add-team', ['as' => 'add-team', 'uses' => 'TeamController@addTeam']);
 
     Route::post('add-team', ['as' => 'add-team', 'uses' => 'TeamController@processTeam']);
@@ -88,6 +90,18 @@ Route::group(['middleware' => ['auth']], function ()
     Route::post('edit-role/{id}', ['as' => 'edit-role', 'uses' => 'RoleController@doEdit']);
 
     Route::get('delete-role/{id}', ['as' => 'delete-role', 'uses' => 'RoleController@doDelete']);
+
+    Route::get('add-expense', ['as' => 'add-expense', 'uses' => 'ExpenseController@addExpense']);
+
+    Route::post('add-expense', ['as' => 'add-expense', 'uses' => 'ExpenseController@processExpense']);
+
+    Route::get('expense-list', ['as' => 'expense-list', 'uses' => 'ExpenseController@showExpense']);
+
+    Route::get('edit-expense/{id}', ['as' => 'edit-expense', 'uses' => 'ExpenseController@showEdit']);
+
+    Route::post('edit-expense/{id}', ['as' => 'edit-expense', 'uses' => 'ExpenseController@doEdit']);
+
+    Route::get('delete-expense/{id}', ['as' => 'delete-expense', 'uses' => 'ExpenseController@doDelete']);
 
     Route::get('add-leave-type', ['as' => 'add-leave-type', 'uses' => 'LeaveController@addLeaveType']);
 
@@ -166,6 +180,14 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('add-holidays', 'LeaveController@showHolidays');
 
     Route::post('add-holidays', 'LeaveController@processHolidays');
+
+    Route::get('holiday-listing', 'LeaveController@showHoliday');
+
+    Route::get('edit-holiday/{id}', 'LeaveController@showEditHoliday');
+
+    Route::post('edit-holiday/{id}', 'LeaveController@doEditHoliday');
+
+    Route::get('delete-holiday/{id}', 'LeaveController@deleteHoliday');
 
     Route::get('create-event', 'EventController@index');
 

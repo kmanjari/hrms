@@ -586,8 +586,10 @@
       }
     }
 
-    public function exportData($request)
-    {
+
+    public function showDetails(){
+        $emps = User::with('employee')->paginate(15);
+        return view('hrms.employee.show_bank_detail', compact('emps'));
     }
 
   }

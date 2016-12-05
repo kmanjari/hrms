@@ -635,6 +635,12 @@
     <script src="/assets/js/custom.js"></script>
 @endif
 
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-expense')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
 @if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager')
     <script src="/assets/js/custom.js"></script>
 @endif
