@@ -43,7 +43,7 @@ class User extends Authenticatable
     {
         $userId = Auth::user()->id;
         $userRole = UserRole::where('user_id', $userId)->first();
-        if($userRole->role_id == 7)
+        if($userRole->role_id == 1)
         {
             return true;
         }
@@ -54,7 +54,7 @@ class User extends Authenticatable
     {
         $userId = Auth::user()->id;
         $userRole = UserRole::where('user_id', $userId)->first();
-        $roleIds = [1,2,5,7,8,9,10,14,16];
+        $roleIds = [2,5,7,8,9,10,14,16];
         if(in_array($userRole->role_id, $roleIds) )
         {
             return true;

@@ -45,6 +45,7 @@
                                 @endif
                                 {!! Form::open(['class' => 'form-horizontal']) !!}
                                 <div class="table-responsive">
+                                    @if(count($holidays))
                                     <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                         <thead>
                                         <tr class="bg-light">
@@ -88,6 +89,11 @@
                                         </tr>
                                         </tbody>
                                     </table>
+                                        @else
+                                        <div class="text-center">
+                                            <h2>No holidays added</h2>
+                                        </div>
+                                    @endif
                                 </div>
                                 {!! Form::close() !!}
                             </div>
