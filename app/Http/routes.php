@@ -197,4 +197,28 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::post('create-meeting', 'EventController@createMeeting');
 
+    Route::get('add-award', ['uses'=>'AwardController@addAward']);
+
+    Route::post('add-award', ['uses'=>'AwardController@processAward']);
+
+    Route::post('award-listing', ['uses'=>'AwardController@showAward']);
+
+    Route::get('edit-award/{id}', ['uses'=>'AwardController@showAwardEdit']);
+
+    Route::post('edit-award/{id}', ['uses'=>'AwardController@doAwardEdit']);
+
+    Route::get('delete-award/{id}', ['uses'=>'AwardController@doAwardDelete']);
+
+    Route::get('assign-award', ['uses'=>'AwardController@assignAward']);
+
+    Route::post('assign-award', ['uses'=>'AwardController@processAssign']);
+
+    Route::post('awardees-listing', ['uses'=>'AwardController@showAwardAssign']);
+
+    Route::get('edit-award-assignment/{id}', ['uses'=>'AwardController@showAssignEdit']);
+
+    Route::post('edit-award-assignment/{id}', ['uses'=>'AwardController@doAssignEdit']);
+
+    Route::get('delete-award-assignment/{id}', ['uses'=>'AwardController@doAssignDelete']);
+
 });
