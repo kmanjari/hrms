@@ -48,6 +48,7 @@
         <div class="chute-affix" data-spy="affix" data-offset-top="200">
             <div class="row">
                 <div class="col-xs-12">
+                    <div class="box box-success">
                     <div class="panel">
                         <div class="panel-heading">
                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-asset/{id}')

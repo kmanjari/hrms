@@ -28,6 +28,7 @@
         <div class="chute-affix" data-spy="affix" data-offset-top="200">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="box box-success">
                     <div class="panel">
                         <div class="panel-heading">
                             <span class="panel-title hidden-xs"> Apply for Leave</span>
@@ -145,7 +146,7 @@
                 </div>
             </div>
         </div>
-
+      </div>
     </section>
 
 </div>

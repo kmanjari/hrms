@@ -29,6 +29,7 @@
 
         <!-- -------------- Content -------------- -->
         <section id="content" class="animated fadeIn">
+            <div class="box box-success">
             <div class="panel bg-gradient">
 
             <!-- -------------- Column Center -------------- -->
@@ -68,7 +69,7 @@
             </div>
             <!-- -------------- /Column Center -------------- -->
 
-
+</div>
             <!-- -------------- /Column Left -------------- -->
         </div>
 

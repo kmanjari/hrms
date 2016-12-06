@@ -592,4 +592,24 @@
         return view('hrms.employee.show_bank_detail', compact('emps'));
     }
 
+    public function updateAccountDetail(Request $request)
+    {
+        try
+        {
+            $model = Employee::where('id', $request->employee_id)->first();
+            $model->bank_name = $request->bank_name;
+            $model->account_number = $request->account_number;
+            $model->pf_account_number = $request->pf_account_number;
+            $model->ifsc_code = $request->ifsc_code;
+            $model->save();
+            return json_encode('success');
+        }
+        catch(\Exception $e)
+        {
+            \Log::info($e->getMessage(). ' on ' . $e->getLine(). ' in '. $e->getFile());
+            return json_encode('failed');
+        }
+
+    }
+
   }

@@ -33,6 +33,7 @@
             <!-- -------------- Products Status Table -------------- -->
             <div class="row">
                 <div class="col-xs-12">
+                    <div class="box box-success">
                     <div class="panel">
                         <div class="panel-heading">
                             <span class="panel-title hidden-xs"> Asset Lists </span>
@@ -94,6 +95,7 @@
                 </div>
             </div>
         </div>
+            </div>
     </section>
 
 </div>

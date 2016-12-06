@@ -17,9 +17,9 @@
                             <a href="/dashboard"> Dashboard </a>
                         </li>
                         <li class="breadcrumb-link">
-                            <a href=""> Expenses </a>
+                            <a href=""> Awards </a>
                         </li>
-                        <li class="breadcrumb-current-item"> Edit Expenses </li>
+                        <li class="breadcrumb-current-item"> Assign Awards </li>
                     </ol>
             </div>
         </header>
@@ -32,7 +32,7 @@
                         <div class="box box-success">
                         <div class="panel">
                             <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Edit Expenses </span>
+                                    <span class="panel-title hidden-xs"> Assign Award</span>
                             </div>
 
                             <div class="panel-body pn">
@@ -44,80 +44,77 @@
                                             </div>
                                         @endif
                                         {!! Form::open(['class' => 'form-horizontal']) !!}
-
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"> Select Employee </label>
                                             <div class="col-md-6">
                                                 <select class="select2-multiple form-control select-primary"
                                                         name="emp_id" required>
+                                                    <option value="" selected>Select One</option>
                                                     @foreach($emps as $emp)
-                                                        @if($emp->id == $expenses->user_id)
-                                                            <option value="{{$emp->id}}" selected>{{$emp->name}}</option>
-                                                        @else
-                                                            <option value="{{$emp->id}}">{{$emp->name}}</option>
-                                                        @endif
+                                                        <option value="{{$emp->id}}">{{$emp->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"> Item </label>
-                                                <div class="col-md-6">
-                                                    <input type="text" name="item" id="input002" class=" form-control" value="@if($expenses){{$expenses->item}}@endif" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"> Purchase From</label>
-                                                <div class="col-md-6">
-                                                    <input type="text" name="purchase_from" id="input002" class=" form-control" value="@if($expenses){{$expenses->purchase_from}}@endif" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="datepicker1" class="col-md-3 control-label"> Date of Purchase </label>
-                                                <div class="col-md-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar text-alert pr11"></i>
-                                                        </div>
-
-                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="date_of_purchase" value="@if($expenses){{$expenses->date_of_purchase}}@endif"required>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"> Amount </label>
-                                                <div class="col-md-6">
-                                                    <input type="text" name="amount" id="input002" class=" form-control" value="@if($expenses){{$expenses->amount}}@endif" required>
-                                                </div>
-                                            </div>
 
 
                                         <div class="form-group">
+                                            <label class="col-md-3 control-label"> Select Award </label>
+                                            <div class="col-md-6">
+                                                <select class="select2-multiple form-control select-primary"
+                                                        name="award_id" required>
+                                                    <option value="" selected>Select One</option>
+                                                    @foreach($awards as $award)
+                                                        <option value="{{$award->id}}">{{$award->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="datepicker1" class="col-md-3 control-label"> Date </label>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar text-alert pr11"></i>
+                                                    </div>
+                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="date" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label"> Reason </label>
+                                                <div class="col-md-6">
+                                                        <input type="text" name="reason" id="input002" class="select2-single form-control" placeholder="reason" required>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-2">
 
                                                 <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
-
                                             </div>
-                                            <div class="col-md-2"><a href="/edit-expense/{id}" >
+                                            <div class="col-md-2"><a href="/assign-award" >
                                                     <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
                                         </div>
-
-                                        {!! Form::close() !!}
                                     </div>
+
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
+    </div>
 
-        </section>
+    </section>
 
     </div>
 @endsection

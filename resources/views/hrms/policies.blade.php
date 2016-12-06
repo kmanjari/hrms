@@ -8,7 +8,7 @@
 
             <!-- -------------- FAQ Left Column -------------- -->
             <div class="col-md-12">
-
+                <div class="box box-success">
                 <div class="panel bg-gradient">
 
                     <div class="mt40">

@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('bank-account-details', ['uses' => 'EmpController@showDetails']);
 
+    Route::post('update-account-details', ['uses' => 'EmpController@updateAccountDetail']);
+
     Route::get('add-team', ['as' => 'add-team', 'uses' => 'TeamController@addTeam']);
 
     Route::post('add-team', ['as' => 'add-team', 'uses' => 'TeamController@processTeam']);
@@ -201,7 +203,7 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::post('add-award', ['uses'=>'AwardController@processAward']);
 
-    Route::post('award-listing', ['uses'=>'AwardController@showAward']);
+    Route::get('award-listing', ['uses'=>'AwardController@showAward']);
 
     Route::get('edit-award/{id}', ['uses'=>'AwardController@showAwardEdit']);
 
@@ -213,12 +215,46 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::post('assign-award', ['uses'=>'AwardController@processAssign']);
 
-    Route::post('awardees-listing', ['uses'=>'AwardController@showAwardAssign']);
+    Route::get('awardees-listing', ['uses'=>'AwardController@showAwardAssign']);
 
     Route::get('edit-award-assignment/{id}', ['uses'=>'AwardController@showAssignEdit']);
 
     Route::post('edit-award-assignment/{id}', ['uses'=>'AwardController@doAssignEdit']);
 
     Route::get('delete-award-assignment/{id}', ['uses'=>'AwardController@doAssignDelete']);
+
+    Route::get('promotions', ['uses'=>'EmpController@doPromotion']);
+
+    Route::post('promotions', ['uses'=>'EmpController@processPromotion']);
+
+    Route::get('show-promotions-list', ['uses'=>'EmpController@showPromotion']);
+
+    Route::get('add-training-program', ['uses'=>'TrainingController@addTrainingProgram']);
+
+    Route::post('add-training-program', ['uses'=>'TrainingController@processTrainingProgram']);
+
+    Route::get('show-training-program', ['uses'=>'TrainingController@showTrainingProgram']);
+
+    Route::get('edit-training-program/{id}', ['uses'=>'TrainingController@doEditTrainingProgram']);
+
+    Route::post('edit-training-program/{id}', ['uses'=>'TrainingController@processEditTrainingProgram']);
+
+    Route::get('delete-training-program/{id}',['uses'=>'TrainingController@deleteTrainingProgram']);
+
+    Route::get('add-training-invite', ['uses'=>'TrainingController@addTrainingInvite']);
+
+    Route::post('add-training-invite', ['uses'=>'TrainingController@processTrainingInvite']);
+
+    Route::get('show-training-invite', ['uses'=>'TrainingController@showTrainingInvite']);
+
+    Route::get('edit-training-invite/{id}', ['uses'=>'TrainingController@doEditTrainingInvite']);
+
+    Route::post('edit-training-invite/{id}', ['uses'=>'TrainingController@processEditTrainingInvite']);
+
+    Route::get('delete-training-invite/{id}',['uses'=>'TrainingController@deleteTrainingInvite']);
+
+
+
+
 
 });

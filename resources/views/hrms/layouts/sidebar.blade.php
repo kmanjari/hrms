@@ -196,6 +196,33 @@
             </li>
         </ul>
     </li>
+
+
+    <li>
+        <a class="accordion-toggle" href="#">
+            <span class="fa fa fa-gavel"></span>
+            <span class="sidebar-title">Trainings</span>
+            <span class="caret"></span>
+        </a>
+        <ul class="nav sub-nav">
+            <li>
+                <a href="/add-training-program">
+                    <span class="fa fa-adn"></span> Add Training Program </a>
+            </li>
+            <li>
+                <a href="/show-training-program">
+                    <span class="glyphicon glyphicon-calendar"></span> Program Listings </a>
+            </li>
+            <li>
+                <a href="/add-training-invite">
+                    <span class="fa fa-desktop"></span> Training Invite </a>
+            </li>
+            <li>
+                <a href="/show-training-invite">
+                    <span class="fa fa-clipboard"></span> Invitation Listings </a>
+            </li>
+        </ul>
+    </li>
 @if(Auth::user()->isHR())
     <li>
         <a class="accordion-toggle" href="#">
@@ -240,7 +267,7 @@
         </a>
     </li>
 
-    @if(Auth::user()->isCoordinator())
+    @if(Auth::user()->isCoordinator() ||  Auth::user()->isHR())
     <li>
         <a href="/create-event">
             <span class="fa fa-calendar-o"></span>

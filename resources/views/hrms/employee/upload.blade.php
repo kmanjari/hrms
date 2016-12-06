@@ -61,7 +61,7 @@
 
                     <!-- -------------- Upload Form -------------- -->
                     <div class="allcp-form theme-primary tab-pane active mw320" id="login" role="tabpanel">
-
+                        <div class="box box-success">
                         <div class="panel fluid-width">
 
                             @if(Session::has('success'))
@@ -94,6 +94,7 @@
                                 {!! Form::close() !!}
                                 <!-- -------------- /Form -------------- -->
                             </form>
+                            </div>
                         </div>
                         <!-- -------------- /Panel -------------- -->
                     </div>

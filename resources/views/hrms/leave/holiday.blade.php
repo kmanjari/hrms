@@ -59,7 +59,7 @@
 
                     <!-- -------------- Upload Form -------------- -->
                     <div class="allcp-form theme-primary tab-pane active mw320" id="login" role="tabpanel">
-
+                        <div class="box box-success">
                         <div class="panel fluid-width">
 
                             @if(Session::has('flash_message'))
@@ -101,12 +101,12 @@
                                 </div>
 
                                 <!-- -------------- /section -------------- -->
-
                             </div>
                             {!! Form::close() !!}
                                     <!-- -------------- /Form -------------- -->
                             </form>
                         </div>
+                            </div>
                         <!-- -------------- /Panel -------------- -->
                     </div>
                     <!-- -------------- /Login Form -------------- -->
@@ -115,12 +115,14 @@
 
                     <!-- -------------- Registration -------------- -->
                     <div class="allcp-form theme-primary tab-pane mw600" id="register" role="tabpanel">
+                        <div class="box box-success">
                         <div class="panel">
                             <div class="panel-heading">
                                     <span class="panel-title">
                                       Uploaded Files
                                     </span>
                             </div>
+
                             <!-- -------------- /Panel Heading -------------- -->
                             <div class="panel-body table-responsive">
                                 <div class="form-horizontal">
@@ -144,6 +146,7 @@
                                         @endforeach
                                     </table>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <!-- -------------- /Panel -------------- -->

@@ -8,6 +8,7 @@
 
             <!-- -------------- FAQ Left Column -------------- -->
             <div class="col-md-12">
+                <div class="box box-success">
 
                 <div class="panel bg-gradient">
                       <h2 class="text-muted" style="text-align:center"> DOWNLOAD FORMS </h2>

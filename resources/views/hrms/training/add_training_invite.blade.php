@@ -7,20 +7,20 @@
         <header id="topbar" class="alt">
             <div class="topbar-left">
 
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-icon">
-                            <a href="/dashboard">
-                                <span class="fa fa-home"></span>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-active">
-                            <a href="/dashboard"> Dashboard </a>
-                        </li>
-                        <li class="breadcrumb-link">
-                            <a href=""> Expenses </a>
-                        </li>
-                        <li class="breadcrumb-current-item"> Edit Expenses </li>
-                    </ol>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-icon">
+                        <a href="/dashboard">
+                            <span class="fa fa-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-active">
+                        <a href="/dashboard"> Dashboard </a>
+                    </li>
+                    <li class="breadcrumb-link">
+                        <a href=""> Training </a>
+                    </li>
+                    <li class="breadcrumb-current-item"> Training Invite </li>
+                </ol>
             </div>
         </header>
         <!-- -------------- Content -------------- -->
@@ -32,7 +32,7 @@
                         <div class="box box-success">
                         <div class="panel">
                             <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Edit Expenses </span>
+                                <span class="panel-title hidden-xs"> Training Invite </span>
                             </div>
 
                             <div class="panel-body pn">
@@ -45,70 +45,73 @@
                                         @endif
                                         {!! Form::open(['class' => 'form-horizontal']) !!}
 
+                                            <div class="form-group">
+                                                <label for="multiselect2" class="col-md-3 control-label"> Select Employees </label>
+                                                <div class="col-md-6">
+                                                    <select id="done" class="selectpicker form-control" multiple data-done-button="true"
+                                                            name="member_ids[]" required>
+                                                        @foreach($emps as $emp)
+                                                            <option value="{{$emp->id}}">{{$emp->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label"> Select Employee </label>
+                                            <label class="col-md-3 control-label"> Select Programs </label>
                                             <div class="col-md-6">
                                                 <select class="select2-multiple form-control select-primary"
-                                                        name="emp_id" required>
-                                                    @foreach($emps as $emp)
-                                                        @if($emp->id == $expenses->user_id)
-                                                            <option value="{{$emp->id}}" selected>{{$emp->name}}</option>
-                                                        @else
-                                                            <option value="{{$emp->id}}">{{$emp->name}}</option>
-                                                        @endif
+                                                        name="program_id" required>
+                                                    <option value="" selected>Select One</option>
+                                                    @foreach($programs as $program)
+                                                        <option value="{{$program->id}}">{{$program->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label"> Item </label>
+                                                <label class="col-md-3 control-label"> Description </label>
                                                 <div class="col-md-6">
-                                                    <input type="text" name="item" id="input002" class=" form-control" value="@if($expenses){{$expenses->item}}@endif" required>
+                                                    <input type="text" name="description" id="input002" class="select2-single form-control" placeholder="description" required>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"> Purchase From</label>
-                                                <div class="col-md-6">
-                                                    <input type="text" name="purchase_from" id="input002" class=" form-control" value="@if($expenses){{$expenses->purchase_from}}@endif" required>
+                                        <div class="form-group">
+                                            <label for="datepicker1" class="col-md-3 control-label"> Date From </label>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar text-alert pr11"></i>
+                                                    </div>
+                                                    <input type="text" id="datepicker1" class="select2-single form-control" name="date_from" required>
                                                 </div>
                                             </div>
+                                        </div>
 
                                             <div class="form-group">
-                                                <label for="datepicker1" class="col-md-3 control-label"> Date of Purchase </label>
+                                                <label for="datepicker4" class="col-md-3 control-label"> Date To </label>
                                                 <div class="col-md-6">
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar text-alert pr11"></i>
                                                         </div>
-
-                                                        <input type="text" id="datepicker1" class="select2-single form-control" name="date_of_purchase" value="@if($expenses){{$expenses->date_of_purchase}}@endif"required>
+                                                        <input type="text" id="datepicker4" class="select2-single form-control" name="date_to" required>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"> Amount </label>
-                                                <div class="col-md-6">
-                                                    <input type="text" name="amount" id="input002" class=" form-control" value="@if($expenses){{$expenses->amount}}@endif" required>
-                                                </div>
-                                            </div>
-
-
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-2">
-
                                                 <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
-
                                             </div>
-                                            <div class="col-md-2"><a href="/edit-expense/{id}" >
+                                            <div class="col-md-2"><a href="/add-training-invite" >
                                                     <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
                                         </div>
-
-                                        {!! Form::close() !!}
                                     </div>
+
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
@@ -116,8 +119,7 @@
                 </div>
             </div>
             </div>
-
-        </section>
+    </section>
 
     </div>
 @endsection

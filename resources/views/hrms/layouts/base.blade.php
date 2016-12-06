@@ -43,7 +43,12 @@
     <!--  Custom css -->
     <link rel="stylesheet" type="text/css" href="/assets/custom.css">
 
-    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team' || \Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
+    <!-- Sweet alert -->
+    <link rel="stylesheet" type="text/css" href="/assets/sweetalert.css">
+
+
+    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team' || \Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}' ||
+         \Route::getFacadeRoot()->current()->uri() == 'add-training-invite' || \Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')
         <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
         @endif
     <!-- -------------- IE8 HTML5 support  -------------- -->
@@ -630,11 +635,23 @@
 <script src="/assets/js/demo/widgets_sidebar.js"></script>
 <script src="/assets/js/pages/dashboard1.js"></script>
 
+<!-- Sweet alert -->
+<script src="/assets/js/sweetalert.min.js"></script>
+
 @if(\Route::getFacadeRoot()->current()->uri() == 'assign-asset')
     <script src="/assets/js/pages/forms-widgets.js"></script>
     <script src="/assets/js/custom.js"></script>
 @endif
 
+@if(\Route::getFacadeRoot()->current()->uri() == 'assign-award')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-award-assignment/{id}')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
 
 @if(\Route::getFacadeRoot()->current()->uri() == 'add-expense')
     <script src="/assets/js/pages/forms-widgets.js"></script>
@@ -657,6 +674,23 @@
 @if(\Route::getFacadeRoot()->current()->uri() == 'edit-asset-assignment/{id}')
     <script src="/assets/js/pages/forms-widgets.js"></script>
     <script src="/assets/js/custom.js"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-training-invite')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-training-invite')
+    <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
+@endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')
+    <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
 @endif
 
 

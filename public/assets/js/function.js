@@ -417,3 +417,80 @@ function FormSubmit(oForm) {
  number = number +10;
  $('.progress-bar').attr('aria-valuenow', number).css('width',number);
  }*/
+
+
+$('.showModal').click(function()
+{
+    var info = $(this).data('info');
+    var employee_id = info[0];
+    var employee_name = info[1];
+    var bank_name = info[2];
+    var account_number = info[3];
+    var ifsc_code = info[4];
+    var pf_account_number = info[5];
+
+    $('#employee_name').val(employee_name);
+    $('#bank_name').val(bank_name);
+    $('#account_number').val(account_number);
+    $('#ifsc_code').val(ifsc_code);
+    $('#pf_account_number').val(pf_account_number);
+    $('#emp_id').val(employee_id);
+    $('#bankModal').modal('show');
+});
+
+$('#update-bank-account-details').click(function ()
+{
+    swal(
+        "Please wait while we process your request"
+    );
+
+    var employee_id = $('#emp_id').val();
+    var employee_name = $('#employee_name').val();
+    var bank_name = $('#bank_name').val();
+    var account_number = $('#account_number').val();
+    var ifsc_code = $('#ifsc_code').val();
+    var pf_account_number = $('#pf_account_number').val();
+    var token = $('#token').val();
+
+    $.post('/update-account-details',{
+        'employee_id' : employee_id,
+        'employee_name' : employee_name,
+        'bank_name' : bank_name,
+        'account_number' : account_number,
+        'ifsc_code' : ifsc_code,
+        'pf_account_number' : pf_account_number,
+        '_token' : token
+    }, function(data)
+    {
+       var parsed = JSON.parse(data);
+
+        if(parsed == 'success')
+        {
+            swal({
+                title: "Success!",
+                text: "Bank Details Successfully updated!",
+                type: "success",
+                confirmButtonText: "OK",
+                allowEscapeKey: true,
+                allowOutsideClick: true
+            },
+                function(){
+                    location.reload(true);
+            });
+        }
+        else
+        {
+            swal({
+                title: "Error!",
+                text: "Sorry, details not update!",
+                type: "error",
+                confirmButtonText: "OK",
+                allowEscapeKey: true,
+                allowOutsideClick: true
+                },
+                function(){
+                    location.reload(true);
+            });
+        }
+    });
+});

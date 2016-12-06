@@ -2,8 +2,8 @@
 
 @section('content')
     <!-- START CONTENT -->
+    <input type="hidden" value="{{csrf_token()}}" id="token">
     <div class="content">
-
         <header id="topbar" class="alt">
             <div class="topbar-left">
                 <ol class="breadcrumb">
@@ -33,6 +33,7 @@
                 <!-- -------------- Products Status Table -------------- -->
                 <div class="row">
                     <div class="col-xs-12">
+                        <div class="box box-success">
                         <div class="panel">
                             <div class="panel-heading">
                                 <span class="panel-title hidden-xs"> Bank Detail Listings </span>
@@ -70,18 +71,16 @@
                                                 <td class="text-center">
                                                     <div class="btn-group text-right">
                                                         <button type="button"
-                                                                class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
-                                                                data-toggle="dropdown" aria-expanded="false"> Action
-                                                            <span class="caret ml5"></span>
+                                                                class="btn btn-success br2 btn-xs fs12 showModal"
+                                                                data-info='[
+                                                                "{{$emp->employee->id}}",
+                                                                "{{$emp->employee->name}}",
+                                                                "{{$emp->employee->bank_name}}",
+                                                                "{{$emp->employee->account_number}}",
+                                                                "{{$emp->employee->ifsc_code}}",
+                                                                "{{$emp->employee->pf_account_number}}"
+                                                                ]'> Edit
                                                         </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li>
-                                                                <a href="/edit-emp/{{$emp->id}}">Edit</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/delete-emp/{{$emp->id}}">Delete</a>
-                                                            </li>
-                                                        </ul>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -98,7 +97,54 @@
                     </div>
                 </div>
             </div>
+                </div>
         </section>
 
+    </div>
+
+
+    <!-- Modal -->
+    <div id="bankModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="employee_name">Employee Name</label>
+                        <input type="text" id="employee_name" class="form-control" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bank_name">Bank Name</label>
+                        <input type="text" id="bank_name" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="account_number">Account Number</label>
+                        <input type="text" id="account_number" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ifsc_code">Ifsc Code</label>
+                        <input type="text" id="ifsc_code" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pf_account_number">Pf Account Number</label>
+                        <input type="text" id="pf_account_number" class="form-control">
+                    </div>
+                    <input type="hidden" id="emp_id" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" id="update-bank-account-details">Update</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 @endsection

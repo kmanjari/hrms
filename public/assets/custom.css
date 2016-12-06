@@ -1,4 +1,22 @@
+
+
 /* CSS used here will be applied after bootstrap.css */
+
+.box.box-success {
+    border-top-color: #5a5386;
+}
+
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+
 .modal-header-success {
     color:#fff;
     padding:9px 15px;
@@ -58,4 +76,39 @@
     -moz-border-radius-topright: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+/* custom button */
+
+.btn-custom {
+    color: #fff;
+    background-color: #5a5386;
+}
+
+.btn-custom.active, .btn-custom:active, .btn-custom:focus, .btn-custom:hover, .open > .dropdown-toggle.btn-custom {
+    color: #fff;
+    background-color: #a8b924;
+    border-color: rgba(0, 0, 0, .05)
+}
+
+.btn-custom.disabled, .btn-custom.disabled.active, .btn-custom.disabled:active, .btn-custom.disabled:focus, .btn-custom.disabled:hover, .btn-custom[disabled], .btn-custom[disabled].active, .btn-custom[disabled]:active, .btn-custom[disabled]:focus, .btn-custom[disabled]:hover, fieldset[disabled] .btn-custom, fieldset[disabled] .btn-custom.active, fieldset[disabled] .btn-custom:active, fieldset[disabled] .btn-custom:focus, fieldset[disabled] .btn-custom:hover {
+    background-color: #c3d62d;
+    border-color: #c3d62d
+}
+
+.btn-custom .badge {
+    color: #c3d62d;
+    background-color: #fff
+}
+
+.btn-custom.light {
+    background-color: #cadb47
+}
+
+.btn-custom.dark, .btn-custom.light.active, .btn-custom.light:active, .btn-custom.light:focus, .btn-custom.light:hover, .open > .dropdown-toggle.btn-custom.light {
+    background-color: #aebf25
+}
+
+.btn-custom.dark.active, .btn-custom.dark:active, .btn-custom.dark:focus, .btn-custom.dark:hover, .open > .dropdown-toggle.btn-custom.dark {
+    background-color: #97a520
 }

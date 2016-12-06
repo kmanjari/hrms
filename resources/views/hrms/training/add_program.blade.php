@@ -17,9 +17,9 @@
                         <a href="/dashboard"> Dashboard </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href=""> Holiday </a>
+                        <a href=""> Training </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Edit Holidays </li>
+                    <li class="breadcrumb-current-item"> Add Training Program </li>
                 </ol>
             </div>
         </header>
@@ -32,7 +32,7 @@
                         <div class="box box-success">
                         <div class="panel">
                             <div class="panel-heading">
-                                <span class="panel-title hidden-xs"> Edit Holidays </span>
+                                <span class="panel-title hidden-xs"> Add Training Program </span>
                             </div>
 
                             <div class="panel-body pn">
@@ -47,39 +47,19 @@
 
 
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label"> Occasion </label>
+                                            <label class="col-md-3 control-label"> Training Program </label>
                                             <div class="col-md-6">
-                                                <input type="text" name="occasion" id="input002" class=" form-control" value="@if($holidays){{$holidays->occasion}}@endif" required>
+                                                <input type="text" name="name" id="input002" class="select2-single form-control" placeholder="program" required>
                                             </div>
                                         </div>
-
 
 
                                         <div class="form-group">
-                                            <label for="datepicker1" class="col-md-3 control-label"> Date From </label>
+                                            <label class="col-md-3 control-label"> Description </label>
                                             <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar text-alert pr11"></i>
-                                                    </div>
-
-                                                    <input type="text" id="datepicker1" class="select2-single form-control" name="date_from" value="@if($holidays){{$holidays->date_from}}@endif" required>
-                                                </div>
+                                                <textarea class="select2-single form-control" rows="3" id="textarea1" placeholder="Program Description" name="description" required></textarea>
                                             </div>
                                         </div>
-
-                                            <div class="form-group">
-                                                <label for="datepicker1" class="col-md-3 control-label"> Date To </label>
-                                                <div class="col-md-6">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar text-alert pr11"></i>
-                                                        </div>
-
-                                                        <input type="text" id="datepicker2" class="select2-single form-control" name="date_to" value="@if($holidays){{$holidays->date_to}}@endif" required>
-                                                    </div>
-                                                </div>
-                                            </div>
 
 
                                         <div class="form-group">
@@ -89,20 +69,20 @@
                                                 <input type="submit" class="btn btn-bordered btn-info btn-block" value="Submit">
 
                                             </div>
-                                            <div class="col-md-2"><a href="/edit-holiday/{id}" >
+                                            <div class="col-md-2"><a href="/add-training-program" >
                                                     <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
                                         </div>
-
-                                        {!! Form::close() !!}
                                     </div>
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-           </div>
-        </section>
+            </div>
+
+    </section>
 
     </div>
 @endsection

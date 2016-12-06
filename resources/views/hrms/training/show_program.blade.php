@@ -16,9 +16,9 @@
                         <a href="/dashboard"> Dashboard </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href=""> Added Expenses </a>
+                        <a href=""> Trainings </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Expense Listings </li>
+                    <li class="breadcrumb-current-item"> Training Program Listings </li>
                 </ol>
             </div>
         </header>
@@ -36,9 +36,10 @@
                         <div class="box box-success">
                         <div class="panel">
                             <div class="panel-heading">
-                                <span class="panel-title hidden-xs"> Added Expense Listings </span>
+                                <span class="panel-title hidden-xs"> Training Program Lists </span>
                             </div>
                             <div class="panel-body pn">
+
                                 @if(Session::has('flash_message'))
                                     <div class="alert alert-success">
                                         {{ Session::get('flash_message') }}
@@ -50,24 +51,19 @@
                                         <thead>
                                         <tr class="bg-light">
                                             <th class="text-center">Id</th>
-                                            <th class="text-center">Employee</th>
-                                            <th class="text-center">Item</th>
-                                            <th class="text-center">Purchase From</th>
-                                            <th class="text-center">Date of Purchase</th>
-                                            <th class="text-center">Amount</th>
+                                            <th class="text-center">Training Program</th>
+                                            <th class="text-center">Description</th>
                                             <th class="text-center">Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <?php $i =0;?>
-                                        @foreach($expenses as $expense)
+                                        @foreach($programs as $program)
                                             <tr>
                                                 <td class="text-center">{{$i+=1}}</td>
-                                                <td class="text-center">{{$expense->employee->name}}</td>
-                                                <td class="text-center">{{$expense->item}}</td>
-                                                <td class="text-center">{{$expense->purchase_from}}</td>
-                                                <td class="text-center">{{getFormattedDate($expense->date_of_purchase)}}</td>
-                                                <td class="text-center">{{$expense->amount}}</td>
+
+                                                <td class="text-center">{{$program->name}}</td>
+                                                <td class="text-center">{{$program->description}}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group text-right">
                                                         <button type="button"
@@ -77,10 +73,10 @@
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
-                                                                <a href="/edit-expense/{{$expense->id}}">Edit</a>
+                                                                <a href="/edit-training-program/{{$program->id}}">Edit</a>
                                                             </li>
                                                             <li>
-                                                                <a href="/delete-expense/{{$expense->id}}">Delete</a>
+                                                                <a href="/delete-training-program/{{$program->id}}">Delete</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -88,7 +84,7 @@
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            {!! $expenses->render() !!}
+                                            {!! $programs->render() !!}
                                         </tr>
                                         </tbody>
                                     </table>
@@ -99,7 +95,7 @@
                     </div>
                 </div>
             </div>
-                </div>
+            </div>
         </section>
 
     </div>
