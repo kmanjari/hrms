@@ -13,8 +13,6 @@
 
                     <div class="mt40">
                         <h2 class="text-muted mb20 mtn"> Policies </h2>
-
-                       {{-- {!! Form::open(['class' => 'form-horizontal','readonly']) !!}--}}
                         <div class="panel-group accordion" id="accordion1">
                             <div class="panel">
                                 <div class="panel-heading">
@@ -26,7 +24,7 @@
                                 </div>
                                 <div id="accordion1_1" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
-                                        <iframe src="/HTML/5_1A_Code_of_conduct/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
                                     </div>
                                 </div>
@@ -41,7 +39,7 @@
                                 </div>
                                 <div id="accordion1_2" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
-                                        <iframe src="/HTML/5_1C_Drug_and_Alcohol_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
                                     </div>
                                 </div>
@@ -57,7 +55,7 @@
                                 <div id="accordion1_3" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_2A_Probation_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -74,7 +72,7 @@
                                 <div id="accordion2_1" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_2B_Resignation_and_Exit_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -91,7 +89,7 @@
                                 <div id="accordion2_2" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_2D_Joining_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -108,7 +106,7 @@
                                 <div id="accordion2_3" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_2E_Recruitment__Selection_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -125,7 +123,7 @@
                                 <div id="accordion2_4" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_3A_Office_Timings_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -142,7 +140,7 @@
                                 <div id="accordion2_5" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_3B_Leave_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -159,7 +157,7 @@
                                 <div id="accordion2_6" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_4E_Employee_Welfare_Scheme/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -176,7 +174,7 @@
                                 <div id="accordion2_7" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_5_Dress_Code/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -193,7 +191,7 @@
                                 <div id="accordion2_8" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/5_8B_Confidentiality_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -210,7 +208,7 @@
                                 <div id="accordion2_9" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/Assets_Policy/index.html" width="100%"
+                                        <iframe src="/HTML/index.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -218,72 +216,8 @@
                             </div>
 
                         </div>
-                        {{--{!! Form::close() !!}--}}
                     </div>
 
-
-                    {{--<div class="table-layout br-t">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h5 class="text-muted pl5 mt40 mb20"> Typical Questions </h5>
-                                <ul class="fs15 list-splitter mb30">
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-question text-alert pr10"></i> How do I
-                                            recover or change my
-                                            password?</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-question text-alert pr10"></i> How do I
-                                            track a subdomain?</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-question text-alert pr10"></i> Can I use
-                                            my data outside of
-                                            ThemeREX?</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-question text-alert pr10"></i> What does
-                                            it mean when my Data
-                                            doesn't ...</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h5 class="text-muted pl5 mt40 mb20"> Best Answers </h5>
-                                <ul class="fs15 list-splitter mb30">
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-exclamation text-success pr10"></i> How
-                                            do I recover or change my
-                                            password?</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-exclamation text-success pr10"></i> How
-                                            do I track a
-                                            subdomain?</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-exclamation text-success pr10"></i> Can I
-                                            use my data outside of
-                                            ThemeREX?</a>
-                                    </li>
-                                    <li>
-                                        <a class="link-unstyled" href="#" title="">
-                                            <i class="fa fa-exclamation text-success pr10"></i> What
-                                            does it mean when my
-                                            Data doesn't ...</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>--}}
                 </div>
             </div>
         </div>
