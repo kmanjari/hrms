@@ -49,18 +49,12 @@
             <!-- -------------- Login Form -------------- -->
             <div class="allcp-form theme-primary mw320" id="login">
                 <div class="bg-primary text-center mb20 br3 pv15">
-                <img src="/assets/img/Logo.png" class="img-responsive"
-                                                   alt="Logo"/></div>
+                <span style="color:#FFFFFF"><strong><u>H</u>uman <u>R</u>esource <u>M</u>anagement <u>S</u>ystem</strong></span>
+                </div>
                 <div class="panel mw320">
 
                     {!! Form::open() !!}
                         <div class="panel-body pn mv10">
-
-                            {{--@if(Session::has('message'))
-                                <div class="alert alert-success">
-                                    {{Session::get('message')}}
-                                </div>
-                            @endif--}}
                                 @if (session('message'))
                                     <div class="alert alert-primary">
                                         {{ session('message') }}
