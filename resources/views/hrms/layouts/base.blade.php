@@ -676,6 +676,16 @@
     <script src="/assets/js/custom.js"></script>
 @endif
 
+@if(\Route::getFacadeRoot()->current()->uri() == 'promotion')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-promotion/{id}')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
 @if(\Route::getFacadeRoot()->current()->uri() == 'add-training-invite')
     <script src="/assets/js/pages/forms-widgets.js"></script>
     <script src="/assets/js/custom.js"></script>

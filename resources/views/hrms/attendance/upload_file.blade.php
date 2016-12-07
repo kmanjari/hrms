@@ -19,6 +19,10 @@
                 <li class="breadcrumb-current-item"> Attendance Manager</li>
             </ol>
         </div>
+        <div class="topbar-right">
+            <h4><a class="link-unstyled" href="/sample_sheet/attendance_sample_sheet.xlsx" title="">
+                    <i class="fa fa-cloud-download text-purple pr10"></i> Sample Sheet </a></h4>
+        </div>
     </header>
     <!-- -------------- Content -------------- -->
     <section id="content" class="table-layout animated fadeIn">

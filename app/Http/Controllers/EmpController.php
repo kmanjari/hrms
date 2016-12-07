@@ -6,6 +6,7 @@
   use App\Models\EmployeeUpload;
   use App\Models\Role;
   use App\Models\UserRole;
+  use App\Promotion;
   use App\User;
   use Carbon\Carbon;
   use Illuminate\Http\Response;
@@ -610,6 +611,50 @@
             return json_encode('failed');
         }
 
+    }
+
+    public function doPromotion()
+    {
+        $emps = User::get();
+        $roles = Role::get();
+        return view('hrms.promotion.add_promotion',compact('emps','roles'));
+    }
+
+    public function getPromotionData(Request $request)
+    {
+        $result = Employee::with('userrole.role')->where('id', $request->employee_id)->first();
+        if($result)
+        {
+            $result = ['salary' => $result->salary, 'designation' => $result->userrole->role->name];
+        }
+        return json_encode(['status' => 'success', 'data' => $result]);
+    }
+
+    public function processPromotion(Request $request){
+
+        $newDesignation = Role::where('id', $request->new_designation)->first();
+        $process = Employee::where('id', $request->emp_id)->first();
+        $process->salary = $request->new_salary;
+        $process->save();
+
+        \DB::table('user_roles')->where('user_id', $process->user_id)->update(['role_id' => $request->new_designation]);
+
+        $promotion = new Promotion();
+        $promotion->emp_id = $request->emp_id;
+        $promotion->old_designation = $request->old_designation;
+        $promotion->new_designation = $newDesignation->name;
+        $promotion->old_salary = $request->old_salary;
+        $promotion->new_salary = $request->new_salary;
+        $promotion->date_of_promotion = date_format(date_create($request->date_of_promotion), 'Y-m-d');
+        $promotion->save();
+
+        \Session::flash('flash_message', 'Employee successfully Promoted!');
+        return redirect()->back();
+    }
+
+    public function showPromotion(){
+        $promotions = Promotion::with('employee')->paginate(10);
+        return view('hrms.promotion.show_promotion',compact('promotions'));
     }
 
   }

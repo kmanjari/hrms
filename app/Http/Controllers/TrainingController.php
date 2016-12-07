@@ -71,12 +71,7 @@ class TrainingController extends Controller
 
     public function processTrainingInvite(Request $request)
     {
-        $invite_id = TrainingInvite::max('invite_id');
-        if (!$invite_id) {
-            $invite_id = 1;
-        } else {
-            $invite_id = $invite_id + 1;
-        }
+
         $totalMembers = count($request->member_ids);
         $i = 0;
         try
@@ -88,7 +83,6 @@ class TrainingController extends Controller
                 {
                     $invites = new TrainingInvite();
                     $invites->user_id = $member_id;
-                    $invites->invite_id = $invite_id;
                     $invites->program_id = $request->program_id;
                     $invites->description = $request->description;
                     $invites->date_from = date_format(date_create($request->date_from), 'Y-m-d');
@@ -107,21 +101,39 @@ class TrainingController extends Controller
         return redirect()->back();
     }
 
-    public function showTrainingInvite(){
+    public function showTrainingInvite()
+    {
         $invites = TrainingInvite::with(['employee','program'])->paginate(15);
         return view('hrms.training.show_training_invite',compact('invites'));
     }
 
-    public function doEditTrainingInvite($id){
-
+    public function doEditTrainingInvite($id)
+    {
+        $training = TrainingInvite::with(['employee', 'program'])->findOrFail($id);
+        $programs = TrainingProgram::get();
+        foreach($programs as $program)
+        {
+            $prog[$program->id] = $program->name;
+        }
+        $training->programs = $prog;
+        return view('hrms.training.edit_training_invite', compact('training'));
     }
 
-    public function processEditTrainingInvite($id, Request $request){
+    public function processEditTrainingInvite($id, Request $request)
+    {
+        $model = TrainingInvite::where('id', $id)->firstOrFail();
+        $model->program_id = $request->program_id;
+        $model->description = $request->description;
+        $model->date_from = $request->date_from;
+        $model->date_to = $request->date_to;
+        $model->save();
 
+        \Session::flash('flash_message', 'Training Program successfully updated!');
+        return redirect('show-training-invite');
     }
 
     public function deleteTrainingInvite($id){
-            $invite = TrainingInvite::where('user_id',$id);
+            $invite = TrainingInvite::where('id',$id);
             $invite->delete();
 
             \Session::flash('flash_message', 'Member successfully removed!');

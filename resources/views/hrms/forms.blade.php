@@ -89,14 +89,7 @@
         </div>
         <!-- -------------- FAQ Right Column -------------- -->
         </div>
-
     </section>
     <!-- -------------- /Content -------------- -->
-
     </section>
-
-
-
-
-
 @endsection

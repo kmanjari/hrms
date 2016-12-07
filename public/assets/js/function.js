@@ -494,3 +494,25 @@ $('#update-bank-account-details').click(function ()
         }
     });
 });
+
+$(document).on('change','#promotion_emp_id', function () {
+
+    var emp_id= $('#promotion_emp_id').val();
+    var token = $('#token').val();
+
+    $.post('/get-promotion-data',{'employee_id' : emp_id, '_token' : token}, function(data)
+    {
+        var parsed = JSON.parse(data);
+        if(parsed.status == 'success')
+        {
+            $('#old_designation').val('');
+            $('#old_designation').val(parsed.data.designation);
+            $('#old_salary').val('');
+            $('#old_salary').val(parsed.data.salary);
+        }
+        else
+        {
+
+        }
+    });
+});

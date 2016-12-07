@@ -411,7 +411,7 @@
                                         <div class="section">
                                             <label for="input002"><h6 class="mb20 mt40"> Role </h6></label>
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
-                                                <select class="select2-single form-control" name="role" id="role" required>
+                                                <select class="select2-single form-control" name="role" id="role" readonly required>
                                                     <option value="">Select role</option>
                                                     @foreach($roles as $role)
                                                         @if($emps->role->role->id == $role->id)
@@ -759,7 +759,7 @@
                                         <label for="input002" class="field prepend-icon">
                                             @if(\Route::getFacadeRoot()->current()->uri() == 'edit-emp/{id}')
                                                 <input type="text" name="salary" id="salary" class="gui-input"
-                                                       value="@if($emps && $emps->employee->salary){{$emps->employee->salary}}@endif">
+                                                       value="@if($emps && $emps->employee->salary){{$emps->employee->salary}}@endif" readonly>
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-inr"></i>
                                                 </label>

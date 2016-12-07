@@ -155,6 +155,24 @@
 
     <li>
         <a class="accordion-toggle" href="#">
+            <span class="fa fa-arrow-circle-o-up"></span>
+            <span class="sidebar-title">Promotions</span>
+            <span class="caret"></span>
+        </a>
+        <ul class="nav sub-nav">
+            <li>
+                <a href="/promotion">
+                    <span class="glyphicon glyphicon-book"></span> Promote </a>
+            </li>
+            <li>
+                <a href="/show-promotion">
+                    <span class="glyphicon glyphicon-modal-window"></span> Promotion Listings </a>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <a class="accordion-toggle" href="#">
             <span class="fa fa-money"></span>
             <span class="sidebar-title">Expenses</span>
             <span class="caret"></span>

@@ -78,10 +78,10 @@
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
-                                                                <a href="/edit-training-invite/{{$invite->invite_id}}">Edit</a>
+                                                                <a href="/edit-training-invite/{{$invite->id}}">Edit</a>
                                                             </li>
                                                             <li>
-                                                                <a href="/delete-training-invite/{{$invite->user_id}}">Delete</a>
+                                                                <a href="/delete-training-invite/{{$invite->id}}">Delete</a>
                                                             </li>
                                                         </ul>
                                                     </div>

@@ -223,11 +223,13 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('delete-award-assignment/{id}', ['uses'=>'AwardController@doAssignDelete']);
 
-    Route::get('promotions', ['uses'=>'EmpController@doPromotion']);
+    Route::get('promotion', ['uses'=>'EmpController@doPromotion']);
 
-    Route::post('promotions', ['uses'=>'EmpController@processPromotion']);
+    Route::post('promotion', ['uses'=>'EmpController@processPromotion']);
 
-    Route::get('show-promotions-list', ['uses'=>'EmpController@showPromotion']);
+    Route::get('show-promotion', ['uses'=>'EmpController@showPromotion']);
+
+    Route::post('get-promotion-data', ['uses' => 'EmpController@getPromotionData']);
 
     Route::get('add-training-program', ['uses'=>'TrainingController@addTrainingProgram']);
 
@@ -252,9 +254,5 @@ Route::group(['middleware' => ['auth']], function ()
     Route::post('edit-training-invite/{id}', ['uses'=>'TrainingController@processEditTrainingInvite']);
 
     Route::get('delete-training-invite/{id}',['uses'=>'TrainingController@deleteTrainingInvite']);
-
-
-
-
 
 });
