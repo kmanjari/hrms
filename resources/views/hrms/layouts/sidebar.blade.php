@@ -277,7 +277,7 @@
 
 @endif
 
-    <li class="sidebar-label pt30"> Extras</li>
+    {{--<li class="sidebar-label pt30"> Extras</li>--}}
     <li>
         <a href="/create-meeting">
             <span class="fa fa-calendar-o"></span>
@@ -303,9 +303,9 @@
     </li>
 
     <li>
-        <a href="#">
-            <span class="fa fa-book"></span>
-            <span class="sidebar-title"> Documentation </span>
+        <a href="/hr-policy">
+            <span class="fa fa-gavel"></span>
+            <span class="sidebar-title"> Company Policy </span>
         </a>
     </li>
     <p> &nbsp; </p>

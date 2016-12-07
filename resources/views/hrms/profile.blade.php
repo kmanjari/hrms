@@ -150,6 +150,37 @@
                     </div>
                 </div>
             </div>
+
+            @if($events)
+            <div class="col-md-3 pull-right">
+                <div class="box box-success">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <span class="panel-title"> Events </span>
+                        </div>
+                        <div class="panel-body pn pb5">
+                            <hr class="short br-lighter">
+                                @foreach (array_chunk($events, 3, true) as $results)
+                                    <table class="table">
+                                        @foreach($results as $event)
+                                             <tr>
+                                                <td>
+                                                    <div class='fc-event' data-event="primary">
+                                                        <div class="fc-event-desc blink" id="blink">
+                                                            <span class="label label-info pull-right">  {{$event->name}} </span></a>
+                                                        </div>
+                                                    </div>
+                                                    <span class="label label-success pull-right">{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))}}</span></a>
+                                                </td>
+                                             </tr>
+                                        @endforeach
+                                    </table>
+                                @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
             <div class="col-md-5">
                 <div class="box box-success">
                     <div class="panel">

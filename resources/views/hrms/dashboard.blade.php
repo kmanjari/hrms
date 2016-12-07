@@ -60,6 +60,32 @@
                     </div>
                 </div>
             </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="panel panel-tile">
+                        <div class="panel-body">
+                            <div class="row pv10">
+                                <div class="col-xs-5 ph10"><img src="/assets/img/pages/Laptop Sketch-64x64"
+                                                                class="img-responsive mauto" style="height: 100px; width: 100px;" alt=""/></div>
+                                <div class="col-xs-7 pl5">
+                                    <h3 class="text-muted"> <a href="{{route('asset-listing')}}"> ASSET <br /> MANAGER </a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="panel panel-tile">
+                        <div class="panel-body">
+                            <div class="row pv10">
+                                <div class="col-xs-5 ph10"><img src="/assets/img/pages/dollar.jpg"
+                                                                class="img-responsive mauto" style="height: 100px; width: 100px;" alt=""/></div>
+                                <div class="col-xs-7 pl5">
+                                    <h3 class="text-muted"> <a href="{{route('expense-list')}}"> EXPENSE <br /> MANAGER </a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="panel panel-tile">
                     <div class="panel-body">
@@ -73,6 +99,8 @@
                     </div>
                 </div>
             </div>
+
+
             @endif
                 @if(!Auth::user()->isHR())
                 <div class="col-sm-6 col-xl-3">
