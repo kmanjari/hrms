@@ -49,7 +49,7 @@
             <div class="allcp-form theme-warning mw500" style="margin-top: 10%;" id="login">
 
                 <div class="bg-alert text-center mb20 br3 pv15">
-                    <img src="/assets/img/Logo.png" alt=""/>
+                    <h2 style="color:#FFFFFF">Human Resource Management System</h2>
                 </div>
                 <div class="panel panel-alert">
                     <div class="panel-heading pn">
