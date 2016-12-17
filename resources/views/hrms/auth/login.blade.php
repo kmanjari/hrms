@@ -4,7 +4,7 @@
 <head>
     <!-- -------------- Meta and Title -------------- -->
     <meta charset="utf-8">
-    <title>Digital IP Insights - Human Resource Management System</title>
+    <title>Human Resource Management System</title>
     <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme"/>
     <meta name="description" content="Alliance - A Responsive HTML5 Admin UI Framework">
     <meta name="author" content="ThemeREX">

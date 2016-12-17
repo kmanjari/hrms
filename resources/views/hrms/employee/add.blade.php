@@ -537,7 +537,7 @@
                                             @else
                                                 <input type="number" name="emer_number" id="emergency_number"
                                                        class="gui-input phone-group" maxlength="10" minlength="10"
-                                                       placeholder="emergency number...">
+                                                       placeholder="Emergency number">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-mobile-phone"></i>
                                                 </label>
@@ -553,7 +553,7 @@
                                                 <input type="text" name="pan_number" id="pan_number" class="gui-input"
                                                        value="@if($emps && $emps->employee->pan_number){{$emps->employee->pan_number}}@endif">
                                             @else
-                                                <input type="text" placeholder="pan_number..." name="pan_number"
+                                                <input type="text" placeholder="PAN" name="pan_number"
                                                        id="pan_number" class="gui-input">
 
                                             @endif
@@ -569,7 +569,7 @@
                                                        value="@if($emps && $emps->employee->father_name){{$emps->employee->father_name}}@endif">
 
                                             @else
-                                                <input type="text" placeholder="name of your father..."
+                                                <input type="text" placeholder="Employees' father name"
                                                        name="father_name" id="father_name" class="gui-input">
 
                                             @endif
@@ -587,7 +587,7 @@
                                                     <i class="fa fa-map-marker"></i>
                                                 </label>
                                             @else
-                                                <input type="text" placeholder="your address..." name="address"
+                                                <input type="text" placeholder="current address..." name="address"
                                                        id="address" class="gui-input">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-map-marker"></i>
@@ -608,7 +608,7 @@
                                                     <i class="fa fa-location-arrow"></i>
                                                 </label>
                                             @else
-                                                <input type="text" placeholder="your permanent address..."
+                                                <input type="text" placeholder="permanent address..."
                                                        name="permanent_address" id="permanent_address"
                                                        class="gui-input">
                                                 <label for="input002" class="field-icon">
@@ -764,7 +764,7 @@
                                                     <i class="fa fa-inr"></i>
                                                 </label>
                                             @else
-                                                <input type="text" placeholder="your salary..." name="salary"
+                                                <input type="text" placeholder="e.g 12000" name="salary"
                                                        id="salary" class="gui-input">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-inr"></i>
@@ -797,7 +797,7 @@
                                                     <i class="fa fa-list"></i>
                                                 </label>
                                             @else
-                                                <input type="text" placeholder="your account number..."
+                                                <input type="text" placeholder="Bank account number"
                                                        name="account_number" id="bank_account_number" class="gui-input">
                                                 <label for="input002" class="field-icon">
                                                     <i class="fa fa-list"></i>

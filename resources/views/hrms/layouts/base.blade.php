@@ -4,13 +4,9 @@
 <head>
     <!-- -------------- Meta and Title -------------- -->
     <meta charset="utf-8">
-    <title> HRMS </title>
-    <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme"/>
+    <title> Human Resource Management System </title>
     <meta name="description" content="HRMS">
-    <meta name="author" content="ThemeREX">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 
     <!-- -------------- Fonts -------------- -->
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>

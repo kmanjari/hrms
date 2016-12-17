@@ -7,9 +7,9 @@ $('#datepicker4').on('change', function () {
     var new_date_from = new Date(date_from);
     var date_to = $('#datepicker4').val();
     var new_date_to = new Date(date_to);
-    if(date_from > date_to)
+    if(date_from < date_to)
     {
-        alert('From Date cannot be greater than To Date');
+        alert('To Date cannot be smaller than From Date');
         $('#datepicker4').val('');
     }
     else {
@@ -57,12 +57,7 @@ $('#datepicker1').on('change', function () {
     {
         diffDays = 2;
     }
-    /*if(date_from > date_to)
-     {
-     alert('From Date cannot be greater than To Date');
-     }
 
-     else {*/
     if (diffDays == 0) {
         var time_from = date_from + ' ' + $('#timepicker1').val() + ':00';
         var time_to = date_to + ' ' + $('#timepicker4').val() + ':00';
