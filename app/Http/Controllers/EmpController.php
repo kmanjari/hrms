@@ -515,7 +515,11 @@
             $attachment->user_id = $user->id;
             $attachment->save();
 
-            $attachment->userrole()->create(['role_id' => convertRole($row->role)]);
+            //$attachment->userrole()->create(['role_id' => convertRole($row->role)]);
+              $userRole = new UserRole();
+              $userRole->role_id = convertRole($row->role);
+              $userRole->user_id = $user->id;
+              $userRole->save();
           }
           //return redirect('upload_form');*/
         });
