@@ -33,6 +33,8 @@ Route::group(['middleware' => ['guest']], function ()
 Route::group(['middleware' => ['auth']], function ()
 {
 
+    Route::get('home', 'HomeController@index');
+
     Route::get('change-password', 'AuthController@changePassword');
 
     Route::post('change-password', 'AuthController@processPasswordChange');
@@ -254,5 +256,35 @@ Route::group(['middleware' => ['auth']], function ()
     Route::post('edit-training-invite/{id}', ['uses'=>'TrainingController@processEditTrainingInvite']);
 
     Route::get('delete-training-invite/{id}',['uses'=>'TrainingController@deleteTrainingInvite']);
+
+    Route::post('status-update', 'UpdateController@index');
+
+    Route::post('post-reply', 'UpdateController@reply');
+
+    Route::get('post/{id}', 'UpdateController@post');
+
+    /** Routes for clients */
+    Route::get('add-client', 'ClientController@addClient')->name('add-client');
+
+    Route::post('add-client', 'ClientController@saveClient');
+
+    Route::get('list-client', 'ClientController@listClients')->name('list-client');
+
+    Route::get('edit-client/{clientId}', 'ClientController@showEdit')->name('edit-client');
+
+    Route::post('edit-client/{clientId}', 'ClientController@saveClientEdit');
+
+    Route::get('validate-code/{code}', 'ClientController@validateCode');
+
+
+    /** Routes for projects */
+
+    Route::get('add-project', 'ProjectController@addProject')->name('add-project');
+
+    Route::post('add-project', 'ProjectController@saveProject');
+
+    Route::get('list-project', 'ProjectController@listProject')->name('list-project');
+
+    Route::get('assign-project', 'ProjectController@assignProject')->name('assign-project');
 
 });

@@ -14,7 +14,7 @@
 
 
         // Init Theme Core
-        Core.init();
+        //Core.init();
 
         // Form Switcher
         $('#form-switcher > button').on('click', function() {

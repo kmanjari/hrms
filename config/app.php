@@ -148,8 +148,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        'Maatwebsite\Excel\ExcelServiceProvider',
-        'Collective\Html\HtmlServiceProvider',
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        \App\Providers\ViewShareServiceProvider::class,
 
         /*
          * Application Service Providers...

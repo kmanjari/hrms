@@ -1,23 +1,23 @@
 /**
  * Created by kanak on 1/6/16.
  */
+var datepicker1 = $('#datepicker1');
+var datepicker4 = $('#datepicker4');
 
-$('#datepicker4').on('change', function () {
-    var date_from = $('#datepicker1').val();
+datepicker4.on('change', function () {
+    var date_from = datepicker1.val();
     var new_date_from = new Date(date_from);
-    var date_to = $('#datepicker4').val();
+    var date_to = datepicker4.val();
     var new_date_to = new Date(date_to);
-    if(date_from < date_to)
-    {
+    if (date_from > date_to) {
         alert('To Date cannot be smaller than From Date');
-        $('#datepicker4').val('');
+        datepicker4.val('');
     }
     else {
         var timeDiff = Math.abs(new_date_to.getTime() - new_date_from.getTime());
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-        if(diffDays == 1)
-        {
+        if (diffDays == 1) {
             diffDays = 2;
         }
 
@@ -45,16 +45,15 @@ $('#datepicker4').on('change', function () {
     }
 });
 
-$('#datepicker1').on('change', function () {
-    var date_from = $('#datepicker1').val();
+datepicker1.on('change', function () {
+    var date_from = datepicker1.val();
     var new_date_from = new Date(date_from);
-    var date_to = $('#datepicker4').val();
+    var date_to = datepicker4.val();
     var new_date_to = new Date(date_to);
     var timeDiff = Math.abs(new_date_to.getTime() - new_date_from.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    if(diffDays == 1)
-    {
+    if (diffDays == 1) {
         diffDays = 2;
     }
 
@@ -83,15 +82,14 @@ $('#datepicker1').on('change', function () {
 });
 
 $('#timepicker4').on('change', function () {
-    var date_from = $('#datepicker1').val();
+    var date_from = datepicker1.val();
     var new_date_from = new Date(date_from);
-    var date_to = $('#datepicker4').val();
+    var date_to = datepicker4.val();
     var new_date_to = new Date(date_to);
     var timeDiff = Math.abs(new_date_to.getTime() - new_date_from.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    if(diffDays == 1)
-    {
+    if (diffDays == 1) {
         diffDays = 2;
     }
     if (diffDays == 0) {
@@ -103,8 +101,7 @@ $('#timepicker4').on('change', function () {
         if (diff <= 3.5) {
             $('#total_days').val('First half leave');
         }
-        else if(diff > 3.5 && diff <5)
-        {
+        else if (diff > 3.5 && diff < 5) {
             $('#total_days').val('Second half leave');
         }
         else if (diff > 5) {
@@ -175,24 +172,22 @@ function toWords(s) {
 }
 
 
-$(document).on('change', '.leave_type', function()
-{
+$(document).on('change', '.leave_type', function () {
+    var showLeaveCount = $('#show-leave-count');
     var leaveTypeId = $('.leave_type').val();
     var token = $('#token').val();
     var userId = $('#user_id').val();
-    $.post('/get-leave-count', {'leaveTypeId': leaveTypeId, '_token' : token, 'userId': userId}, function(data)
-    {
+    $.post('/get-leave-count', {'leaveTypeId': leaveTypeId, '_token': token, 'userId': userId}, function (data) {
         parsed = JSON.parse(data);
-        $('#show-leave-count').empty();
-        var html = "<div class=' col-md-5 alert alert-dark center-block '>Leaves &nbsp Remaining : "+parsed+"</div>";
-        $('#show-leave-count').append(html);
+        showLeaveCount.empty();
+        var html = "<div class=' col-md-5 alert alert-dark center-block '>Leaves &nbsp Remaining : " + parsed + "</div>";
+        showLeaveCount.append(html);
 
     });
 
 });
 
-$('.approveClick').click(function()
-{
+$('.approveClick').click(function () {
     var leaveId = $(this).data('id');
     var type = $(this).data('name');
     var token = $('#token').val();
@@ -202,7 +197,7 @@ $('.approveClick').click(function()
 
 });
 
-$('#proceed-button').click(function(){
+$('#proceed-button').click(function () {
     $('#loader').removeClass('hidden');
     console.log('please wait processing...');
     var remarks = $('#remark-text').val();
@@ -217,12 +212,10 @@ $('#proceed-button').click(function(){
     var buttonClass = 'btn-success';
     var buttonIcon = 'fa-check';
 
-    if(type == 'approve')
-    {
+    if (type == 'approve') {
         message = 'Successfully Approved';
     }
-    else
-    {
+    else {
         message = 'Leave Rejected';
         divClass = 'alert-danger';
         url = '/disapprove-leave';
@@ -231,33 +224,28 @@ $('#proceed-button').click(function(){
         buttonIcon = 'fa-times';
     }
 
-    console.log('leave id ' + leave_id);
-    $.post(url, {'leaveId': leave_id, 'remarks' : remarks, '_token' : token}, function(data)
-    {
+    $.post(url, {'leaveId': leave_id, 'remarks': remarks, '_token': token}, function (data) {
         var parsed = JSON.parse(data);
-        if(parsed === 'success')
-        {
+        if (parsed === 'success') {
             $('#loader').addClass('hidden');
             var statusmessage = $('#status-message');
-            statusmessage.append("<div class='alert " + divClass+"'>" +message+ "</div>");
+            statusmessage.append("<div class='alert " + divClass + "'>" + message + "</div>");
             statusmessage.removeClass('hidden');
-            var remarks_div = $('#remark-'+leave_id);
+            var remarks_div = $('#remark-' + leave_id);
             remarks_div.append(remarks);
-            var leavebutton = $('#button-'+leave_id);
+            var leavebutton = $('#button-' + leave_id);
             leavebutton.empty();
-            leavebutton.append("<button type='button' class='btn "+ buttonClass+" br2 btn-xs fs12' aria-expanded='false'><i class='fa "+ buttonIcon +"'>"+ buttonText +"</i> </button>");
-            setTimeout(function() {
+            leavebutton.append("<button type='button' class='btn " + buttonClass + " br2 btn-xs fs12' aria-expanded='false'><i class='fa " + buttonIcon + "'>" + buttonText + "</i> </button>");
+            setTimeout(function () {
                 $('#remarkModal').modal('hide');
-            },4000);
+            }, 4000);
 
 
         }
     });
-    console.log('processed');
 });
 
-$('.disapproveClick').click(function()
-{
+$('.disapproveClick').click(function () {
     var leaveId = $(this).data('id');
     var token = $('#token').val();
     $('#leave_id').val(leaveId);
@@ -294,19 +282,16 @@ $('.disapproveClick').click(function()
 
  }
  });
- console.log('processed');
  });*/
 
 
-$('#passwordForm').submit(function(event)
-{
+$('#passwordForm').submit(function (event) {
     event.preventDefault();
     var old_password = $('#old_password').val();
     var new_password = $('#new_password').val();
     var confirm_password = $('#confirm_password').val();
 
-    if(new_password != confirm_password)
-    {
+    if (new_password != confirm_password) {
         alert('New password and confirm password does not match');
         return false;
     }
@@ -314,8 +299,7 @@ $('#passwordForm').submit(function(event)
 
 });
 
-$('#create-event').click(function()
-{
+$('#create-event').click(function () {
     $('#status-section').removeClass('hidden');
     var name = $('#event_name').val();
     var coordinator = $('#event_cordinater').val();
@@ -324,22 +308,26 @@ $('#create-event').click(function()
     var message = $('#event_description').val();
     var token = $('#token').val();
 
-    $.post('create-event', {'name' : name, 'coordinator' : coordinator, 'attendees' : attendees, 'date' : date, 'message' : message, '_token' : token}, function(data)
-    {
+    $.post('create-event', {
+        'name': name,
+        'coordinator': coordinator,
+        'attendees': attendees,
+        'date': date,
+        'message': message,
+        '_token': token
+    }, function (data) {
         $('#status-section').addClass('hidden');
         $('#message-section').removeClass('hidden');
         var parsed = JSON.parse(data);
 
-        if(parsed === 'success')
-        {
+        if (parsed === 'success') {
             alert(parsed);
         }
     });
 
 });
 
-$('#create-meeting').click(function()
-{
+$('#create-meeting').click(function () {
     $('#status-section').removeClass('hidden');
     var name = $('#meeting_name').val();
     var coordinator = $('#meeting_cordinater').val();
@@ -348,40 +336,41 @@ $('#create-meeting').click(function()
     var message = $('#meeting_description').val();
     var token = $('#token').val();
 
-    $.post('create-meeting', {'name' : name, 'coordinator' : coordinator, 'attendees' : attendees, 'date' : date, 'message' : message, '_token' : token}, function(data)
-    {
+    $.post('create-meeting', {
+        'name': name,
+        'coordinator': coordinator,
+        'attendees': attendees,
+        'date': date,
+        'message': message,
+        '_token': token
+    }, function (data) {
         $('#status-section').addClass('hidden');
         $('#message-section').removeClass('hidden');
         var parsed = JSON.parse(data);
 
-        if(parsed === 'success')
-        {
+        if (parsed === 'success') {
             alert(parsed);
         }
     });
 
 });
 
-$(document).on('change', '#qualification', function()
-{
+$(document).on('change', '#qualification', function () {
     var value = $('.qualification_select').val();
-    if(value == 'Other') {
+    if (value == 'Other') {
         $('.qualification_text').removeClass('hidden');
     }
-    else if(value != 'Other')
-    {
+    else if (value != 'Other') {
         $('.qualification_text').addClass('hidden');
     }
 });
 
-$(document).on('change', '#probation_period', function()
-{
+$(document).on('change', '#probation_period', function () {
     var value = $('.probation_select').val();
-    if(value == 'Other') {
+    if (value == 'Other') {
         $('.probation_text').removeClass('hidden');
     }
-    else if(value != 'Other')
-    {
+    else if (value != 'Other') {
         $('.probation_text').addClass('hidden');
     }
 });
@@ -414,8 +403,7 @@ function FormSubmit(oForm) {
  }*/
 
 
-$('.showModal').click(function()
-{
+$('.showModal').click(function () {
     var info = $(this).data('info');
     var employee_id = info[0];
     var employee_name = info[1];
@@ -433,8 +421,7 @@ $('.showModal').click(function()
     $('#bankModal').modal('show');
 });
 
-$('#update-bank-account-details').click(function ()
-{
+$('#update-bank-account-details').click(function () {
     swal(
         "Please wait while we process your request"
     );
@@ -447,67 +434,126 @@ $('#update-bank-account-details').click(function ()
     var pf_account_number = $('#pf_account_number').val();
     var token = $('#token').val();
 
-    $.post('/update-account-details',{
-        'employee_id' : employee_id,
-        'employee_name' : employee_name,
-        'bank_name' : bank_name,
-        'account_number' : account_number,
-        'ifsc_code' : ifsc_code,
-        'pf_account_number' : pf_account_number,
-        '_token' : token
-    }, function(data)
-    {
-       var parsed = JSON.parse(data);
+    $.post('/update-account-details', {
+        'employee_id': employee_id,
+        'employee_name': employee_name,
+        'bank_name': bank_name,
+        'account_number': account_number,
+        'ifsc_code': ifsc_code,
+        'pf_account_number': pf_account_number,
+        '_token': token
+    }, function (data) {
+        var parsed = JSON.parse(data);
 
-        if(parsed == 'success')
-        {
+        if (parsed == 'success') {
             swal({
-                title: "Success!",
-                text: "Bank Details Successfully updated!",
-                type: "success",
-                confirmButtonText: "OK",
-                allowEscapeKey: true,
-                allowOutsideClick: true
-            },
-                function(){
-                    location.reload(true);
-            });
-        }
-        else
-        {
-            swal({
-                title: "Error!",
-                text: "Sorry, details not update!",
-                type: "error",
-                confirmButtonText: "OK",
-                allowEscapeKey: true,
-                allowOutsideClick: true
+                    title: "Success!",
+                    text: "Bank Details Successfully updated!",
+                    type: "success",
+                    confirmButtonText: "OK",
+                    allowEscapeKey: true,
+                    allowOutsideClick: true
                 },
-                function(){
+                function () {
                     location.reload(true);
-            });
+                });
+        }
+        else {
+            swal({
+                    title: "Error!",
+                    text: "Sorry, details not update!",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    allowEscapeKey: true,
+                    allowOutsideClick: true
+                },
+                function () {
+                    location.reload(true);
+                });
         }
     });
 });
 
-$(document).on('change','#promotion_emp_id', function () {
+$(document).on('change', '#promotion_emp_id', function () {
 
-    var emp_id= $('#promotion_emp_id').val();
+    var oldDesignation = $('#old_designation');
+    var oldSalary = $('#old_salary');
+    var emp_id = $('#promotion_emp_id').val();
     var token = $('#token').val();
 
-    $.post('/get-promotion-data',{'employee_id' : emp_id, '_token' : token}, function(data)
-    {
+    $.post('/get-promotion-data', {'employee_id': emp_id, '_token': token}, function (data) {
         var parsed = JSON.parse(data);
-        if(parsed.status == 'success')
-        {
-            $('#old_designation').val('');
-            $('#old_designation').val(parsed.data.designation);
-            $('#old_salary').val('');
-            $('#old_salary').val(parsed.data.salary);
+        if (parsed.status == 'success') {
+            oldDesignation.val('');
+            oldDesignation.val(parsed.data.designation);
+            oldSalary.val('');
+            oldSalary.val(parsed.data.salary);
         }
-        else
-        {
+        else {
 
         }
     });
 });
+
+$('#post-update').click(function()
+{
+    var postUpdate = $('#post-update');
+    $('#post-button').css('padding-left', '80%');
+    postUpdate.val('Posting...');
+    var status = $('#status').val();
+    var token = $('meta[name=csrf_token]').attr("content");
+    $.post('/status-update', {'status': status, '_token' : token}, function(data)
+    {
+        var parsed = JSON.parse(data);
+        if(parsed.status)
+        {
+            $('.append-post').prepend(parsed.html);
+        }
+        $('#post-button').css('padding-left', '90%');
+        postUpdate.val('Post');
+    });
+});
+
+$('.post-reply').click(function()
+{
+    var postId = $(this).data('post_id');
+    var postUpdate = $('.post-reply');
+    $('.reply-button').css('padding-left', '75%');
+    postUpdate.val('Replying...');
+    var reply = $('.reply');
+    var token = $('meta[name=csrf_token]').attr("content");
+    $.post('/post-reply', {'reply': reply.val(), 'post_id' : postId, '_token' : token}, function(data)
+    {
+        var parsed = JSON.parse(data);
+        if(parsed.status)
+        {
+            $('.container-for-reply-'+postId).append(parsed.html);
+        }
+        reply.val('');
+        $('.reply-button').css('padding-left', '80%');
+        postUpdate.val('Reply');
+    });
+});
+
+
+$('#code').blur(function(){
+    var code = $(this).val();
+    var codeGroup = $('.code-group');
+
+    $.get('/validate-code/'+code, function(data)
+    {
+        var parsed = JSON.parse(data);
+        if(parsed.status)
+        {
+            $('.btn-info').removeAttr('disabled');
+            codeGroup.removeClass('has-error');
+            codeGroup.addClass('has-success');
+        }
+        else
+        {
+            codeGroup.removeClass('has-success');
+            codeGroup.addClass('has-error');
+        }
+    });
+});
+

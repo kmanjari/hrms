@@ -84,7 +84,9 @@
                 var photo = document.getElementById('photo_upload');
                 var formData = new FormData();
 
-                formData.append('photo', photo.files[0], photo.value);
+                if(photo.value != '') {
+                    formData.append('photo', photo.files[0], photo.value);
+                }
                 formData.append('emp_name', emp_name);
                 formData.append('emp_code', emp_code);
                 formData.append('emp_status', emp_status);

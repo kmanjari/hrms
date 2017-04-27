@@ -7,6 +7,7 @@
     <title> Human Resource Management System </title>
     <meta name="description" content="HRMS">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf_token" content="{{csrf_token()}}">
 
     <!-- -------------- Fonts -------------- -->
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
@@ -74,12 +75,7 @@
 <!-- -------------- Customizer -------------- -->
 <div id="customizer" class="hidden-xs">
     <div class="panel">
-        <div class="panel-heading">
-        <span class="panel-icon">
-          <i class="fa fa-cogs"></i>
-        </span>
-            <span class="panel-title"> Theme Options</span>
-        </div>
+
         <div class="panel-body pn">
             <ul class="nav nav-list nav-list-sm" role="tablist">
                 <li class="active">
@@ -769,5 +765,7 @@
         /////////////////////////////////////////////
 
 </script>
+
+<script src="/assets/js/pages/allcp_forms-elements.js"></script>
 </body>
 </html>

@@ -21,9 +21,9 @@
                 <span class="hidden-xs"><name>{{Auth::user()->name}}</name> </span>
                 <span class="fa fa-caret-down hidden-xs mr15"></span>
                 @if(Auth::user()->employee->photo)
-                    <img src="{{Auth::user()->employee->photo}}" alt="avatar" class="mw55">
+                    <img src="{{\Auth::user()->employee->photo}}" alt="avatar" class="mw55">
                 @else
-                <img src="/photos/profile_pic.png" alt="avatar" class="mw55">
+                <img src="/assets/img/avatars/profile_pic.png" alt="avatar" class="mw55">
                     @endif
             </a>
             </a>

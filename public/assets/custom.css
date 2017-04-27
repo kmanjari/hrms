@@ -112,3 +112,12 @@
 .btn-custom.dark.active, .btn-custom.dark:active, .btn-custom.dark:focus, .btn-custom.dark:hover, .open > .dropdown-toggle.btn-custom.dark {
     background-color: #97a520
 }
+
+.top-buffer { margin-top:20px; }
+
+.small-help-block {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #c3c4cb;
+    font-size: 12px;
+}

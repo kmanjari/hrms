@@ -3,30 +3,7 @@
     <!-- START CONTENT -->
     <div class="content">
         <div class="row">
-            <div class="col-md-8">
-                <div class="allcp-form top-buffer">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section">
-                                <label for="comment" class="field prepend-icon">
-                          <textarea class="gui-textarea br-b-l-r0 br-b-r-r0" id="status" name="status"
-                                    placeholder="Share your status in 270 characters"
-                                    style="padding-left:100px"></textarea>
-                                    <label for="comment" class="field-icon">
-                                        <img src="{{Auth::user()->employee->photo}}"
-                                             width="80px" height="80px" style="padding-top: 10px; padding-left: 8px">
-                                    </label>
-                                    <div class="input-footer br-b-l-r3 br-b-r-r3">
-                                        <div style="padding-left:90%" id="post-button">
-                                            <input type="button" class="btn btn-success" id="post-update" value="Post">
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @foreach($posts as $post)
+            <div class="col-md-8 top-buffer">
                     <div class="col-md-12">
                         <div class="allcp-form append-post">
                             <div class="row">
@@ -53,7 +30,7 @@
                                         </div>
                                         <hr/>
                                         <div class="container-for-reply-{{$post->id}}">
-                                        @foreach($post->replies as $reply)
+                                            @foreach($post->replies as $reply)
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <img src="{{getUserData($reply->user_id)['employee']['photo']}}"
@@ -67,9 +44,9 @@
                                                     </div>
                                                 </div>
                                                 <hr/>
-                                    @endforeach
+                                            @endforeach
                                         </div>
-                                    <!-- reply box -->
+                                        <!-- reply box -->
                                         <div class="section">
                                             <label for="comment" class="field prepend-icon">
                           <textarea class="gui-textarea br-b-l-r0 br-b-r-r0 reply" name="status"
@@ -94,7 +71,6 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
             </div>
             <div class="col-md-4 pull-right top-buffer">
                 <div class="panel panel-default">
