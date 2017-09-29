@@ -152,6 +152,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         \App\Providers\ViewShareServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */

@@ -14,7 +14,7 @@ class ViewShareServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      $totalPosts = Post::count();
+      /*$totalPosts = Post::count();
       $postIds = [];
       $i = 1;
       while($i <=5)
@@ -27,7 +27,7 @@ class ViewShareServiceProvider extends ServiceProvider
       view()->composer(['hrms.updates.*', 'home'], function ($view) use($suggestions){
 
         $view->with('suggestions', $suggestions);
-      });
+      });*/
     }
 
     /**

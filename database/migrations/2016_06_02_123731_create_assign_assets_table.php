@@ -12,7 +12,8 @@ class CreateAssignAssetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assign_assets', function (Blueprint $table) {
+        Schema::create('a        Schema::drop(\'assign_assets\');
+ssign_assets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('asset_id')->unsigned();

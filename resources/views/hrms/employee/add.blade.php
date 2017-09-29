@@ -52,13 +52,13 @@
         <div class="panel-body pn">
             <ul class="nav nav-list nav-list-sm" role="tablist">
                 <li class="active">
-                    <a href="#customizer-header" role="tab" data-toggle="tab">Navbar</a>
+                    <a href="customizer-header" role="tab" data-toggle="tab">Navbar</a>
                 </li>
                 <li>
-                    <a href="#customizer-sidebar" role="tab" data-toggle="tab">Sidebar</a>
+                    <a href="customizer-sidebar" role="tab" data-toggle="tab">Sidebar</a>
                 </li>
                 <li>
-                    <a href="#customizer-settings" role="tab" data-toggle="tab">Misc</a>
+                    <a href="customizer-settings" role="tab" data-toggle="tab">Misc</a>
                 </li>
             </ul>
             <div class="tab-content p20 ptn pb15">
@@ -232,7 +232,7 @@
 
                         <!-- -------------- Sidebar Hide Button -------------- -->
                 <div class="sidebar-toggler">
-                    <a href="#">
+                    <a href="/dashboard">
                         <span class="fa fa-arrow-circle-o-left"></span>
                     </a>
                 </div>

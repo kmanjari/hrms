@@ -154,25 +154,26 @@
       $leave->leave_type_id = $request->leave_type;
       $leave->save();
 
+
       $leaveType = LeaveType::where('id', $request->leave_type)->first();
 
       $emails[] = ['email' => env('HR_EMAIL'), 'name' => env('HR_NAME')];
 
-      $leaveDraft = LeaveDraft::where('leave_type_id', $request->leave_type)->first();
+       $leaveDraft = LeaveDraft::where('leave_type_id', $request->leave_type)->first();
 
-      $subject = $leaveDraft->subject;
+      $subject = isset($leaveDraft->subject)? $leaveDraft->subject : '' ;
       $user = \Auth::user();
       $toReplace = ['%name%', '%leave_type%', '%from_date%', '%to_date%', '%days%'];
       $replaceWith = [$user->name, $leaveType->leave_type, $request->dateFrom, $request->dateTo, $number_of_days];
-      $body = str_replace($toReplace, $replaceWith, $leaveDraft->body);
+      $body = str_replace($toReplace, $replaceWith, '');
 
       //now send a mail
-      $this->mailer->send('emails.leave_approval', ['body' => $body], function ($message) use ($emails, $user, $subject) {
+     /* $this->mailer->send('emails.leave_approval', ['body' => $body], function ($message) use ($emails, $user, $subject) {
         foreach ($emails as $email) {
           $message->from($user->email, $user->name);
           $message->to($email['email'], $email['name'])->subject($subject);
         }
-      });
+      });*/
 
 
       \Session::flash('flash_message', 'Leave successfully applied!');

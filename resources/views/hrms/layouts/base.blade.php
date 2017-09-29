@@ -43,11 +43,8 @@
     <!-- Sweet alert -->
     <link rel="stylesheet" type="text/css" href="/assets/sweetalert.css">
 
+@stack('styles')
 
-    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team' || \Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}' ||
-         \Route::getFacadeRoot()->current()->uri() == 'add-training-invite' || \Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')
-        <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
-        @endif
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -79,13 +76,13 @@
         <div class="panel-body pn">
             <ul class="nav nav-list nav-list-sm" role="tablist">
                 <li class="active">
-                    <a href="#customizer-header" role="tab" data-toggle="tab">Navbar</a>
+                    <a href="customizer-header" role="tab" data-toggle="tab">Navbar</a>
                 </li>
                 <li>
-                    <a href="#customizer-sidebar" role="tab" data-toggle="tab">Sidebar</a>
+                    <a href="customizer-sidebar" role="tab" data-toggle="tab">Sidebar</a>
                 </li>
                 <li>
-                    <a href="#customizer-settings" role="tab" data-toggle="tab">Misc</a>
+                    <a href="customizer-settings" role="tab" data-toggle="tab">Misc</a>
                 </li>
             </ul>
             <div class="tab-content p20 ptn pb15">
@@ -535,7 +532,7 @@
                         <span class="fs11 text-left">Orders</span>
                     </div>
                 </div>
-
+h
                 <h6 class="title-divider text-muted mt30 mb10">New visitors</h6>
 
                 <div class="row">

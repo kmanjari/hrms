@@ -39,7 +39,7 @@
                                 </div>
                                 <div id="accordion1_2" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index1.html" width="100%"
                                                 height="400px"></iframe>
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                 <div id="accordion1_3" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index3.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -72,7 +72,7 @@
                                 <div id="accordion2_1" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index4.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -89,7 +89,7 @@
                                 <div id="accordion2_2" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index5.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -106,7 +106,7 @@
                                 <div id="accordion2_3" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index6.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -123,7 +123,7 @@
                                 <div id="accordion2_4" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index7.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -140,7 +140,7 @@
                                 <div id="accordion2_5" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index8.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -157,7 +157,7 @@
                                 <div id="accordion2_6" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index9.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -174,7 +174,7 @@
                                 <div id="accordion2_7" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index10.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -191,7 +191,7 @@
                                 <div id="accordion2_8" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index11.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
@@ -208,7 +208,7 @@
                                 <div id="accordion2_9" class="panel-collapse collapse" style="height: 0px;">
                                     <div class="panel-body">
 
-                                        <iframe src="/HTML/index.html" width="100%"
+                                        <iframe src="/HTML/index2.html" width="100%"
                                                 height="400px"></iframe>
 
                                     </div>
