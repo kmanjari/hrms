@@ -29,7 +29,6 @@ Route::group(['middleware' => ['guest']], function ()
 
 });
 
-
 Route::group(['middleware' => ['auth']], function ()
 {
 
@@ -263,7 +262,7 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('post/{id}', 'UpdateController@post');
 
-    /** Routes for clients */
+    /** Routes for clients **/
     Route::get('add-client', 'ClientController@addClient')->name('add-client');
 
     Route::post('add-client', 'ClientController@saveClient');
@@ -277,11 +276,15 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('validate-code/{code}', 'ClientController@validateCode');
 
 
-    /** Routes for projects */
+    /** Routes for projects **/
 
     Route::get('add-project', 'ProjectController@addProject')->name('add-project');
 
     Route::post('add-project', 'ProjectController@saveProject');
+
+    Route::get('edit-project/{projectId}', 'ProjectController@showEdit')->name('edit-project');
+
+    Route::post('edit-project/{projectId}', 'ProjectController@saveProjectEdit');
 
     Route::get('list-project', 'ProjectController@listProject')->name('list-project');
 
