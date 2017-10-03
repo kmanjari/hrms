@@ -9,7 +9,7 @@
     <title>Digital IP Insights - HRMS</title>
 
     <!-- ========== Css Files ========== -->
-    <link href="css/root.css" rel="stylesheet">
+    <link href="/assets/css/root.css" rel="stylesheet">
     <style type="text/css">
         body{background: #F5F5F5;}
     </style>
@@ -19,7 +19,7 @@
 <div class="login-form">
     {!! Form::open() !!}
     <div class="top">
-        <img src="img/sipi_7.jpg" alt="icon" class="icon">
+        <img src="/assets/img/sipi_7.jpg" alt="icon" class="icon">
         <h1>Digital IP</h1>
         <h4>Human Resource Management System</h4>
     </div>
