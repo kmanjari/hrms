@@ -36,7 +36,7 @@
      */
     public function importAttendanceFile()
     {
-      $files = AttendanceFilename::paginate(5);
+      $files = AttendanceFilename::paginate(10);
       return view('hrms.attendance.upload_file', compact('files'));
     }
 
@@ -104,8 +104,8 @@
         $string = $request->string;
         $column = $request->column;
 
-        $dateTo = date_format(date_create($request->dateTo), 'Y-m-d');
-        $dateFrom = date_format(date_create($request->dateFrom), 'Y-m-d');
+        $dateTo = date_format(date_create($request->dateTo), 'd-m-Y');
+        $dateFrom = date_format(date_create($request->dateFrom), 'd-m-Y');
 
         if ($request->button == 'Search') {
           /**
@@ -127,7 +127,7 @@
           }
 
           $file = 'Attendance_Listing_';
-          $headers = ['id', 'code', 'name', 'date', 'day', 'in_time', 'out_time', 'hours_worked', 'difference', 'status', 'created_at', 'updated_at'];
+          $headers = ['id', 'name', 'code', 'date', 'day', 'in_time', 'out_time', 'hours_worked', 'difference', 'status', 'leave_status', 'user_id', 'created_at', 'updated_at'];
 
           /**
            * sending the results fetched in above query to exportData

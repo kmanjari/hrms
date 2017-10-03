@@ -18,9 +18,9 @@
             <div class="navbar-btn btn-group">
         <li class="dropdown dropdown-fuse">
             <a href="#" class="dropdown-toggle fw600" data-toggle="dropdown">
-                <span class="hidden-xs"><name>{{Auth::user()->name}}</name> </span>
+                <span class="hidden-xs"><name>{{\Auth::user()->name}}</name> </span>
                 <span class="fa fa-caret-down hidden-xs mr15"></span>
-                @if(Auth::user()->employee->photo)
+                @if(\Auth::user()->employee->photo)
                     <img src="{{\Auth::user()->employee->photo}}" alt="avatar" class="mw55">
                 @else
                 <img src="/assets/img/avatars/profile_pic.png" alt="avatar" class="mw55">

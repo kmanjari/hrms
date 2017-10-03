@@ -47,9 +47,10 @@ function convertRole($role)
 
 function convertStatus($emp_status)
 {
+    return $emp_status;
     $data = [
-        'Present' => '1',
-        'Ex' => '0'
+        'Present' => 1,
+        'Ex' => 0
     ];
     return $data[$emp_status];
 }
@@ -86,7 +87,7 @@ function getFormattedDate($date)
 function getFormattedDate($date)
 {
     $date =  strtotime($date);
-    return date('M j, Y', $date);
+    return date('Y-m-d', $date);
 }
 
 function getEmployeeDropDown()
@@ -144,7 +145,7 @@ function getHoursWorked($inTime, $outTime)
     $hours = $totalMinutes - $minutes;
     $hours = $hours / 60;
 
-    return $hours . ':' . $minutes . ':00';
+    return $hours . ':00' . $minutes . ':00';
 
 }
 

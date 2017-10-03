@@ -78,7 +78,7 @@
                                                                     <a href="/edit-client/{{$client->id}}">Edit</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="/delete-client/{{$client->id}}">Delete</a>
+                                                                    <a href="/delete-list/{{$client->id}}">Delete</a>
                                                                 </li>
                                                             </ul>
                                                         </div>

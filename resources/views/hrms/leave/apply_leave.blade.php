@@ -45,7 +45,7 @@
                                             {{ session::get('flash_message') }}
                                         </div>
                                     @endif
-                                    {!! Form::open(['class' => 'form-horizontal']) !!}
+                                    {!! Form::open(['class' => 'form-horizontal', 'method' => 'post']) !!}
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"> Leave Type </label>
@@ -128,6 +128,7 @@
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"></label>
+
                                         <div class="col-md-2">
 
                                                 <input type="submit" class="btn btn-bordered btn-info btn-block"

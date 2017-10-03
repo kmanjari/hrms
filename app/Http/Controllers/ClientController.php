@@ -91,4 +91,13 @@ class ClientController extends Controller
         return redirect()->back();
 
     }
+
+    public function doDelete($id)
+    {
+        $client = Client::where('id',$id);
+        $client->delete();
+
+        \Session::flash('flash_message', 'Client successfully Deleted!');
+        return redirect('list-client');
+    }
 }

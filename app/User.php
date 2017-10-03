@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Models\Employee;
+use App\Models\Project;
 use App\Models\UserRole;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
@@ -82,5 +83,10 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function project()
+    {
+        return $this->hasMany(Project::class);
     }
 }

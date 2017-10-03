@@ -66,7 +66,8 @@
 
 
                                     <div class="col-md-2"><br />
-                                        <input type="submit" value="Export" name="button" class="btn btn-success">
+                                        <a href="/export">
+                                        <input type="submit" value="Export" name="button" class="btn btn-success"></a>
                                     </div>
                                     {!! Form::close() !!}
 

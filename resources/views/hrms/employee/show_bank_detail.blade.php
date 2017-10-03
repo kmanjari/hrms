@@ -63,22 +63,22 @@
                                         @foreach($emps as $emp)
                                             <tr>
                                                 <td class="text-center">{{$i+=1}}</td>
-                                                <td class="text-center">{{$emp->employee->name}}</td>
-                                                <td class="text-center">{{$emp->employee->bank_name}}</td>
-                                                <td class="text-center">{{$emp->employee->account_number}}</td>
-                                                <td class="text-center">{{$emp->employee->ifsc_code}}</td>
-                                                <td class="text-center">{{$emp->employee->pf_account_number}}</td>
+                                                <td class="text-center">{{$emp->name}}</td>
+                                                <td class="text-center">{{$emp->employee['bank_name']}}</td>
+                                                <td class="text-center">{{$emp->employee['account_number']}}</td>
+                                                <td class="text-center">{{$emp->employee['ifsc_code']}}</td>
+                                                <td class="text-center">{{$emp->employee['pf_account_number']}}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group text-right">
                                                         <button type="button"
                                                                 class="btn btn-success br2 btn-xs fs12 showModal"
                                                                 data-info='[
-                                                                "{{$emp->employee->id}}",
-                                                                "{{$emp->employee->name}}",
-                                                                "{{$emp->employee->bank_name}}",
-                                                                "{{$emp->employee->account_number}}",
-                                                                "{{$emp->employee->ifsc_code}}",
-                                                                "{{$emp->employee->pf_account_number}}"
+                                                                "{{$emp->id}}",
+                                                                "{{$emp->name}}",
+                                                                "{{$emp->bank_name}}",
+                                                                "{{$emp->account_number}}",
+                                                                "{{$emp->ifsc_code}}",
+                                                                "{{$emp->pf_account_number}}"
                                                                 ]'> Edit
                                                         </button>
                                                     </div>

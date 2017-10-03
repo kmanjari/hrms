@@ -258,6 +258,7 @@ class EmpController extends Controller
 
     public function doDelete($id)
     {
+
         $emp = Employee::find($id);
         $emp->delete();
 
@@ -500,7 +501,7 @@ class EmpController extends Controller
             }
 
             $fileName = 'Employee_Listing_' . rand(1, 1000) . '.xlsx';
-            $filePath = storage_path('exports/') . $fileName;
+            $filePath = storage_path('export/') . $fileName;
             $file     = new \SplFileObject($filePath, "a");
             // Add header to csv file.
             $headers = ['id', 'photo', 'code', 'name', 'status', 'gender', 'date_of_birth', 'date_of_joining', 'number', 'qualification', 'emergency_number', 'pan_number', 'father_name', 'current_address', 'permanent_address', 'formalities', 'offer_acceptance', 'probation_period', 'date_of_confirmation', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number', 'un_number', 'pf_status', 'date_of_resignation', 'notice_period', 'last_working_day', 'full_final', 'user_id', 'created_at', 'updated_at'];
@@ -508,12 +509,41 @@ class EmpController extends Controller
             foreach ($emps as $emp) {
                 $file->fputcsv([
                     $emp->id,
-                    ($emp->employee->photo) ? $emp->employee->photo : 'Not available',
+                    (
+                        $emp->employee->photo) ? $emp->employee->photo : 'Not available',
                     $emp->employee->code,
-                    $emp->employee->name, $emp->employee->status, $emp->employee->gender, $emp->employee->date_of_birth, $emp->employee->date_of_joining, $emp->employee->number, $emp->employee->qualification, $emp->employee->emergency_number, $emp->employee->pan_number, $emp->employee->father_name, $emp->employee->current_address, $emp->employee->permanent_address, $emp->employee->formalities, $emp->employee->offer_acceptance, $emp->employee->probation_period, $emp->employee->date_of_confirmation, $emp->employee->department, $emp->employee->salary, $emp->employee->account_number, $emp->employee->bank_name, $emp->employee->ifsc_code, $emp->employee->pf_account_number, $emp->employee->un_number, $emp->employee->pf_status, $emp->employee->date_of_resignation, $emp->employee->notice_period, $emp->employee->last_working_day, $emp->employee->full_final]);
+                    $emp->employee->name,
+                    $emp->employee->status,
+                    $emp->employee->gender,
+                    $emp->employee->date_of_birth,
+                    $emp->employee->date_of_joining,
+                    $emp->employee->number,
+                    $emp->employee->qualification,
+                    $emp->employee->emergency_number,
+                    $emp->employee->pan_number,
+                    $emp->employee->father_name,
+                    $emp->employee->current_address,
+                    $emp->employee->permanent_address,
+                    $emp->employee->formalities,
+                    $emp->employee->offer_acceptance,
+                    $emp->employee->probation_period,
+                    $emp->employee->date_of_confirmation,
+                    $emp->employee->department,
+                    $emp->employee->salary,
+                    $emp->employee->account_number,
+                    $emp->employee->bank_name,
+                    $emp->employee->ifsc_code,
+                    $emp->employee->pf_account_number,
+                    $emp->employee->un_number,
+                    $emp->employee->pf_status,
+                    $emp->employee->date_of_resignation,
+                    $emp->employee->notice_period,
+                    $emp->employee->last_working_day,
+                    $emp->employee->full_final
+                ]);
             }
 
-            return response()->download(storage_path('exports/') . $fileName);
+            return response()->download(storage_path('export/') . $fileName);
         }
     }
 

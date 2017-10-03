@@ -37,8 +37,8 @@ class ImportAttendanceData
                 $date = $this->validateDate($row->date);
                 if(!$date)
                 {
-                    $myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
-                    $row->date = $myDateTime->format('Y-m-d');
+                   echo $myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
+                    //$row->date = $myDateTime->format('d-m-y');
                 }
                 if($row->status == 'A')
                 {
@@ -126,11 +126,11 @@ class ImportAttendanceData
 
         if ($iDateTo>=$iDateFrom)
         {
-            array_push($aryRange,date('Y-m-d',$iDateFrom)); // first entry
+            array_push($aryRange,date('d-m-Y',$iDateFrom)); // first entry
             while ($iDateFrom<$iDateTo)
             {
                 $iDateFrom+=86400; // add 24 hours
-                array_push($aryRange,date('Y-m-d',$iDateFrom));
+                array_push($aryRange,date('d-m-Y',$iDateFrom));
             }
         }
         return $aryRange;

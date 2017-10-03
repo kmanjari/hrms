@@ -26,7 +26,7 @@
     </li>
     @if(Auth::user()->isHR())
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa-user"></span>
                 <span class="sidebar-title">Employees</span>
                 <span class="caret"></span>
@@ -49,7 +49,7 @@
 
         @if(\Auth::user()->isAdmin || \Auth::user()->isHR() || \Auth::user()->isManager())
             <li>
-                <a class="accordion-toggle" href="#">
+                <a class="accordion-toggle" href="/dashboard">
                     <span class="fa fa-user"></span>
                     <span class="sidebar-title">Clients</span>
                     <span class="caret"></span>
@@ -69,7 +69,7 @@
         @endif
 
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa-user"></span>
                 <span class="sidebar-title">Projects</span>
                 <span class="caret"></span>
@@ -89,6 +89,11 @@
                     <a href="{{route('assign-project')}}">
                         <span class="glyphicon glyphicon-tags"></span> Assign Project</a>
                 </li>
+
+                <li>
+                    <a href="{{route('project-assignment-listing')}}">
+                        <span class="glyphicon glyphicon-tags"></span> Project Assignment Listing</a>
+                </li>
             </ul>
         </li>
 
@@ -102,7 +107,7 @@
         </li>
 
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa-group"></span>
                 <span class="sidebar-title">Teams</span>
                 <span class="caret"></span>
@@ -120,7 +125,7 @@
         </li>
 
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa-graduation-cap"></span>
                 <span class="sidebar-title">Roles</span>
                 <span class="caret"></span>
@@ -137,7 +142,7 @@
             </ul>
         </li>
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa fa-laptop"></span>
                 <span class="sidebar-title">Assets</span>
                 <span class="caret"></span>
@@ -163,7 +168,7 @@
         </li>
     @endif
     <li>
-        <a class="accordion-toggle" href="#">
+        <a class="accordion-toggle" href="/dashboard">
             <span class="fa fa-envelope"></span>
             <span class="sidebar-title">Leaves</span>
             <span class="caret"></span>
@@ -198,7 +203,7 @@
 
     @if(Auth::user()->isHR())
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa-arrow-circle-o-up"></span>
                 <span class="sidebar-title">Promotions</span>
                 <span class="caret"></span>
@@ -216,7 +221,7 @@
         </li>
 
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa-money"></span>
                 <span class="sidebar-title">Expenses</span>
                 <span class="caret"></span>
@@ -234,7 +239,7 @@
         </li>
 
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa fa-trophy"></span>
                 <span class="sidebar-title">Awards</span>
                 <span class="caret"></span>

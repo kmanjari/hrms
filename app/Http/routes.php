@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('profile', 'ProfileController@show');
 
+    //Routes for add-employees
+
     Route::get('add-employee', ['as' => 'add-employee', 'uses' => 'EmpController@addEmployee']);
 
     Route::post('add-employee', ['as' => 'add-employee', 'uses' => 'EmpController@processEmployee']);
@@ -66,9 +68,13 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('delete-emp/{id}', ['as' => 'delete-emp', 'uses' => 'EmpController@doDelete']);
 
+    //Routes for Bank Account details
+
     Route::get('bank-account-details', ['uses' => 'EmpController@showDetails']);
 
     Route::post('update-account-details', ['uses' => 'EmpController@updateAccountDetail']);
+
+    //Routes for Team.
 
     Route::get('add-team', ['as' => 'add-team', 'uses' => 'TeamController@addTeam']);
 
@@ -82,6 +88,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('delete-team/{id}', ['as' => 'delete-team', 'uses' => 'TeamController@doDelete']);
 
+    //Routes for Role.
+
     Route::get('add-role', ['as' => 'add-role', 'uses' => 'RoleController@addRole']);
 
     Route::post('add-role', ['as' => 'add-role', 'uses' => 'RoleController@processRole']);
@@ -94,6 +102,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('delete-role/{id}', ['as' => 'delete-role', 'uses' => 'RoleController@doDelete']);
 
+    //Routes for Expense.
+
     Route::get('add-expense', ['as' => 'add-expense', 'uses' => 'ExpenseController@addExpense']);
 
     Route::post('add-expense', ['as' => 'add-expense', 'uses' => 'ExpenseController@processExpense']);
@@ -105,6 +115,8 @@ Route::group(['middleware' => ['auth']], function ()
     Route::post('edit-expense/{id}', ['as' => 'edit-expense', 'uses' => 'ExpenseController@doEdit']);
 
     Route::get('delete-expense/{id}', ['as' => 'delete-expense', 'uses' => 'ExpenseController@doDelete']);
+
+    //Routes for Leave.
 
     Route::get('add-leave-type', ['as' => 'add-leave-type', 'uses' => 'LeaveController@addLeaveType']);
 
@@ -132,6 +144,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::post('leave-drafting', ['as' => 'leave-drafting', 'uses' => 'LeaveController@createLeaveDraft']);
 
+    //Routes for Attendance.
+
     Route::get('attendance-upload', ['as' => 'attendance-upload', 'uses' => 'AttendanceController@importAttendanceFile']);
 
     Route::post('attendance-upload', ['as' => 'attendance-upload', 'uses' => 'AttendanceController@uploadFile']);
@@ -141,6 +155,8 @@ Route::group(['middleware' => ['auth']], function ()
     Route::post('attendance-manager', ['as' => 'attendance-manager', 'uses' => 'AttendanceController@searchAttendance']);
 
     Route::get('delete-file/{id}', ['as' => 'delete-file', 'uses' => 'AttendanceController@doDelete']);
+
+    //Routes for Assets.
 
     Route::get('add-asset', ['as' => 'add-asset', 'uses' => 'AssetController@addAsset']);
 
@@ -174,6 +190,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('calendar', 'AuthController@calendar');
 
+    //Routes for Leave and Holiday.
+
     Route::post('get-leave-count', 'LeaveController@getLeaveCount');
 
     Route::post('approve-leave', 'LeaveController@approveLeave');
@@ -192,6 +210,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('delete-holiday/{id}', 'LeaveController@deleteHoliday');
 
+    //Routes for Event.
+
     Route::get('create-event', 'EventController@index');
 
     Route::post('create-event', 'EventController@createEvent');
@@ -199,6 +219,8 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('create-meeting', 'EventController@meeting');
 
     Route::post('create-meeting', 'EventController@createMeeting');
+
+    //Routes for Award.
 
     Route::get('add-award', ['uses'=>'AwardController@addAward']);
 
@@ -224,6 +246,8 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('delete-award-assignment/{id}', ['uses'=>'AwardController@doAssignDelete']);
 
+    //Routes for Prmotion.
+
     Route::get('promotion', ['uses'=>'EmpController@doPromotion']);
 
     Route::post('promotion', ['uses'=>'EmpController@processPromotion']);
@@ -231,6 +255,8 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('show-promotion', ['uses'=>'EmpController@showPromotion']);
 
     Route::post('get-promotion-data', ['uses' => 'EmpController@getPromotionData']);
+
+    //Routes for Training.
 
     Route::get('add-training-program', ['uses'=>'TrainingController@addTrainingProgram']);
 
@@ -273,10 +299,12 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::post('edit-client/{clientId}', 'ClientController@saveClientEdit');
 
-    Route::get('validate-code/{code}', 'ClientController@validateCode');
+
+    Route::get('delete-list/{clientId}', 'ClientController@doDelete');
 
 
     /** Routes for projects **/
+    Route::get('validate-code/{code}', 'ClientController@validateCode');
 
     Route::get('add-project', 'ProjectController@addProject')->name('add-project');
 
@@ -288,6 +316,26 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('list-project', 'ProjectController@listProject')->name('list-project');
 
-    Route::get('assign-project', 'ProjectController@assignProject')->name('assign-project');
+    Route::get('edit-project/{id}', ['as' => 'edit-project', 'uses' => 'ProjectController@showEdit']);
+
+    Route::post('edit-project/{id}', ['as' => 'edit-project', 'uses' => 'ProjectController@doEdit']);
+
+    Route::get('delete-project/{id}', ['as' => 'delete-project', 'uses' => 'ProjectController@doDelete']);
+
+    Route::get('assign-project', ['as' => 'assign-project', 'uses' => 'ProjectController@doAssign']);
+
+    Route::post('assign-project', ['as' => 'assign-project', 'uses' => 'ProjectController@processAssign']);
+
+    Route::get('project-assignment-listing', ['as' => 'project-assignment-listing', 'uses' => 'ProjectController@showProjectAssignment']);
+
+
+    Route::get('edit-project-assignment/{id}', ['as' => 'edit-project-assignment', 'uses' => 'ProjectController@showEditAssign']);
+
+    Route::post('edit-project-assignment/{id}', ['as' => 'edit-project-assignment', 'uses' => 'ProjectController@doEditAssign']);
+
+    Route::get('delete-project-assignment/{id}', ['as' => 'delete-project-assignment', 'uses' => 'ProjectController@doDeleteAssign']);
+
+
+    //Route::get('assign-project', 'ProjectController@assignProject')->name('assign-project');
 
 });

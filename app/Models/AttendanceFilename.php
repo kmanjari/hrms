@@ -11,7 +11,7 @@ class AttendanceFilename extends Model
         $instance = new AttendanceFilename();
         $instance->name = $filename;
         $instance->description = $description;
-        $instance->date = date_format(date_create($date), 'Y-m-d');
+        $instance->date = date_format(date_create($date), 'd-m-Y');
         $instance->save();
     }
 }

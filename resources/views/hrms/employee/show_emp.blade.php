@@ -92,14 +92,14 @@
                                     @foreach($emps as $emp)
                                     <tr>
                                         <td class="text-center">{{$i+=1}}</td>
-                                        <td class="text-center">{{$emp->employee->code}}</td>
-                                        <td class="text-center">{{$emp->employee->name}}</td>
-                                        <td class="text-center">{{convertStatusBack($emp->employee->status)}}</td>
+                                        <td class="text-center">{{$emp->code}}</td>
+                                        <td class="text-center">{{$emp->name}}</td>
+                                        <td class="text-center">{{convertStatusBack($emp->employee['status'])}}</td>
                                         <td class="text-center">{{$emp->role->role->name}}</td>
-                                        <td class="text-center">{{getFormattedDate($emp->employee->date_of_joining)}}</td>
-                                        <td class="text-center">{{$emp->employee->current_address}}</td>
-                                        <td class="text-center">{{$emp->employee->number}}</td>
-                                        <td class="text-center">{{$emp->employee->department}}</td>
+                                        <td class="text-center">{{date('d M Y', strtotime($emp->employee['date_of_joining']))}}</td>
+                                        <td class="text-center">{{$emp->employee['current_address']}}</td>
+                                        <td class="text-center">{{$emp->employee['number']}}</td>
+                                        <td class="text-center">{{$emp->employee['department']}}</td>
                                         <td class="text-center">
                                             <div class="btn-group text-right">
                                                 <button type="button"

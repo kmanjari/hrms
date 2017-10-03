@@ -113,4 +113,7 @@
     </section>
 
 </div>
+    @push('styles')
+        <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
+    @endpush
 @endsection
