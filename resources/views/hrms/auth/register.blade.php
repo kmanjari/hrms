@@ -9,7 +9,6 @@
     <title>Digital IP Insights - HRMS</title>
 
     <!-- ========== Css Files ========== -->
-    <link href="/assets/css/root.css" rel="stylesheet">
     <style type="text/css">
         body{background: #F5F5F5;}
     </style>

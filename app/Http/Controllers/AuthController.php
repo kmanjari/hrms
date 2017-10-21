@@ -67,7 +67,12 @@ class AuthController extends Controller
         return view('hrms.auth.not_found');
     }
 
-    public function doRegister()
+    public function showRegister()
+    {
+        return view('hrms.auth.register');
+    }
+
+    public function doRegister(Request $request)
     {
         return view('hrms.auth.register');
     }

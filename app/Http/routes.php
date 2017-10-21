@@ -24,7 +24,7 @@ Route::group(['middleware' => ['guest']], function ()
 
     Route::post('reset-password', 'AuthController@processPasswordReset');
 
-    Route::get('register', 'AuthController@doRegister');
+    Route::get('register', 'AuthController@showRegister');
 
 
 });
