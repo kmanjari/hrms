@@ -24,11 +24,10 @@ Route::group(['middleware' => ['guest']], function ()
 
     Route::post('reset-password', 'AuthController@processPasswordReset');
 
-    Route::get('register', 'AuthController@doRegister');
+    Route::get('register', 'AuthController@showRegister');
 
 
 });
-
 
 Route::group(['middleware' => ['auth']], function ()
 {
@@ -289,7 +288,7 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('post/{id}', 'UpdateController@post');
 
-    /** Routes for clients */
+    /** Routes for clients **/
     Route::get('add-client', 'ClientController@addClient')->name('add-client');
 
     Route::post('add-client', 'ClientController@saveClient');
@@ -304,13 +303,16 @@ Route::group(['middleware' => ['auth']], function ()
     Route::get('delete-list/{clientId}', 'ClientController@doDelete');
 
 
+    /** Routes for projects **/
     Route::get('validate-code/{code}', 'ClientController@validateCode');
-
-    /** Routes for projects */
 
     Route::get('add-project', 'ProjectController@addProject')->name('add-project');
 
     Route::post('add-project', 'ProjectController@saveProject');
+
+    Route::get('edit-project/{projectId}', 'ProjectController@showEdit')->name('edit-project');
+
+    Route::post('edit-project/{projectId}', 'ProjectController@saveProjectEdit');
 
     Route::get('list-project', 'ProjectController@listProject')->name('list-project');
 
@@ -326,6 +328,7 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('project-assignment-listing', ['as' => 'project-assignment-listing', 'uses' => 'ProjectController@showProjectAssignment']);
 
+
     Route::get('edit-project-assignment/{id}', ['as' => 'edit-project-assignment', 'uses' => 'ProjectController@showEditAssign']);
 
     Route::post('edit-project-assignment/{id}', ['as' => 'edit-project-assignment', 'uses' => 'ProjectController@doEditAssign']);
@@ -334,6 +337,5 @@ Route::group(['middleware' => ['auth']], function ()
 
 
     //Route::get('assign-project', 'ProjectController@assignProject')->name('assign-project');
-
 
 });

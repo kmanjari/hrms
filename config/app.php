@@ -150,7 +150,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        \App\Providers\ViewShareServiceProvider::class,
+        //\App\Providers\ViewShareServiceProvider::class,
 
 
         /*

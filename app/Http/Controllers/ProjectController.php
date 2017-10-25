@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Employee;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\AssignProject;
-use App\Models\Employee;
 
 use App\Http\Requests;
 
@@ -15,13 +15,49 @@ class ProjectController extends Controller
 {
     public function addProject()
     {
-//        $clients = User::whereHas('role', function ($q) {
-//            $q->where('role_id', '5');
-//        })->get();
-      //  $clients = Client::get();
-        $clients= client::lists('name', 'id');
 
-        return view('hrms.project.add-project', compact('clients'));
+        $model = new \stdClass();
+        $model->clients = Client::get();
+        return view('hrms.projects.add', compact('model'));
+    }
+
+    public function saveProject(Requests\AddProjectRequest $request)
+    {
+        $project = new Project();
+        $project->fill(array_except($request->all(), '_token'));
+        $project->save();
+
+        \Session::flash('flash_message', 'Project added successfully');
+
+        return redirect()->back();
+    }
+
+    public function showEdit($projectId)
+    {
+        $model = new \stdClass();
+        $model->project = Project::with('client')->findOrFail(['id' => $projectId]);
+        $model->clients = Client::get();
+        return view('hrms.projects.edit', compact('model'));
+    }
+
+    public function listProject()
+    {
+        $projects = Project::with('client')->paginate(15);
+        return view('hrms.projects.list', compact('projects'));
+    }
+
+    public function assignProject()
+    {
+        $model = new \stdClass();
+        $model->projects = Project::get();
+        $model->employees = Employee::whereHas('userrole', function($q)
+        {
+            $q->whereIn('role_id', ['3', '4']);
+        })
+            ->get();
+
+        return view('hrms.projects.assign', compact('model'));
+
     }
 
     public function validateCode($code)
@@ -45,36 +81,6 @@ class ProjectController extends Controller
         $project->save();
         \Session::flash('flash_message', 'Project successfully added!');
         return redirect()->back();
-    }
-
-    public function saveProject(Request $request)
-    {
-        $project = new Project;
-        $project->name = $request->project_name;
-        $project->code= $request->code;
-        $project->description = $request->description;
-        $project->client_id = $request->client_id;
-        $project->save();
-        \Session::flash('flash_message', 'project successfully added');
-        return redirect()->back();
-
-    }
-    public function listProject()
-    {
-        $projects = project::paginate(5);
-        return view('hrms.project.show-project', compact('projects'));
-    }
-    public function showEdit($id)
-    {
-        $results = Client::get();
-        $clients = [];
-        foreach($results as $result)
-        {
-            $clients[$result->id] = $result->name;
-        }
-
-        $result = project::whereid($id)->first();
-        return view('hrms.project.add-project', compact('result', 'clients'));
     }
 
     public function doEdit(Request $request, $id)

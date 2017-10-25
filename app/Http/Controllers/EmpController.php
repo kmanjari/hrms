@@ -303,12 +303,12 @@ class EmpController extends Controller
                     if (empty($row->dob)) {
                         $attachment->date_of_birth = '0000-00-00';
                     } else {
-                        $attachment->date_of_birth = $row->dob;
+                        $attachment->date_of_birth = date('Y-m-d',strtotime($row->dob));
                     }
                     if (empty($row->doj)) {
                         $attachment->date_of_joining = '0000-00-00';
                     } else {
-                        $attachment->date_of_joining = $row->doj;
+                        $attachment->date_of_joining = date('Y-m-d', strtotime($row->doj));
                     }
                     if (empty($row->mob_number)) {
                         $attachment->number = '1234567890';
@@ -345,10 +345,10 @@ class EmpController extends Controller
                     } else {
                         $attachment->permanent_address = $row->permanent_address;
                     }
-                    if (empty($row->formalities)) {
+                    if (empty($row->emp_formalities)) {
                         $attachment->formalities = '1';
                     } else {
-                        $attachment->formalities = $row->formalities;
+                        $attachment->formalities = $row->emp_formalities;
                     }
                     if (empty($row->offer_acceptance)) {
                         $attachment->offer_acceptance = '1';
@@ -363,7 +363,7 @@ class EmpController extends Controller
                     if (empty($row->doc)) {
                         $attachment->date_of_confirmation = '0000-00-00';
                     } else {
-                        $attachment->date_of_confirmation = $row->doc;
+                        $attachment->date_of_confirmation = date('Y-m-d', strtotime($row->doc));
                     }
                     if (empty($row->department)) {
                         $attachment->department = 'Not Exist';
@@ -408,7 +408,7 @@ class EmpController extends Controller
                     if (empty($row->dor)) {
                         $attachment->date_of_resignation = '0000-00-00';
                     } else {
-                        $attachment->date_of_resignation = $row->dor;
+                        $attachment->date_of_resignation = date('Y-m-d', strtotime($row->dor));
                     }
                     if (empty($row->notice_period)) {
                         $attachment->notice_period = 'Not exist';
@@ -418,7 +418,7 @@ class EmpController extends Controller
                     if (empty($row->last_working_day)) {
                         $attachment->last_working_day = '0000-00-00';
                     } else {
-                        $attachment->last_working_day = $row->last_working_day;
+                        $attachment->last_working_day = date('Y-m-d', strtotime($row->last_working_day));
                     }
                     if (empty($row->full_final)) {
                         $attachment->full_final = 'Not exist';

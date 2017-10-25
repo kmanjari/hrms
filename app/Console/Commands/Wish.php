@@ -24,10 +24,10 @@ class Wish extends Command
      */
     protected $description = 'sends an email wishing birthdays/work anniversary';
 
+
     /**
-     * Create a new command instance.
-     *
-     * @return void
+     * Wish constructor.
+     * @param Mailer $mailer
      */
     public function __construct(Mailer $mailer)
     {

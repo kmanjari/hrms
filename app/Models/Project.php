@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
-{
+    class Project extends Model
+    {
+        protected $guarded = [];
 
-}
+        public function client()
+        {
+            return $this->belongsTo(Client::class);
+        }
+    }
