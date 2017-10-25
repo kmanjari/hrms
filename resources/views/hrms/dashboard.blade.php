@@ -134,7 +134,7 @@
 
                 @if($events)
                 <div class="col-md-12">
-                <h3 class="mb10 mr5 notification" data-note-style="primary" style="color: darkturquoise"> Latest &nbsp; Events </h3>
+                    <h3 class="mb10 mr5 notification" data-note-style="primary" style="color: darkturquoise">Latest &nbsp; Events </h3>
                 @foreach (array_chunk($events, 3, true) as $results)
                     <table class="table">
                         <tr>
@@ -145,7 +145,7 @@
                                     <span class="fa fa-exclamation"></span>
                                 </div>
                                 <div class="fc-event-desc blink" id="blink">
-                                    <b>{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))->diffForHumans()}} </b> {{$event->name}}
+                                    <a href="{{route('create-event')}}" ><b>{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))->diffForHumans()}} </b> {{$event->name}}</a>
                                 </div>
                                     </div>
                             </td>

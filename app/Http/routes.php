@@ -213,7 +213,7 @@ Route::group(['middleware' => ['auth']], function ()
 
     //Routes for Event.
 
-    Route::get('create-event', 'EventController@index');
+    Route::get('create-event', ['as'=>'create-event','uses'=>'EventController@index']);
 
     Route::post('create-event', 'EventController@createEvent');
 

@@ -15,9 +15,12 @@ class ProjectController extends Controller
 {
     public function addProject()
     {
-        $clients = User::whereHas('role', function ($q) {
-            $q->where('role_id', '5');
-        })->get();
+//        $clients = User::whereHas('role', function ($q) {
+//            $q->where('role_id', '5');
+//        })->get();
+      //  $clients = Client::get();
+        $clients= client::lists('name', 'id');
+
         return view('hrms.project.add-project', compact('clients'));
     }
 
@@ -161,7 +164,7 @@ class ProjectController extends Controller
 
 
         \Session::flash('flash_message', 'project Assignment successfully updated!');
-        return redirect('assignment-listing');
+        return redirect('project-assignment-listing');
     }
 
 
@@ -175,6 +178,6 @@ class ProjectController extends Controller
         $assign->delete();
 
         \Session::flash('flash_message', 'Project Assignment successfully Deleted!');
-        return redirect('assignment-listing');
+        return redirect('project-assignment-listing');
     }
 }

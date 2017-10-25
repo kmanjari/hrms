@@ -20,7 +20,7 @@
             </ol>
         </div>
         <div class="topbar-right">
-            <h4><a class="link-unstyled" href="/sample_sheet/attendance_sample_sheet.xlsx" title="">
+            <h4><a class="link-unstyled" href="/sample_sheet/attendance_sheet1.xlsx" title="">
                     <i class="fa fa-cloud-download text-purple pr10"></i> Sample Sheet </a></h4>
         </div>
     </header>

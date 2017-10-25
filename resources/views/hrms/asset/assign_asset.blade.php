@@ -119,7 +119,7 @@
                                                         <input type="text" id="datepicker1" class="select2-single form-control" name="doa" value="@if($emps && $emps->date_of_assignment){{$emps->date_of_assignment}}@endif" required>
                                                         @else
                                                             <input type="text" id="datepicker1" class="select2-single form-control" name="doa" required>
-                                                            @endif
+                                                        @endif
                                                     </div>
                                             </div>
                                             </div>

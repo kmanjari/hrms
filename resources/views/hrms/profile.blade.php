@@ -14,7 +14,7 @@
                         </div>
                         <div class="panel-body pn pb5 text-center">
                             <hr class="short br-lighter">
-                            <img src="{{($details->photo) ? $details->photo : '/assets/img/avatars/profile_pic.png'}}" class="img-circle" alt="User Image">
+                            <img src="{{($details->photo) ? $details->photo : '/assets/img/avatars/profile_pic.png'}}" width="80px" height="80px" class="img-circle img-thumbnail" alt="User Image">
 
                         </div>
                         <p class="text-center no-margin">{{$details->userrole->role->name}}</p>
@@ -170,7 +170,7 @@
                                                             <span class="label label-info pull-right">  {{$event->name}} </span></a>
                                                         </div>
                                                     </div>
-                                                    <span class="label label-success pull-right">{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))}}</span></a>
+                                                    <a href="{{route('create-event')}}" > <span class="label label-success pull-right">{{ \Carbon\Carbon::createFromTimestamp(strtotime($event->date))}}</span></a>
                                                 </td>
                                              </tr>
                                         @endforeach

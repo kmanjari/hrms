@@ -44,7 +44,7 @@ class EmpController extends Controller
 
         $user           = new User;
         $user->name     = $request->emp_name;
-        $user->email    = str_replace(' ', '_', $request->emp_name) . '@dipi-ip.com';
+        $user->email    = str_replace(' ', '_', $request->emp_name) . '@sipi-ip.sg';
         $user->password = bcrypt('123456');
         $user->save();
 
@@ -282,10 +282,10 @@ class EmpController extends Controller
                 $rows = $reader->get(['emp_name', 'emp_code', 'emp_status', 'role', 'gender', 'dob', 'doj', 'mob_number', 'qualification', 'emer_number', 'pan_number', 'father_name', 'address', 'permanent_address', 'formalities', 'offer_acceptance', 'prob_period', 'doc', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number', 'un_number', 'pf_status', 'dor', 'notice_period', 'last_working_day', 'full_final']);
 
                 foreach ($rows as $row) {
-
+\Log::info($row->role);
                     $user           = new User;
                     $user->name     = $row->emp_name;
-                    $user->email    = str_replace(' ', '_', $row->emp_name) . '@dipi-ip.com';
+                    $user->email    = str_replace(' ', '_', $row->emp_name) . '@sipi-ip.sg';
                     $user->password = bcrypt('123456');
                     $user->save();
 
@@ -432,9 +432,12 @@ class EmpController extends Controller
                     $userRole->role_id = convertRole($row->role);
                     $userRole->user_id = $user->id;
                     $userRole->save();
+
                 }
+                return 1;
                 //return redirect('upload_form');*/
             });
+
         }
         /*catch (\Exception $e) {
            return $e->getMessage();*/
