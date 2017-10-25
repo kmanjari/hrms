@@ -632,6 +632,11 @@ h
     <script src="/assets/js/custom.js"></script>
 @endif
 
+@if(\Route::getFacadeRoot()->current()->uri() == 'assign-project')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endif
+
 @if(\Route::getFacadeRoot()->current()->uri() == 'assign-award')
     <script src="/assets/js/pages/forms-widgets.js"></script>
     <script src="/assets/js/custom.js"></script>

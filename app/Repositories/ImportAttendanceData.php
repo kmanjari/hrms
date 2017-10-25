@@ -26,7 +26,7 @@ class ImportAttendanceData
     {
         Excel::load(storage_path('attendance/' . $filename), function ($reader)
         {
-            $rows = $reader->get(['name', 'code', 'date', 'days', 'in', 'out', 'hours_worked', 'over_time', 'status']);
+            $rows = $reader->get(['name', 'code', 'date', 'days', 'in_time', 'out_time', 'hours_worked', 'over_time', 'status']);
 
             $counter = 0;
             $saturdays = 0;
@@ -37,7 +37,7 @@ class ImportAttendanceData
                 $date = $this->validateDate($row->date);
                 if(!$date)
                 {
-                   echo $myDateTime = \DateTime::createFromFormat('d/m/Y', $row->date);
+                   echo $myDateTime = \DateTime::createFromFormat('Y/m/d', $row->date);
                     //$row->date = $myDateTime->format('d-m-y');
                 }
                 if($row->status == 'A')

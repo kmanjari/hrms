@@ -39,7 +39,7 @@
       $name = $request->name;
       $coordinator = $request->coordinator;
       $attendees = $request->attendees;
-        $date = date_format(date_create($request->date), 'd-m-Y H:i');
+      $date = date_format(date_create($request->date), 'Y-m-d H:i:s');
       $message = $request->message;
       $event = new Event();
       $event->name = $name;
@@ -58,11 +58,11 @@
         $user = User::where('id', $attendee)->first();
         $data = ['name' => $name, 'coordinator' => $coordinator->name, 'date' => $date, 'attendee_name' => $user->name];
 
-        Mail::send('emails.event', ['data' => $data], function($message) use($user, $coordinator)
+       /* Mail::send('emails.event', ['data' => $data], function($message) use($user, $coordinator)
         {
           $message->from($coordinator->email, $coordinator->name);
           $message->to($user->email, $user->name)->subject($coordinator->name .' has invited you to an event');
-        });
+        });*/
       }
         //return json_encode('success');
       \Session::flash('flash_message', 'event successfully saved!');
@@ -94,7 +94,7 @@
         $name = $request->name;
         $coordinator = $request->coordinator;
         $attendees = $request->attendees;
-        $date = $request->date;
+        $date = date_format(date_create($request->date), 'Y-m-d H:i:s');
         $message = $request->message;
 
         $meeting = new Meeting();
@@ -118,11 +118,11 @@
 
             $data = ['name' => $name, 'coordinator' => $coordinator->name, 'date' => $date, 'attendee_name' => $user->name];
 
-            Mail::send('emails.meeting', ['data' => $data], function($message) use($user, $coordinator)
+           /* Mail::send('emails.meeting', ['data' => $data], function($message) use($user, $coordinator)
             {
                 $message->from($coordinator->email, $coordinator->name);
                 $message->to($user->email, $user->name)->subject($coordinator->name .' has invited you to a meeting');
-            });
+            });*/
         }
 
         return json_encode('success');

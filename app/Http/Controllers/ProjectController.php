@@ -15,6 +15,7 @@ class ProjectController extends Controller
 {
     public function addProject()
     {
+
         $model = new \stdClass();
         $model->clients = Client::get();
         return view('hrms.projects.add', compact('model'));
@@ -56,6 +57,7 @@ class ProjectController extends Controller
             ->get();
 
         return view('hrms.projects.assign', compact('model'));
+
     }
 
     public function validateCode($code)
@@ -168,7 +170,7 @@ class ProjectController extends Controller
 
 
         \Session::flash('flash_message', 'project Assignment successfully updated!');
-        return redirect('assignment-listing');
+        return redirect('project-assignment-listing');
     }
 
 
@@ -182,6 +184,6 @@ class ProjectController extends Controller
         $assign->delete();
 
         \Session::flash('flash_message', 'Project Assignment successfully Deleted!');
-        return redirect('assignment-listing');
+        return redirect('project-assignment-listing');
     }
 }

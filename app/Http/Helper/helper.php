@@ -41,7 +41,10 @@ function convertRole($role)
         'Manager' => '16'
         //bharo baki
     ];
-    return $data[$role];
+    if($role){
+        return $data[$role];
+    }
+    return $data;
 }
 
 

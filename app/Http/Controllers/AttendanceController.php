@@ -48,21 +48,26 @@
     {
       if (Input::hasFile('upload_file')) {
         $file = Input::file('upload_file');
-        $filename = $this->upload->File($file, $request->description, $request->date);
+          $filename = $this->upload->File($file, $request->description, $request->date);
 
         try {
           if($filename) {
             $this->attendanceData->Import($filename);
           }
         } catch(\Exception $e) {
+
           \Session::flash('flash_message1', $e->getMessage());
+
           \Log::info($e->getLine(). ' '. $e->getFile());
           return redirect()->back();
         }
       }
-      else{
+      else {
+
         return redirect()->back()->with('flash_message', 'Please choose a file to upload');
       }
+
+
 
       \Session::flash('flash_message1', 'File successfully Uploaded!');
       return redirect()->back();
