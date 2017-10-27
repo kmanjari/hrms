@@ -74,5 +74,5 @@ Once done migrating and seeding you will have default user:
     email: email@gmail.com
     password: 123456
     
-Demo version of the project can be found on http://hrms.kanakmanjari.com    
+Demo version of the project can be found over [here](http://hrms.kanakmanjari.com)    
   
