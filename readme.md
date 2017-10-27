@@ -47,9 +47,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Requirement
 
 1. PHP version 5.6+
-2. PHP Mcrypt
-3. PHP Mysql
-4. Composer
+2. [PHP Mcrypt](http://php.net/manual/en/book.mcrypt.php)
+3. [PHP Mysql](http://php.net/manual/en/ref.pdo-mysql.php)
+4. [Composer](https://getcomposer.org/)
+5. [mbstring](http://php.net/manual/en/mbstring.installation.php)
+6. [dom extention](http://php.net/manual/en/dom.setup.php)
 
 ## Installation
 
@@ -59,7 +61,18 @@ If you have git on your local, run git clone https://github.com/kmanjari/hrms.gi
 
 Once downloaded/cloned go to the project directory on terminal/command line and run composer install or composer.phar install
 
-Once composer is installed, run migration: php artisan migrate
+Once composer is installed, run migration: 
 
-After migration, run the database seeder: php artisan db:seed   
+    php artisan migrate
+
+After migration, run the database seeder: 
+
+    php artisan db:seed
+    
+Once done migrating and seeding you will have default user:
+
+    email: email@gmail.com
+    password: 123456
+    
+Demo version of the project can be found on http://hrms.kanakmanjari.com    
   
