@@ -76,7 +76,7 @@
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label"> Select Client </label>
                                                     <div class="col-md-6">
-                                                        {!! Form::select('client_id', $clients, isset($result) ? $result->client_id : '', ['class' => 'selectpicker form-control', 'data-done-button' => 'true']) !!}
+                                                        {!! Form::select('client_id', $clients, null, ['class' => 'selectpicker form-control', 'data-done-button' => 'true']) !!}
                                                     </div>
                                                 </div>
 
