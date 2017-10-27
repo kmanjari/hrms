@@ -6,6 +6,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
+
 Human Resource Management System is a combination of systems and processes that connect human resource management and information technology through HRMS software.
 
 Each module performs a separate function within the HRMS that helps with information gathering or tracking. HRMS modules can assist with:
@@ -25,7 +26,15 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## Contribution for the project
 
-Thank you for considering contributing to the project! If you have any code improvements or suggestions please open a pull request and it will be considered to be merged.
+
+    1. Fork it
+    2. Create your feature branch (git checkout -b my-new-feature)
+    3. Make your changes
+    4. Run the tests, adding new ones for your own code if necessary (phpunit)
+    5. Commit your changes (git commit -am 'Added some feature')
+    6. Push to the branch (git push origin my-new-feature)
+    7. Create new Pull Request
+
 
 ## Security Vulnerabilities of framework
 
