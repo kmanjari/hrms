@@ -15,17 +15,30 @@ Each module performs a separate function within the HRMS that helps with informa
 4. Team Management
 5. Asset/Resource Management 
 
-## Official Documentation
+## Official Documentation of Framework
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
+## Contribution for the framework
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+## Contribution for the project
+
+Thank you for considering contributing to the project! If you have any code improvements or suggestions please open a pull request and it will be considered to be merged.
+
+## Security Vulnerabilities of framework
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+
+## Security Vulnerabilities of project
+
+If you discover a security vulnerability within the project, please send an e-mail to Kanak Manjari at kanakmanjari@gmail.com. All security vulnerabilities will be promptly addressed.
+
+
+## Project License
+
+The project is available to be used freely for personal and educational purposes, cloning the project does not gives you any rights to sell it online/offline.
 
 ## License
 
