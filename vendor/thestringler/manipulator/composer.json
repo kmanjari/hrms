@@ -1,0 +1,30 @@
+{
+    "name": "thestringler/manipulator",
+    "description": "An OOP approach to string manipulation.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Sparks",
+            "email": "matt@sparkscoding.com"
+        }
+    ],
+    "require": {
+        "doctrine/inflector": "^1.1"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+          "TheStringler\\Manipulator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "TheStringler\\Manipulator\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }    
+}

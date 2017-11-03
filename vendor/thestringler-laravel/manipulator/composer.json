@@ -1,0 +1,20 @@
+{
+    "name": "thestringler-laravel/manipulator",
+    "description": "A Laravel package for The Stringler",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Sparks",
+            "email": "matt@sparkscoding.com"
+        }
+    ],
+    "autoload": {
+        "files": ["src/stringler_helper.php"],
+        "psr-4": {
+            "TheStringlerLaravel\\Manipulator\\": "src"
+        }
+    },
+    "require": {
+        "thestringler/manipulator": "^0.5.0"
+    }
+}

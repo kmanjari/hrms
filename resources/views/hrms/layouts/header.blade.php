@@ -23,7 +23,7 @@
                 @if(\Auth::user()->employee->photo)
                     <img src="{{\Auth::user()->employee->photo}}" width="50px" height="50px" alt="avatar" class="mw55">
                 @else
-                <img src="/assets/img/avatars/profile_pic.png" alt="avatar" class="mw55">
+                <img src="{{ URL::asset('assets/img/avatars/profile_pic.png') }}" alt="avatar" class="mw55">
                     @endif
             </a>
             </a>

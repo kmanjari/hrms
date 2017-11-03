@@ -200,7 +200,7 @@
                         <input type="hidden" id="type">
 
                     <div id="loader" class="hidden text-center">
-                        <img src="/photos/76.gif" />
+                        <img src="{{ URL::asset('photos/76.gif') }}" />
                     </div>
                     <div id="status-message" class="hidden">
 

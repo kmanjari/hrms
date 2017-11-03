@@ -6,7 +6,7 @@
     <section id="content" class="pn animated fadeIn">
 
     <div class="center-block mt100 mw800 text-center p20">
-        <img src="/assets/img/HRMS.png" alt="" class="img-responsive mauto"/>
+        <img src="{{ URL::asset('assets/img/HRMS.png') }}" alt="" class="img-responsive mauto"/>
         <h4 class="mt40 mb10"> Welcome! </h4>
         <div>
             <div class="col-md-6">
