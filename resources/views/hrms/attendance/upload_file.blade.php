@@ -202,3 +202,6 @@
 </div>
 
 @endsection
+@push('scripts')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+@endpush

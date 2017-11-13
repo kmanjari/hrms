@@ -433,6 +433,8 @@ $('#update-bank-account-details').click(function () {
     var pf_account_number = $('#pf_account_number').val();
     var token = $('#token').val();
 
+    console.log(account_number)
+
     $.post('/update-account-details', {
         'employee_id': employee_id,
         'employee_name': employee_name,
@@ -550,6 +552,7 @@ $('#code').blur(function(){
         }
         else
         {
+            $('.save-client').attr('disabled','disabled');
             codeGroup.removeClass('has-success');
             codeGroup.addClass('has-error');
         }

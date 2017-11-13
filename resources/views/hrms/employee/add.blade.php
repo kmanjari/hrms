@@ -1124,6 +1124,7 @@
 <!-- -------------- Scripts -------------- -->
 
 <!-- -------------- jQuery -------------- -->
+
 {!! Html::script('/assets/js/jquery/jquery-1.11.3.min.js') !!}
 {!! Html::script('/assets/js/jquery/jquery_ui/jquery-ui.min.js') !!}
 
@@ -1146,18 +1147,20 @@
 {!! Html::script('/assets/js/demo/demo.js') !!}
 {!! Html::script('/assets/js/main.js') !!}
 {!! Html::script('/assets/js/demo/widgets_sidebar.js') !!}
-
 {!! Html::script('/assets/js/custom_form_wizard.js') !!}
 
 {!!  Html::script ('/assets/js/pages/forms-widgets.js')!!}
+@push('scripts')
+<script src="/assets/js/custom_form_wizard.js"></script>
+@endpush
 
         <!-- -------------- Select2 JS -------------- -->
 <script src="/assets/js/plugins/select2/select2.min.js"></script>
 <script src="/assets/js/function.js"></script>
 
 
-<!-- -------------- /Scripts -------------- -->
 
+<!-- -------------- /Scripts -------------- -->
 </body>
 
 </html>

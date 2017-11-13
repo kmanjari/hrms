@@ -58,11 +58,11 @@
         $user = User::where('id', $attendee)->first();
         $data = ['name' => $name, 'coordinator' => $coordinator->name, 'date' => $date, 'attendee_name' => $user->name];
 
-       /* Mail::send('emails.event', ['data' => $data], function($message) use($user, $coordinator)
+        Mail::send('emails.event', ['data' => $data], function($message) use($user, $coordinator)
         {
           $message->from($coordinator->email, $coordinator->name);
           $message->to($user->email, $user->name)->subject($coordinator->name .' has invited you to an event');
-        });*/
+        });
       }
         //return json_encode('success');
       \Session::flash('flash_message', 'event successfully saved!');
@@ -118,11 +118,11 @@
 
             $data = ['name' => $name, 'coordinator' => $coordinator->name, 'date' => $date, 'attendee_name' => $user->name];
 
-           /* Mail::send('emails.meeting', ['data' => $data], function($message) use($user, $coordinator)
+            Mail::send('emails.meeting', ['data' => $data], function($message) use($user, $coordinator)
             {
                 $message->from($coordinator->email, $coordinator->name);
                 $message->to($user->email, $user->name)->subject($coordinator->name .' has invited you to a meeting');
-            });*/
+            });
         }
 
         return json_encode('success');

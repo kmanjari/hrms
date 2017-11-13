@@ -60,6 +60,8 @@ function convertStatus($emp_status)
 
 function convertStatusBack($emp_status)
 {
+    if($emp_status){}else{$emp_status=1;}
+
     $data = [
         '1' => 'Present',
         '0' => 'Ex'

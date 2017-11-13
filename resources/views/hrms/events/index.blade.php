@@ -222,3 +222,7 @@
 <!-- -------------- Content -------------- -->
 </div>
 @endsection
+@push('scripts')
+    <script src="/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+@endpush

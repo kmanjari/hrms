@@ -76,7 +76,7 @@
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
 
-                                                    <input type="submit" class="btn btn-bordered btn-info btn-block" disabled="disabled" value="Submit">
+                                                    <input type="submit" class="btn btn-bordered btn-info btn-block save-client" disabled="disabled" value="Submit">
                                                 </div>
                                                 <div class="col-md-2"><a href="/add-client">
                                                         <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a>

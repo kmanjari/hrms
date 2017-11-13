@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserRole extends Model
 {
-    protected $fillable = array('role_id');
+    protected $guarded = [];
 
     public function role()
     {

@@ -7,9 +7,9 @@
 //  forms-wizard.html scripts
 //
 
-(function($) {
+(function ($) {
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         "use strict";
 
@@ -29,41 +29,41 @@
         form.children(".wizard").steps({
             headerTag: ".wizard-section-title",
             bodyTag: ".wizard-section",
-            onStepChanging: function(event, currentIndex, newIndex) {
+            onStepChanging: function (event, currentIndex, newIndex) {
                 form.validate().settings.ignore = ":disabled,:hidden";
                 return form.valid();
             },
-            onFinishing: function(event, currentIndex) {
+            onFinishing: function (event, currentIndex) {
                 form.validate().settings.ignore = ":disabled";
                 return form.valid();
             },
-            onFinished: function(event, currentIndex) {
+            onFinished: function (event, currentIndex) {
                 event.preventDefault();
                 var emp_name = $('#emp_name').val();
+                //alert(emp_name)
                 var emp_code = $('#emp_code').val();
-                var emp_status = $('#emp_status').val();
+                var emp_status = $("input[name='emp_status']:checked").val();
                 var role = $('#role').val();
-                var gender = $('#gender:checked').val();
+                var gender = $("input[name='gender']:checked").val();
                 var datepicker1 = $('#datepicker1').val();
                 var datepicker4 = $('#datepicker4').val();
                 var mobile_phone = $('#mobile_phone').val();
                 var qualification = $('.qualification_select').val();
-                if(qualification == 'Other')
-                {
+                if (qualification == 'Other') {
                     qualification = $('.qualification_text').val();
-                    console.log('my qualification' +qualification);
+                    console.log('my qualification' + qualification);
                 }
-                console.log('gender '+ gender);
+                console.log('gender ' + gender);
                 var emergency_number = $('#emergency_number').val();
                 var pan_number = $('#pan_number').val();
                 var father_name = $('#father_name').val();
                 var address = $('#address').val();
                 var permanent_address = $('#permanent_address').val();
-                var formalities = $('#formalities').val();
-                var offer_acceptance = $('#offer_acceptance').val();
+                //var formalities = $('#formalities').val();
+                var formalities = $("input[name='formalities']:checked").val();
+                var offer_acceptance = $("input[name='offer_acceptance']:checked").val();
                 var probation_period = $('#probation_period').val();
-                if(probation_period == 'Other')
-                {
+                if (probation_period == 'Other') {
                     probation_period = $('.probation_text').val();
                 }
                 var datepicker5 = $('#datepicker5').val();
@@ -74,17 +74,17 @@
                 var ifsc_code = $('#ifsc_code').val();
                 var pf_account_number = $('#pf_account_number').val();
                 var un_number = $('#un_number').val();
-                var pf_status = $('#pf_status').val();
+                var pf_status = $("input[name='pf_status']:checked").val();
                 var datepicker6 = $('#datepicker6').val();
                 var notice_period = $('#notice_period').val();
                 var datepicker7 = $('#datepicker7').val();
-                var full_final = $('#full_final').val();
+                var full_final = $("input[name='full_final']:checked").val();
                 var token = $('#token').val();
 
                 var photo = document.getElementById('photo_upload');
                 var formData = new FormData();
 
-                if(photo.value != '') {
+                if (photo.value != '') {
                     formData.append('photo', photo.files[0], photo.value);
                 }
                 formData.append('emp_name', emp_name);
@@ -122,18 +122,19 @@
 
                 var url = $('#url').val();
                 $.ajax({
-                        type: 'POST',
-                        url: '/'+ url,
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function (data) {
-                            var parsed = JSON.parse(data);
-                            $('#modal-header').attr('class', 'modal-header '+parsed.class);
-                            $('.modal-title').append(parsed.title);
-                            $('.modal-body').append(parsed.message);
-                            $('#notification-modal').modal('show');
-                        }
+                    type: 'POST',
+                    url: '/' + url,
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        var parsed = JSON.parse(data);
+                        //alert(parsed)
+                        $('#modal-header').attr('class', 'modal-header ' + parsed.class);
+                        $('.modal-title').append(parsed.title);
+                        $('.modal-body').append(parsed.message);
+                        $('#notification-modal').modal('show');
+                    }
                 });
 
             }
@@ -143,7 +144,7 @@
         var formWizard = $('.wizard');
         var formSteps = formWizard.find('.steps');
 
-        $('.wizard-options .holder-style').on('click', function(e) {
+        $('.wizard-options .holder-style').on('click', function (e) {
             e.preventDefault();
 
             var stepStyle = $(this).data('steps-style');
