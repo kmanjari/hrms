@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top bg-system">
     <div class="navbar-logo-wrapper bg-system">
-        <a class="navbar-logo-text" href="#">
+        <a class="navbar-logo-text" href="welcome">
             <b> H R M S </b>
         </a>
 
@@ -20,7 +20,7 @@
             <a href="#" class="dropdown-toggle fw600" data-toggle="dropdown">
                 <span class="hidden-xs"><name>{{\Auth::user()->name}}</name> </span>
                 <span class="fa fa-caret-down hidden-xs mr15"></span>
-                @if(\Auth::user()->employee->photo)
+                @if(isset(\Auth::user()->employee->photo))
                     <img src="{{\Auth::user()->employee->photo}}" width="50px" height="50px" alt="avatar" class="mw55">
                 @else
                 <img src="/assets/img/avatars/profile_pic.png" alt="avatar" class="mw55">

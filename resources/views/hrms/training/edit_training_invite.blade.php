@@ -112,3 +112,8 @@
 
     </div>
 @endsection
+@push('scripts')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
+@endpush

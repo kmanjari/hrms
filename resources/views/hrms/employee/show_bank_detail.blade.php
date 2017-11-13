@@ -73,12 +73,12 @@
                                                         <button type="button"
                                                                 class="btn btn-success br2 btn-xs fs12 showModal"
                                                                 data-info='[
-                                                                "{{$emp->id}}",
-                                                                "{{$emp->name}}",
-                                                                "{{$emp->bank_name}}",
-                                                                "{{$emp->account_number}}",
-                                                                "{{$emp->ifsc_code}}",
-                                                                "{{$emp->pf_account_number}}"
+                                                                "{{$emp->employee['id']}}",
+                                                                "{{$emp->employee['name']}}",
+                                                                "{{$emp->employee['bank_name']}}",
+                                                                "{{$emp->employee['account_number']}}",
+                                                                "{{$emp->employee['ifsc_code']}}",
+                                                                "{{$emp->employee['pf_account_number']}}"
                                                                 ]'> Edit
                                                         </button>
                                                     </div>

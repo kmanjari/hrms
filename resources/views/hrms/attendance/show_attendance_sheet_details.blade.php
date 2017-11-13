@@ -101,7 +101,7 @@
                                             <th class="text-center">Difference</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">Leave Status</th>
-                                            <th class="text-center">Action</th>
+                                            {{--<th class="text-center">Action</th>--}}
                                         </tr>
                                         </thead>
                                             @else
@@ -122,23 +122,23 @@
                                                 <td class="text-center">{{$attendance->difference}}</td>
                                                 <td class="text-center">{{convertAttendanceFrom($attendance->status)}}</td>
                                                 <td class="text-center">{{$attendance->leave_status}}</td>
-                                                <td class="text-center">
-                                                    <div class="btn-group text-center">
-                                                        <button type="button"
-                                                                class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
-                                                                data-toggle="dropdown" aria-expanded="false"> Action
-                                                            <span class="caret ml5"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li>
-                                                                <a href="#">Edit</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#">Delete</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
+                                                {{--<td class="text-center">--}}
+                                                    {{--<div class="btn-group text-center">--}}
+                                                        {{--<button type="button"--}}
+                                                                {{--class="btn btn-info br2 btn-xs fs12 dropdown-toggle"--}}
+                                                                {{--data-toggle="dropdown" aria-expanded="false"> Action--}}
+                                                            {{--<span class="caret ml5"></span>--}}
+                                                        {{--</button>--}}
+                                                        {{--<ul class="dropdown-menu" role="menu">--}}
+                                                            {{--<li>--}}
+                                                                {{--<a href="">Edit</a>--}}
+                                                            {{--</li>--}}
+                                                            {{--<li>--}}
+                                                                {{--<a href="">Delete</a>--}}
+                                                            {{--</li>--}}
+                                                        {{--</ul>--}}
+                                                    {{--</div>--}}
+                                                {{--</td>--}}
                                             </tr>
                                         @endforeach
                                         <tr><td colspan="11">
@@ -158,3 +158,6 @@
 
     </div>
 @endsection
+@push('scripts')
+    <script src="/assets/js/custom.js"></script>
+@endpush

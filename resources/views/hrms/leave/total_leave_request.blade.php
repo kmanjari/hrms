@@ -219,3 +219,6 @@
     <!-- /Notification Modal -->
 </div>
 @endsection
+@push('scripts')
+    <script src="/assets/js/custom.js"></script>
+@endpush

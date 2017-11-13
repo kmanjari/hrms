@@ -15,9 +15,9 @@
                         <a href="/dashboard"> Dashboard </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href=""> Client </a>
+                        <a href=""> Project </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Add Client</li>
+                    <li class="breadcrumb-current-item"> Add project</li>
                 </ol>
             </div>
         </header>

@@ -1,211 +1,199 @@
 <?php
 
-    function totalLeaves($leaveType)
-    {
-        $result = [
-            '1'  => '24',//casual leave
-            '2'  => '6',//sick leave
-            '3'  => '15',//marriage leave
-            '4'  => '10',//bereavement leave
-            '6'  => '15',//paternity leave
-            '12' => '90',//maternity leave
-            '7'  => '0',
-            '8'  => '0',
-            '9'  => '0',
-            '10' => '0',
-            '11' => '0',
-        ];
+function totalLeaves($leaveType)
+{
+    $result = [
+        '1' => '24',//casual leave
+        '2' => '6',//sick leave
+        '3' => '15',//marriage leave
+        '4' => '10',//bereavement leave
+        '6' => '15',//paternity leave
+        '12' => '90',//maternity leave
+        '7' => '0',
+        '8' => '0',
+        '9' => '0',
+        '10' => '0',
+        '11' => '0'
+    ];
 
-        return $result[$leaveType];
+    return $result[$leaveType];
+}
+
+
+function convertRole($role)
+{
+    $data = [
+        'Admin' => '1',
+        'Director' => '2',
+        'Research Analyst' => '3',
+        'Senior Research Analyst' => '4',
+        'Team Lead' => '5',
+        'IT Executive' => '6',
+        'HR Manager' => '7',
+        'Associate-Enforcement' => '8',
+        'Enforcement Head' => '9',
+        'Finance Controller' => '10',
+        'Consultant' => '11',
+        'Front desk Executive' => '12',
+        'Software Developer' => '13',
+        'Senior Software Developer' => '14',
+        'Accounts Executive' => '15',
+        'Manager' => '16'
+        //bharo baki
+    ];
+    if($role){
+        return $data[$role];
     }
+    return $data;
+}
 
 
-    function convertRole($role)
-    {
-        $data = [
-            'Admin'                     => '1',
-            'Director'                  => '2',
-            'Research Analyst'          => '3',
-            'Senior Research Analyst'   => '4',
-            'Team Lead'                 => '5',
-            'IT Executive'              => '6',
-            'HR Manager'                => '7',
-            'Associate-Enforcement'     => '8',
-            'Enforcement Head'          => '9',
-            'Finance Controller'        => '10',
-            'Consultant'                => '11',
-            'Front desk Executive'      => '12',
-            'Software Developer'        => '13',
-            'Senior Software Developer' => '14',
-            'Accounts Executive'        => '15',
-            'Manager'                   => '16'
-            //bharo baki
-        ];
-        if ($role) {
-            return $data[$role];
-        }
+function convertStatus($emp_status)
+{
+    return $emp_status;
+    $data = [
+        'Present' => 1,
+        'Ex' => 0
+    ];
+    return $data[$emp_status];
+}
 
-        return $data;
-    }
+function convertStatusBack($emp_status)
+{
+    if($emp_status){}else{$emp_status=1;}
 
+    $data = [
+        '1' => 'Present',
+        '0' => 'Ex'
+    ];
+    return $data[$emp_status];
+}
 
-    function convertStatus($emp_status)
-    {
-        return $emp_status;
-        $data = [
-            'Present' => 1,
-            'Ex'      => 0,
-        ];
+function getLeaveType($leave_id)
+{
+    $result = \App\Models\LeaveType::where('id', $leave_id)->first();
+    return $result->leave_type;
+}
 
-        return $data[$emp_status];
-    }
-
-    function convertStatusBack($emp_status)
-    {
-        $data = [
-            '1' => 'Present',
-            '0' => 'Ex',
-        ];
-        if (!$emp_status) {
-            return $data[1];
-        }
-
-        return $data[$emp_status];
-    }
-
-    function getLeaveType($leave_id)
-    {
-        $result = \App\Models\LeaveType::where('id', $leave_id)->first();
-
-        return $result->leave_type;
-    }
-
-    function covertDateToDay($date)
-    {
-        $day = strtotime($date);
-        $day = date("l", $day);
-
-        return strtoupper($day);
-    }
-
-    /*
-    function getFormattedDate($date)
-    {
-        $date = new DateTime($date);
-        return date_format($date, 'l jS \\of F Y');
-    }*/
+function covertDateToDay($date)
+{
+    $day = strtotime($date);
+    $day = date("l", $day);
+    return strtoupper($day);
+}
+/*
+function getFormattedDate($date)
+{
+    $date = new DateTime($date);
+    return date_format($date, 'l jS \\of F Y');
+}*/
 
 
-    function getFormattedDate($date)
-    {
-        $date = strtotime($date);
+function getFormattedDate($date)
+{
+    $date =  strtotime($date);
+    return date('Y-m-d', $date);
+}
 
-        return date('Y-m-d', $date);
-    }
+function getEmployeeDropDown()
+{
+    $data = [
 
-    function getEmployeeDropDown()
-    {
-        $data = [
-
-            ""           => "Select",
-            'name'       => 'Name',
-            'code'       => 'Code',
-            'department' => 'Department',
-            'email'      => 'Email',
-            'number'     => 'Number',
-        ];
-
-        return $data;
-    }
+        "" => "Select",
+        'name' => 'Name',
+        'code' => 'Code',
+        'department' => 'Department',
+        'email' => 'Email',
+        'number' => 'Number'
+    ];
+    return $data;
+}
 
 
-    function getLeaveColumns()
-    {
-        $data = [
-            ""           => "Select",
-            'name'       => 'Name',
-            'code'       => 'Code',
-            'days'       => 'Days',
-            'leave_type' => 'Leave type',
-            'status'     => 'Status',
-        ];
+function getLeaveColumns()
+{
+    $data = [
+        "" => "Select",
+        'name' => 'Name',
+        'code' => 'Code',
+        'days' => 'Days',
+        'leave_type' => 'Leave type',
+        'status' => 'Status'
+    ];
 
-        return $data;
-    }
+    return $data;
+}
 
-    function getAttendanceDropDown()
-    {
-        $data = [
+function getAttendanceDropDown()
+{
+    $data = [
 
-            ""             => "Select",
-            'name'         => 'Name',
-            'code'         => 'Code',
-            'date'         => 'Date',
-            'day'          => 'Day',
-            'hours_worked' => 'Hours Worked',
-            'status'       => 'Status',
-        ];
+        "" => "Select",
+        'name' => 'Name',
+        'code' => 'Code',
+        'date' => 'Date',
+        'day' => 'Day',
+        'hours_worked' => 'Hours Worked',
+        'status' => 'Status'
+    ];
+    return $data;
+}
 
-        return $data;
-    }
 
+function getHoursWorked($inTime, $outTime)
+{
 
-    function getHoursWorked($inTime, $outTime)
-    {
+    $result = strtotime($outTime) - strtotime($inTime);
+    $totalMinutes = abs($result) / 60;
 
-        $result       = strtotime($outTime) - strtotime($inTime);
-        $totalMinutes = abs($result) / 60;
+    $minutes = $totalMinutes % '60';
+    $hours = $totalMinutes - $minutes;
+    $hours = $hours / 60;
 
-        $minutes = $totalMinutes % '60';
-        $hours   = $totalMinutes - $minutes;
-        $hours   = $hours / 60;
+    return $hours . ':00' . $minutes . ':00';
 
-        return $hours . ':00' . $minutes . ':00';
+}
 
-    }
+function convertAttendanceTo($status)
+{
+    $data = [
+        'A' => '0',
+        'P' => '1',
+        'MIS' => '2',
+        'WO' => '3',
+        'HLF' => '4'
+    ];
+    return $data[$status];
+}
 
-    function convertAttendanceTo($status)
-    {
-        $data = [
-            'A'   => '0',
-            'P'   => '1',
-            'MIS' => '2',
-            'WO'  => '3',
-            'HLF' => '4',
-        ];
+function convertAttendanceFrom($status)
+{
+    $data = [
+        '0' => 'A',
+        '1' => 'P',
+        '2' => 'MIS',
+        '3' => 'WO',
+        '4' => 'HLF'
+    ];
+    return $data[$status];
+}
 
-        return $data[$status];
-    }
-
-    function convertAttendanceFrom($status)
-    {
-        $data = [
-            '0' => 'A',
-            '1' => 'P',
-            '2' => 'MIS',
-            '3' => 'WO',
-            '4' => 'HLF',
-        ];
-
-        return $data[$status];
-    }
-
-    function qualification()
-    {
-        $data = [
-            ''                           => 'Select one',
-            'B.Com'                      => 'B.Com',
-            'B.Sc'                       => 'B.Sc',
-            'BCA'                        => 'BCA',
-            'MCA'                        => 'MCA',
-            'BCA+MCA'                    => 'BCA+MCA',
-            'BBA'                        => 'BBA',
-            'MBA'                        => 'MBA',
-            'BBA+MBA'                    => 'BBA+MBA',
-            'Engineering(B.Tech)'        => 'Engineering(B.Tech)',
-            'Engineering(B.Tech+M.Tech)' => 'Engineering(B.Tech+M.Tech)',
-            'Other'                      => 'Other',
-        ];
+function qualification()
+{
+    $data = [
+        '' => 'Select one',
+        'B.Com' => 'B.Com',
+        'B.Sc' => 'B.Sc',
+        'BCA' => 'BCA',
+        'MCA' => 'MCA',
+        'BCA+MCA' => 'BCA+MCA',
+        'BBA' => 'BBA',
+        'MBA' => 'MBA',
+        'BBA+MBA' => 'BBA+MBA',
+        'Engineering(B.Tech)' => 'Engineering(B.Tech)',
+        'Engineering(B.Tech+M.Tech)' => 'Engineering(B.Tech+M.Tech)',
+        'Other' => 'Other'
+    ];
 
         return $data;
     }

@@ -413,8 +413,8 @@
           }
           /*$leaves = $leaves->get();*/
 
-          $fileName = 'Leave_Listing_' . rand(1, 1000) . '.xlsx';
-          $filePath = storage_path('exports/') . $fileName;
+          $fileName = 'Leave_Listing_' . rand(1, 1000) . '.csv';
+          $filePath = storage_path('export/') . $fileName;
           $file = new \SplFileObject($filePath, "a");
           // Add header to csv file.
           $headers = ['id', 'name', 'code', 'leave_type', 'date_from', 'date_to', 'days', 'status','remarks', 'created_at', 'updated_at'];
@@ -437,7 +437,7 @@
             $file->fputcsv([$leave->id, $leave->name, $leave->code, $leave->leave_type, $leave->date_from, $leave->date_to, $leave->days, $status, $leave->remarks]);
           }
 
-          return response()->download(storage_path('exports/') . $fileName);
+          return response()->download(storage_path('export/') . $fileName);
 
         }
       } catch (\Exception $e)

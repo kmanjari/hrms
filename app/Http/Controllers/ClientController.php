@@ -82,7 +82,7 @@ class ClientController extends Controller
             $client->fill(array_except($request->all(), '_token'));
             $client->save();
 
-            \Session::flash('flash_message', 'Client saved successfully');
+            \Session::flash('flash_message', 'Client successfully updated');
         }
         catch(\Exception $e)
         {

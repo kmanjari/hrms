@@ -32,33 +32,20 @@ class ProjectController extends Controller
         return redirect()->back();
     }
 
-    public function showEdit($projectId)
-    {
-        $model = new \stdClass();
-        $model->project = Project::with('client')->findOrFail(['id' => $projectId]);
-        $model->clients = Client::get();
-        return view('hrms.projects.edit', compact('model'));
-    }
 
-    public function listProject()
-    {
-        $projects = Project::with('client')->paginate(15);
-        return view('hrms.projects.list', compact('projects'));
-    }
-
-    public function assignProject()
-    {
-        $model = new \stdClass();
-        $model->projects = Project::get();
-        $model->employees = Employee::whereHas('userrole', function($q)
-        {
-            $q->whereIn('role_id', ['3', '4']);
-        })
-            ->get();
-
-        return view('hrms.projects.assign', compact('model'));
-
-    }
+//    public function assignProject()
+//    {
+//        $model = new \stdClass();
+//        $model->projects = Project::get();
+//        $model->employees = Employee::whereHas('userrole', function($q)
+//        {
+//            $q->whereIn('role_id', ['3', '4']);
+//        })
+//            ->get();
+//
+//        return view('hrms.projects.assign', compact('model'));
+//
+//    }
 
     public function validateCode($code)
     {
@@ -83,10 +70,34 @@ class ProjectController extends Controller
         return redirect()->back();
     }
 
+    public function listProject()
+    {
+        $projects = Project::with('client')->paginate(15);
+        return view('hrms.projects.list', compact('projects'));
+    }
+
+
+    public function showEdit($projectId)
+    {
+        $model = new \stdClass();
+        $project = Project::with('client')->where(['id' => $projectId])->first();
+     //  return $model->project;
+       // $model->description =
+        $clients = Client::get();
+        foreach($clients as $client)
+        {
+            $model->clients[$client->id] = $client->name;
+        }
+        return view('hrms.projects.edit', compact('project','model'));
+    }
+
+
     public function doEdit(Request $request, $id)
     {
         $name = $request->name;
         $description = $request->description;
+        $code = $request->code;
+        $client_id = $request->client_id;
 
         $edit = project::findOrFail($id);
         if (!empty($name)) {
@@ -95,7 +106,14 @@ class ProjectController extends Controller
         if (!empty($description)) {
             $edit->description = $description;
         }
-            $edit->save();
+        if (!empty($code)) {
+            $edit->code = $code;
+        }
+        if (!empty($client_id)) {
+            $edit->client_id = $client_id;
+        }
+
+        $edit->save();
         \Session::flash('flash_message', 'project successfully updated!');
         return redirect('list-project');
     }
