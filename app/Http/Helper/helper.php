@@ -192,36 +192,39 @@ function qualification()
         'BBA+MBA' => 'BBA+MBA',
         'Engineering(B.Tech)' => 'Engineering(B.Tech)',
         'Engineering(B.Tech+M.Tech)' => 'Engineering(B.Tech+M.Tech)',
-        'Other' => 'Other',
-        ];
-    return $data;
-}
-
-function getGender($gender)
-{
-    $data = [
-        '0' => 'Male',
-        '1' => 'Female',
+        'Other' => 'Other'
     ];
-    return $data[$gender];
-}
 
-function formatDate($date)
-{
-    $created_at = $date;
-    $today = \Carbon\Carbon::now();
-    $difference = date_diff($created_at, $today);
-
-    if($difference->days > 1)
-    {
-        //{{$job->created_at ? $job->created_at->format('l jS \\of F Y') : ''}}
-        return $date->format('l jS \\of F Y H:m:s');
+        return $data;
     }
-    return $date->diffForHumans();
-}
 
-function getUserData($userId)
-{
-    $user = \App\User::where('id', $userId)->with('employee')->first();
-    return $user;
-}
+    function getGender($gender)
+    {
+        $data = [
+            '0' => 'Male',
+            '1' => 'Female',
+        ];
+
+        return $data[$gender];
+    }
+
+    function formatDate($date)
+    {
+        $created_at = $date;
+        $today      = \Carbon\Carbon::now();
+        $difference = date_diff($created_at, $today);
+
+        if ($difference->days > 1) {
+            //{{$job->created_at ? $job->created_at->format('l jS \\of F Y') : ''}}
+            return $date->format('l jS \\of F Y H:m:s');
+        }
+
+        return $date->diffForHumans();
+    }
+
+    function getUserData($userId)
+    {
+        $user = \App\User::where('id', $userId)->with('employee')->first();
+
+        return $user;
+    }

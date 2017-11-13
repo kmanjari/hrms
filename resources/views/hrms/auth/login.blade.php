@@ -56,13 +56,10 @@
                     {!! Form::open() !!}
                         <div class="panel-body pn mv10">
                                 @if (session('message'))
-                                    <div class="alert alert-primary">
+                                    <div class="alert {{session('class')}}">
                                         {{ session('message') }}
                                     </div>
                                 @endif
-
-
-
                             <div class="section">
                                 <label for="username" class="field prepend-icon">
                                     <input type="text" name="email" id="email" class="gui-input" placeholder="Email">
