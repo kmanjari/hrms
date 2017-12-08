@@ -130,7 +130,7 @@ class EmpController extends Controller
 
         }
 
-        $photo             = $request->$filename;
+        $photo             = $filename;
         $emp_name          = $request->emp_name;
         $emp_code          = $request->emp_code;
         $emp_status        = $request->status;
