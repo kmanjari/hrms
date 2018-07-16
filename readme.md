@@ -62,6 +62,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 5. [mbstring](http://php.net/manual/en/mbstring.installation.php)
 6. [dom extention](http://php.net/manual/en/dom.setup.php)
 
+## How can I support developers ?
+* Star our GitHub repo :star:
+* Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
+* Hire us for your next project :heart:
+
 ## Installation
 
 It is preferred to have git setup installed on your local system.
@@ -80,7 +85,7 @@ After migration, run the database seeder:
     
 Once done migrating and seeding you will have default user:
 
-    email: email@gmail.com
+    email: test@demo.com
     password: 123456
     
 Demo version of the project can be found over [here](http://hrms.kanakmanjari.com)    
