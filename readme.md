@@ -85,7 +85,7 @@ After migration, run the database seeder:
     
 Once done migrating and seeding you will have default user:
 
-    email: test@demo.com
+    email: email@gmail.com
     password: 123456
     
 Demo version of the project can be found over [here](http://hrms.kanakmanjari.com)    
