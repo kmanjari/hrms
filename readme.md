@@ -89,4 +89,6 @@ Once done migrating and seeding you will have default user:
     password: 123456
     
 Demo version of the project can be found over [here](http://hrms.kanakmanjari.com)    
+
+## Please do not chnge password on demo site 
   
