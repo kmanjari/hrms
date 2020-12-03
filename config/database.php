@@ -58,7 +58,7 @@ return [
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'airman5'),
             'username' => env('DB_USERNAME', 'airman5'),
-            'password' => env('DB_PASSWORD', 'LKPmode18@'),
+            'password' => env('DB_PASSWORD', 'password'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
