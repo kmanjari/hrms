@@ -126,3 +126,8 @@
         <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/bootstrap-select.css">
     @endpush
 @endsection
+@push('scripts')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/allcp/forms/js/bootstrap-select.js"></script>
+@endpush

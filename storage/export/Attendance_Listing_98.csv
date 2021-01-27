@@ -1,0 +1,2 @@
+id,name,code,date,day,in_time,out_time,hours_worked,difference,status,leave_status,user_id,created_at,updated_at
+1,"HIMANI SHARMA",DIPI0011,2017-08-28,MONDAY,09:30:00,18:00:00,"8:30 hrs",0,0,"Unplanned leave"

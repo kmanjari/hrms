@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('not-found', 'AuthController@notFound');
 
-    Route::get('dashboard', 'AuthController@dashboard');
+    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'AuthController@dashboard']);
 
     Route::get('profile', 'ProfileController@show');
 
@@ -312,7 +312,7 @@ Route::group(['middleware' => ['auth']], function ()
 
     Route::get('edit-project/{projectId}', 'ProjectController@showEdit')->name('edit-project');
 
-    Route::post('edit-project/{projectId}', 'ProjectController@saveProjectEdit');
+//    Route::post('edit-project/{projectId}', 'ProjectController@saveProjectEdit');
 
     Route::get('list-project', 'ProjectController@listProject')->name('list-project');
 

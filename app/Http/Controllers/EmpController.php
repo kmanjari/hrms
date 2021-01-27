@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Jobs\ExportData;
@@ -86,6 +87,7 @@ class EmpController extends Controller
         $userRole->role_id = $request->role;
         $userRole->user_id = $user->id;
         $userRole->save();
+
         //$emp->userrole()->create(['role_id' => $request->role]);
 
         return json_encode(['title' => 'Success', 'message' => 'Employee added successfully', 'class' => 'modal-header-success']);
@@ -97,6 +99,7 @@ class EmpController extends Controller
         $emps   = User::with('employee', 'role.role')->paginate(15);
         $column = '';
         $string = '';
+
         return view('hrms.employee.show_emp', compact('emps', 'column', 'string'));
     }
 
@@ -106,6 +109,7 @@ class EmpController extends Controller
         $emps = User::where('id', $id)->with('employee', 'role.role')->first();
 
         $roles = Role::get();
+
         return view('hrms.employee.add', compact('emps', 'roles'));
     }
 
@@ -126,10 +130,11 @@ class EmpController extends Controller
 
         }
 
-        $photo             = $request->$filename;
-        $emp_name          = $request->name;
-        $emp_code          = $request->code;
+        $photo             = $filename;
+        $emp_name          = $request->emp_name;
+        $emp_code          = $request->emp_code;
         $emp_status        = $request->status;
+        $emp_role          = $request->role;
         $gender            = $request->gender;
         $dob               = date_format(date_create($request->date_of_birth), 'Y-m-d');
         $doj               = date_format(date_create($request->date_of_joining), 'Y-m-d');
@@ -169,10 +174,15 @@ class EmpController extends Controller
         if (!empty($emp_code)) {
             $edit->code = $emp_code;
         }
-        if (!empty($emp_status)) {
+        if (isset($emp_status)) {
             $edit->status = $emp_status;
         }
-        if (!empty($gender)) {
+        if (isset($emp_role)) {
+            $userRole = UserRole::firstOrNew(['user_id' => $edit->user_id]);
+            $userRole->role_id = $emp_role;
+            $userRole->save();
+        }
+        if (isset($gender)) {
             $edit->gender = $gender;
         }
         if (!empty($dob)) {
@@ -202,10 +212,11 @@ class EmpController extends Controller
         if (!empty($permanent_address)) {
             $edit->permanent_address = $permanent_address;
         }
-        if (!empty($formalities)) {
+
+        if (isset($formalities)) {
             $edit->formalities = $formalities;
         }
-        if (!empty($offer_acceptance)) {
+        if (isset($offer_acceptance)) {
             $edit->offer_acceptance = $offer_acceptance;
         }
         if (!empty($prob_period)) {
@@ -235,7 +246,7 @@ class EmpController extends Controller
         if (!empty($un_number)) {
             $edit->un_number = $un_number;
         }
-        if (!empty($pf_status)) {
+        if (isset($pf_status)) {
             $edit->pf_status = $pf_status;
         }
         if (!empty($dor)) {
@@ -247,19 +258,18 @@ class EmpController extends Controller
         if (!empty($last_working_day)) {
             $edit->last_working_day = $last_working_day;
         }
-        if (!empty($full_final)) {
+        if (isset($full_final)) {
             $edit->full_final = $full_final;
         }
 
         $edit->save();
-
         return json_encode(['title' => 'Success', 'message' => 'Employee details successfully updated', 'class' => 'modal-header-success']);
     }
 
     public function doDelete($id)
     {
 
-        $emp = Employee::find($id);
+        $emp = User::find($id);
         $emp->delete();
 
         \Session::flash('flash_message', 'Employee successfully Deleted!');
@@ -282,13 +292,12 @@ class EmpController extends Controller
                 $rows = $reader->get(['emp_name', 'emp_code', 'emp_status', 'role', 'gender', 'dob', 'doj', 'mob_number', 'qualification', 'emer_number', 'pan_number', 'father_name', 'address', 'permanent_address', 'formalities', 'offer_acceptance', 'prob_period', 'doc', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number', 'un_number', 'pf_status', 'dor', 'notice_period', 'last_working_day', 'full_final']);
 
                 foreach ($rows as $row) {
-\Log::info($row->role);
+                    \Log::info($row->role);
                     $user           = new User;
                     $user->name     = $row->emp_name;
                     $user->email    = str_replace(' ', '_', $row->emp_name) . '@sipi-ip.sg';
                     $user->password = bcrypt('123456');
                     $user->save();
-
                     $attachment         = new Employee();
                     $attachment->photo  = '/img/Emp.jpg';
                     $attachment->name   = $row->emp_name;
@@ -303,7 +312,7 @@ class EmpController extends Controller
                     if (empty($row->dob)) {
                         $attachment->date_of_birth = '0000-00-00';
                     } else {
-                        $attachment->date_of_birth = date('Y-m-d',strtotime($row->dob));
+                        $attachment->date_of_birth = date('Y-m-d', strtotime($row->dob));
                     }
                     if (empty($row->doj)) {
                         $attachment->date_of_joining = '0000-00-00';
@@ -434,9 +443,11 @@ class EmpController extends Controller
                     $userRole->save();
 
                 }
+
                 return 1;
                 //return redirect('upload_form');*/
-            });
+            }
+            );
 
         }
         /*catch (\Exception $e) {
@@ -453,13 +464,18 @@ class EmpController extends Controller
         $column = $request->column;
         if ($request->button == 'Search') {
             if ($string == '' && $column == '') {
+                \Session::flash('success', ' Employee details uploaded successfully.');
                 return redirect()->to('employee-manager');
-            } elseif ($column == 'email') {
-                $emps = User::with('employee')->where($column, $string)->paginate(20);
+            } elseif ($string != '' && $column == '') {
+                \Session::flash('failed', ' Please select category.');
+                return redirect()->to('employee-manager');
+            }elseif ($column == 'email') {
+                $emps = User::with('employee')->where($column,'like', "%$string%")->paginate(20);
             } else {
                 $emps = User::whereHas('employee', function ($q) use ($column, $string) {
                     $q->whereRaw($column . " like '%" . $string . "%'");
-                })->with('employee')->paginate(20);
+                }
+                )->with('employee')->paginate(20);
             }
 
             return view('hrms.employee.show_emp', compact('emps', 'column', 'string'));
@@ -471,10 +487,11 @@ class EmpController extends Controller
             } else {
                 $emps = User::whereHas('employee', function ($q) use ($column, $string) {
                     $q->whereRaw($column . " like '%" . $string . "%'");
-                })->with('employee')->get();
+                }
+                )->with('employee')->get();
             }
 
-            $fileName = 'Employee_Listing_' . rand(1, 1000) . '.xlsx';
+            $fileName = 'Employee_Listing_' . rand(1, 1000) . '.csv';
             $filePath = storage_path('export/') . $fileName;
             $file     = new \SplFileObject($filePath, "a");
             // Add header to csv file.
@@ -482,39 +499,40 @@ class EmpController extends Controller
             $file->fputcsv($headers);
             foreach ($emps as $emp) {
                 $file->fputcsv([
-                    $emp->id,
-                    (
-                        $emp->employee->photo) ? $emp->employee->photo : 'Not available',
-                    $emp->employee->code,
-                    $emp->employee->name,
-                    $emp->employee->status,
-                    $emp->employee->gender,
-                    $emp->employee->date_of_birth,
-                    $emp->employee->date_of_joining,
-                    $emp->employee->number,
-                    $emp->employee->qualification,
-                    $emp->employee->emergency_number,
-                    $emp->employee->pan_number,
-                    $emp->employee->father_name,
-                    $emp->employee->current_address,
-                    $emp->employee->permanent_address,
-                    $emp->employee->formalities,
-                    $emp->employee->offer_acceptance,
-                    $emp->employee->probation_period,
-                    $emp->employee->date_of_confirmation,
-                    $emp->employee->department,
-                    $emp->employee->salary,
-                    $emp->employee->account_number,
-                    $emp->employee->bank_name,
-                    $emp->employee->ifsc_code,
-                    $emp->employee->pf_account_number,
-                    $emp->employee->un_number,
-                    $emp->employee->pf_status,
-                    $emp->employee->date_of_resignation,
-                    $emp->employee->notice_period,
-                    $emp->employee->last_working_day,
-                    $emp->employee->full_final
-                ]);
+                                   $emp->id,
+                                   (
+                                   $emp->employee->photo) ? $emp->employee->photo : 'Not available',
+                                   $emp->employee->code,
+                                   $emp->employee->name,
+                                   $emp->employee->status,
+                                   $emp->employee->gender,
+                                   $emp->employee->date_of_birth,
+                                   $emp->employee->date_of_joining,
+                                   $emp->employee->number,
+                                   $emp->employee->qualification,
+                                   $emp->employee->emergency_number,
+                                   $emp->employee->pan_number,
+                                   $emp->employee->father_name,
+                                   $emp->employee->current_address,
+                                   $emp->employee->permanent_address,
+                                   $emp->employee->formalities,
+                                   $emp->employee->offer_acceptance,
+                                   $emp->employee->probation_period,
+                                   $emp->employee->date_of_confirmation,
+                                   $emp->employee->department,
+                                   $emp->employee->salary,
+                                   $emp->employee->account_number,
+                                   $emp->employee->bank_name,
+                                   $emp->employee->ifsc_code,
+                                   $emp->employee->pf_account_number,
+                                   $emp->employee->un_number,
+                                   $emp->employee->pf_status,
+                                   $emp->employee->date_of_resignation,
+                                   $emp->employee->notice_period,
+                                   $emp->employee->last_working_day,
+                                   $emp->employee->full_final
+                               ]
+                );
             }
 
             return response()->download(storage_path('export/') . $fileName);
@@ -525,6 +543,7 @@ class EmpController extends Controller
     public function showDetails()
     {
         $emps = User::with('employee')->paginate(15);
+
         return view('hrms.employee.show_bank_detail', compact('emps'));
     }
 
@@ -534,12 +553,14 @@ class EmpController extends Controller
             $model                    = Employee::where('id', $request->employee_id)->first();
             $model->bank_name         = $request->bank_name;
             $model->account_number    = $request->account_number;
-            $model->pf_account_number = $request->pf_account_number;
             $model->ifsc_code         = $request->ifsc_code;
+            $model->pf_account_number = $request->pf_account_number;
             $model->save();
+
             return json_encode('success');
         } catch (\Exception $e) {
             \Log::info($e->getMessage() . ' on ' . $e->getLine() . ' in ' . $e->getFile());
+
             return json_encode('failed');
         }
 
@@ -549,6 +570,7 @@ class EmpController extends Controller
     {
         $emps  = User::get();
         $roles = Role::get();
+
         return view('hrms.promotion.add_promotion', compact('emps', 'roles'));
     }
 
@@ -558,6 +580,7 @@ class EmpController extends Controller
         if ($result) {
             $result = ['salary' => $result->salary, 'designation' => $result->userrole->role->name];
         }
+
         return json_encode(['status' => 'success', 'data' => $result]);
     }
 
@@ -581,12 +604,14 @@ class EmpController extends Controller
         $promotion->save();
 
         \Session::flash('flash_message', 'Employee successfully Promoted!');
+
         return redirect()->back();
     }
 
     public function showPromotion()
     {
         $promotions = Promotion::with('employee')->paginate(10);
+
         return view('hrms.promotion.show_promotion', compact('promotions'));
     }
 

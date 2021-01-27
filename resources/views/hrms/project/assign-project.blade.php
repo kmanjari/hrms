@@ -177,3 +177,7 @@
     
     <script src="assets/js/pages/forms-widgets.js" type="text/javascript"></script>
 @endsection
+@push('scripts')
+    <script src="/assets/js/pages/forms-widgets.js"></script>
+    <script src="/assets/js/custom.js"></script>
+@endpush

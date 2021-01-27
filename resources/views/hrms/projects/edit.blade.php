@@ -47,7 +47,7 @@
                                                 <label class="col-md-3 control-label"> Project </label>
                                                 <div class="col-md-6">
                                                     <input type="text" name="name" id="input002"
-                                                           class="select2-single form-control" placeholder="Name" value="{{$model->project->name}}"
+                                                           class="select2-single form-control" placeholder="Name" value="{{isset($project->name)? $project->name:'' }}"
                                                            required>
                                                 </div>
                                             </div>
@@ -55,7 +55,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"> Description </label>
                                                 <div class="col-md-6">
-                                                    <textarea class="form-control" name="description">{{$model->project->description}}</textarea>
+                                                    <textarea class="form-control" name="description">{{isset($project->description) ? $project->description:''}}</textarea>
                                                 </div>
                                             </div>
 
@@ -63,7 +63,7 @@
                                                 <label class="col-md-3 control-label"> Project Code </label>
                                                 <div class="col-md-6">
                                                     <input type="text" name="code" id="input002"
-                                                           class="select2-single form-control" placeholder="Project Code" value="{{$model->project->code}}"
+                                                           class="select2-single form-control" placeholder="Project Code" value="{{isset($project->code)? $project->code:''}}"
                                                            required>
                                                 </div>
                                             </div>
@@ -71,7 +71,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"> Client </label>
                                                 <div class="col-md-6">
-                                                    {!! Form::select('client_id', $model->clients, $model->project->client_id, ['class' => 'form-control']) !!}
+                                                 {!! Form::select('client_id', $model->clients, $project->client_id, ['class' => 'form-control']) !!}
                                                     {{--<select class="selectpicker form-control" data-done-button="true"
                                                             name="client_id" required>
                                                         <option value="" selected>Select One</option>

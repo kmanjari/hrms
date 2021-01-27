@@ -131,18 +131,27 @@
             $attendances = AttendanceManager::get();
           }
 
-          $file = 'Attendance_Listing_';
+          $fileName = 'Attendance_Listing_' . rand(1, 1000). '.csv';
+          $filePath = storage_path('export/').$fileName;
+          $file = new \SplFileObject($filePath, "a");
           $headers = ['id', 'name', 'code', 'date', 'day', 'in_time', 'out_time', 'hours_worked', 'difference', 'status', 'leave_status', 'user_id', 'created_at', 'updated_at'];
+          $file->fputcsv($headers);
+          foreach($attendances as $attendance)
+          {
+                $file->fputcsv([$attendance->id,$attendance->name,$attendance->code,$attendance->date,$attendance->day,$attendance->in_time,$attendance->out_time,$attendance->hours_worked,$attendance->difference,$attendance->status,$attendance->leave_status]);
+            }
 
-          /**
+
+
+            /**
            * sending the results fetched in above query to exportData
            * function of ExportRepository class located in
            * app\Repositories folder
            */
 
-          $fileName = $this->export->exportData($attendances, $file, $headers);
+         // $fileName = $this->export->exportData($attendances, $file, $headers);
 
-          return response()->download(storage_path('exports/') . $fileName);
+          return response()->download(storage_path('export/') . $fileName);
         }
 
       } catch (\Exception $e) {
@@ -150,3 +159,9 @@
       }
     }
   }
+
+
+
+
+
+

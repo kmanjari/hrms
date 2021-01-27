@@ -1,0 +1,9 @@
+id,name,code,leave_type,date_from,date_to,days,status,remarks,created_at,updated_at
+1,"HR Manager",HR001,Sick,2017-09-19,2017-09-20,2,Approved,
+1,"HR Manager",HR001,Sick,2017-09-28,2017-10-02,4,Approved,
+392,manjri,010101,Sick,2017-10-30,2017-10-31,2,Approved,
+1,"HR Manager",HR001,"Marriage Leave",2017-10-11,2017-10-22,11,Approved,
+1,"HR Manager",HR001,"Marriage Leave",2017-10-12,2017-10-13,2,Approved,
+1,"HR Manager",HR001,"Marriage Leave",2017-10-19,2017-10-31,12,Pending,
+1,"HR Manager",HR001,"Marriage Leave",2017-10-31,2017-11-08,8,Pending,
+1,"HR Manager",HR001,Casual,2017-10-11,2017-10-13,2,Approved,

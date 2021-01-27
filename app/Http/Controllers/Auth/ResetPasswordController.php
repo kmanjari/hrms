@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class PasswordController extends Controller
+class ResetPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -17,11 +17,16 @@ class PasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
-
     use ResetsPasswords;
+    /**
+     * Where to redirect users after resetting their password.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
 
     /**
-     * Create a new password controller instance.
+     * Create a new controller instance.
      *
      * @return void
      */

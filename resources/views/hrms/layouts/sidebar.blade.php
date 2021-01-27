@@ -2,8 +2,8 @@
 <div class="sidebar-widget author-widget">
     <div class="media">
         <a href="/profile" class="media-left">
-            @if(Auth::user()->employee->photo)
-                <img src="{{Auth::user()->employee->photo}}" width="40px" height="30px" class="img-responsive">
+            @if(isset(Auth::user()->employee->photo))
+                <img src="{{asset('photos/'.Auth::user()->employee->photo)}}" width="40px" height="30px" class="img-responsive">
             @else
                 <img src="{{ URL::asset('assets/img/avatars/profile_pic.png') }}" class="img-responsive">
             @endif
@@ -19,7 +19,7 @@
 <!-- -------------- Sidebar Menu  -------------- -->
 <ul class="nav sidebar-menu scrollable">
     <li class="active">
-        <a class="accordion-toggle menu-open" href="/dashboard">
+        <a  href="{{route('dashboard')}}">
             <span class="fa fa-dashboard"></span>
             <span class="sidebar-title">Dashboard</span>
         </a>
