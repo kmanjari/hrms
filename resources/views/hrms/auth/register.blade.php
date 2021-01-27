@@ -18,7 +18,7 @@
 <div class="login-form">
     {!! Form::open() !!}
     <div class="top">
-        <img src="/assets/img/sipi_7.jpg" alt="icon" class="icon">
+        <img src="{{ URL::asset('assets/img/sipi_7.jpg') }}" alt="icon" class="icon">
         <h1>Digital IP</h1>
         <h4>Human Resource Management System</h4>
     </div>

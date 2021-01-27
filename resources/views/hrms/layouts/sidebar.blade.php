@@ -2,16 +2,17 @@
 <div class="sidebar-widget author-widget">
     <div class="media">
         <a href="/profile" class="media-left">
-            @if(isset(Auth::user()->employee->photo))
-                <img src="{{asset('photos/'.Auth::user()->employee->photo)}}" width="40px" height="30px" class="img-responsive">
-            @else
-                <img src="/assets/img/avatars/profile_pic.png" class="img-responsive">
-            @endif
-
+            @auth
+                @if(isset(Auth::user()->employee->photo))
+                    <img src="{{asset('photos/'.Auth::user()->employee->photo)}}" width="40px" height="30px" class="img-responsive">
+                @else
+                    <img src="{{ URL::asset('assets/img/avatars/profile_pic.png') }}" class="img-responsive">
+                @endif
+            @endauth
         </a>
 
         <div class="media-body">
-            <div class="media-author"><a href="/profile">{{Auth::user()->name}}</a></div>
+            <div class="media-author"><a href="/profile">{{Auth::user()->name ?? 'Guest'}}</a></div>
         </div>
     </div>
 </div>
@@ -24,6 +25,7 @@
             <span class="sidebar-title">Dashboard</span>
         </a>
     </li>
+    @auth
     @if(Auth::user()->isHR())
         <li>
             <a class="accordion-toggle" href="/dashboard">
@@ -167,6 +169,7 @@
             </ul>
         </li>
     @endif
+    @endauth
     <li>
         <a class="accordion-toggle" href="/dashboard">
             <span class="fa fa-envelope"></span>
@@ -201,7 +204,7 @@
             @endif
         </ul>
     </li>
-
+        @auth
     @if(Auth::user()->isHR())
         <li>
             <a class="accordion-toggle" href="/dashboard">
@@ -265,6 +268,7 @@
             </ul>
         </li>
     @endif
+    @endauth
 
 
     <li>
@@ -296,6 +300,7 @@
             </li>
         </ul>
     </li>
+    @auth
     @if(Auth::user()->isHR())
         <li>
             <a class="accordion-toggle" href="#">
@@ -331,7 +336,7 @@
         </li>
 
     @endif
-
+    @endauth
     {{--<li class="sidebar-label pt30"> Extras</li>--}}
     <li>
         <a href="/create-meeting">
@@ -340,6 +345,7 @@
         </a>
     </li>
 
+    @auth
     @if(Auth::user()->isCoordinator() ||  Auth::user()->isHR())
         <li>
             <a href="/create-event">
@@ -348,6 +354,7 @@
             </a>
         </li>
     @endif
+    @endauth
     <li>
 
         <a href="/download-forms">

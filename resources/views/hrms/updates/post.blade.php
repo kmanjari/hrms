@@ -17,7 +17,7 @@
                                                     <br/>
                                                     <div class="small-help-block"> {{\Auth::user()->name}}</div>
                                                 @else
-                                                    <img src="/assets/img/avatars/profile_pic.png" width="80px"
+                                                    <img src="{{ URL::asset('assets/img/avatars/profile_pic.png') }}" width="80px"
                                                          height="80px">
                                                     <br/>
                                                     <div class="small-help-block"> {{\Auth::user()->name}}</div>
@@ -86,7 +86,7 @@
                                              height="80px">
                                         <div class="small-help-block"> {{getUserData($suggestion->user_id)['name']}}</div>
                                     @else
-                                        <img src="/assets/img/avatars/profile_pic.png" width="80px"
+                                        <img src="{{ URL::asset('assets/img/avatars/profile_pic.png') }}" width="80px"
                                              height="80px">
                                         <div class="small-help-block"> {{getUserData($suggestion->user_id)['name']}}</div>
                                     @endif

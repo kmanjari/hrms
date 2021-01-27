@@ -9,7 +9,7 @@
                         <br/>
                         <div class="small-help-block"> {{\Auth::user()->name}}</div>
                     @else
-                        <img src="/assets/img/avatars/profile_pic.png" width="80px"
+                        <img src="{{ URL::asset('assets/img/avatars/profile_pic.png') }}" width="80px"
                              height="80px">
                         <br/>
                         <div class="small-help-block"> {{\Auth::user()->name}}</div>
@@ -51,7 +51,7 @@
                     </label>
                 </label>
                 <div id="loader-{{$post->id}}">
-                    <img src="/img/loader.gif">
+                    <img src="{{ URL::asset('img/loader.gif') }}">
                 </div>
             </div>
             <!-- /reply box -->

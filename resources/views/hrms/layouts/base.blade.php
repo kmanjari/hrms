@@ -16,39 +16,39 @@
 
 
     <!-- -------------- Icomoon -------------- -->
-    <link rel="stylesheet" type="text/css" href="/assets/fonts/icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/fonts/icomoon/icomoon.css') }}">
 
     <!-- -------------- FullCalendar -------------- -->
-    <link rel="stylesheet" type="text/css" href="/assets/js/plugins/fullcalendar/fullcalendar.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/js/plugins/magnific/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/js/plugins/fullcalendar/fullcalendar.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/js/plugins/magnific/magnific-popup.css') }}">
 
     <!-- -------------- Plugins -------------- -->
-    <link rel="stylesheet" type="text/css" href="/assets/js/plugins/c3charts/c3.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/js/plugins/c3charts/c3.min.css') }}">
 
     <!-- -------------- CSS - theme -------------- -->
-    <link rel="stylesheet" type="text/css" href="/assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/skin/default_skin/css/theme.css') }}">
 
 
     <!-- -------------- CSS - allcp forms -------------- -->
-    <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/forms.css">
-    <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/widget.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/allcp/forms/css/forms.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/allcp/forms/css/widget.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="assets/js/plugins/select2/css/core.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/js/plugins/select2/css/core.css') }}">
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <link rel="shortcut icon" href="{{ URL::asset('assets/img/favicon.png') }}">
 
     <!--  Custom css -->
-    <link rel="stylesheet" type="text/css" href="/assets/custom.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/custom.css') }}">
 
     <!-- Sweet alert -->
-    <link rel="stylesheet" type="text/css" href="/assets/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/sweetalert.css') }}">
 
 @stack('styles')
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js') }}"></script>
     <![endif]-->
 
     <style type="text/css">
@@ -480,8 +480,8 @@
         <footer id="content-footer" class="affix">
             <div class="row">
                 <div class="col-md-6">
-                    <span class="footer-legal">KANAK © 2016 All rights reserved. By <a
-                                href="http://www.kanakmanjari.com/" target="_blank">Kanak Manjari</a></span>
+                    <span class="footer-legal">Human Resource Management System © 2016 All rights reserved. By <a
+                                href="mailto:andrewarianda@gmail.com.com?Subject=HRM%20Software" target="_blank">Clint A. Andrew</a></span>
                 </div>
                 <div class="col-md-6 text-right">
                     <span class="footer-meta"></span>
@@ -587,142 +587,146 @@ h
 <!-- -------------- Scripts -------------- -->
 
 <!-- -------------- jQuery -------------- -->
-<script src="/assets/js/jquery/jquery-1.11.3.min.js"></script>
-{{--<script src="/assets/js/jquery/jquery-2.2.4.min.js"></script>--}}
-<script src="/assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
+<script src="{{ URL::asset('assets/js/jquery/jquery-1.11.3.min.js') }}"></script>
+{{--<script src="{{ URL::asset('assets/js/jquery/jquery-2.2.4.min.js') }}"></script>--}}
+<script src="{{ URL::asset('assets/js/jquery/jquery_ui/jquery-ui.min.js') }}"></script>
 
 <!-- -------------- HighCharts Plugin -------------- -->
-<script src="/assets/js/plugins/highcharts/highcharts.js"></script>
-<script src="/assets/js/plugins/c3charts/d3.min.js"></script>
-<script src="/assets/js/plugins/c3charts/c3.min.js"></script>
+<script src="{{ URL::asset('assets/js/plugins/highcharts/highcharts.js') }}"></script>
+<script src="{{ URL::asset('assets/js/plugins/c3charts/d3.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/plugins/c3charts/c3.min.js') }}"></script>
 
 <!-- -------------- Simple Circles Plugin -------------- -->
-<script src="/assets/js/plugins/circles/circles.js"></script>
+<script src="{{ URL::asset('assets/js/plugins/circles/circles.js') }}"></script>
 
 <!-- -------------- Maps JSs -------------- -->
-<script src="/assets/js/plugins/jvectormap/jquery.jvectormap.min.js"></script>
-<script src="/assets/js/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js"></script>
+<script src="{{ URL::asset('assets/js/plugins/jvectormap/jquery.jvectormap.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js') }}"></script>
 
 <!-- -------------- FullCalendar Plugin -------------- -->
-<script src="/assets/js/plugins/fullcalendar/lib/moment.min.js"></script>
-<script src="/assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="{{ URL::asset('assets/js/plugins/fullcalendar/lib/moment.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
 
 <!-- -------------- Date/Month - Pickers -------------- -->
-<script src="/assets/allcp/forms/js/jquery-ui-monthpicker.min.js"></script>
-<script src="/assets/allcp/forms/js/jquery-ui-datepicker.min.js"></script>
+<script src="{{ URL::asset('assets/allcp/forms/js/jquery-ui-monthpicker.min.js') }}"></script>
+<script src="{{ URL::asset('assets/allcp/forms/js/jquery-ui-datepicker.min.js') }}"></script>
 
 <!-- -------------- Magnific Popup Plugin -------------- -->
-<script src="/assets/js/plugins/magnific/jquery.magnific-popup.js"></script>
+<script src="{{ URL::asset('assets/js/plugins/magnific/jquery.magnific-popup.js') }}"></script>
 
 <!-- -------------- Theme Scripts -------------- -->
-<script src="/assets/js/utility/utility.js"></script>
-<script src="/assets/js/demo/demo.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="{{ URL::asset('assets/js/utility/utility.js') }}"></script>
+<script src="{{ URL::asset('assets/js/demo/demo.js') }}"></script>
+<script src="{{ URL::asset('assets/js/main.js') }}"></script>
 
 <!-- -------------- Widget JS -------------- -->
-<script src="/assets/js/demo/widgets.js"></script>
-<script src="/assets/js/demo/widgets_sidebar.js"></script>
-<script src="/assets/js/pages/dashboard1.js"></script>
+<script src="{{ URL::asset('assets/js/demo/widgets.js') }}"></script>
+<script src="{{ URL::asset('assets/js/demo/widgets_sidebar.js') }}"></script>
+<script src="{{ URL::asset('assets/js/pages/dashboard1.js') }}"></script>
 
 <!-- Sweet alert -->
-<script src="/assets/js/sweetalert.min.js"></script>
+<script src="{{ URL::asset('assets/js/sweetalert.min.js') }}"></script>
 
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'assign-asset')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'assign-project')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'assign-award')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-award-assignment/{id}')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'add-expense')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager')--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'total-leave-list')--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')--}}
-    {{--<script src="/assets/js/function.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-    {{--@endif--}}
-
-{{--<script src="/assets/js/function.js"></script>--}}
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-asset-assignment/{id}')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'promotion')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
-
-@if(\Route::getFacadeRoot()->current()->uri() == 'edit-promotion/{id}')
-    <script src="/assets/js/pages/forms-widgets.js"></script>
-    <script src="/assets/js/custom.js"></script>
+@if(\Route::getFacadeRoot()->current()->uri() == 'assign-asset')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 @endif
 
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'add-training-invite')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
+@if(\Route::getFacadeRoot()->current()->uri() == 'assign-project')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
 
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')--}}
-    {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--<script src="/assets/js/custom.js"></script>--}}
-{{--@endif--}}
+@if(\Route::getFacadeRoot()->current()->uri() == 'assign-award')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
 
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'add-training-invite')--}}
-    {{--<script src="/assets/allcp/forms/js/bootstrap-select.js"></script>--}}
-{{--@endif--}}
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')--}}
-    {{--<script src="/assets/allcp/forms/js/bootstrap-select.js"></script>--}}
-{{--@endif--}}
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-award-assignment/{id}')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-expense')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'attendance-manager')
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'total-leave-list')
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave')
+    <script src="{{ URL::asset('assets/js/function.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+    @endif
+
+<script src="{{ URL::asset('assets/js/function.js') }}"></script>
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-asset-assignment/{id}')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'promotion')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-promotion/{id}')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-training-invite')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')
+    <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+@endif
+
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-training-invite')
+    <script src="{{ URL::asset('assets/allcp/forms/js/bootstrap-select.js') }}"></script>
+@endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-training-invite/{id}')
+    <script src="{{ URL::asset('assets/allcp/forms/js/bootstrap-select.js') }}"></script>
+@endif
 
 
+@if(\Route::getFacadeRoot()->current()->uri() == 'apply-leave' )
+    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/function.js') }}"></script>
+@endif
 
 <!-- -------------- /Scripts -------------- -->
 
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'add-employee' )--}}
-{{--<script src="/assets/js/custom_form_wizard.js"></script>--}}
-    {{--@endif--}}
+@if(\Route::getFacadeRoot()->current()->uri() == 'add-employee' )
+<script src="{{ URL::asset('assets/js/custom_form_wizard.js') }}"></script>
+    @endif
 
-    {{--@if(\Route::getFacadeRoot()->current()->uri() == 'attendance-upload' )--}}
-        {{--<script src="/assets/js/pages/forms-widgets.js"></script>--}}
-    {{--@endif--}}
+    @if(\Route::getFacadeRoot()->current()->uri() == 'attendance-upload' )
+        <script src="{{ URL::asset('assets/js/pages/forms-widgets.js') }}"></script>
+    @endif
 
-    {{--@if(\Route::getFacadeRoot()->current()->uri() == 'add-team')--}}
-        {{--<script src="/assets/allcp/forms/js/bootstrap-select.js"></script>--}}
-    {{--@endif--}}
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')--}}
-    {{--<script src="/assets/allcp/forms/js/bootstrap-select.js"></script>--}}
-{{--@endif--}}
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'create-event')--}}
-        {{--<!-- -------------- DateTime JS -------------- -->--}}
-    {{--<script src="/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>--}}
-{{--@endif--}}
-{{--@if(\Route::getFacadeRoot()->current()->uri() == 'create-meeting')--}}
-    {{--<!-- -------------- DateTime JS -------------- -->--}}
-    {{--<script src="/assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>--}}
-{{--@endif--}}
+    @if(\Route::getFacadeRoot()->current()->uri() == 'add-team')
+        <script src="{{ URL::asset('assets/allcp/forms/js/bootstrap-select.js') }}"></script>
+    @endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'edit-team/{id}')
+    <script src="{{ URL::asset('assets/allcp/forms/js/bootstrap-select.js') }}"></script>
+@endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'create-event')
+        <!-- -------------- DateTime JS -------------- -->
+    <script src="{{ URL::asset('assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+@endif
+@if(\Route::getFacadeRoot()->current()->uri() == 'create-meeting')
+    <!-- -------------- DateTime JS -------------- -->
+    <script src="{{ URL::asset('assets/js/plugins/datepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+@endif
     <script>
         $('#datetimepicker2').datetimepicker();
 
@@ -775,8 +779,6 @@ h
 </script>
 
 
-<script src="/assets/js/pages/allcp_forms-elements.js"></script>
-
-@stack('scripts')
+<script src="{{ URL::asset('assets/js/pages/allcp_forms-elements.js') }}"></script>
 </body>
 </html>
