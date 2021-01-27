@@ -21,8 +21,7 @@ class RedirectIfAuthenticated
 
             $userRole= \Auth::user()->role->role_id;
 
-            if($userRole == '8')
-            {
+            if ($userRole == '8') {
                 return redirect('/check');
             }
 
