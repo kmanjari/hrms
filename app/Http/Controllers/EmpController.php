@@ -462,6 +462,11 @@ class EmpController extends Controller
     {
         $string = $request->string;
         $column = $request->column;
+        $allowedColumns = ['code', 'name', 'status', 'gender', 'date_of_birth', 'date_of_joining', 'number', 'qualification', 'emergency_number', 'pan_number', 'father_name', 'current_address', 'permanent_address', 'probation_period', 'date_of_confirmation', 'department', 'salary', 'account_number', 'bank_name', 'ifsc_code', 'pf_account_number', 'un_number', 'notice_period', 'last_working_day'];
+        if ($column != '' && $column != 'email' && !in_array($column, $allowedColumns, true)) {
+            \Session::flash('failed', ' Please select a valid category.');
+            return redirect()->to('employee-manager');
+        }
         if ($request->button == 'Search') {
             if ($string == '' && $column == '') {
                 \Session::flash('success', ' Employee details uploaded successfully.');
@@ -473,7 +478,7 @@ class EmpController extends Controller
                 $emps = User::with('employee')->where($column,'like', "%$string%")->paginate(20);
             } else {
                 $emps = User::whereHas('employee', function ($q) use ($column, $string) {
-                    $q->whereRaw($column . " like '%" . $string . "%'");
+                    $q->where($column, 'like', '%' . $string . '%');
                 }
                 )->with('employee')->paginate(20);
             }
@@ -486,7 +491,7 @@ class EmpController extends Controller
                 $emps = User::with('employee')->where($request->column, $request->string)->paginate(20);
             } else {
                 $emps = User::whereHas('employee', function ($q) use ($column, $string) {
-                    $q->whereRaw($column . " like '%" . $string . "%'");
+                    $q->where($column, 'like', '%' . $string . '%');
                 }
                 )->with('employee')->get();
             }
